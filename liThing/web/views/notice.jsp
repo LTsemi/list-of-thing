@@ -229,7 +229,7 @@ http://www.templatemo.com/tm-520-highway
                       <a href="../views/LTpick.jsp">리띵's pick</a>
                   </li>
                   <li>
-                      <a href="../views/lithingbox.jsp">리띵 박스</a>
+                      <a href="../views/lithingbox.jsp">리띵 박스 구매</a>
                   </li>
                   <li>
                       <a href="../views/event.jsp">이벤트</a>
