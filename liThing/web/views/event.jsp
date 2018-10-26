@@ -253,7 +253,7 @@ http://www.templatemo.com/tm-520-highway
           <div class="main-menu">
               <ul>
                   <li>
-                      <a href="index.jsp">랭 킹</a>
+                      <a href="../index.jsp">랭 킹</a>
                   </li>
                   <li>
                       <a href="notice.jsp">공지사항</a>
