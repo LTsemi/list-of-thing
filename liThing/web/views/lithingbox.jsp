@@ -256,22 +256,22 @@ http://www.templatemo.com/tm-520-highway
           <div class="main-menu">
               <ul>
                   <li>
-                      <a href="index.jsp">랭 킹</a>
+                      <a href="../index.jsp">랭 킹</a>
                   </li>
                   <li>
-                      <a href="notice.jsp">공지사항</a>
+                      <a href="../views/notice.jsp">공지사항</a>
                   </li>
                   <li>
-                      <a href="LTpick.jsp">리띵's pick</a>
+                      <a href="../views/LTpick.jsp">리띵's pick</a>
                   </li>
                   <li>
-                      <a href="lithingbox.jsp">리띵 박스</a>
+                      <a href="../views/lithingbox.jsp">리띵 박스</a>
                   </li>
                   <li>
-                      <a href="event.jsp">이벤트</a>
+                      <a href="../views/event.jsp">이벤트</a>
                   </li>
                   <li>
-                      <a href="CustomerService.jsp">고객센터</a>
+                      <a href="../views/CustomerService.jsp">고객센터</a>
                   </li>
               </ul>
               <p>We create awesome templates for you</p>
