@@ -43,7 +43,7 @@ http://www.templatemo.com/tm-520-highway
         <div class="video-overlay"></div>
         <div class="video-content">
             <div class="inner">
-              <h1>Welcome to <em>Highway</em></h1>
+              <h1>Welcome to <em>Highwaㅇㅇy</em></h1>
               <p>FREE CSS TEMPLATE by <a href="http://www.templatemo.com" rel="nofollow">templatemo</a></p>
               <p>Homepage with masonry image gallery</p>
                 <div class="scroll-icon">

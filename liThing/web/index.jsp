@@ -31,14 +31,7 @@ http://www.templatemo.com/tm-520-highway
 
 <body>
 
-    <nav>
-        <div class="logo">
-            <a href="index.html">리띵</a>
-        </div>
-        <div class="menu-icon">
-        <span></span>
-      	</div>
-    </nav>
+	<%@ include file="views/common/header.jsp" %>
 
     <div id="video-container">
         <div class="video-overlay"></div>
@@ -202,16 +195,7 @@ http://www.templatemo.com/tm-520-highway
         </div>
     </div>
 
-
-    <footer>
-        <div class="container-fluid">
-            <div class="col-md-12">
-                <p>Copyright &copy; 2018 Company Name 
-    
-    | Design: <a rel="nofollow" href="http://www.templatemo.com">Template Mo</a></p>
-            </div>
-        </div>
-    </footer>
+	<%@ include file="views/common/footer.jsp" %>
 
 
       <!-- Modal button -->
@@ -292,7 +276,7 @@ http://www.templatemo.com/tm-520-highway
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+     <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
     
