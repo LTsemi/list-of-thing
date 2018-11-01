@@ -20,8 +20,8 @@
         <script src="/semi/resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
-    <footer>
-        <div class="container-fluid">
+    <footer style="background : #FFA41F;">
+        <div class="container-fluid" >
             <div class="col-md-12">
                 <p>Copyright &copy; 2018 Company Name 
     

@@ -254,19 +254,19 @@ http://www.templatemo.com/tm-520-highway
                       <a href="index.jsp">랭 킹</a>
                   </li>
                   <li>
-                      <a href="views/notice.jsp">공지사항</a>
+                      <a href="views/won/notice.jsp">공지사항</a>
                   </li>
                   <li>
-                      <a href="views/LTpick.jsp">리띵's pick</a>
+                      <a href="views/ju/LTpick.jsp">리띵's pick</a>
                   </li>
                   <li>
-                      <a href="views/lithingbox.jsp">리띵 박스</a>
+                      <a href="views/seul/lithingbox.jsp">리띵 박스</a>
                   </li>
                   <li>
-                      <a href="views/event.jsp">이벤트</a>
+                      <a href="views/seul/event.jsp">이벤트</a>
                   </li>
                   <li>
-                      <a href="views/CustomerService.jsp">고객센터</a>
+                      <a href="views/ju/CustomerService.jsp">고객센터</a>
                   </li>
               </ul>
               <p>We create awesome templates for you.</p>
