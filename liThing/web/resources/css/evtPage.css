@@ -1,0 +1,81 @@
+
+      @font-face {
+          font-family: 'NanumSquareRoundR';
+          src: url('resource/font/NanumSquareRoundR.ttf');
+        }
+        * { box-sizing: border-box;
+            font-family: NanumSquareRoundR; 
+        }
+        a{
+    text-decoration-line: none !important;
+    }
+        
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {
+        /* background-color: aquamarine; */
+        margin: 0 auto;
+        width: 1000px;
+        /* height: 1000px; */
+        }
+
+
+    .evtbanner{
+        text-align: center;
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .btn {
+      padding: 7px 13px;
+      border: 1px solid lightgray;
+      background-color: rgb(255, 230, 161);
+      color: gray;
+      border-radius: 0;
+      transition: .2s;
+
+  }
+  .btn:hover, .btn:focus {
+   border: 1px solid rgb(255, 164, 31);
+      background-color: rgb(255, 164, 31);
+      color: rgb(255, 255, 255) !important;
+  }
+
+    .comment{
+        width: 800px;
+        margin: 0 auto;
+    }
+    .cmtbar{
+        background-color: rgb(250, 250, 250) ;
+        padding: 5px 20px;
+
+    }
+    .listGo{
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .listbtn {
+      padding: 10px 20px;
+      background-color: white;
+      border: 1px solid lightgray;
+      color: gray;
+      border-radius: 0;
+      transition: .2s;
+      margin: 0 auto;
+
+  }
+  .listbtn:hover, .btn:focus {
+      border: 1px solid rgb(255, 208, 56);
+      background-color: rgb(255, 208, 56);
+      color: rgb(255, 255, 255);
+  }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }

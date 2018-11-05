@@ -26,7 +26,7 @@ body {font-family: Arial;
     font-family: 'Gugi', cursive;
 }
 .nav-tabs {
-  padding-left: 43%; 
+  padding-left: 40% !important; 
 }
 
 .nav-tabs li a {
@@ -62,19 +62,22 @@ body {font-family: Arial;
   font-size: 15px;
 }
 .dday{
-    position: absolute;
+    /* position: absolute;    */
+    position:relative;
     width: 64px;
     height: 64px;
-    margin-top: 220px;
-    margin-left: -422px;
-    padding-top: 20px;
+    /* margin-top: 260px;
+    margin-left: -770px; */
+    top:220px;
+    left:-387px;
+    padding: 24px;
     padding-left: 7px; 
     font-size: 17px;
     font-weight: 600;
     text-align:left;
     color: rgb(255, 255, 255);
     line-height: 38px;
-    background: url(image/bookmark.png) no-repeat;
+    background: url(../../resources/img/bookmark.png) no-repeat;
     /* border: 2px solid red; */
     }
 
@@ -89,6 +92,7 @@ body {font-family: Arial;
       font-size: 15px;
       color: #333;
     }
+
     .pagingArea a:link{
       /* 방문한 적이 없는 링크 */
         text-decoration: none;
