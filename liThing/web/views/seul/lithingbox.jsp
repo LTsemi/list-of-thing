@@ -26,11 +26,20 @@ http://www.templatemo.com/tm-520-highway
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+
+    	<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
+    	<link rel="stylesheet" href="../resources/css/lithing-Box.css">
+ 
     </head>
+    
 
 <body>
 
-      <%@ include file="common/header.jsp" %>
+      <%@ include file="../common/header.jsp" %>
 
     <div class="page-heading">
         <div class="container">
@@ -40,151 +49,46 @@ http://www.templatemo.com/tm-520-highway
         </div>
     </div>
 
-
-    <div class="services">
-        <div class="container">
-            <div class="col-md-4 col-sm-6">
-                <div class="service-item">
-                    <div class="icon">
-                        <img src="img/service_1.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h4>FREE CSS TEMPLATE</h4>
-                        <p>Highway is a good CSS template that is available for free. Please tell your friends about <a href="https://plus.google.com/+templatemo">templatemo</a>. Thank you.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-item">
-                    <div class="icon">
-                        <img src="img/service_2.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h4>Aenean pellentesque</h4>
-                        <p>Donec et nisi sed magna tincidunt fermentum. Pellentesque eget semper felis, sit amet scelerisque neque.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-item">
-                    <div class="icon">
-                        <img src="img/service_3.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h4>Quisque et odio</h4>
-                        <p>Donec et nisi sed magna tincidunt fermentum. Pellentesque eget semper felis, sit amet scelerisque neque.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-item">
-                    <div class="icon">
-                        <img src="img/service_4.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h4>Nullam et justo</h4>
-                        <p>Donec et nisi sed magna tincidunt fermentum. Pellentesque eget semper felis, sit amet scelerisque neque.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-item">
-                    <div class="icon">
-                        <img src="img/service_5.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h4>Integer ac justo</h4>
-                        <p>Donec et nisi sed magna tincidunt fermentum. Pellentesque eget semper felis, sit amet scelerisque neque.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-item">
-                    <div class="icon">
-                        <img src="img/service_6.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h4>Nunc sit amet nibh</h4>
-                        <p>Donec et nisi sed magna tincidunt fermentum. Pellentesque eget semper felis, sit amet scelerisque neque.</p>
-                    </div>
-                </div>
+    
+    <div id="lithingBox">
+        <div id="textTop">
+            <h2>Lithing Box</h2>
+            <br><br>
+            <p>매월 새로운 <span class="lithing">리띵</span>박스가 배달됩니다!</p>
+            <br><br><br><br>
+            <br><br><br><br>
+            <div id="banner">
+                <a href="#"><img src="image/baner.png" alt="리띵박스테마"></a>
             </div>
         </div>
+        <div id="buytab"> 
+            
+            <div class="buy">
+                <div class="box leftbox">
+                    <img src="img/box.png" width="120px" height="120px" alt="리띵박스테마">
+                    <h3 class="buyMonth">1개월</h3>
+                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
+                    <button class="btn pull-right" type="submit">구매하기</button>                </div>
+                <div class="box centerbox">
+                    <img src="img/box.png" width="120px" height="120px" alt="리띵박스테마">
+                    <h3 class="buyMonth">3개월</h3>
+                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
+                    <button class="btn pull-right" type="submit">구매하기</button>                </div>
+                <div class="box rightbox">
+                    <img src="img/box.png" width="120px" height="120px" alt="리띵박스테마">
+                    <h3 class="buyMonth">6개월</h3>
+                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
+                     <button class="btn pull-right" type="submit">구매하기</button>
+                    </div>
+        </div>
+        
+
     </div>
 
 
-    <div class="more-about-us">
-        <div class="container">
-            <div class="col-md-5 col-md-offset-7">
-                <div class="content">
-                    <h2>Aenean vehicula tincidunt</h2>
-                    <span>Donec et nisi sed</span>
-                    <p>Vivamus vitae libero euismod, pretium magna a, vulputate metus. Curabitur et arcu felis. Praesent aliquet lectus in purus viverra varius. 
-                    <br><br>Suspendisse et rutrum nisl. Phasellus porttitor metus vel justo blandit, in finibus neque elementum. Nullam semper, turpis quis egestas consequat, dui eros tristique lectus, ac euismod ex quam id mauris.</p>
-                    <div class="simple-btn">
-                        <a href="#">Continue Reading</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-    <div class="pricing-tables">
-        <div class="container">
-            <div class="col-md-4 col-sm-6">
-                <div class="table-item">
-                    <h4>$250/mo</h4>
-                    <span>Starter Plan</span>
-                    <ul>
-                    	<li>Xeon 8 Cores 3.2GHz</li>
-                        <li>RAM 32 GB</li>
-                        <li>10 TB RAID 1</li>
-                        <li>1,000 TB Transfer</li>
-                        <li>24-hour Support</li>
-                    </ul>
-                    <div class="simple-btn">
-                        <a href="#">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="table-item premium-item">
-                    <h4>$420/mo</h4>
-                    <span>Standard Plan</span>
-                    <ul>
-                        <li>Xeon 16 Cores 3.2GHz</li>
-                        <li>RAM 64 GB</li>
-                        <li>20 TB RAID 1</li>
-                        <li>2,000 TB Transfer</li>
-                        <li>15-minute Quick Support</li>
-                    </ul>
-                    <div class="simple-btn">
-                        <a href="#">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="table-item">
-                    <h4>$750/mo</h4>
-                    <span>Premium Plan</span>
-                    <ul>
-                        <li>Xeon 32 Cores 3.2GHz</li>
-                        <li>RAM 128 GB</li>
-                        <li>10 TB SSD RAID 10</li>
-                        <li>6,000 TB Transfer</li>
-                        <li>1-minute Instant Support</li>
-                    </ul>
-                    <div class="simple-btn">
-                        <a href="#">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-<%@ include file="common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 
 
       <!-- Modal button -->

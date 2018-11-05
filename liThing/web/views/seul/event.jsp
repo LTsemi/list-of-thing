@@ -16,6 +16,8 @@ http://www.templatemo.com/tm-520-highway
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        
+		
 
         <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
         <link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
@@ -23,14 +25,25 @@ http://www.templatemo.com/tm-520-highway
         <link rel="stylesheet" href="../resources/css/light-box.css">
         <link rel="stylesheet" href="../resources/css/templatemo-style.css">
 
-        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        
+           
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="resource/js/jquery-3.3.1.min.js"></script>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
+
+		<link rel="stylesheet" href="../resources/css/event.css">
+        	
+        
     </head>
 
 <body>
 
-  <%@ include file="common/header.jsp" %>
+  <%@ include file="../common/header.jsp" %>
 
     <div class="page-heading">
         <div class="container">
@@ -40,148 +53,184 @@ http://www.templatemo.com/tm-520-highway
         </div>
     </div>
 
-
-    <div class="blog-entries">
-        <div class="container">
-            <div class="col-md-9">
-                <div class="blog-posts">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="blog-post">
-                                <img src="img/blog_post_1.png" alt="">
-                                <div class="text-content">
-                                    <span><a href="#">Admin</a> / <a href="#">16 September 2018</a> / <a href="#">Branding</a></span>
-                                    <h2>Duis mollis orci vel lectus</h2>
-                                    <p>Proin at augue quam. In laoreet arcu id lacus fringilla auctor. Etiam rutrum aliquet nisl, eu fermentum elit fermentum sed. Donec finibus urna sed sollicitudin egestas. In hac habitasse platea dictumst. 
-                                    <br><br>Phasellus purus turpis, porta non lectus vitae, laoreet blandit diam. Suspendisse elementum ligula at purus gravida, vel malesuada dolor accumsan. Morbi finibus dapibus ex, ut finibus felis.</p>
-                                    <div class="simple-btn">
-                                        <a href="single-post.html">continue reading</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="blog-post">
-                                <img src="img/blog_post_2.png" alt="">
-                                <div class="text-content">
-                                    <span><a href="#">Admin</a> / <a href="#">28 August 2018</a> / <a href="#">Lifestyle</a></span>
-                                    <h2>Integer scelerisque odio elit</h2>
-                                    <p>Aliquam erat volutpat. Donec condimentum ante nec sapien sodales, ut molestie mauris scelerisque. Maecenas in turpis sed odio pretium tempor. In libero tellus, maximus in accumsan id, posuere non urna. 
-                                    <br><br>Fusce ex elit, congue vitae interdum et, sodales vitae purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque id egestas nibh. Curabitur convallis cursus pharetra. Curabitur non ligula id lacus pulvinar sollicitudin. Etiam quis tempus lectus, sed iaculis ex.</p>
-                                    <div class="simple-btn">
-                                        <a href="single-post.html">continue reading</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="blog-post">
-                                <img src="img/blog_post_3.png" alt="">
-                                <div class="text-content">
-                                    <span><a href="#">Admin</a> / <a href="#">31 July 2018</a> / <a href="#">Work Stuff</a></span>
-                                    <h2>Nulla condimentum at dui eu</h2>
-                                    <p>Cras ultrices ex sodales, vestibulum leo quis, volutpat mauris. In pretium vehicula dolor, sit amet ornare orci placerat sit amet. Nam non dolor sagittis, dignissim purus at, fringilla lacus. In aliquet, sapien ut lobortis molestie, lorem diam commodo leo, vitae eleifend diam justo ac velit.
-                                    <br><br>ras felis purus, efficitur vel luctus a, ultrices vitae diam. Maecenas maximus vehicula aliquet. Donec scelerisque, diam id dapibus ultrices, tortor tellus eleifend arcu, maximus iaculis mi elit sit amet odio. Donec at mauris sit amet velit tempus semper.</p>
-                                    <div class="simple-btn">
-                                        <a href="single-post.html">continue reading</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <ul class="page-number">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">></a></li>
-                            </ul>
-                        </div>
-                    </div>
+<div id="eventPage"> 
+    <br>
+    <h2>Event</h2>
+    <p>혜택이 가득한 리띵박스의 이벤트에 참여해보세요^_^</p>
+    <br>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">&nbsp; 이벤트 &nbsp;</a></li>
+      <li><a data-toggle="tab" href="#menu1">당첨자발표</a></li>
+    </ul>
+  
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+      <!--   이벤트 창    -->
+      <div id="lithingevt">
+          <br><br><br><br>
+          <div class="row">
+      
+             
+            <div class="thumbnail">
+              <span class="dday">D-30</span>
+              <a href="#" target="_top">
+                <p class="evtImg">
+                  <img src="image/lighs.jpg">
+                </p>
+                <div class="evtText">
+                  <h3>무료 체험 이벤트</h3>
+                  <p>2018/08/20 ~ 2018/09/01까지</p>
                 </div>
+              </a>
             </div>
-            <div class="col-md-3">
-                <div class="side-bar">
-                    <div class="search">
-                        <fieldset>
-                            <input name="search" type="text" class="form-control" id="search" placeholder="Search..." required="">
-                        </fieldset>
+      
+            <div class="thumbnail">
+                <span class="dday">D-26</span>
+                <a href="#" target="_top">
+                  <p class="evtImg">
+                    <img src="image/lighs.jpg">
+                  </p>
+                  <div class="evtText">
+                    <h3>무료 체험 이벤트</h3>
+                    <p>2018/08/20 ~ 2018/09/01까지</p>
+                  </div>
+                </a>
+              </div>
+      
+              <div class="thumbnail">
+                  <span class="dday">D-08</span>
+                  <a href="#" target="_top">
+                    <p class="evtImg">
+                      <img src="image/lighs.jpg">
+                    </p>
+                    <div class="evtText">
+                      <h3>무료 체험 이벤트</h3>
+                      <p>2018/08/20 ~ 2018/09/01까지</p>
                     </div>
-                    <div class="archives">
-                        <div class="sidebar-heding">
-                            <h2>Archives</h2>
-                        </div>
-                        <ul>
-                            <li><a href="#">> 2018 September (4)</a></li>
-                            <li><a href="#">> 2018 August (16)</a></li>
-                            <li><a href="#">> 2018 July (5)</a></li>
-                            <li><a href="#">> 2018 May (3)</a></li>
-                            <li><a href="#">> 2018 February (27)</a></li>
-                            <li><a href="#">> 2017 December (18)</a></li>
-                            <li><a href="#">> 2017 November (12)</a></li>
-                        </ul>
-                    </div>
-                    <div class="recent-posts">
-                        <div class="sidebar-heding">
-                            <h2>Recent Posts</h2>
-                        </div>
-                        <ul>
-                            <li><a href="single-post.html">
-                                <img src="img/recent_post_1.png" alt="Recent Post 1">
-                                <div class="text">
-                                    <h6>Duis mollis orci</h6>
-                                    <span>15 September 2018</span>
-                                </div>
-                            </li></a>
-                            <li><a href="single-post.html">
-                                <img src="img/recent_post_2.png" alt="Recent Post 2">
-                                <div class="text">
-                                    <h6>Etiam quis tem</h6>
-                                    <span>10 August 2018</span>
-                                </div>
-                            </li></a>
-                            <li><a href="single-post.html">
-                                <img src="img/recent_post_3.png" alt="Recent Post 3">
-                                <div class="text">
-                                    <h6>Proin at augue</h6>
-                                    <span>16 July 2018</span>
-                                </div>
-                            </li></a>
-                        </ul>
-                    </div>
-                    <div class="categories">
-                        <div class="sidebar-heding">
-                            <h2>Categories</h2>
-                        </div>
-                        <ul>
-                            <li><a href="#">> Lifestyle (7)</a></li>
-                            <li><a href="#">> Branding (9)</a></li>
-                            <li><a href="#">> Nature (14)</a></li>
-                            <li><a href="#">> Work Stuff (6)</a></li>
-                            <li><a href="#">> Science (5)</a></li>
-                        </ul>
-                    </div>
-                    <div class="latest-gallery">
-                        <div class="sidebar-heding">
-                            <h2>Latest Gallery</h2>
-                        </div>
-                        <ul>
-                            <li><a href="#"></a><img src="img/latest_gallery_1.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_2.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_3.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_4.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_5.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_6.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_7.png" alt=""></a></li>
-                            <li><a href="#"></a><img src="img/latest_gallery_8.png" alt=""></a></li>
-                        </ul>
-                    </div>
+                  </a>
                 </div>
-            </div>
+                
+                
+          </div>
+          <br><br><br><br>
         </div>
+
+
+      <!--   이벤트 창    -->
+      </div>
+      <div id="menu1" class="tab-pane fade">
+        <div id="lithingevt">
+          <br><br><br><br>
+          <div class="winbanner"><img src="" alt="당첨자배너"></div>
+          <br><br>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>이멘트명</th>
+                <th>등록일</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>104</td>
+                <td>[새우깡] 10월 무료샘플 당첨자 발표</td>
+                <td>2018-05-02</td>
+              </tr>
+              <tr>
+                <td>103</td>
+                <td>[새우깡] 10월 무료샘플 당첨자 발표</td>
+                <td>2018-04-02</td>
+              </tr>
+              <tr>
+                <td>102</td>
+                <td>[새우깡] 10월 무료샘플 당첨자 발표</td>
+                <td>2018-03-02</td>
+              </tr>
+              <tr>
+                  <td>102</td>
+                  <td>[새우깡] 10월 무료샘플 당첨자 발표</td>
+                  <td>2018-03-02</td>
+              </tr>
+              <tr>
+                  <td>102</td>
+                  <td>[새우깡] 10월 무료샘플 당첨자 발표</td>
+                  <td>2018-03-02</td>
+              </tr>
+              <tr>
+                  <td>102</td>
+                  <td>[새우깡] 10월 무료샘플 당첨자 발표</td>
+                  <td>2018-03-02</td>
+              </tr>
+
+            </tbody>
+          </table>
+          <br><br>
+          <!-- 페이지 이동 버튼 -->
+          <!-- <div class="row mb-2"> -->
+              <div class="pagingArea">
+                  <nav aria-label="Page">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">«</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">»</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                  </nav>
+              </div>
+          <!-- </div> -->
+          <br><br><br><br>
+        </div>
+      </div>
     </div>
+    <script>
+            $(document).ready(function(){
+              // Initialize Tooltip
+              $('[data-toggle="tooltip"]').tooltip(); 
+              
+              // Add smooth scrolling to all links in navbar + footer link
+              $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+            
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+            
+                  // Prevent default anchor click behavior
+                  event.preventDefault();
+            
+                  // Store hash
+                  var hash = this.hash;
+            
+                  // Using jQuery's animate() method to add smooth page scroll
+                  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                  $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                  }, 900, function(){
+               
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                  });
+                } // End if
+              });
+            })
+            </script>
+  
+</div>     
+
+   
 
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 
 
       <!-- Modal button -->
