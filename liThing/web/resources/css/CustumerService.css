@@ -10,25 +10,45 @@ article {
     margin-right: auto;
 }
 
-.menu {
+.question {
     width: 800px;
     height: 50px;
     text-align: left;
     display: flex;
     align-items: center;
-    border: 1px solid #FFA41F;
+    border-bottom: 2px solid #F3F3F3;
     cursor: pointer;
     padding-left: 10px;
-    margin: 0 auto;               
+    margin: 0 auto;
+    font-size: 15px;            
 }
     
 .content{
     width: 800px;
     height: 100px;
-    border: 1px solid #FFA41F;
+    background:#F3F3F3;
     text-align: left;
     padding-top: 10px;
     padding-left: 10px;
     display: none;
     margin:0 auto;
+    font-size:15px;
+}
+
+.question > span {
+	margin-right: 10px;
+	color : #FFA41F;
+	font-size: 20px;
+	font-family: 'Righteous', cursive;
+}
+
+.content > span {
+	margin-right: 10px;
+	color : #FFA41F;
+	font-size: 20px;
+	font-family: 'Righteous', cursive;
+}
+
+#help {
+    margin-top:95px;
 }
