@@ -38,7 +38,7 @@ http://www.templatemo.com/tm-520-highway
         <div class="video-content">
             <div class="inner">
               <h1 style="font-family: 'Kanit', sans-serif;">List of Thing</h1>
-              <p>리뷰를 하기 위해 <a href="">로그인</a> 하세요! </p>
+              <p>리뷰를 하기 위해 <a href="/semi/views/young/login.jsp">로그인</a> 하세요! </p>
                 <div class="scroll-icon">
                     <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="resources/img/scroll-icon.png" alt=""></a>
                 </div>    

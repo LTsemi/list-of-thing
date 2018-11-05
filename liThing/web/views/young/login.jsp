@@ -4,62 +4,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리띵 로그인</title>
-        <link rel="stylesheet" href="../../resources/css/login.css">
-       
-		<script src="/semi/resources/js/vendor/modernizr-2.8.3-respond-1.4.2.js"></script>
-		<script src="/semi/resources/js/login.js"></script>
+<title>Insert title here</title>
+
+        <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
+        <link rel="stylesheet" href="../../resources/css/sub.css">
+        <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="../../resources/js/coomember.js"></script>
 </head>
 <body>
+<%@ include file="../common/header.jsp" %>
 
-	<%@ include file="../common/header.jsp" %>
-	
-<div class="container" >
-    <div class="row" >
-        <div class="col-md-12" >
-            <div class="well login-box" style="background : white; opacity : 1;" >
-                <form id="loginForm" action="/myWeb/login.me" method="post" >
-                    <legend>로그인</legend>
-                    <div class="form-group">
-                        <label for="username-email"> ID </label>
-                        <input value='' id="userID" placeholder="ID" type="text" class="form-control" name="userID" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" value='' placeholder="Password" type="text" class="form-control" name="password"/>
-                    </div>
-                    <div class="form-group text-center">
-                        <button class="btn btn-danger btn-cancel-action"  onclick="memberJoin();">회원 가입</button>
-                        <button class="btn btn-success btn-login-submit" onclick='login();'  >로그인 </button>
-                    </div>
-                </form>
-            </div>
-            <br /><br />
-            
-          <div class="logged-in well">
-            <h1>환영합니다! <div class="pull-right"><button class="btn-logout btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</button></div></h1>
-          </div>
-        </div>
-    </div>
+<div class="member-container login-container">
+	    <div class="img"></div>
+    <div class="bg" style="opacity : 0.3; "></div>
+	<div class="member-wrap">
+		<div class="member-inner">
+			<div class="contents">
+				<h1 class="logo"><a href="/semi/index.jsp"><span class="blind">리띵</span></a></h1>
+				<h2 class="title">LOGIN</h2>
+				<div class="login">
+					<div class="forms">
+						<div class="input">
+							<input type="text" placeholder="아이디" id="uid" name="mid">
+						</div>
+						<div class="input">
+							<input type="password" placeholder="비밀번호" id="upw" name="mpwd">
+						</div>
+					</div>
+					<div class="btns tooltip-wrap">
+						<button type="button" class="btn-confirm" id="loginBtn">로그인</button>
+						<div class="tooltip blind" id="idpwInvalidTooltip"></div>
+					</div>
+
+					<div class="bottom">
+						<a href="/member/findInfoForm.do?type=ID" >아이디 찾기</a>
+						<a href="/member/findInfoForm.do?type=PWD">비밀번호 찾기</a>
+						<a href="/semi/views/young/join.jsp" id="btnJoinMember">회원가입</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
-<script>
-		function login(){
-			$('#loginForm').submit();
-		}
-		
-		function logout(){
-			location.href="/myWeb/logout.me";
-		}
-		
-		function memberJoin(){
-			location.href="/myWeb/views/member/memberJoinForm.jsp";
-		}
-		
-		function changeInfo(){
-			location.href="/myWeb/views/member/memberUpdateForm.jsp";
-		}
-	</script>
-
-<%@ include file="../common/footer.jsp" %>
+	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

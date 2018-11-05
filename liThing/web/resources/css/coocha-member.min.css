@@ -845,6 +845,30 @@
 .checkbox{
     position:relative
 }
+.checkbox input[type="checkbox"]{
+    width:1px;
+    height:1px;
+    padding:0;
+    border:1px solid black;
+    margin:0;
+    position:absolute;
+    left:0;
+    top:0;
+    overflow:hidden;
+    clip:rect(0 0 0 0)
+}
+.checkbox label{
+    height:16px;
+    line-height:16px;
+    padding-left:28px;
+    display:inline-block;
+    background-image:url(../images/common/common/check-normal.svg);
+    background-repeat:no-repeat;
+    font-size:16px;
+    color:#424242;
+    vertical-align:middle;
+    cursor:pointer
+}
 
 .checkbox.no-label label{
     padding-left:16px
@@ -1064,7 +1088,8 @@ textarea{
     left:0;
     width:100%;
     height:100%;
-    background: #fff;
+    background: #fff
+    background-image:url(../img/join.jpg);
 
 }
 .member-container .member-wrap{
@@ -1617,7 +1642,7 @@ textarea{
     left:394px
 }
 .member-container.my-container .logo>a{
-    background-image:url(../images/member/logo.svg)
+    background-image:url(../img/join.jpg)
 }
 .member-container.my-container .member-wrap .member-inner{
     position:relative;
@@ -2010,7 +2035,7 @@ textarea{
     -ms-border-radius:50%;
     border-radius:50%;
     background-color:#fff;
-    background-image:url(../images/member/btn-popup-close.svg);
+    background-image:url(../img/join.jpg)
     background-repeat:no-repeat
 }
 .layer-popup .pop-header .btn-pop-close:hover{
