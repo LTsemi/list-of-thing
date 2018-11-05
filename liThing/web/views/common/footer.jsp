@@ -18,6 +18,14 @@
         <link href="https://fonts.googleapis.com/css?family=Gugi:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 		
         <script src="/semi/resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <style>
+html, body{width:100%height:100%}
+
+html{width:100%;height:100%}
+
+body{width:100%;height:100%}
+</style>
+
 </head>
 <body>
     <footer style="background : #FFA41F;">
