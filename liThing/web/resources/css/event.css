@@ -1,0 +1,112 @@
+
+@font-face {
+    font-family: 'NanumSquareRoundR';
+    src: url('resource/font/NanumSquareRoundR.ttf');
+}
+* { box-sizing: border-box;
+    font-family: NanumSquareRoundR; 
+}
+a{
+  text-decoration-line: none !important;
+}
+
+body {font-family: Arial;
+	  margin: 0 auto;
+      text-align: center;
+      color: #222;
+      }
+#eventPage{
+    margin: 0 auto;
+    width: 1000px;
+    padding: 50px 0 50px;
+    text-align: center;
+}
+#eventPage h2 {
+    font-size: 50px;
+    font-family: 'Gugi', cursive;
+}
+.nav-tabs {
+  padding-left: 43%; 
+}
+
+.nav-tabs li a {
+      color: #222;
+  
+}
+
+#lithingevt {
+  margin: 0 auto;
+  width: 1000px;
+  padding: 0 120px;
+}
+.thumbnail{
+  /* box-shadow:0 20px 50px rgba(0,0,0,.08); */
+}
+.evtImg{
+  height: 200px;
+  width: 98%;
+  margin: 5px auto;
+  background: beige;
+}
+.evtText{
+  text-align: right;
+  padding: 0 30px 20px;
+  color: #333;
+  line-height: 35%;
+}
+.evtText h3{
+  font-weight: 800;
+  font-size: 23px;
+}
+.evtText p {
+  font-size: 15px;
+}
+.dday{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin-top: 220px;
+    margin-left: -422px;
+    padding-top: 20px;
+    padding-left: 7px; 
+    font-size: 17px;
+    font-weight: 600;
+    text-align:left;
+    color: rgb(255, 255, 255);
+    line-height: 38px;
+    background: url(image/bookmark.png) no-repeat;
+    /* border: 2px solid red; */
+    }
+
+    .winbanner{
+      margin: 0 auto;
+      width: 700px;
+      height: 150px;
+      background-color: rgb(220, 255, 252);
+    }
+    
+    .table td{
+      font-size: 15px;
+      color: #333;
+    }
+    .pagingArea a:link{
+      /* 방문한 적이 없는 링크 */
+        text-decoration: none;
+        color: #333;
+     }
+     .pagingArea a:visited{ 
+      /* 방문한 적이 있는 링크 */
+        text-decoration: none;
+        color: #333;
+     }
+     .pagingArea a:active{ 
+      /* 링크 클릭 시 */
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+     }
+     .pagingArea a:hover{ 
+      /* 마우스 올렸을 시 */
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+     }
