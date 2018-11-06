@@ -1,9 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Highway Blog - Free CSS Template</title>
@@ -52,6 +53,7 @@ http://www.templatemo.com/tm-520-highway
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 @font-face {
     font-family: 'NanumSquareRoundR';
@@ -64,148 +66,328 @@ http://www.templatemo.com/tm-520-highway
     }
 .box {
 	display: inline-block;
-	
+	/* font-family: "Nanum Gothic", sans-serif; */
 }
 
-.text {
-	font-size: 15px;
+.listcss {
+	border: 0.5px solid gray;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	/* font-family: "Nanum Gothic", sans-serif; */
 }
-
-.starR {
-	background: url('../../resources/img/ico.png') no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
-}
-
-.starR.on {
-	background-position: 0 0;
-}
-
-.RstarR {
-	background: url('../../resources/img/ico.png') no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-}
-
-.RstarR.on {
-	background-position: 0 0;
-}
-
 .button {
-	background-color: #F7603E;
+	background: url('../../resources/img/reload.png') no-repeat;
+	background-size: auto 100%;
+	width: 100px;
+	height: 30px;
+	padding-left: 20px;
 	border-radius: 4px;
 	border: 1px solid #D0D0D0;
-	color: white;
+	color: #6E6E6E;
 	outline: none;
 }
+
+.button:hover {
+	color: red;
+	border: 1px solid red;
+}
+
+#ck-button {
+	margin: 4px;
+	background-color: #EFEFEF;
+	
+	border: 1px solid #D0D0D0;
+	display: inline-block;
+	font-size: 15px;
+	outline: none;
+}
+
+#ck-button label {
+	float: left;
+	width: 4.2em;
+	height: 1.6em;
+}
+
+#ck-button label span {
+	text-align: center;
+	padding: 5px 1px;
+	display: block;
+}
+
+#ck-button label input {
+	position: absolute;
+	top: -20px;
+}
+
+#ck-button input:checked+span {
+	background-color: #911;
+	color: #fff;
+}
+
+#ck-button:hover {
+	background-color: lightcoral
+}
+.resetBtn{
+	margin-left: 8.0em;
+	font-size: 18px;
+	width: 100px;
+	height: 30px;
+	border-radius: 4px;
+	border: 1px solid #D0D0D0;
+	background-color: white;
+	color: #6E6E6E;
+	outline: none;
+}
+ .resetBtn span{
+	top: 23px;
+    width: 15px;  
+    height: 15px;     
+    margin-top: 5px;
+    display: inline-block;
+   	margin-right: 5px;
+	background-image: url('../../resources/img/reload.png');
+
+} 
+.resetBtn:hover{
+	background: #CCF2FF;
+}
 </style>
+
 </head>
+
 <body>
 
 	<%@ include file="../common/header.jsp"%>
-
-	<div style="width: 1200px; margin: 200px auto;">
-		<div style="width: 1100px; margin: 0 auto;">
-			<div class="box" style="width: 430px;">
+	
+	<div style="width: 1200px; margin: 200px auto">
+		<div style="width: 1100px; margin: 0 auto">
+			<div class="box" style="width: 380px">
 				<div
-					style="border: 1px solid #D0D0D0; padding: 20px; font-size: 25px; padding-top: 20px; background: white; border-radius: 4px; height: 410px;">
-					<img src="../../resources/img/blog_post_2.png"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%;">
+					style="border: 1px solid #D0D0D0; padding-left: 20px; font-size: 25px; padding-top: 20px; background: white; border-radius: 4px">
+					<span><img src="../../resources/img/list.png"/></span><b>&nbsp;&nbsp;정렬</b><br>
+					<br> <select class="listcss" name="" id=""
+						style="color: black; font-size: 15px; margin-bottom: 20px; width: 200px; outline: none;">
+						<option value="랭킹순">랭킹순</option>
+						<option value="평점높은순">평점높은순</option>
+						<option value="평점낮은순">평점낮은순</option>
+						<option value="리뷰많은순">리뷰많은순</option>
+						<option value="리뷰적은순">리뷰적은순</option>
+					</select>
+
 				</div>
 				<div
-					style="border: 1px solid #D0D0D0; padding: 20px; font-size: 25px; background: white; border-radius: 4px; text-align: center; margin-top: 10px">
-					<h2>제품명</h2>
-					<div
-						style="padding: 20px; text-align: left">
-						<h4>제품 설명</h4>
-						<p class="text">국회의원은 법률이 정하는 직을 겸할 수 없다. 통신·방송의 시설기준과 신문의 기능을
-							보장하기 위하여 필요한 사항은 법률로 정한다. 재산권의 행사는 공공복리에 적합하도록 하여야 한다. 국회의원이 회기전에
-							체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공무원의 직무상 불법행위로 손해를
-							받은 국민은 법률이 정하는 바에 의하여 국가 또는 공공단체에 정당한 배상을 청구할 수 있다. 이 경우 공무원 자신의
-							책임은 면제되지 아니한다. 모든 국민은 근로의 의무를 진다. 국가는 근로의 의무의 내용과 조건을 민주주의원칙에 따라
-							법률로 정한다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이
-							스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다.</p>
+					style="border: 1px solid #D0D0D0; padding-left: 20px; font-size: 25px; padding-top: 20px; margin-top: 20px; padding-bottom: 20px; background: white; border-radius: 4px">
+					<span><img src="../../resources/img/filter.png"/></span><b>&nbsp;필터</b>
+					
+					<button class="resetBtn" id="resetFrm"><span></span>초기화</button><br />
+				
+					<br> 성분 필터<br>
+					<br>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck1" id="ck1"><span>메밀</span>
+						</label>
 					</div>
-					<div
-						style="border: 1px solid #D0D0D0; padding: 20px; background: white; border-radius: 4px; text-align: left">
-						성분아이콘 공간</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck2" id="ck2"><span>밀</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck3" id="ck3"><span>콩</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck4" id="ck4"><span>견과류</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck5" id="ck5"><span>조개류</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck6" id="ck6"><span>복숭아</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck7" id="ck7"><span>토마토</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck8" id="ck8"><span>난류</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck9" id="ck9"><span>우유</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck10" id="ck10"><span>아황산</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck11" id="ck11"><span>육류</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck12" id="ck12"><span>갑각류</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck13" id="ck13"><span>고등어</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck14" id="ck14"><span>오징어</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck15" id="ck15"><span>굴</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck16" id="ck16"><span>전복</span>
+						</label>
+					</div>
+					<div id="ck-button">
+						<label> <input type="checkbox" name="ck17" id="ck17"><span>홍합</span>
+						</label>
+					</div>
 				</div>
 			</div>
-			<div class="box"
-				style="width: 600px; vertical-align: top; text-align: center">
-				<div
-					style="border: 1px solid #D0D0D0; font-size: 25px; height: 400px; background: white; border-radius: 4px;">
-					<div class="RstarRev box" style="margin: auto; padding-top: 50px;">
-						<span class="RstarR on">별1</span> <span class="RstarR on">별2</span>
-						<span class="RstarR on">별3</span> <span class="RstarR on">별4</span>
-						<span class="RstarR">별5</span> <span style="font-size: 30px">4.0</span>
-					</div>
-					<hr style="width: 300px; background-color: #D0D0D0">
-					<div style="border: 1px solid black; height: 250px;">그래프 들어갈
-						공간</div>
+			<div id="dbox" class="box"
+				style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border:1px solid #D0D0D0; border-radius: 4px">
+				<table id="rList" style=" width: 659px; height: 150px; text-align: center; border-radius: 4px">
+					<%-- <% for(int i=1; i<7; i++){ %>
+					<tr>
+						<td rowspan="3" style="width: 100px; height: 150px;"><b><%= i %></b></td>
+						<td rowspan="3" style="width: 100px; height: 150px;">이미지</td>
+						<td>브랜드명</td>
+						<td rowspan="3" style="width: 250px; height: 150px;">별점</td>
+					</tr>
+					<tr class="pn">
+						<td>제품명</td>
+					</tr>
+					<tr class="pp">
+						<td>가격</td>
+					
+					</tr>
+					<% } %> --%>
+					<% for(int i=1; i<7; i++){ %>
+					<tr>
+						<td style="width: 100px; height: 150px;"><b><%= i %></b></td>
+						<td style="width: 100px; height: 150px;">이미지</td>
+						<td style="text-align: left">
+							<ul style="text-align: left; list-style: none; " >
+								<li><h5 style="color: red">브랜드명</h5></li>
+								<li><h4>제품명</h4></li>
+								<li><h5>가격</h5></li>
+							</ul> 
+						</td>
+						<td style="width: 250px; height: 150px;">별점</td>
+					</tr>
+					<% } %>
+				</table> 
+				
+			</div>
+		</div>
+		
+	</div>
+
+	
+	<%@ include file="../common/footer.jsp"%>
+
+
+	<!-- Modal button -->
+	<div class="popup-icon">
+		<button id="modBtn" class="modal-btn">
+			<img src="img/contact-icon.png" alt="">
+		</button>
+	</div>
+
+	<!-- Modal -->
+	<div id="modal" class="modal">
+		<!-- Modal Content -->
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h3 class="header-title">
+					Say hello to <em>Highway</em>
+				</h3>
+				<div class="close-btn">
+					<img src="img/close_contact.png" alt="">
 				</div>
-				<div
-					style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
-					<div class="box" style="padding-top: 10px">
-						<textarea name="" id="" cols="50" rows="4"
-							style="display: inline-block; resize: none;"></textarea>
-					</div>
-					<div class="box"
-						style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
-						<input class="button" type="button" value="작성하기"
-							style="vertical-align: top; width: 100%; height: 100%;">
-					</div>
-					<div>
-						<div class="starRev">
-							<span class="starR on">별1</span> <span class="starR">별2</span> <span
-								class="starR">별3</span> <span class="starR">별4</span> <span
-								class="starR">별5</span>
+			</div>
+			<!-- Modal Body -->
+			<div class="modal-body">
+				<div class="col-md-6 col-md-offset-3">
+					<form id="contact" action="" method="post">
+						<div class="row">
+							<div class="col-md-12">
+								<fieldset>
+									<input name="name" type="text" class="form-control" id="name"
+										placeholder="Your name..." required="">
+								</fieldset>
+							</div>
+							<div class="col-md-12">
+								<fieldset>
+									<input name="email" type="email" class="form-control"
+										id="email" placeholder="Your email..." required="">
+								</fieldset>
+							</div>
+							<div class="col-md-12">
+								<fieldset>
+									<textarea name="message" rows="6" class="form-control"
+										id="message" placeholder="Your message..." required=""></textarea>
+								</fieldset>
+							</div>
+							<div class="col-md-12">
+								<fieldset>
+									<button type="submit" id="form-submit" class="btn">Send
+										Message Now</button>
+								</fieldset>
+							</div>
 						</div>
-					</div>
-					<div>
-						<table style="width: 100%">
-							<tr>
-								<td colspan="3" style="text-align: right; padding: 10px">작성일</td>
-
-							</tr>
-							<tr>
-								<td style="width: 200px; padding: 10px">작성자ID</td>
-								<td colspan="2" style="text-align: left">별점</td>
-
-							</tr>
-							<tr>
-								<td colspan="3"><p style="padding: 10px; text-align: left">국회의원은
-										국가이익을 우선하여 양심에 따라 직무를 행한다. 국회의원은 법률이 정하는 직을 겸할 수 없다. 지방자치단체는
-										주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다.
-
-										대법원과 각급법원의 조직은 법률로 정한다. 선거에 있어서 최고득표자가 2인 이상인 때에는 국회의 재적의원
-										과반수가 출석한 공개회의에서 다수표를 얻은 자를 당선자로 한다.</p></td>
-							</tr>
-						</table>
-						<br>
-						<hr style="width: 550px; background-color: #D0D0D0">
-					</div>
+					</form>
 				</div>
 			</div>
-
 		</div>
 	</div>
-	<%@ include file="../common/footer.jsp"%>
+
+
+
+	
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')
+	</script>
+
+	<script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
+
+	<script src="/semi/resources/js/plugins.js"></script>
+	<script src="/semi/resources/js/main.js"></script>
+
 </body>
 <script>
 	$(function() {
-		$('.starRev span').click(function() {
-			$(this).parent().children('span').removeClass('on');
-			$(this).addClass('on').prevAll('span').addClass('on');
-			return false;
+		$('button[id=resetFrm]').click(function() {
+			$('input:checkbox').prop('checked', false);
 		});
 	});
+	
+	$(function() {
+		$('#rList td').mouseenter(function() {
+			$(this).parent().css({"background":"#FAF2F0","cursor":"pointer"});
+		}).click(function() {
+			location.href="rankDetail.jsp";
+		}).mouseleave(function() {
+			$(this).parent().css({"background":"white"});
+		});
+	});
+
 </script>
 </html>
