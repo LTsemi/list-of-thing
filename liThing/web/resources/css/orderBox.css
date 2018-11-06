@@ -1,0 +1,135 @@
+body {
+    font-family: Arial;
+    margin: 0 auto;
+    /* text-align: center; */
+    color: #222;
+    }
+
+  .cont{
+  background-color:rgb(255, 244, 230); 
+  margin: 0 auto;
+  width: 1000px;
+  padding: 50px 0 50px;
+  }
+  
+  #textTop{
+      margin: 0 auto;
+      height: 100px;
+      width: 1000px;
+      line-height: 30%;
+      text-align: center;
+  }
+  
+  #textTop h2 {
+      font-size: 45px;
+      font-family: 'Gugi', cursive;
+      /* color: rgb(255, 164, 31); */
+      }
+  #textTop .lithing {
+      font-size: 20px;
+      color: rgb(255, 164, 31);
+      font-family: 'Gugi', cursive;
+  }   
+
+  .orderList{
+      width: 100%; 
+      padding: 10px 0; 
+      border-top :2px solid rgb(255, 164, 31) !important;
+  }
+  .odlist{  
+      width: 100%;  
+      margin: 0 auto;
+      text-align: center;
+     
+  }
+  .odlist tr{
+      border-bottom: 1px solid rgb(245, 245, 245);
+      text-align: center;      
+  }
+  .odlist th{
+      border-bottom: 1px solid rgb(145, 145, 145);
+      text-align: center;
+      padding-bottom: 3px;
+  }
+  .odlist td{
+      padding: 5px 0;
+  }
+  .totalpay{
+      text-align: right;
+      margin:8px 30px;
+  }
+  .totalpay b{
+      font-size: 14px;
+      color: #444;
+  }
+  .totalpay em{
+      font-style: normal;
+      font-size: 22px;
+      color: #333;
+      font-weight: 800;
+  }
+  .userInfo{
+      background-color: rgb(255, 230, 161) !important;
+  }
+  .userInfo b{
+      font-size: 17px;
+  }
+  .userif td{
+      padding: 8px;
+  }
+
+  .payList{
+      width: 100%; 
+      padding: 10px 0; 
+      border-top :2px solid rgb(255, 164, 31) !important;
+  }
+  .paypic{
+      margin:8px 30px;
+  }
+  .paypic b{
+      font-size: 17px;
+  }
+
+
+  .btnbar{
+      width: 100%;
+      text-align: center;
+  }
+  .backbtn{
+    padding: 15px 25px;
+    background-color: white;
+    border: 1px solid lightgray ;
+    color: #888 !important;
+    border-radius: 0;
+    transition: .2s;
+   
+  }
+  .backbtn:hover, btn:focus{
+    border: 1px solid #888;
+    background-color: white;
+    color: #333 !important;
+  }
+
+  .buybtn {
+    padding: 15px 25px;
+    background-color: rgb(255, 200, 50);
+    border: 1px solid rgb(255, 200, 50);
+    color: rgb(255, 255, 255) !important;
+    border-radius: 0;
+    transition: .2s;
+    margin-left: 13px;
+
+}
+.buybtn:hover, .btn:focus {
+    border: 1px solid rgb(255, 164, 31);
+    background-color: rgb(255, 164, 31);
+    color: rgb(255, 255, 255) !important;
+}
+
+  /* Remove the jumbotron's default bottom margin */ 
+   .jumbotron {
+    margin-bottom: 0;
+  }
+ .panel-body{
+  background-color: white;
+ }

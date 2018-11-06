@@ -28,12 +28,14 @@ http://www.templatemo.com/tm-520-highway
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
 
     	<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
-    	<link rel="stylesheet" href="../../resources/css/lithing-Box.css">
- 	
+		<link rel="stylesheet" href="../../resources/css/orderBox.css">
+ 		
+ 
  	<style>
 	 @font-face {
           font-family: 'NanumSquareRoundR' ;
@@ -59,43 +61,103 @@ http://www.templatemo.com/tm-520-highway
         </div>
     </div>
 
-    
-    <div id="lithingBox">
-        <div id="textTop">
-            <h2>Lithing Box</h2>
-            <br><br>
-            <p>매월 새로운 <span class="lithing">리띵</span>박스가 배달됩니다!</p>
-            <br><br><br><br>
-            <br><br><br><br>
-            <div id="banner">
-                <a href="#"><img src="image/baner.png" alt="리띵박스테마"></a>
-            </div>
+ 
+<br><br><br>
+<div class="cont">    
+    <br><br>
+    <div id="textTop">
+        <h2>Order</h2>
+        <br><br>
+        <p>리띵박스에서 주문하실 내역입니다.</p>
+    </div>
+    <br><br>
+    <div class="col-sm-12">
+        <div class="panel orderList">
+            <table class="odlist">
+                <tr>
+                    <th>상품정보</th>
+                    <th>판매가</th>
+                    <th>구매수량/월</th>
+                </tr>
+                <tr>
+                    <td><img src="#" width="50px" height="50px"> &nbsp;리띵박스</td>
+                    <td>12,111원</td>
+                    <td>2</td>
+                </tr>
+            </table>
+            <div class="totalpay"><b>결제예정금액</b> &nbsp; <em>111111</em>원</div>
         </div>
-        <div id="buytab"> 
+    </div>
+    <br><br>
+    <!-- 배송지 정보 -->
+    <div class="col-sm-12"> 
+      <div class="panel userInfo">
+        <div class="panel-heading">
+            &nbsp; <b>배송지 정보</b> &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="radio" name="deladr" id="1" checked="checked"> 주문고객 정보와 동일
+            &nbsp; &nbsp;
+            <input type="radio" name="deladr" id="2"> 새로운 주소
+        </div>
+        <div class="panel-body">
+                <table class="userif"  width="100%" >
+                        <tr>
+                            <td width="100px">받으시는 분</td>
+                            <td width="200px"> <input type="text" id="userName"></td>
+                        </tr>
+                        <tr>
+                            <td width="100px"rowspan="2">주소</td>
+                            <td width="200px" height="50px">
+                                 <input type="number" id="">
+                                 <input type="button" value="우편번호 찾기"><br>
+                                </td>                          
+                        </tr>
+                        <tr>
+                            <td>    
+                                <input type="text" id="" size="40">
+                                <input type="text" id="" size="40">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>연락처</td>
+                            <td>
+                                <input type="number"id="" > -
+                                <input type="number"id=""> - 
+                                <input type="number"id="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="70px" height="50px">배송시 유의사항</td>
+                            <td><input type="text" size="100"></td>
+                        </tr>
+                        
+                    </table>
             
-            <div class="buy">
-                <div class="box leftbox">
-                    <img src="../../resources/img/box.png" width="120px" height="120px" alt="리띵박스테마">
-                    <h3 class="buyMonth">1개월</h3>
-                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
-                    <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">               
-                </div>
-                <div class="box centerbox">
-                    <img src="../../resources/img/box.png" width="120px" height="120px" alt="리띵박스테마">
-                    <h3 class="buyMonth">3개월</h3>
-                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
-                    <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">              
-                </div>
-                <div class="box rightbox">
-                    <img src="../../resources/img/box.png" width="120px" height="120px" alt="리띵박스테마">
-                    <h3 class="buyMonth">6개월</h3>
-                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
-                     <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">
-               </div>
-        </div>
 
+        </div>
+        <div class="panel-footer">주문시 요청사항은 배송기사가 배송시 참고하는 사항으로써, 사전에 협의되지 않은 지정일 배송 등의 요청사항은 반영되지 않을 수 있습니다.</div>
+        </div>
     </div>
 
+    <div class="col-sm-12">
+            <div class="panel payList">
+                <div class="paypic">
+                    <b>결제 수단</b> <br>
+                    <input type="radio" name="pay" id="1" checked="checked"> 계좌 이체
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="pay" id="2"> 휴대폰 결제
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    
+                    <input type="radio" name="pay" id="3"> 카카오페이
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    
+                    <input type="radio" name="pay" id="4"> 페이코 간편결제
+                </div>
+            </div>
+    </div>
+    <div class="btnbar">
+        <input type="button" value="이전 페이지" class="btn backbtn" onclick="location.href='lithingbox.jsp'">
+        <input type="submit" value="구매하기" class="btn buybtn" onclick="location.href='../../index.jsp'">
+    </div>
+
+</div><br>
 
 
 <%@ include file="../common/footer.jsp" %>
@@ -146,7 +208,7 @@ http://www.templatemo.com/tm-520-highway
         </div>
       </div>
     </div>
-	
+
     
 
 
