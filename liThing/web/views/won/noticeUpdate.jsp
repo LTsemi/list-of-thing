@@ -25,8 +25,8 @@
     $(document).ready(function() {
         $('#summernote').summernote({
 		
-        	width : 800,
-		height: 500,                 // set editor height
+        width : 800,
+		height: 400,                 // set editor height
 		minHeight: null,             // set minimum height of editor
 		maxHeight: null,             // set maximum height of editor
 		focus: true,                  // set focus to editable area after initializing summernote
@@ -57,6 +57,8 @@
         body { box-sizing: border-box;
             font-family: NanumSquareRoundR !important; 
         }
+        
+        
    </style>
      
     </head>
@@ -78,13 +80,15 @@
 
 
 
-    <div id="video-container"> 
+     <div id="video-container" style=" height: 610px;"> 
       
         	<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center wow zoomIn">
-					<br>
+					<br />
 						<h1 style="font-family: Gugi;">공지사항 수정</h1>
+						<span></span>
+						<!-- <p>Our Frequently Asked Questions here.</p> -->
 					</div>
 				</div>
 			</div>
@@ -92,19 +96,23 @@
 			
 	  <div class="container" align="center" > 		
   <textarea id="summernote"></textarea> 
+  
+  <div align="center">
+					<button onclick="complete();">작성완료</button>
+					<button onclick="deleteNotice();">삭제하기</button>
+				</div>
 	</div>	 
    
   <br>
   
 
-        	<div align="center">
-					<button onclick="complete();">작성완료</button>
-					<button onclick="deleteNotice();">삭제하기</button>
-				</div>
+        	
         		
      </div> 
 
 
+   <br>
+   <br /> 
   
 <%@ include file="../common/footer.jsp" %>
 

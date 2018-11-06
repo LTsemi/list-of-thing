@@ -25,8 +25,8 @@
     $(document).ready(function() {
         $('#summernote').summernote({
 		
-        	width : 800,
-		height: 500,                 // set editor height
+        width : 800,
+		height: 400,                 // set editor height
 		minHeight: null,             // set minimum height of editor
 		maxHeight: null,             // set maximum height of editor
 		focus: true,                  // set focus to editable area after initializing summernote
@@ -57,6 +57,8 @@
         body { box-sizing: border-box;
             font-family: NanumSquareRoundR !important; 
         }
+        
+        
    </style>
      
     </head>
@@ -78,7 +80,7 @@
 
 
 
-     <div id="video-container"> 
+     <div id="video-container" style=" height: 610px;"> 
       
         	<div class="row">
 				<div class="col-md-12">
@@ -94,15 +96,17 @@
 			
 	  <div class="container" align="center" > 		
   <textarea id="summernote"></textarea> 
+  
+  <div align="center">
+					<button type="reset">취소하기</button>
+					<button type="submit">등록하기</button>
+				</div>
 	</div>	 
    
   <br>
   
 
-        	<div align="center">
-					<button type="reset">취소하기</button>
-					<button type="submit">등록하기</button>
-				</div>
+        	
         		
      </div> 
 
