@@ -54,6 +54,22 @@ body {
   .odlist td{
       padding: 5px 0;
   }
+	#ckZip {
+		display:inline;
+		border-radius:5px;
+		padding: 5px 15px;
+		text-align:center;
+		background-color: white;
+	    border: 1px solid lightgray ;
+	    color: #888 !important;
+	}
+	
+	#ckZip:hover{
+		cursor:pointer;
+	    border: 1px solid #888;
+	    background-color: white;
+	    color: #333 !important;
+  }
   .totalpay{
       text-align: right;
       margin:8px 30px;

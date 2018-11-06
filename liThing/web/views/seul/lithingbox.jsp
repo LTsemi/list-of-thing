@@ -24,16 +24,16 @@ http://www.templatemo.com/tm-520-highway
         <link rel="stylesheet" href="../resources/css/templatemo-style.css">
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
-
-    	<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
+ 	    <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
     	<link rel="stylesheet" href="../../resources/css/lithing-Box.css">
- 	
+ 	    
  	<style>
 	 @font-face {
           font-family: 'NanumSquareRoundR' ;
