@@ -1,5 +1,5 @@
 /* 사진&글자 아티클 설정 */ 
-.fst {
+.thema {
     width: 900px;
     height: 200px;
     margin: 10px;
@@ -8,12 +8,19 @@
     margin-left: auto;
 }
 
-/* 이미지 설정 */
-img {
+/* 테마 이미지 설정 */
+#thema_pic {
     width: 300px;
     height: 200px;
     float: left;
     margin-right: 20px;
+}
+
+/* 테마 상세보기 이미지 */
+#thema_view_pic {
+	width : 230px;
+	height: 230px;
+	
 }
 
 /* 큰 제목 설정 */
@@ -42,4 +49,18 @@ article > a {
 /* 아티클 글자영역 안쪽 여백 */
 h2, p {
     padding-top: 15px;
+}
+
+/* 테마 상세보기 div 크기 여백 */
+#thema_detail {
+    width: 1325px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+/* 테마 상품 배치 */
+#thema_prd {
+    width: 230px;
+    display: inline-block;
+    margin: 15px;
 }
