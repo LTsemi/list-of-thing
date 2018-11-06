@@ -68,7 +68,33 @@ http://www.templatemo.com/tm-520-highway
 }
         
         </style>
+        	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
+    
+    <script src="/semi/resources/js/plugins.js"></script>
+    <script src="/semi/resources/js/main.js"></script>
         
+    <script>
+    	$(function(){
+    		
+    		var video = [
+    			"bake.mp4",
+				"breadSugar.mp4",
+				"potatoFries.mp4"
+				];
+    				
+    		var i = Math.floor(Math.random() * 3);
+    		
+    		var $video = $('<source id="video" type="video/mp4">').attr("src", "/semi/resources/video/" + video[i]);
+    		
+    		console.log(video[i]);
+    		console.log($('#video').attr("src"));
+    		
+    		$('#videoList').append($video);
+    	});
+    </script>
         
         
     </head>
@@ -107,8 +133,7 @@ http://www.templatemo.com/tm-520-highway
             </div>
         </div>
         <video id="videoList" autoplay="" loop="" muted>
-        	<source id="vege" src="resources/video/야채.mp4" type="video/mp4" />
-        	<source id="bake" src="resources/video/bake.mp4" type="video/mp4" />
+        	
         </video>
     </div>
 
@@ -267,116 +292,6 @@ http://www.templatemo.com/tm-520-highway
 
 	<%@ include file="views/common/footer.jsp" %>
 
-
-      <!-- Modal button -->
-    <div class="popup-icon">
-      <button id="modBtn" class="modal-btn"><img src="resources/img/contact-icon.png" alt=""></button>
-    </div>  
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-      <!-- Modal Content -->
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h3 class="header-title">로그인</h3>
-          <div class="close-btn"><img src="resources/img/close_contact.png" alt=""></div>    
-        </div>
-        <!-- Modal Body -->
-        <div class="modal-body">
-          <div class="col-md-6 col-md-offset-3">
-            <form id="contact" action="" method="post">
-                <div class="row">
-                    <div class="col-md-12">
-                    <fieldset>
-                        <h3 style="color : white; text-align : left; padding-left : 150px;"> ID </h3> <input name="userId" type="text" class="form-control" id="name" placeholder="아이디" required="">
-                        
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                      <h3 style="color : white; text-align : left; padding-left : 150px; "> PWD </h3>  <input type="password" name="userPwd" class="form-control" id="name" placeholder="비밀번호 " required=""/> <br>
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="btn">login</button>
-                      </fieldset>
-                    </div>
-                </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-
-    <section class="overlay-menu">
-      <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  <li>
-                      <a href="index.jsp">랭 킹</a>
-                  </li>
-                  <li>
-                      <a href="views/won/notice.jsp">공지사항</a>
-                  </li>
-                  <li>
-                      <a href="views/ju/LTpick.jsp">리띵's pick</a>
-                  </li>
-                  <li>
-                      <a href="views/seul/lithingbox.jsp">리띵 박스</a>
-                  </li>
-                  <li>
-                      <a href="views/seul/event.jsp">이벤트</a>
-                  </li>
-                  <li>
-                      <a href="views/ju/CustomerService.jsp">고객센터</a>
-                  </li>
-              </ul>
-              <p>We create awesome templates for you.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-     <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-    <script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
-    
-    <script src="/semi/resources/js/plugins.js"></script>
-    <script src="/semi/resources/js/main.js"></script>
-    
-    <script>
-   
-    	
-    var videoPlayer = document.getElementById('videoList');
-
-    videoPlayer.addEventListener('ended', function () {
-    	    
-    	 this.pause();
-
-    	 var videosList = ["resources/video/야채.mp4","resources/video/bake.mp4"], 
-    	 videoPlay = videosList[Math.floor(Math.random() * videosList.length)];
-    	    
-    	  $("#vege").attr("src", "resources/video/야채.mp4" + videoPlay + ".mp4");
-    	  $("#bake").attr("src", "resources/video/bake.mp4" + videoPlay + ".mp4");
-    	   
-    	  this.load();
-    	  this.play();
-
-    	}, false);
-
-    	videoPlayer.play();
-    	
-    	
-    </script>
 
     
 </body>
