@@ -124,10 +124,9 @@ public class MemberDao {
 			
 			pstmt.setString(1, m.getPassword());
 			pstmt.setString(2, m.getEmail());
-			pstmt.setDate(3, m.getBirth());
-			pstmt.setString(4, m.getPhone());
-			pstmt.setString(5, m.getAddress());
-			pstmt.setString(7, m.getUserId());
+			pstmt.setString(3, m.getPhone());
+			pstmt.setString(4, m.getAddress());
+			pstmt.setString(5, m.getUserId());
 			
 			result = pstmt.executeUpdate();
 		

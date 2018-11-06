@@ -4,71 +4,57 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리띵 회원 정보 수정</title>
+<title>리띵 회원가입</title>
 
         <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
         <link rel="stylesheet" href="../../resources/css/sub.css">
         <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
         <script src="../../resources/js/coomember.js"></script>
-        <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-        <style>
-    @font-face {
-          font-family: 'NanumSquareRoundR' ;
-          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
-        }
-        body { box-sizing: border-box;
-            font-family: NanumSquareRoundR !important; 
-        }
-        
-   </style>
+                <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
 
 	<%@ include file="../common/header.jsp" %>
-	<form id="joinForm" action="<%=request.getContextPath()%>/mInsert.me" method="post">
+	<form action="">
 	<div class="member-container join-container"><div class="w"> 
     <div class="img"></div>
-    <div class="bg" style="opacity : 0.3;" ></div>
+    <div class="bg" style="opacity : 0.3; "></div>
     <div class="member-wrap">
         <div class="member-inner">
             <div class="contents">
                 <h1 class="logo"><a href="/semi/index.jsp"><span class="blind">리띵</span></a></h1>
-                <h2 class="title" >정보 수정</h2>
+                <h2 class="title" >JOIN</h2>
                 <div class="join">
                     <div class="forms">
                         <div class="row id">
                             <div class="input-wrap">
                                 <div class="input tooltip-wrap">
-                                    <span class="input" ><input type="text"maxlength="15" id="userId" name="userId" value="<%= mh.getUserId() %>" style="font-size:2em;" readonly >
-                                    </span>
-                                    
+                                    <span class="input"><input type="text" placeholder="아이디" maxlength="15" id="mid" name="mid"  readonly ><%= mh.getUserId() %></span>
+                                    <button type="button" class="double-check">중복확인</button>
                                     <div class="tooltip blind" id="idTooltip"></div>
                                 </div>
                             </div>
                             <div class="input tooltip-wrap">
-                                <input type="password" placeholder="비밀번호" maxlength="15" id="userPwd" name="userPwd">
+                                <input type="password" placeholder="비밀번호" maxlength="15" id="mpwd" name="mpwd">
                                 <div class="tooltip blind" id="pwdTooltip"></div>
                             </div>
                             <span class="input">
-                                <input type="password" placeholder="비밀번호 재확인" maxlength="15" id="userPwd2" name="userPwd2">
-                            </span>
-                            <span class="input">
-                                <input type="text" placeholder="이름" id="userName" name="userName">
+                                <input type="password" placeholder="비밀번호 재확인" maxlength="15" id="mpwd2" name="mpwd2">
                             </span>
                         </div>
                         <div class="row domain">
                             <div class="col tooltip-wrap">
                                 <span class="input">
 <!--                                 <input type="email" name="email" id="email" /> -->
-                                    <input type="email" placeholder="이메일주소" maxlength="30" id="email" name="email" style="border : none">
+                                    <input type="email" placeholder="이메일주소" maxlength="30" id="email1" name="email1" style="border : none">
                                 </span>
 
                                     <div class="tooltip blind" id="mailTooltip"></div>
 
                             </div>
                             <span class="checkbox">
-                                    	<input type="radio" name="gender" value="M">&nbsp;남 &nbsp;&nbsp;&nbsp;
-										<input type="radio" name="gender" value="F">&nbsp;여 &nbsp;
+                                    <input type="checkbox" checked="checked"/>
+                                    <label for="checkbox1">이메일 수신 동의</label>
                                 </span>
                         </div>
                         <div class="row tel">
@@ -83,7 +69,7 @@
                             
                             <span class="checkbox">
                                 <input type="checkbox" id="checkbox2" checked="checked" />
-                                <label for="checkbox2">정확한 휴대폰 번호를 입력해주세요.</label>
+                                <label for="checkbox2">SMS 수신 동의</label>
                             </span>
                         </div>
                         <div class="row id">
@@ -106,17 +92,20 @@
                         <div class="row birth">
                             <div class="col tooltip-wrap">
                                     <span class="select-wrap"> &nbsp;&nbsp;
-                                    <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthyear" id="birthyear" value="<%= mh.getBirth().getYear() %>년" style="font-size: 1em;"  readonly />
+                                    <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthyear" id="birthyear"  readonly />
+     <!--                                    <span align=center> class="selectbox"
+                                        </span> -->
                                     </span>
                                 <span class="select-wrap">&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span> <!-- class="selectbox" -->
-                                        	<input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthmon" id="birthmon"  value="<%= mh.getBirth().getMonth()+1 %>월" style="font-size: 1em;" readonly />
-											
+                                        	<input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthmon" id="birthmon"  readonly />
+											<%= mh.getBirth().getMonth() %>
                                         </span>
                                     </span>
                                 <span class="select-wrap">&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span> <!-- class="selectbox" -->
-                                        <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthdate" id="birthdate"  value="<%= mh.getBirth().getDate() %>일" style="font-size: 1em;" readonly />
+                                        <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthdate" id="birthdate"  readonly />
+
                                         </span>
                                     </span>
                                 <div class="tooltip blind" id="birthTooltip"></div>
@@ -128,18 +117,14 @@
                     </div>
 
                     <div class="btns">
-                        <button type="button" class="btn-confirm" id="updateBtn" onclick="updateMember();">회원 정보 수정</button>
-                        <br /><br />
-                        
-                         <button type="button"  id="deleteBtn" onclick="deleteMember();">회원 탈퇴</button>
+                        <button type="button" class="btn-confirm">회원 정보 수정</button>
+                        <button type="button" class="btn-confirm">회원 탈퇴</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div></div>
-</form>
-
 
 			<script>
 				$(function(){
@@ -216,5 +201,6 @@
 				};
 				
 			</script>
+</form>
 </body>
 </html>

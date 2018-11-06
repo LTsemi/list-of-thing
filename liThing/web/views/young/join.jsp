@@ -81,7 +81,7 @@
                             
                             <span class="checkbox">
                                 <input type="checkbox" id="checkbox2" checked="checked" />
-                                <label for="checkbox2">SMS 수신 동의</label>
+                                <label for="checkbox2">정확한 휴대폰 번호를 입력해주세요.</label>
                             </span>
                         </div>
                         <div class="row id">
@@ -122,7 +122,7 @@
                                     </span>
                                 <div class="tooltip blind" id="birthTooltip"></div>
                             </div>
-                            <span class="info-txt">정확한 생년월일을 입력해주세요.</span>
+                            <span class="info-txt">정확한 생년월일을 입력해주세요. 이후에 변경할 수 없습니다.</span>
                         </div>
 
                         </div>

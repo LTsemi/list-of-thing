@@ -86,7 +86,7 @@
 		}
 		
 		function changeInfo(){
-			location.href="/semi/iews/young/memberUpdateForm.jsp";
+			location.href="/semi/views/young/update.jsp";
 		}
 	</script>
 		</div>
