@@ -46,7 +46,16 @@ http://www.templatemo.com/tm-520-highway
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-        
+  <style>
+	 @font-face {
+          font-family: 'NanumSquareRoundR' ;
+          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+        }
+        body { box-sizing: border-box;
+            font-family: NanumSquareRoundR !important; 
+        }
+  </style>
+	
     </head>
 
 <body>
@@ -241,91 +250,13 @@ http://www.templatemo.com/tm-520-highway
 <%@ include file="../common/footer.jsp" %>
 
 
-      <!-- Modal button -->
-    <div class="popup-icon">
-      <button id="modBtn" class="modal-btn"><img src="img/contact-icon.png" alt=""></button>
-    </div>  
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-      <!-- Modal Content -->
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h3 class="header-title">Say hello to <em>Highway</em></h3>
-          <div class="close-btn"><img src="img/close_contact.png" alt=""></div>    
-        </div>
-        <!-- Modal Body -->
-        <div class="modal-body">
-          <div class="col-md-6 col-md-offset-3">
-            <form id="contact" action="" method="post">
-                <div class="row">
-                    <div class="col-md-12">
-                      <fieldset>
-                        <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="btn">Send Message Now</button>
-                      </fieldset>
-                    </div>
-                </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-
-    <section class="overlay-menu">
-      <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  <li>
-                      <a href="../index.jsp">랭 킹</a>
-                  </li>
-                  <li>
-                      <a href="../views/notice.jsp">공지사항</a>
-                  </li>
-                  <li>
-                      <a href="../views/LTpick.jsp">리띵's pick</a>
-                  </li>
-                  <li>
-                      <a href="../views/lithingbox.jsp">리띵 박스</a>
-                  </li>
-                  <li>
-                      <a href="../views/event.jsp">이벤트</a>
-                  </li>
-                  <li>
-                      <a href="../views/CustomerService.jsp">고객센터</a>
-                  </li>
-              </ul>
-              <p>We create awesome templates for you</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
     
     <script src="/semi/resources/js/plugins.js"></script>
-    <script src="/semi/resources/js/main.js"></script>
+
 
 </body>
 </html>

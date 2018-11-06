@@ -1,13 +1,4 @@
 
-    @font-face {
-        font-family: 'NanumSquareRoundR';
-        src: url('resource/font/NanumSquareRoundR.ttf');
-   }
-    * { box-sizing: border-box;
-        font-family: NanumSquareRoundR; 
-        color: #333;
-        
-    }
     @media ( max-width: 768px ) {
 
     }

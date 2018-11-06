@@ -1,11 +1,5 @@
 
-      @font-face {
-          font-family: 'NanumSquareRoundR';
-          src: url('resource/font/NanumSquareRoundR.ttf');
-        }
-        * { box-sizing: border-box;
-            font-family: NanumSquareRoundR; 
-        }
+     
         a{
     text-decoration-line: none !important;
     }

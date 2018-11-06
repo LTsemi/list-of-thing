@@ -51,6 +51,7 @@ body, html {
 .page-heading .heading-content em {
   font-style: normal;
   font-weight: 200;
+  color: rgb(255, 164, 31) !important;
 }
 
 

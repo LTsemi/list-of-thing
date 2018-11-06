@@ -33,7 +33,17 @@ http://www.templatemo.com/tm-520-highway
 
     	<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
     	<link rel="stylesheet" href="../../resources/css/lithing-Box.css">
- 
+ 	
+ 	<style>
+	 @font-face {
+          font-family: 'NanumSquareRoundR' ;
+          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+        }
+        body { box-sizing: border-box;
+            font-family: NanumSquareRoundR !important; 
+        }
+	</style>
+	
     </head>
     
 
@@ -44,7 +54,7 @@ http://www.templatemo.com/tm-520-highway
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
-                <h1>About <em>Us</em></h1>
+                <h1>리띵 <em>띵딩</em></h1>
             </div>
         </div>
     </div>
@@ -137,35 +147,6 @@ http://www.templatemo.com/tm-520-highway
 
     
 
-    <section class="overlay-menu">
-      <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  <li>
-                      <a href="../index.jsp">랭 킹</a>
-                  </li>
-                  <li>
-                      <a href="../views/notice.jsp">공지사항</a>
-                  </li>
-                  <li>
-                      <a href="../views/LTpick.jsp">리띵's pick</a>
-                  </li>
-                  <li>
-                      <a href="../views/lithingbox.jsp">리띵 박스</a>
-                  </li>
-                  <li>
-                      <a href="../views/event.jsp">이벤트</a>
-                  </li>
-                  <li>
-                      <a href="../views/CustomerService.jsp">고객센터</a>
-                  </li>
-              </ul>
-              <p>We create awesome templates for you</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
