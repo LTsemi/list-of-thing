@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.buyme.young.member.model.vo.Member"%>
+<%
+	Member mh = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,7 +195,11 @@ nav {
         </div>
          
          <div style="float:right; padding-right : 3cm ; padding-top: 25px; font-size : 1.5em; ">
+         <%if ( mh == null ) { %>
            <a href="/semi/views/young/login.jsp" style="font-family: 'Gugi'; font-size : 1.2em; color : #fff;"> login</a>
+           <% } else { %>
+           <label><a href="/semi/views/young/login.jsp" style="color : black;"><%= mh.getUserName() %></a>님</label>
+           <% } %>
          </div>
         <div class="menu-icon" style="">
         <span></span>
@@ -208,7 +215,7 @@ nav {
                       <a href="/semi/views/sic/Ranking.jsp">랭 킹</a>
                   </li>
                   <li>
-                      <a href="/semi/views/won/notice.jsp">공지사항</a>
+                      <a href="/semi/views/won/noticeList.jsp">공지사항</a>
                   </li>
                   <li>
                       <a href="/semi/views/ju/LTpick.jsp">리띵's pick</a>
