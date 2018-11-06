@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
-=======
->>>>>>> parent of 9c2866d... MAIN PAGE
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Highway Blog - Free CSS Template</title>
@@ -160,13 +157,12 @@ http://www.templatemo.com/tm-520-highway
 }
 </style>
 
-=======
->>>>>>> parent of 9c2866d... MAIN PAGE
+
 </head>
 <body>
 
 </body>
-<<<<<<< HEAD
+
 <script>
 	$(function() {
 		$('button[id=resetFrm]').click(function() {
@@ -185,6 +181,7 @@ http://www.templatemo.com/tm-520-highway
 	});
 
 </script>
-=======
+
 </html>
->>>>>>> parent of 9c2866d... MAIN PAGE
+
+
