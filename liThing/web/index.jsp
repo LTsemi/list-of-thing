@@ -25,6 +25,8 @@ http://www.templatemo.com/tm-520-highway
 		
         <link href="https://fonts.googleapis.com/css?family=Gugi:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
 		
         <script src="/semi/resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         
@@ -40,6 +42,7 @@ http://www.templatemo.com/tm-520-highway
     border: solid 1px #E4E4E4;
     border-radius: 6px;
     background-color: #fff;
+    opacity : 0.7;
 }
 
 #custom-search-input input{
@@ -108,14 +111,19 @@ http://www.templatemo.com/tm-520-highway
         <div class="video-content">
             <div class="inner">
               <h1 style="font-family: Luckiest Guy; font-size:9em;">List of Thing</h1>
-              <p>리뷰를 하기 위해 <a href="">로그인</a> 하세요! </p>
+              <!-- <p >리뷰를 하기 위해 <a href="">로그인</a> 하세요! </p>-->             
+                 <p style="font-family: Gaegu;font-size:4em;">맛있는 세상을 찾아서:) </p>  
+               <!--   <p style="font-family: Itim;font-size:4em;">Looking for a tasty world:) </p>  -->
+                <br />
 
               
                <div class="col-md-6">
     		
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg"   placeholder="지금 당신이 먹고 싶은 음식은 바로 이것!  리뷰가 궁금하지 않나요?" />
+                
+                    <input type="text" class="form-control input-lg"  placeholder="지금 당신이 먹고 싶은 바로 그 음식!  리뷰가 궁금하지 않나요?" />
+                   <!--  style="background-color:transparent" -->
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="button">
                             <i class="glyphicon glyphicon-search"></i>
