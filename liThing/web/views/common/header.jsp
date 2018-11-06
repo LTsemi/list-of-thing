@@ -205,7 +205,7 @@ nav {
           <div class="main-menu">
               <ul>
                   <li>
-                      <a href="/semi/index.jsp">랭 킹</a>
+                      <a href="/semi/views/sic/index.jsp">랭 킹</a>
                   </li>
                   <li>
                       <a href="/semi/views/won/notice.jsp">공지사항</a>

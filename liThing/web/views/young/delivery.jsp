@@ -98,7 +98,7 @@ tr:nth-child(even) {
 	<br />
 	<br />
 	<div>
-		<table id="myPtag" style="margin-left:300px; margin-right : 300px;"></table>
+		<table id="myPtag" style="margin-left:500px; width:500px;"></table>
 
 	</div>
 	<br />
