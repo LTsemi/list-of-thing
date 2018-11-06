@@ -1744,7 +1744,7 @@ textarea{
 }
 .member-container.my-container .member-wrap .member-inner .contents.password .btns .btn-next-change:hover{
     box-shadow:0 2px 5px 0 rgba(0,0,0,0.1);
-    border-color:#dadada;
+    border-color:#FFA41F;
     transition:box-shadow .2s ease,border-color .2s ease
 }
 .member-container.my-container .member-wrap .member-inner .contents.password .btns .btn-now-change{
@@ -1838,7 +1838,7 @@ textarea{
 }
 .member-container.my-container .member-wrap .member-inner .contents .bottom .btns .btn-cancel:hover{
     box-shadow:0 2px 5px 0 rgba(0,0,0,0.1);
-    border-color:#dadada;
+    border-color:#FFA41F;
     transition:box-shadow .2s ease,border-color .2s ease
 }
 .member-container.my-container .member-wrap .member-inner .contents .bottom .btns .btn-confirm{
@@ -1900,7 +1900,7 @@ textarea{
 }
 .member-container.my-container .member-wrap .member-inner .contents .member-message .btns .btn-stay:hover{
     box-shadow:0 2px 5px 0 rgba(0,0,0,0.1);
-    border-color:#dadada;
+    border-color:#FFA41F;
     transition:box-shadow .2s ease,border-color .2s ease
 }
 .member-container.my-container .member-wrap .member-inner .contents .member-message .btns .btn-conversion,.member-container.my-container .member-wrap .member-inner .contents .member-message .btns .btn-confirm{

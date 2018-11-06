@@ -10,16 +10,6 @@
         <link rel="stylesheet" href="../../resources/css/sub.css">
         <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
         <script src="../../resources/js/coomember.js"></script>
-        
-        <style>
-    @font-face {
-          font-family: 'NanumSquareRoundR' ;
-          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
-        }
-        body { box-sizing: border-box;
-            font-family: NanumSquareRoundR !important; 
-        }
-   </style>
 </head>
 <body>
 
@@ -50,9 +40,6 @@
                             <span class="input">
                                 <input type="password" placeholder="비밀번호 재확인" maxlength="15" id="mpwd2" name="mpwd2">
                             </span>
-                            <span class="input">
-                                <input type="text" placeholder="이름" id="name" name="name">
-                            </span>
                         </div>
                         <div class="row domain">
                             <div class="col tooltip-wrap">
@@ -65,8 +52,8 @@
 
                             </div>
                             <span class="checkbox">
-                                    	<input type="radio" name="gender" value="M">&nbsp;남 &nbsp;&nbsp;&nbsp;
-										<input type="radio" name="gender" value="F">&nbsp;여 &nbsp;
+                                    <input type="checkbox" checked="checked"/>
+                                    <label for="checkbox1">이메일 수신 동의</label>
                                 </span>
                         </div>
                         <div class="row tel">

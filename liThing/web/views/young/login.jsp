@@ -10,6 +10,16 @@
         <link rel="stylesheet" href="../../resources/css/sub.css">
         <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
         <script src="../../resources/js/coomember.js"></script>
+        
+        <style>
+    @font-face {
+          font-family: 'NanumSquareRoundR' ;
+          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+        }
+        body { box-sizing: border-box;
+            font-family: NanumSquareRoundR !important; 
+        }
+   </style>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

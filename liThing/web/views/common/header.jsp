@@ -187,8 +187,12 @@ nav {
 <body>
     <nav style="background : #FFA41F !important;">
         <div class="logo">
-            <a href="/semi/index.jsp" style="font-family: 'Gugi'; color : #fff;">리띵</a>
+            <a href="/semi/index.jsp" style="font-family: 'Gugi'; color : #fff;">리띵</a> &nbsp; &nbsp; &nbsp;
+          
         </div>
+         
+         <div style="float:right; padding-right : 3cm ; padding-top: 25px; font-size : 1.5em; ">
+           <a href="/semi/views/young/login.jsp" style="font-family: 'Gugi'; font-size : 1.2em; color : #fff;"> login</a>
          </div>
         <div class="menu-icon" style="">
         <span></span>
