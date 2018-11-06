@@ -14,6 +14,8 @@
   <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   
+  <link href="https://fonts.googleapis.com/css?family=Gugi|Itim" rel="stylesheet">
+  
   <!-- include summernote css/js -->
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
@@ -23,13 +25,26 @@
     $(document).ready(function() {
         $('#summernote').summernote({
 		
-        	width : 750,
+        	width : 800,
 		height: 500,                 // set editor height
 		minHeight: null,             // set minimum height of editor
 		maxHeight: null,             // set maximum height of editor
-		focus: true                  // set focus to editable area after initializing summernote
+		focus: true,                  // set focus to editable area after initializing summernote
   
   
+		toolbar: [
+			// [groupName, [list of button]]
+			['style', ['style']],
+			['font', ['bold', 'italic', 'underline', 'clear']],
+			['font', ['fontsize', 'color']],
+			['font', ['fontname']],
+			['para', ['paragraph']],
+			['table', ['table']]
+
+		]
+	
+		
+		
 		});
     });
   </script>
@@ -50,17 +65,26 @@
 
    <%@ include file="../common/header.jsp" %>
 
-    <div id="video-container">
+
+
+ <div class="page-heading">
+        <div class="container">
+            <div class="heading-content">
+                <h1>List of thing</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+
+     <div id="video-container"> 
       
         	<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center wow zoomIn">
 					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-						<h1>공지사항</h1>
+						<h1 style="font-family: Gugi;">공지사항</h1>
 						<span></span>
 						<!-- <p>Our Frequently Asked Questions here.</p> -->
 					</div>
@@ -80,29 +104,11 @@
 					<button type="submit">등록하기</button>
 				</div>
         		
-    </div>
+     </div> 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   <br>
+   <br /> 
   
 <%@ include file="../common/footer.jsp" %>
 

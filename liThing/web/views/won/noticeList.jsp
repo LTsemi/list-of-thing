@@ -26,7 +26,7 @@ http://www.templatemo.com/tm-520-highway
         <link rel="stylesheet" href="../resources/css/light-box.css">
         <link rel="stylesheet" href="../resources/css/templatemo-style.css">
 
-        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Gugi|Itim" rel="stylesheet">
 
         <script src="../../resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         
@@ -34,7 +34,7 @@ http://www.templatemo.com/tm-520-highway
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!--     Fonts and icons     -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <!-- ------------------------------------------------------------------------------------------------------- -->      
         
@@ -120,14 +120,31 @@ http://www.templatemo.com/tm-520-highway
 		margin-left:auto;
 		margin-right:auto;
 	}
+	
+	@font-face {
+          font-family: 'NanumSquareRoundR' ;
+          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+        }
+        body { box-sizing: border-box;
+            font-family: NanumSquareRoundR !important; 
+        }
 </style>
     </head>
 
 <body>
 
    <%@ include file="../common/header.jsp" %>
+   
+   
+   
+ <div class="page-heading">
+        <div class="container">
+            <div class="heading-content">
+                <h1>List of thing</h1>
+            </div>
+        </div>
+    </div>
 
-    <div id="video-container">
         <!-- <div class="video-overlay"></div> -->
        <!--  <div class="video-content">
             <div class="inner">
@@ -153,11 +170,8 @@ http://www.templatemo.com/tm-520-highway
 				<div class="col-md-12">
 					<div class="section-title text-center wow zoomIn">
 					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-						<h1>공지사항</h1>
+					
+						<h1 style="font-family: Gugi;">공지사항</h1>
 						<span></span>
 						<!-- <p>Our Frequently Asked Questions here.</p> -->
 					</div>
@@ -170,7 +184,7 @@ http://www.templatemo.com/tm-520-highway
 							<div class="panel-heading" role="tab" id="headingOne">
 								<h4 class="panel-title">
 									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										Why you choose Titanic? 
+										한글로 하면 어떻게 나오려나?... 
 									</a>
 								</h4>
 							</div>
@@ -249,7 +263,7 @@ http://www.templatemo.com/tm-520-highway
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 			</select>
-			<input type="search" id="keyword" placeholder="키워드 입력창:)!"> 
+			<input type="search" id="keyword" placeholder="키워드를 입력하세요:)"> 
 			<button type="button" onclick="search();">검색하기</button>
 			<%--인라인 방식 --%>
 			
@@ -263,106 +277,11 @@ http://www.templatemo.com/tm-520-highway
 			
 		</div>
         		
-    </div>
+  
 
-<!-- ------------------------------------------------------------------------------------------------------- -->
-   <!--  <div class="masonry-portfolio" id="masonry">
-        <div class="container-fluid">
-            <div class="masonry">
-                <div class="item first-item col-md-4 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_1.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>Succulents <em>chambray</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_1.png">
-                      </div>
-                  </div></a>
-                </div>
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_2.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>Biodiesel <em>squid</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_2.png">
-                      </div>
-                  </div></a>
-                </div>
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_3.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>raclette <em>taxidermy</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_3.png">
-                      </div>
-                  </div></a>
-                </div>
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_5.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>freegan <em>aesthetic</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_4.png">
-                      </div>
-                  </div></a>
-                </div>
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_6.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>taiyaki <em>vegan</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_5.png">
-                      </div>
-                  </div></a>
-                </div>
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_9.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>disrupt <em>street</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_6.png">
-                      </div>
-                  </div></a>
-                </div>
-                <div class="item last-item col-md-8 col-sm-6 col-xs-12">
-                  <a href="img/big_portfolio_item_4.png" data-lightbox="image-1"><div class="thumb">
-                      <div class="hover-effect">
-                          <div class="hover-content">
-                              <h1>humblebrag <em>brunch</em></h1>
-                              <p>Awesome Subtittle Goes Here</p>
-                          </div>
-                      </div>
-                      <div class="image">
-                          <img src="img/masonry_item_7.png">
-                      </div>
-                  </div></a>
-                </div>
-            </div>
-        </div>
-    </div> -->
+
+    <br />
+    <br />
     
     
     
@@ -375,15 +294,6 @@ http://www.templatemo.com/tm-520-highway
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    <!-- ------------------------------------------------------------------------------------------------------- -->
 
 <%@ include file="../common/footer.jsp" %>
 
@@ -436,35 +346,7 @@ http://www.templatemo.com/tm-520-highway
 
     
 
-    <section class="overlay-menu">
-      <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  <li>
-                      <a href="../index.jsp">랭 킹</a>
-                  </li>
-                  <li>
-                      <a href="../views/notice.jsp">공지사항</a>
-                  </li>
-                  <li>
-                      <a href="../views/LTpick.jsp">리띵's pick</a>
-                  </li>
-                  <li>
-                      <a href="../views/lithingbox.jsp">리띵 박스  구매 </a>
-                  </li>
-                  <li>
-                      <a href="../views/event.jsp">이벤트</a>
-                  </li>
-                  <li>
-                      <a href="../views/CustomerService.jsp">고객센터</a>
-                  </li>
-              </ul>
-              <p>We create awesome templates for you.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
