@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Gugi:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-		 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
+		
 <style>
 
 nav .logo {
