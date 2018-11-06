@@ -80,12 +80,12 @@ http://www.templatemo.com/tm-520-highway
                     <th>구매수량/월</th>
                 </tr>
                 <tr>
-                    <td><img src="#" width="50px" height="50px"> &nbsp;리띵박스</td>
-                    <td>12,111원</td>
-                    <td>2</td>
+                    <td><img src="../../resources/img/buybox.png" width="50px" height="50px"> &nbsp;리띵박스</td>
+                    <td>12,000원</td>
+                    <td>1</td>
                 </tr>
             </table>
-            <div class="totalpay"><b>결제예정금액</b> &nbsp; <em>111111</em>원</div>
+            <div class="totalpay"><b>결제예정금액</b> &nbsp; <em>12,000</em>원</div>
         </div>
     </div>
     <br><br>

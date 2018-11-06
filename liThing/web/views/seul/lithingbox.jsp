@@ -67,31 +67,31 @@ http://www.templatemo.com/tm-520-highway
             <p>매월 새로운 <span class="lithing">리띵</span>박스가 배달됩니다!</p>
             <br><br><br><br>
             <br><br><br><br>
-            <div id="banner">
-                <a href="#">
+            <div id="banner" onclick="location.href='lithingbox.jsp'">
+            
                 <p>[10월] 이달의 리띵's Pick! <br />
-                   	<em>"손이가요 손이가는 젤리 Best10"</em></p></a>
+                   	<em>"손이가요 손이가는 젤리 Best10"</em></p>
             </div>
         </div>
         <div id="buytab"> 
             
             <div class="buy">
                 <div class="box leftbox">
-                    <img src="../../resources/img/box.png" width="120px" height="120px" alt="리띵박스테마">
+                    <img src="../../resources/img/box1.png" width="120px" height="120px" alt="리띵박스테마">
                     <h3 class="buyMonth">1개월</h3>
-                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
+                    <h4 class="price">12,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>                 
                     <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">               
                 </div>
                 <div class="box centerbox">
-                    <img src="../../resources/img/box.png" width="120px" height="120px" alt="리띵박스테마">
+                    <img src="../../resources/img/box2.png" width="120px" height="120px" alt="리띵박스테마">
                     <h3 class="buyMonth">3개월</h3>
-                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
+                    <h4 class="price">36,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>                 
                     <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">              
                 </div>
                 <div class="box rightbox">
-                    <img src="../../resources/img/box.png" width="120px" height="120px" alt="리띵박스테마">
+                    <img src="../../resources/img/box3.png" width="120px" height="120px" alt="리띵박스테마">
                     <h3 class="buyMonth">6개월</h3>
-                    <h4 class="price">00,000<span style="font-size: 13px" >원</span></h4>                 
+                    <h4 class="price">72,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>                 
                      <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">
                </div>
         </div>
