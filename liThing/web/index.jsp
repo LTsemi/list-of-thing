@@ -24,6 +24,7 @@ http://www.templatemo.com/tm-520-highway
         <link rel="stylesheet" href="resources/css/templatemo-style.css">
 		
         <link href="https://fonts.googleapis.com/css?family=Gugi:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 		
         <script src="/semi/resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         
@@ -80,15 +81,15 @@ http://www.templatemo.com/tm-520-highway
         <div class="video-overlay"></div>
         <div class="video-content">
             <div class="inner">
-              <h1 style="font-family: 'Kanit', sans-serif;">List of Thing</h1>
+              <h1 style="font-family: Luckiest Guy; font-size:9em;">List of Thing</h1>
               <p>리뷰를 하기 위해 <a href="">로그인</a> 하세요! </p>
-<<<<<<< HEAD
+
               
                <div class="col-md-6">
     		
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="지금 당신이 먹고 싶은 음식은 바로 이것!   리뷰가 궁금하지 않나요?" />
+                    <input type="text" class="form-control input-lg"   placeholder="지금 당신이 먹고 싶은 음식은 바로 이것!  리뷰가 궁금하지 않나요?" />
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="button">
                             <i class="glyphicon glyphicon-search"></i>
@@ -99,9 +100,7 @@ http://www.templatemo.com/tm-520-highway
         </div>
         
         
-        
-=======
->>>>>>> parent of 3cf25e2... login 1106
+
                 <div class="scroll-icon">
                     <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="resources/img/scroll-icon.png" alt=""></a>
                 </div>    
