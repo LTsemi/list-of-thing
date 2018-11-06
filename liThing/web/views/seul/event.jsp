@@ -65,7 +65,7 @@ http://www.templatemo.com/tm-520-highway
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
-                <h1>Our <em>Blog</em></h1>
+                <h1>list of<em>thing ;)</em></h1>
             </div>
         </div>
     </div>
@@ -75,9 +75,10 @@ http://www.templatemo.com/tm-520-highway
     <h2>Event</h2>
     <p>혜택이 가득한 리띵박스의 이벤트에 참여해보세요^_^</p>
     <br>
+    
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">&nbsp; 이벤트 &nbsp;</a></li>
-      <li><a data-toggle="tab" href="#menu1">당첨자발표</a></li>
+      <li class="active"><a href="event.jsp">&nbsp; 이벤트 &nbsp;</a></li>
+      <li><a href="eventWin.jsp">당첨자발표</a></li>
     </ul>
   
     <div class="tab-content">
@@ -114,7 +115,7 @@ http://www.templatemo.com/tm-520-highway
                 </a>
               </div>
       
-              <div class="thumbnail">
+              <div class="thumbnail image-cover">
                   <span class="dday">D-08</span>
                   <a href="eventPage.jsp" target="_top">
                     <p class="evtImg">
@@ -131,62 +132,19 @@ http://www.templatemo.com/tm-520-highway
           </div>
           <br><br><br><br>
         </div>
-
-
-      <!--   이벤트 창    -->
       </div>
+
+<!-- 
+        이벤트 창   
       <div id="menu1" class="tab-pane fade">
         <div id="lithingevt">
-          <br><br><br><br>
-          <div class="winbanner"><img src="" alt="당첨자배너"></div>
           <br><br>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>이멘트명</th>
-                <th>등록일</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>104</td>
-                <td><a href="evtWinner.jsp">[새우깡] 10월 무료샘플 당첨자 발표</a></td>
-                <td>2018-05-02</td>
-              </tr>
-              <tr>
-                <td>103</td>
-                <td><a href="evtWinner.jsp">[새우깡] 10월 무료샘플 당첨자 발표</a></td>
-                <td>2018-04-02</td>
-              </tr>
-              <tr>
-                <td>102</td>
-                <td><a href="evtWinner.jsp">[새우깡] 10월 무료샘플 당첨자 발표</a></td>
-                <td>2018-03-02</td>
-              </tr>
-              <tr>
-                  <td>102</td>
-                  <td><a href="evtWinner.jsp">[새우깡] 10월 무료샘플 당첨자 발표</a></td>
-                  <td>2018-03-02</td>
-              </tr>
-              <tr>
-                  <td>102</td>
-                  <td><a href="evtWinner.jsp">[새우깡] 10월 무료샘플 당첨자 발표</a></td>
-                  <td>2018-03-02</td>
-              </tr>
-              <tr>
-                  <td>102</td>
-                  <td><a href="evtWinner.jsp">[새우깡] 10월 무료샘플 당첨자 발표</a></td>
-                  <td>2018-03-02</td>
-              </tr>
-			
-            </tbody>
-          </table>
+         
           <br><br>
-          <!-- 페이지 이동 버튼 -->
-          <!-- <div class="row mb-2"> -->
+          페이지 이동 버튼
+          <div class="row mb-2">
            <div class="pagingArea">
-              <!--  <nav aria-label="Page"> -->
+               <nav aria-label="Page">
                      <ul class="pagination">
                        <li class="page-item">
                          <a class="page-link" href="#" aria-label="Previous">
@@ -204,14 +162,14 @@ http://www.templatemo.com/tm-520-highway
                          </a>
                        </li>
                      </ul>
-              <!--  </nav> -->
+               </nav>
            </div>
-          <!-- </div> -->
+          </div>
           <br><br><br><br>
         </div>
-      </div>
+      </div> -->
     </div>
-    <script>
+<!--     <script>
             $(document).ready(function(){
               // Initialize Tooltip
               $('[data-toggle="tooltip"]').tooltip(); 
@@ -240,7 +198,7 @@ http://www.templatemo.com/tm-520-highway
                 } // End if
               });
             })
-            </script>
+            </script> -->
   
 </div>     
 

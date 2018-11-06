@@ -5,6 +5,10 @@
     @media ( max-width: 1024px ) {
 
     }
+    
+     a{
+      text-decoration-line: none !important;
+    }
     #lithingBox{
         margin: 0 auto;
         padding: 70px 0 0;
@@ -35,8 +39,24 @@
         margin: 0 auto;
         width: 600px;
         height: 200px;
-        background-color:#333; 
+        background-image: url('../img/lithingboxbanner.jpg'); 
     }
+    
+    #banner p {
+    text-shadow: 1px 1px 2px #666;
+    color: white;
+    padding-top: 75px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    }
+    
+    #banner em {
+     font-size: 21px;
+    font-weight: 600;
+    font-style: normal;
+    }
+    
 
     #buytab{
         /* margin: 0 auto; */

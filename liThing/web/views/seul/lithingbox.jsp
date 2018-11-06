@@ -54,7 +54,7 @@ http://www.templatemo.com/tm-520-highway
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
-                <h1>리띵 <em>띵딩</em></h1>
+                <h1>list of<em>thing ;)</em></h1>
             </div>
         </div>
     </div>
@@ -68,7 +68,9 @@ http://www.templatemo.com/tm-520-highway
             <br><br><br><br>
             <br><br><br><br>
             <div id="banner">
-                <a href="#"><img src="image/baner.png" alt="리띵박스테마"></a>
+                <a href="#">
+                <p>[10월] 이달의 리띵's Pick! <br />
+                   	<em>"손이가요 손이가는 젤리 Best10"</em></p></a>
             </div>
         </div>
         <div id="buytab"> 

@@ -124,7 +124,7 @@ http://www.templatemo.com/tm-520-highway
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
-                <h1>Our <em>Blog</em></h1>
+                <h1>list of<em>thing ;)</em></h1>
             </div>
         </div>
     </div>
@@ -185,7 +185,7 @@ http://www.templatemo.com/tm-520-highway
       </p>
       <hr>
       <br>
-      <a href="event.jsp" class="listbtn">목록으로</a>
+      <a href="eventWin.jsp" class="listbtn">목록으로</a>
     </div>
     </div>
 

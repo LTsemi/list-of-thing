@@ -53,7 +53,7 @@ http://www.templatemo.com/tm-520-highway
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
-                <h1>Our <em>Blog</em></h1>
+                <h1>list of<em>thing ;)</em></h1>
             </div>
         </div>
     </div>

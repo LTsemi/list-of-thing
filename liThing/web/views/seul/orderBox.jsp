@@ -56,7 +56,7 @@ http://www.templatemo.com/tm-520-highway
     <div class="page-heading">
         <div class="container">
             <div class="heading-content">
-                <h1>리띵 <em>띵딩</em></h1>
+                <h1>list of<em>thing ;)</em></h1>
             </div>
         </div>
     </div>
