@@ -1,6 +1,7 @@
 package com.buyme.young.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,11 +55,20 @@ public class MemberLoginServlet extends HttpServlet {
 			response.sendRedirect("index.jsp");
 			
 		} catch (MemberException e) {
-			request.setAttribute("msg", "회원 로그인 실패!");
-			request.setAttribute ("exception", e);
 			
-			request.getRequestDispatcher("views/common/errorPage.jsp")
+/*			request.setAttribute("msg", "회원 로그인 실패!");
+			request.setAttribute ("exception", e);
+			*/
+/*			request.getRequestDispatcher("views/common/errorPage.jsp")
 			.forward(request, response);
+			*/
+			PrintWriter out = response.getWriter();
+			 
+			out.println("<script> alert('아이디 또는 비밀번호가 일치하지 않습니다.'); location.href='views/young/login.jsp';</script>");
+			 
+			out.flush();
+			out.close();
+
 		}
 	}
 

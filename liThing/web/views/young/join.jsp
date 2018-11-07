@@ -104,7 +104,7 @@
                         <div class="row birth">
                             <div class="col tooltip-wrap">
                                     <span class="select-wrap"> &nbsp;&nbsp;
-                                    <input style="margin-left : 15px;" type="number" name="birthyear" min="1990" max="2018" id="birthyear" placeholder="년도"/>
+                                    <input style="margin-left : 15px;" type="number" name="birthyear" min="1900" max="2018" id="birthyear" placeholder="년도"/>
      <!--                                    <span align=center> class="selectbox"
                                         </span> -->
                                     </span>
@@ -202,7 +202,7 @@ $('#idCheck').click(function(){
 		data : { userId : $('#userId').val()},
 		success : function(data){
 			
-			if(data == 'no' ){
+			if(data == 'no'){
 				$('#userId').select();
 				$(".tooltip").addClass("blind");
                 $("#idTooltip").text("이미 사용중인 아이디 입니다.").removeClass("blind");
