@@ -87,6 +87,10 @@ http://www.templatemo.com/tm-520-highway
 		<div id="lithingevt">	          
 	      <!--   이벤트 창    -->
 	          <br><br>
+	      <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
+		  <a href="winnerPageInsertForm.jsp" class="listbtn">작성하기</a>
+		  <%-- <% } %> --%>
+		  
 	          <table class="table table-hover">
 	            <thead>
 	              <tr>

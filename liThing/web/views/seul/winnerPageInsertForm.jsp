@@ -6,13 +6,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Highway Blog - Free CSS Template</title>
-<!-- 
 
-Highway Template
 
-http://www.templatemo.com/tm-520-highway
-
--->
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -32,7 +27,7 @@ http://www.templatemo.com/tm-520-highway
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
 
-		<link rel="stylesheet" href="../../resources/css/evtPage.css">
+		<link rel="stylesheet" href="../../resources/css/eventPageInsertForm.css">
 
 	<style>
 	 @font-face {
@@ -63,65 +58,82 @@ http://www.templatemo.com/tm-520-highway
     
 
   
-    <div class="evtbanner">
+    <div class="evtEditor">
     <br><br>
-      <h4><small>list of thing - 리띵!</small></h4>   
+    
+      <h2><input id="title" type="text" size="40" name="title" placeholder="제목" ></h2>
       <hr>
-      
-      <h2>[새우깡] 10월 무료샘플 이벤트</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
-      <br><br>
-      <img src="../../resources/img/evtbanner.jpg" width="700px">
-      <br><br>
-      <hr>
-    </div>
-      <!-- <h4>Leave a Comment:</h4> -->
-      <div class="comment">
-        <form role="form">
-            <div class="form-group">
-            <textarea class="form-control" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn pull-right">응모하기</button>
-        </form>
-        <br><br><br>
+      <h5><span class="glyphicon glyphicon-time"></span> Post by 오렌지, 2015/11/11</h5>
         
-        <div class="row cmtbar">
-            <br>
-            <p><span class="badge">2</span> Comments:</p><br>
-            <div class="col-sm-2 text-center">
-            <img src="../../resources/img/user.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-sm-10">
-            <h4>라이언 <small>Sep 29, 2015, 9:12 PM</small></h4>
-            <p>응모합니다 ^_^ 저 주세요~!~!</p>
-            <br>
-            </div>
-            <div class="col-sm-2 text-center">
-            <img src="../../resources/img/user.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-sm-10">
-            <h4>무지 <small>Sep 25, 2015, 8:25 PM</small></h4>
-            <p>무지무지 갖고싶당..</p>
-            <br>
-            </div>
-        </div> 
         <br><br>
+        <div id="titleText">
+            <textarea name="content" rows="5" cols="120" style="resize:none;" placeholder="내용을 입력하세요."></textarea>
+        </div>
+        <br><br>
+        <h4 style="font-weight: 600"> *** [Ctrl + F] 를 이용하시면 쉽게 당첨여부를 확인 하실 수 있습니다.</h4>
+        <br />
+        <table class="winner-tab" border="1"> 
+            <tr class="first">
+                <th>당첨자ID</th>
+                <th>이름</th>
+            </tr>
+            <tr>
+                <td>user01</td>
+                <td>사용*</td>
+            </tr>
+            <tr>
+                <td>user02</td>
+                <td>너구*</td>
+            </tr>
+            <tr>
+                <td>user03</td>
+                <td>복숭*</td>
+            </tr>
+            <tr>
+                <td>user04</td>
+                <td>라이*</td>
+            </tr>
+        </table>	
+        <br /><br />
+      <hr>
+      <br>
+		<button type="button" class="listbtn" onclick="location.href='eventWin.jsp'">취소하기</button>
+		<%-- <% if(m != null && m.getUserName().equals(t.getBwriter())){ %> --%>
+		<button type="submit" class="listbtn">작성 완료</button>
+		<%-- <% } %>	 --%>
     </div>
-    <div class="listGo">
-        <a href="event.jsp" class="listbtn">목록으로</a> 
-        <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
-        <a href="#" class="listbtn">수정하기</a>		  
-        <a href="#" class="listbtn">삭제하기</a>		  
-		<%-- <% } %> --%>
     </div>
-        
-        <br><br><br><br>
-     </div>
-
+<br /><br />
+<br /><br />
 </div>
+    <script>
+        $(function(){
+            $('#fileArea').hide();
+            
+            $('#evtImgArea').click(() => {
+                $('#thumbnailImg').click();
+            });
+            
+        });
+
+        function LoadImg(value, num) {
+				if(value.files && value.files[0]) {
+					var reader = new FileReader();
+					
+					reader.onload = function(e){
+						switch(num){
+						case 1: $('#evtImg').attr('src', e.target.result);
+							break;
+						}
+					}
+					
+					reader.readAsDataURL(value.files[0]);
+				}
+			}
+
+    </script>
 
 <%@ include file="../common/footer.jsp" %>
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

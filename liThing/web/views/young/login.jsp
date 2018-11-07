@@ -88,10 +88,14 @@
 		function changeInfo(){
 			location.href="/semi/views/young/update.jsp";
 		}
+		
+		$("#userId").keyup(function(e){if(e.keyCode == 13)  login(); })
+		$("#userPwd").keyup(function(e){if(e.keyCode == 13)  login(); })
+
 	</script>
 		</div>
 	</div>
-</div>
+
 	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

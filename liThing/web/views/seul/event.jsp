@@ -85,9 +85,14 @@ http://www.templatemo.com/tm-520-highway
       <div id="home" class="tab-pane fade in active">
       <!--   이벤트 창    -->
       <div id="lithingevt">
-          <br><br><br><br>
+      	  <br><br>
+      	  
+     	  <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
+		  <a href="eventPageInsertForm.jsp" class="listbtn">이벤트 추가</a>
+		  <%-- <% } %> --%>
+		  
+          <br><br>
           <div class="row">
-      
              
             <div class="thumbnail">
               <span class="dday">D-30</span>
@@ -133,73 +138,7 @@ http://www.templatemo.com/tm-520-highway
           <br><br><br><br>
         </div>
       </div>
-
-<!-- 
-        이벤트 창   
-      <div id="menu1" class="tab-pane fade">
-        <div id="lithingevt">
-          <br><br>
-         
-          <br><br>
-          페이지 이동 버튼
-          <div class="row mb-2">
-           <div class="pagingArea">
-               <nav aria-label="Page">
-                     <ul class="pagination">
-                       <li class="page-item">
-                         <a class="page-link" href="#" aria-label="Previous">
-                           <span aria-hidden="true">«</span>
-                           <span class="sr-only">Previous</span>
-                         </a>
-                       </li>
-                       <li class="page-item"><a class="page-link" href="#">1</a></li>
-                       <li class="page-item"><a class="page-link" href="#">2</a></li>
-                       <li class="page-item"><a class="page-link" href="#">3</a></li>
-                       <li class="page-item">
-                         <a class="page-link" href="#" aria-label="Next">
-                           <span aria-hidden="true">»</span>
-                           <span class="sr-only">Next</span>
-                         </a>
-                       </li>
-                     </ul>
-               </nav>
-           </div>
-          </div>
-          <br><br><br><br>
-        </div>
-      </div> -->
-    </div>
-<!--     <script>
-            $(document).ready(function(){
-              // Initialize Tooltip
-              $('[data-toggle="tooltip"]').tooltip(); 
-              
-              // Add smooth scrolling to all links in navbar + footer link
-              $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-            
-                // Make sure this.hash has a value before overriding default behavior
-                if (this.hash !== "") {
-            
-                  // Prevent default anchor click behavior
-                  event.preventDefault();
-            
-                  // Store hash
-                  var hash = this.hash;
-            
-                  // Using jQuery's animate() method to add smooth page scroll
-                  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                  $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                  }, 900, function(){
-               
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                  });
-                } // End if
-              });
-            })
-            </script> -->
-  
+	</div>     
 </div>     
 
    

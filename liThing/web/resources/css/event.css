@@ -32,6 +32,22 @@ body {font-family: Arial;
   width: 1000px;
   padding: 0 120px;
 }
+.listbtn {
+    padding: 5px 20px;
+    background-color: white;
+    border: 1px solid lightgray;
+    color: gray;
+    border-radius: 0;
+    transition: .2s;
+    margin: 0 auto;
+
+}
+
+.listbtn:hover, .btn:focus {
+     border: 1px solid rgb(255, 208, 56);
+     background-color: rgb(255, 208, 56);
+     color: rgb(255, 255, 255);
+ }
 .thumbnail{
   /* box-shadow:0 20px 50px rgba(0,0,0,.08); */
 }
