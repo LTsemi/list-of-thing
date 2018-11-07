@@ -28,7 +28,7 @@ http://www.templatemo.com/tm-520-highway
 		<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
 
 		<link rel="stylesheet" href="../../resources/css/event.css">
-        	
+        <link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
         
 
 

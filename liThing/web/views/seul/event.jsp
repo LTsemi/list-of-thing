@@ -28,8 +28,7 @@ http://www.templatemo.com/tm-520-highway
 		<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
 
 		<link rel="stylesheet" href="../../resources/css/event.css">
-        	
-        
+        <link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -85,11 +84,11 @@ http://www.templatemo.com/tm-520-highway
           <div class="row">
              
             <div class="thumbnail">
-              <span class="dday">D-30</span>
               <a href="eventPage.jsp" target="_top">
                 <p class="evtImg">
-                  <img src="../../resources/img/big_portfolio_item_3.png" width="200px">
+                  <img src="../../resources/img/evtbanner.png" width="770px">
                 </p>
+              <span class="dday">D-30</span>
                 <div class="evtText">
                   <h3>무료 체험 이벤트</h3>
                   <p>2018/08/20 ~ 2018/09/01까지</p>
@@ -98,11 +97,11 @@ http://www.templatemo.com/tm-520-highway
             </div>
       
             <div class="thumbnail">
-                <span class="dday">D-26</span>
                 <a href="eventPage.jsp" target="_top">
                   <p class="evtImg">
-                    <img src="../../resources/img/big_portfolio_item_3.png" width="200px">
+                    <img src="../../resources/img/evtbanner.png" width="770px">
                   </p>
+                <span class="dday">D-26</span>
                   <div class="evtText">
                     <h3>무료 체험 이벤트</h3>
                     <p>2018/08/20 ~ 2018/09/01까지</p>
@@ -111,11 +110,11 @@ http://www.templatemo.com/tm-520-highway
               </div>
       
               <div class="thumbnail image-cover">
-                  <span class="dday">D-08</span>
                   <a href="eventPage.jsp" target="_top">
                     <p class="evtImg">
-                      <img src="../../resources/img/big_portfolio_item_3.png" width="200px">
+                      <img src="../../resources/img/evtbanner.png" width="770px">
                     </p>
+                  <span class="dday">D-08</span>
                     <div class="evtText">
                       <h3>무료 체험 이벤트</h3>
                       <p>2018/08/20 ~ 2018/09/01까지</p>
