@@ -26,11 +26,11 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 		if (name != null && name.equals("userPwd")){
 			// 암호화 된 비밀번호를 전달한다.
 			value = getSHA512(super.getParameter(name));
-			System.out.println("value1:" + value);
+
 		} else {
 		    // 원래의 값을 전달한다.
 			value = super.getParameter(name);
-			System.out.println("value2:" + value);
+
 		}
 		return value;
 	}

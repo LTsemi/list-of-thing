@@ -2,6 +2,7 @@ package com.buyme.young.member.model.dao;
 
 import static com.buyme.common.JDBCTemplate.*;
 
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -167,6 +168,35 @@ public class MemberDao {
 			close(pstmt);
 			
 		}
+		
+		return result;
+	}
+	
+	public int idDupCheck(Connection con, String id) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("idDupCheck");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) result = rset.getInt(1);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
 		
 		return result;
 	}

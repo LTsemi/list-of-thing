@@ -7,9 +7,8 @@
 <title>리띵 회원가입</title>
 
         <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
-        <link rel="stylesheet" href="../../resources/css/sub.css">
         <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="../../resources/js/coomember.js"></script>
+
         <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
         <style>
     @font-face {
@@ -20,6 +19,7 @@
             font-family: NanumSquareRoundR !important; 
         }
    </style>
+
 </head>
 <body>
 
@@ -194,6 +194,34 @@ function addrSearch() {
         }
     }).open();
 };
+
+$('#idCheck').click(function(){
+	$.ajax({
+		url : "/semi/idDup.me",
+		type : "post",
+		data : { userId : $('#userId').val()},
+		success : function(data){
+			
+			if(data == 'no' ){
+				$('#userId').select();
+				$(".tooltip").addClass("blind");
+                $("#idTooltip").text("이미 사용중인 아이디 입니다.").removeClass("blind");
+                $("#userId").focus();
+			} else {
+				$("#idTooltip").text("사용가능한 아이디 입니다.").removeClass("blind");
+			}
+			
+			
+		}, error : function(data){
+
+			console.log("에러 발생");
+		}
+		
+		
+	});
+});
+
+
 
 </script>
 </body>

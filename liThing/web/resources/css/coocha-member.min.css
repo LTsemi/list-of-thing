@@ -1,38 +1,13 @@
 @charset "UTF-8";
-@font-face{
-    font-family:SpoqaHanSans;
-    src:url(../font/SpoqaHanSansRegular.woff);
-    src:local(※),url(../font/SpoqaHanSansRegular.woff) format("woff"),url(../font/SpoqaHanSansRegular.woff2) format("woff2"),url(../font/SpoqaHanSansRegular.ttf) format("ttf")
-}
-@font-face{
-    font-family:SpoqaHanSansBold;
-    src:url(../font/SpoqaHanSansBold.woff);
-    src:local(※),url(../font/SpoqaHanSansBold.woff) format("woff"),url(../font/SpoqaHanSansBold.woff2) format("woff2"),url(../font/SpoqaHanSansBold.ttf) format("ttf")
-}
-@font-face{
-    font-family:Roboto;
-    font-style:normal;
-    font-weight:100;
-    src:url(../font/Roboto-Thin.woff2) format("woff2"),url(../font/Roboto-Thin.woff) format("woff"),url(../font/Roboto-Thin.otf) format("opentype")
-}
-@font-face{
-    font-family:Roboto;
-    font-style:normal;
-    font-weight:300;
-    src:url(../font/Roboto-Light.woff2) format("woff2"),url(../font/Roboto-Light.woff) format("woff"),url(../font/Roboto-Light.otf) format("opentype")
-}
-@font-face{
-    font-family:Roboto;
-    font-style:normal;
-    font-weight:500;
-    src:url(../font/Roboto-Medium.woff2) format("woff2"),url(../font/Roboto-Medium.woff) format("woff"),url(../font/Roboto-Medium.otf) format("opentype")
-}
-@font-face{
-    font-family:Roboto;
-    font-style:normal;
-    font-weight:700;
-    src:url(../font/Roboto-Bold.woff2) format("woff2"),url(../font/Roboto-Bold.woff) format("woff"),url(../font/Roboto-Bold.otf) format("opentype")
-}
+
+    @font-face {
+          font-family: 'NanumSquareRoundR' ;
+          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+        }
+        body { box-sizing: border-box;
+            font-family: NanumSquareRoundR !important; 
+        }
+        
 .num{
     font-family:'Roboto'
 }
@@ -141,18 +116,7 @@
     border-color:#FFA41F;
     color:#FFA41F
 }
-.paging a.btn-prev{
-    background-image:url(../images/common/common/btn-paging-prev.svg);
-    background-repeat:no-repeat;
-    background-position:50% 50%;
-    margin-right:15px
-}
-.paging a.btn-next{
-    background-image:url(../images/common/common/btn-paging-next.svg);
-    background-repeat:no-repeat;
-    background-position:50% 50%;
-    margin-left:15px
-}
+
 .nano{
     position:relative;
     width:100%;
@@ -471,7 +435,7 @@
     width:24px;
     height:24px;
     margin-top:-12px;
-    background-image:url(../images/common/common/select-arrow-down.svg);
+
     background-repeat:no-repeat
 }
 .table-form .selectbox .cui-select .cui-select-options{
@@ -1481,7 +1445,6 @@ textarea{
     color:#FFA41F;
     white-space:nowrap;
     padding:12px 26px 12px 42px;
-    background-image:url(../images/member/error-msg.svg);
     background-color:#fff;
     background-repeat:no-repeat;
     background-position:18px 50%;

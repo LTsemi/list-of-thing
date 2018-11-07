@@ -44,61 +44,8 @@ JoinMember.prototype = {
 			_this.checkIdUse();
 		});
 		
-		//약관 내용보기
-		$("#listsTerms .btn").each(function(){
-			$(this).on("click",function(){
-				var $target = $($(this).attr("href"));
-				var top = $target.offset().top;
-				$("html,body").animate({
-					scrollTop :top + "px"
-				},800);
-				return false;
-			});
-		});
-		
-		// 이메일 SMS 통합 수신 동의
-		$("#mailSmsYn").on('change', function(){
-			if($(this).prop("checked")){
-				$("#mailYn").attr("checked", true);
-				$("#smsYn").attr("checked", true);
-			} else {
-				$("#mailYn").attr("checked", false);
-				$("#smsYn").attr("checked", false);
-			}
-		});
-		
-		//약관 체크박스
-		$("input#termAgrees").on("change",function(){
-			if($("input#termAgrees").prop("checked")){
-				$(".agree-wrap input[type=checkbox]").prop("checked",true);
-			}else{
-				$(".agree-wrap input[type=checkbox]").prop("checked",false);
-			}
-		});
-		$(".agree-wrap input[type=checkbox]").each(function(){
-			$(this).on("change",function(){
-				if(!$(this).prop("checked")){
-					$("input#termAgrees").prop("checked",false);
-				}
-				if($(".agree-wrap input[type=checkbox]:checked").size()==3){
-					$("input#termAgrees").prop("checked",true);
-				}
-			});
-		});
-		
-		//회원가입 클릭 이벤트
-		$("div.btns > button.btn-confirm").on("click",function(e){
-			e.preventDefault();
-			if(type == 'sns') {
-				_this.checkJoinBySNSForm();
-			} else {
-				_this.checkJoinForm();
-			}
-		});
-		
-		$("#mid").on("change",function(){
-			_this.isIdConfirm = false;
-		});
+				
+
 	},
 	
 	isAlphaNumetic : function(str){
@@ -119,26 +66,26 @@ JoinMember.prototype = {
 	
 	checkIdUse : function(){
 		var _this = this;
-		var inputId = $("#mid").val();
+		var inputId = $("#userId").val();
 		if(inputId === ""){
 			_this.isIdConfirm = false;
 			$("#idTooltip").text(_this.msg_id_empty).removeClass("blind");
-			$("#mid").focus();
+			$("#userId").focus();
 		}
 		else if(inputId.length < 5 || inputId.length > 15 || !_this.isAlphaNumetic(inputId))
 		{
 			_this.isIdConfirm = false;
             $("#idTooltip").text(_this.msg_id_invaid).removeClass("blind");
-			$("#mid").focus();
+			$("#userId").focus();
 		}
 		else
 		{
-			// $("#mid").parent().next().hide();
+			// $("#userId").parent().next().hide();
 			
 			$.ajax({
 				url : './idChk.do',
 				type : "POST",
-				data : {"mid" : inputId},
+				data : {"userId" : inputId},
 				dataType : "html",
 				error : function() {
 					_this.isIdConfirm = false;
@@ -151,7 +98,7 @@ JoinMember.prototype = {
 					if (idChk == 0) {
 						_this.isIdConfirm = true;
                         $("#idTooltip").text(_this.msg_id_ok).removeClass("blind");
-						//setTimeout(function(){ $("#mid").parent().next().hide(); }, 2000);
+						//setTimeout(function(){ $("#userId").parent().next().hide(); }, 2000);
 					} else {
 						_this.isIdConfirm = false;
                         $("#idTooltip").text(_this.msg_id_use).removeClass("blind");
@@ -160,35 +107,7 @@ JoinMember.prototype = {
 			}); 
 		}
 	},
-	/* SNS 회원 여부 체크 */
-	checkSNSIdUse : function(object){
-		var joinClass = object.joinClass;
-		var snsid = object.snsid;
-		
-		$.ajax({
-			url : './idChk.do',
-			type : "POST",
-			data : {"joinClass" : joinClass, "snsid" : snsid},
-			dataType : "html",
-			error : function() {
-				_this.isIdConfirm = false;
-				alert(_this.msg_error);
-			},
-			success : function(strData) {
-				var seqs = strData.split(",");
-				var idChk = seqs[1];
-				var chk = seqs[2];
-				if (idChk == 0) {
-					// TODO: 여기 popup으로 변경
-					_this.isIdConfirm = true;
-					$("#mid").parent().next().text(_this.msg_id_ok).show().focus();
-				} else {
-					_this.isIdConfirm = false;
-					$("#mid").focus().parent().next().text(_this.msg_id_use).show().focus();
-				}
-			}
-		}); 
-	},
+
 	
 	checkJoinForm : function(){
 		var _this = this;
@@ -201,11 +120,11 @@ JoinMember.prototype = {
 			$("<input />").attr("name","joinClass").attr("value",'CC').appendTo($joinForm);
 			
 			//아이디 유효성 체크
-			var inId = $("#mid").val();
+			var inId = $("#userId").val();
 			if(inId == ""){
                 $(".tooltip").addClass("blind");
                 $("#idTooltip").text(_this.msg_id_empty).removeClass("blind");
-                $("#mid").focus();
+                $("#userId").focus();
 				return;
 			}
 			
@@ -213,16 +132,16 @@ JoinMember.prototype = {
 			if(!_this.isIdConfirm){
                 $(".tooltip").addClass("blind");
                 $("#idTooltip").text(_this.msg_id_check).removeClass("blind");
-                $("#mid").focus();
+                $("#userId").focus();
 				return;
 			}
 			else{
-				//$("#mid").parent().next().hide();
-				$("<input />").attr("name","mid").attr("value",$("#mid").val()).appendTo($joinForm);
+				//$("#userId").parent().next().hide();
+				$("<input />").attr("name","userId").attr("value",$("#userId").val()).appendTo($joinForm);
 			}
 			
 			//비밀번호 유효성체크
-			var inPass = $("#mpwd").val();
+			var inPass = $("#password").val();
 //			var passCheck = /([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9]){8,15}&/;
 			if(inPass == ""){
                 $(".tooltip").addClass("blind");
@@ -244,7 +163,7 @@ JoinMember.prototype = {
 						if(strData.trim() != "valid"){
                             $(".tooltip").addClass("blind");
                             $("#pwdTooltip").text(_this.msg_pass_invalid).removeClass("blind");
-							$("#mpwd").focus();
+							$("#password").focus();
 							isValid = false;
 							return;
 						}
@@ -264,7 +183,7 @@ JoinMember.prototype = {
 						if(strData.trim() != "valid"){
                             $(".tooltip").addClass("blind");
                             $("#pwdTooltip").text(_this.msg_pass_invalid_3charactor).removeClass("blind");
-							$("#mpwd").focus();
+							$("#password").focus();
 							isValid = false;
 							return;
 						} 
@@ -274,21 +193,21 @@ JoinMember.prototype = {
 				if(isValid == false) {
 					return;
 				}else {
-					$("<input />").attr("name","mpwd").attr("value",$("#mpwd").val()).appendTo($joinForm);
+					$("<input />").attr("name","password").attr("value",$("#password").val()).appendTo($joinForm);
 				}
 			}else {
                 $(".tooltip").addClass("blind");
                 $("#pwdTooltip").text(_this.msg_pass_invalid).removeClass("blind");
-				$("#mpwd").focus();
+				$("#password").focus();
 				return;
 			}
 			
 			//비밀번호 재확인 체크
-			var passConfirm = $("#mpwd2").val();
+			var passConfirm = $("#password2").val();
 			if(inPass != passConfirm){
                 $(".tooltip").addClass("blind");
                 $("#pwdTooltip").text(_this.msg_pass_unmatch).removeClass("blind");
-                $("#mpwd").focus();
+                $("#password").focus();
 				return;
 			}
 			else{
@@ -391,51 +310,7 @@ JoinMember.prototype = {
 			return;
 		}
 		
-		//14세 미만 체크
-		if(result < 0){
-            $(".tooltip").addClass("blind");
-            $("#birthTooltip").text(_this.msg_14).removeClass("blind");
-			return;
-		}
-		else{
-			$("<input />").attr("name","birthDay").attr("value",userBirth).appendTo($joinForm);
-		}
 
-		//서비스 이용약관
-		if( !$("#agreement").prop("checked") ){
-			alert(_this.msg_agreement);
-			return;
-		}
-		//위치정보 이용약관
-		if( !$("#location").prop("checked") ){
-			alert(_this.msg_location);
-			return;
-		}
-		//개인정보 이용약관
-		if( !$("#privacy").prop("checked") ){
-			alert(_this.msg_privacy);
-			return;
-		}
-		
-		//이메일 수신 동의
-		if( $("#mailYn").prop("checked") ){
-			$("<input />").attr("name","mailYn").attr("value","1").appendTo($joinForm);
-		}
-		else{
-			$("<input />").attr("name","mailYn").attr("value","0").appendTo($joinForm);
-		}
-		
-		//문자 수신 동의
-		if( $("#smsYn").prop("checked") ){
-			$("<input />").attr("name","smsYn").attr("value","1").appendTo($joinForm);
-		}
-		else{
-			$("<input />").attr("name","smsYn").attr("value","0").appendTo($joinForm);
-		}
-		
-		if (confirm(_this.msg_join_confirm)) {
-			_this.submitJoinForm($joinForm.serialize());
-		}
 		
 	},
 	/* SNS 회원가입 validation 체크 */
@@ -608,8 +483,8 @@ JoinMember.prototype = {
 				var invalidMsg = seqs[2] + " " + seqs[3];
 
 				if(returnCode == "fail") {
-					if(validateType == "mid") 
-						$("#mid").focus().parent().next().text(invalidMsg).show().focus();
+					if(validateType == "userId") 
+						$("#userId").focus().parent().next().text(invalidMsg).show().focus();
 					else if(validateType == "password")
 						$("#msg1").attr("class","text-alert").text(invalidMsg).show();
 					else if(validateType == "mail")
@@ -782,8 +657,8 @@ Login.prototype = {
 			url : _PATH + "/member/login/loginChk.do",
 			type : "POST",
 			data : {
-				mid : uid,
-				mpwd : upw
+				userId : uid,
+				password : upw
 			},
 			error : function(){
 			},
@@ -818,7 +693,7 @@ Login.prototype = {
 						url : _PATH + "/member/checkLastChangedPassword.do",
 						type : "POST",
 						data : {
-							mid : uid
+							userId : uid
 						},
 						error : function(){
 						},
@@ -854,7 +729,7 @@ Login.prototype = {
 			           			}
 								
 							}else if(strData.trim() == 'N'){
-								location.href= _PATH + "/member/changePassword.do?mid="+uid;
+								location.href= _PATH + "/member/changePassword.do?userId="+uid;
 								
 							}
 						}
@@ -898,127 +773,19 @@ Login.prototype = {
 					referLink.click();
 					return false;
 				}
-				else if(idChk == 8) {
+/*				else if(idChk == 8) {
 					alert("비밀번호를 5회 이상 잘못 입력하였습니다.비밀번호 찾기를 통해 새로운 비밀번호를 설정 후, 로그인해 주세요.");
                     var referLink = document.createElement('a');
                     var url = _PATH + "/member/findInfoForm.do?type=PWD";
                     referLink.href = url;
                     document.body.appendChild(referLink);
                     referLink.click()
-				}
+				}*/
 			}
 		});
 		
 	},
-	/**
-	 * [SNS] 로그인
-	 */
-	snsLogin : function(object){
-		var _this = this;
-		object.rUrl = _this.rUrl;
-		if(!_this.isLoading) {
-			_this.isLoading = true;
-			//로그인
-			$.ajax({
-				url : _PATH + "/member/login/loginChk.do",
-				type : "POST",
-				/* IE에서 object 값이 중간에 손실되는 issue 존재하여  */
-				async : false,
-				data : {
-					joinClass : object.joinClass,
-					snsid : object.snsid,
-					pagetype : _this.type
-				},
-				beforeSend : function(){
-					$(".ico-loading").show();
-				},
-				complete : function() {
-					_this.isLoading = false;
-				},
-				error : function(){
-					alert(_this.msg_error);
-				},
-				success : function(strData){
-					var seqs = strData.split(",");
-                    var returnCode = $.trim(seqs[0]);
-					var idChk = seqs[1];
-					var secedeCodeid = seqs[2];
-					
-					if (secedeCodeid == 1025 || secedeCodeid == 1026 || returnCode != 'success') {
-                        $("#idpwInvalidTooltip").text(_this.msg_idpw_invalid).removeClass("blind");
-						$("#uid").attr("value","").val("").focus();
-						$("#upw").attr("value","").val("");
-						_this.isLoading = false;
-						$(".ico-loading").hide();
-						return;
-					}
-					if (idChk == 0) {
-						new JoinMember().goJoinMemberPage(object);
-					}
-					else if (idChk == 1) {
-						if(_this.type == 'join') {
-							$(".ico-loading").hide();
-							if(confirm("이미 쿠차에 가입되어 있는 계정입니다.\n로그인하시겠습니까?")) {
-								_this.isLoading = false;
-								$(".ico-loading").show();								
-								var login = new Login();
-								login.setRUrl(object.rUrl);
-								login.snsLogin(object);
-							} else {
-								_this.isLoading = false;
-								$(".ico-loading").hide();
-								return;
-							}
-						}
-						Tracker.clickLog({scid : 2407});
-						if(_this.rUrl == ""){
-							var referLink = document.createElement('a');
-							var url = _COOCHA_WEB_DOMAIN  + _PATH;
-							referLink.href = url;
-							document.body.appendChild(referLink);
-							referLink.click();
-							return false;
-						}
-						else if(_this.rUrl.indexOf("member/mypage/mypageCoupon.do") >= 0){
-							Tracker.clickLog({scid : 2405});
-							var referLink = document.createElement('a');
-							var url = _this.rUrl;
-							referLink.href = url;
-							document.body.appendChild(referLink);
-							referLink.click();
-							return false;
-						}
-						else if(_this.rUrl.indexOf("member/mypage/mypageDaily.do") >= 0){
-							Tracker.clickLog({scid : 2403});
-							var referLink = document.createElement('a');
-							var url = _this.rUrl;
-							referLink.href = url;
-							document.body.appendChild(referLink);
-							referLink.click();
-							return false;
-						}
-						else{
-							var referLink = document.createElement('a');
-							var url = _this.rUrl;
-							referLink.href = url;
-							document.body.appendChild(referLink);
-							referLink.click();
-							return false;
-						}
-					}
-					else if(idChk == 2){
-						//휴면계정
-						var referLink = document.createElement('a');
-						var url = _PATH + "/member/dormant.do";
-						referLink.href = url;
-						document.body.appendChild(referLink);
-						referLink.click();
-						return false;
-					}
-				}
-			});
-		}
-	},
+	
 	addInputTag : function(name,value,targetForm){
 		$("<input />").attr("name",name).attr("value",value).appendTo(targetForm);
 	},
@@ -1078,8 +845,8 @@ Login.prototype = {
 		_this.addInputTag("gubun", "pw", $findForm);
 		var telNo =  $("#findPwTel1").val() + $("#findPwTel2").val();;
 		_this.addInputTag("mhp",telNo, $findForm);
-		var mid = $("#findPwId").val();
-		_this.addInputTag("mid", mid, $findForm);
+		var userId = $("#findPwId").val();
+		_this.addInputTag("userId", userId, $findForm);
 		_this.addInputTag("mail", "", $findForm);
 		
 		$.ajax({
@@ -1133,18 +900,3 @@ window.Join = function(){
 /**
  * 초기화
  */
-Join.prototype = {
-	init : function() {
-		var _this = this;
-		
-		/* 쿠차 회원가입 */
-		$("#coochaJoin").on("click", function() {
-			var referLink = document.createElement('a');
-			var url = _PATH + "/member/join/joinMember.do";
-			referLink.href = url;
-			document.body.appendChild(referLink);
-			referLink.click()
-		});
-		
-	}
-}
