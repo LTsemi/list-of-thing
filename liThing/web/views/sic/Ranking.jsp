@@ -255,6 +255,7 @@ http://www.templatemo.com/tm-520-highway
 						</label>
 					</div>
 				</div>
+				<button id="upPduct">작성</button>
 			</div>
 			<div id="dbox" class="box"
 				style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border:1px solid #D0D0D0; border-radius: 4px">
@@ -355,23 +356,6 @@ http://www.templatemo.com/tm-520-highway
 		</div>
 	</div>
 
-
-
-	
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')
-	</script>
-
-	<script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
-
-	<script src="/semi/resources/js/plugins.js"></script>
-	<script src="/semi/resources/js/main.js"></script>
-
 </body>
 <script>
 	$(function() {
@@ -387,6 +371,12 @@ http://www.templatemo.com/tm-520-highway
 			location.href="rankDetail.jsp";
 		}).mouseleave(function() {
 			$(this).parent().css({"background":"white"});
+		});
+	});
+	
+	$(function() {
+		$('#upPduct').click(function() {
+			location.href="UploadProduct.jsp";
 		});
 	});
 
