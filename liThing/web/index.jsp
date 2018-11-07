@@ -110,6 +110,13 @@ http://www.templatemo.com/tm-520-highway
         <div class="video-overlay"></div>
         <div class="video-content">
             <div class="inner">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
               <h1 style="font-family: Luckiest Guy; font-size:9em;">List of Thing</h1>
               <!-- <p >리뷰를 하기 위해 <a href="">로그인</a> 하세요! </p>-->             
                  <p style="font-family: Gaegu;font-size:4em;">맛있는 세상을 찾아서:) </p>  
