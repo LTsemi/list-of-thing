@@ -16,6 +16,9 @@
 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
 <script
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+	
+	<link rel="stylesheet" href="../../resources/css/evtPage.css">
+	<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
 
 <link href="https://fonts.googleapis.com/css?family=Gugi|Itim"
 	rel="stylesheet">
@@ -27,7 +30,7 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
-<!-- summernote 실행 및 기본설정 [ Deep dive - Initialization options 참고 ] -->
+
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({

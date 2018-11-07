@@ -9,7 +9,7 @@
 <title>공지사항 작성</title>
 <meta charset="UTF-8">
 
-<!-- include libraries(jQuery, bootstrap) -->
+
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
 	rel="stylesheet">
@@ -26,8 +26,13 @@
 	rel="stylesheet">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+	
+	
+	
+	<link rel="stylesheet" href="../../resources/css/evtPage.css">
+	<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
 
-<!-- summernote 실행 및 기본설정 [ Deep dive - Initialization options 참고 ] -->
+
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
