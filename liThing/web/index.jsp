@@ -92,9 +92,6 @@ http://www.templatemo.com/tm-520-highway
     		
     		var $video = $('<source id="video" type="video/mp4">').attr("src", "/semi/resources/video/" + video[i]);
     		
-    		console.log(video[i]);
-    		console.log($('#video').attr("src"));
-    		
     		$('#videoList').append($video);
     	});
     </script>

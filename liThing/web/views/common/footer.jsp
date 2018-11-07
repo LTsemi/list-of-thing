@@ -8,12 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-		<link rel="stylesheet" href="../../resources/css/bootstrap.css">
-        <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../resources/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="../../resources/css/fontAwesome.css">
-        <link rel="stylesheet" href="../../resources/css/light-box.css">
-        <link rel="stylesheet" href="../../resources/css/templatemo-style.css">
+
 		
         <link href="https://fonts.googleapis.com/css?family=Gugi:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 		
@@ -24,6 +19,33 @@ html, body{width:100%height:100%}
 html{width:100%;height:100%}
 
 body{width:100%;height:100%}
+
+
+footer {
+  width: 100%;
+  height: 80px;
+  background-color: #313131;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+  font-weight: 200;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding-top: 33px;
+  letter-spacing: 0.5px;
+}
+
+footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #aaa;
+}
 </style>
 
 </head>
