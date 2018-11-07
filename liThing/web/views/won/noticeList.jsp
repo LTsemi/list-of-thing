@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.buyme.won.notice.model.vo.*"%>
     
-
+<%
+	Notice n = (Notice)request.getAttribute("notice");
+%>
     
 <!DOCTYPE html>
 <html>
@@ -121,13 +123,30 @@ http://www.templatemo.com/tm-520-highway
 		margin-right:auto;
 	}
 	
-	@font-face {
+@font-face {
           font-family: 'NanumSquareRoundR' ;
           src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
-        }
-        body { box-sizing: border-box;
+          }
+
+body { box-sizing: border-box;
             font-family: NanumSquareRoundR !important; 
-        }
+      }
+      
+#searchBtn {
+    background-color: white;
+    color: black;
+    border: 0.5px solid #BDBDBD;
+     height: 24px;
+}
+
+#searchCondition {
+ background-color: white;
+    color: black;
+    border: 0.5px solid #BDBDBD;
+    height: 24px;
+ }
+ 
+
 </style>
     </head>
 
@@ -137,30 +156,16 @@ http://www.templatemo.com/tm-520-highway
    
    
    
- <div class="page-heading">
+    <div class="page-heading2">
         <div class="container">
             <div class="heading-content">
-                <h1>List of thing</h1>
+                <h1>list of<em>thing :)</em></h1>
             </div>
         </div>
     </div>
 
-        <!-- <div class="video-overlay"></div> -->
-       <!--  <div class="video-content">
-            <div class="inner">
-              <h1 >공지사항</h1>
-              <p>FREE CSS TEMPLATE by <a href="http://www.templatemo.com" rel="nofollow">templatemo</a></p>
-              <p>Homepage with masonry image gallery</p>
-                <div class="scroll-icon">
-                    <a class="scrollTo" data-scrollTo="masonry" href="#"><img src="img/scroll-icon.png" alt=""></a>
-                </div>    
-            </div>
-        </div>
-       <video autoplay="" loop="" muted>
-        	<source src="highway-loop.mp4" type="video/mp4" />
-        </video> --> 
         
-        <div class="outer" >
+        <div class="outer" style=" height: 610px;" >
 		
 		
 		
@@ -198,7 +203,7 @@ http://www.templatemo.com/tm-520-highway
 										<br>
 										 리띵은 절대 다음과 같은 문자 메시지를 발송하지 않습니다.<br>
 										 <br>
-										(지금 리띵 모바일 앱 설치하시면 '착한 점심'공짜! 선착선 팡팡 lithing coupon.com)
+										(지금 리띵 모바일 앱 설치하시면 '착한 점심'공짜! 선착순 팡팡 lithing coupon.com)
 										<br>
 										<br>
 										해당 메시지를 확인하셨을 경우, 즉시 삭제하시고<br>
@@ -307,7 +312,7 @@ http://www.templatemo.com/tm-520-highway
 										리띵을 찾아주신 여러분께 진심으로 감사드립니다.<br> 
 										많은 여러분의 성원에 힘입어 드디어 저희 List of thing 사이트가 문을 열었습니다!<br>
 										<br>
-										혹시 먹어보고 싶은 식품의 리뷰를 검색하느라 힘드신적 있으신가요?<br>
+										혹시 먹어보고 싶은 식품의 리뷰를 검색하느라 힘들었던 적 있으신가요?<br>
 										혹은 다른 사람들에게 나의 인생 식품을 소개하고 싶지만 마땅한 공간이 없어서 안타까웠던 적 있으신가요?<br>
 										바로 이런 분들을 위해 리띵이 탄생했습니다!<br>
 										<br>
@@ -333,7 +338,7 @@ http://www.templatemo.com/tm-520-highway
 				<option value="content">내용</option>
 			</select>
 			<input type="search" id="keyword" placeholder="키워드를 입력하세요:)"> 
-			<button type="button" onclick="search();">검색하기</button>
+			<button type="button" id="searchBtn" onclick="search();">검색하기</button>
 			<%--인라인 방식 --%>
 			
 			
@@ -342,8 +347,7 @@ http://www.templatemo.com/tm-520-highway
 				<button onclick="location.href='views/notice/noticeInsertForm.jsp'">작성하기</button>
 			<% } %> --%>
 			
-			
-			
+
 		</div>
         		
   
