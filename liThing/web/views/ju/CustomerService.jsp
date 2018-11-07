@@ -14,6 +14,8 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="../../resources/css/CustumerService.css">
+        <link rel="stylesheet" href="../../resources/css/templatemo-style.css">
+        
 		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
