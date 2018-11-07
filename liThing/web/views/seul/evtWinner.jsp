@@ -148,44 +148,46 @@ http://www.templatemo.com/tm-520-highway
             10월 9일~10월 22일까지 진행되었던 새우깡 무료샘플 이벤트! <br>
             
             기간 내 참여해주신 모든 분들께 감사드리며, 당첨자를 발표하겠습니다. <br><br>
-            
-             
-            *** [Ctrl + F] 를 이용하시면 쉽게 당첨여부를 확인 하실 수 있습니다. <br><br>
-            
-             
-            <table class="winner-tab" border="1"> 
-                    <tr class="first">
-                        <th>당첨자ID</th>
-                        <th>이름</th>
-                    </tr>
-                    <tr>
-                        <td>user01</td>
-                        <td>사용*</td>
-                    </tr>
-                    <tr>
-                        <td>user02</td>
-                        <td>너구*</td>
-                    </tr>
-                    <tr>
-                        <td>user03</td>
-                        <td>복숭*</td>
-                    </tr>
-                    <tr>
-                        <td>user04</td>
-                        <td>라이*</td>
-                    </tr>
-                </table>
-            <br><br>
-        
-            당첨되신 회원님들 너무너무 축하드립니다! <br><br>
-            
-            
+                       
             * 당첨되신 상품은 회원정보에 입력해주신 주소지로 7/24(화) 일괄지급됩니다.
+        </p>    
+             
             <br><br>
-      </p>
+            
+             
+            <h4 style="font-weight: 600"> *** [Ctrl + F] 를 이용하시면 쉽게 당첨여부를 확인 하실 수 있습니다.</h4>
+        <br />
+        <table class="winner-tab" border="1"> 
+            <tr class="first">
+                <th>당첨자ID</th>
+                <th>이름</th>
+            </tr>
+            <tr>
+                <td>user01</td>
+                <td>사용*</td>
+            </tr>
+            <tr>
+                <td>user02</td>
+                <td>너구*</td>
+            </tr>
+            <tr>
+                <td>user03</td>
+                <td>복숭*</td>
+            </tr>
+            <tr>
+                <td>user04</td>
+                <td>라이*</td>
+            </tr>
+        </table>	
+        <br /><br />
+
+      
       <hr>
       <br>
       <a href="eventWin.jsp" class="listbtn">목록으로</a>
+      <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
+      <a href="#" class="listbtn">수정하기</a>		  
+	  <%-- <% } %> --%>
     </div>
     </div>
 
