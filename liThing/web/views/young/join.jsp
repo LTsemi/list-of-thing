@@ -74,7 +74,7 @@
                             	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2"/>
 
                                 <span class="input">
-                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2">
+                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2" name="tel2" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  style="IME-MODE : disabled;">
                                 </span>
                                 <div class="tooltip blind" id="telTooltip"></div>
                             </div>
@@ -104,19 +104,19 @@
                         <div class="row birth">
                             <div class="col tooltip-wrap">
                                     <span class="select-wrap"> &nbsp;&nbsp;
-                                    <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthyear" id="birthyear" placeholder="출생 년도"/>
+                                    <input style="margin-left : 15px;" type="number" name="birthyear" min="1990" max="2018" id="birthyear" placeholder="년도"/>
      <!--                                    <span align=center> class="selectbox"
                                         </span> -->
                                     </span>
                                 <span class="select-wrap">&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span> <!-- class="selectbox" -->
-                                        	<input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthmon" id="birthmon" placeholder="월"/>
+                                        	<input style="margin-left : 25px;" type="number" name="birthmon" min="1" max="12"  id="birthmon" placeholder="월"/>
 
                                         </span>
                                     </span>
                                 <span class="select-wrap">&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span> <!-- class="selectbox" -->
-                                        <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthdate" id="birthdate" placeholder="일"/>
+                                        <input style="margin-left : 25px; margin-bottom: 5px; margin-top : 5px;" type="number" name="birthdate" min="1" max="31"  id="birthdate"  placeholder="일"/>
 
                                         </span>
                                     </span>
