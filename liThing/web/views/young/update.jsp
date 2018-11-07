@@ -53,14 +53,14 @@
                                 <input type="password" placeholder="비밀번호 재확인" maxlength="15" id="userPwd2" name="userPwd2">
                             </span>
                             <span class="input">
-                                <input type="text" placeholder="이름" id="userName" name="userName">
+                                <input type="text" placeholder="이름" id="userName" name="userName" value="<%= mh.getUserName() %>">
                             </span>
                         </div>
                         <div class="row domain">
                             <div class="col tooltip-wrap">
                                 <span class="input">
 <!--                                 <input type="email" name="email" id="email" /> -->
-                                    <input type="email" placeholder="이메일주소" maxlength="30" id="email" name="email" style="border : none">
+                                    <input type="email" placeholder="이메일주소" maxlength="30" id="email" name="email" style="border : none" value="<%= mh.getEmail() %>">
                                 </span>
 
                                     <div class="tooltip blind" id="mailTooltip"></div>
@@ -73,10 +73,10 @@
                         </div>
                         <div class="row tel">
                             <div class="col tooltip-wrap">
-                            	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2"/>
-
+                            	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2" value="<%= mh.getPhone().substring(0, 3) %>"/>
+								
                                 <span class="input">
-                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2">
+                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2" value="<%= mh.getPhone().substring(3, 10) %>" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  style="IME-MODE : disabled;">
                                 </span>
                                 <div class="tooltip blind" id="telTooltip"></div>
                             </div>

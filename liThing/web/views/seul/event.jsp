@@ -17,17 +17,7 @@ http://www.templatemo.com/tm-520-highway
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         
-		
-
-        <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="../resources/css/fontAwesome.css">
-        <link rel="stylesheet" href="../resources/css/light-box.css">
-        <link rel="stylesheet" href="../resources/css/templatemo-style.css">
-
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        
-           
+          
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
@@ -85,15 +75,20 @@ http://www.templatemo.com/tm-520-highway
       <div id="home" class="tab-pane fade in active">
       <!--   이벤트 창    -->
       <div id="lithingevt">
-          <br><br><br><br>
+      	  <br><br>
+      	  
+     	  <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
+		  <a href="eventPageInsertForm.jsp" class="listbtn">이벤트 추가</a>
+		  <%-- <% } %> --%>
+		  
+          <br><br>
           <div class="row">
-      
              
             <div class="thumbnail">
               <span class="dday">D-30</span>
               <a href="eventPage.jsp" target="_top">
                 <p class="evtImg">
-                  <img src="image/lighs.jpg">
+                  <img src="../../resources/img/big_portfolio_item_3.png" width="200px">
                 </p>
                 <div class="evtText">
                   <h3>무료 체험 이벤트</h3>
@@ -106,7 +101,7 @@ http://www.templatemo.com/tm-520-highway
                 <span class="dday">D-26</span>
                 <a href="eventPage.jsp" target="_top">
                   <p class="evtImg">
-                    <img src="image/lighs.jpg">
+                    <img src="../../resources/img/big_portfolio_item_3.png" width="200px">
                   </p>
                   <div class="evtText">
                     <h3>무료 체험 이벤트</h3>
@@ -119,7 +114,7 @@ http://www.templatemo.com/tm-520-highway
                   <span class="dday">D-08</span>
                   <a href="eventPage.jsp" target="_top">
                     <p class="evtImg">
-                      <img src="image/lighs.jpg">
+                      <img src="../../resources/img/big_portfolio_item_3.png" width="200px">
                     </p>
                     <div class="evtText">
                       <h3>무료 체험 이벤트</h3>
@@ -133,73 +128,7 @@ http://www.templatemo.com/tm-520-highway
           <br><br><br><br>
         </div>
       </div>
-
-<!-- 
-        이벤트 창   
-      <div id="menu1" class="tab-pane fade">
-        <div id="lithingevt">
-          <br><br>
-         
-          <br><br>
-          페이지 이동 버튼
-          <div class="row mb-2">
-           <div class="pagingArea">
-               <nav aria-label="Page">
-                     <ul class="pagination">
-                       <li class="page-item">
-                         <a class="page-link" href="#" aria-label="Previous">
-                           <span aria-hidden="true">«</span>
-                           <span class="sr-only">Previous</span>
-                         </a>
-                       </li>
-                       <li class="page-item"><a class="page-link" href="#">1</a></li>
-                       <li class="page-item"><a class="page-link" href="#">2</a></li>
-                       <li class="page-item"><a class="page-link" href="#">3</a></li>
-                       <li class="page-item">
-                         <a class="page-link" href="#" aria-label="Next">
-                           <span aria-hidden="true">»</span>
-                           <span class="sr-only">Next</span>
-                         </a>
-                       </li>
-                     </ul>
-               </nav>
-           </div>
-          </div>
-          <br><br><br><br>
-        </div>
-      </div> -->
-    </div>
-<!--     <script>
-            $(document).ready(function(){
-              // Initialize Tooltip
-              $('[data-toggle="tooltip"]').tooltip(); 
-              
-              // Add smooth scrolling to all links in navbar + footer link
-              $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-            
-                // Make sure this.hash has a value before overriding default behavior
-                if (this.hash !== "") {
-            
-                  // Prevent default anchor click behavior
-                  event.preventDefault();
-            
-                  // Store hash
-                  var hash = this.hash;
-            
-                  // Using jQuery's animate() method to add smooth page scroll
-                  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                  $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                  }, 900, function(){
-               
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                  });
-                } // End if
-              });
-            })
-            </script> -->
-  
+	</div>     
 </div>     
 
    
@@ -207,13 +136,6 @@ http://www.templatemo.com/tm-520-highway
 
 <%@ include file="../common/footer.jsp" %>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-    <script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
-    
-    <script src="/semi/resources/js/plugins.js"></script>
 
 
 </body>

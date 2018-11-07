@@ -13,17 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="../resources/css/fontAwesome.css">
-        <link rel="stylesheet" href="../resources/css/light-box.css">
-        <link rel="stylesheet" href="../resources/css/templatemo-style.css">
-
         <link rel="stylesheet" href="../../resources/css/CustumerService.css">
+        <link rel="stylesheet" href="../../resources/css/templatemo-style.css">
+        
 		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
         <style>
                 @font-face {
@@ -40,9 +34,17 @@
 <body>
 
 <%@ include file="../common/header.jsp" %>
-    <div id="help">
-    <h1 id="ctitle">고객센터</h1>
-        
+    	<div class="page-heading">
+	        <div class="container">
+	            <div class="heading-content">
+	                <h1 id="ctitle">List of Thing</h1>
+	            </div>
+	        </div>
+    	</div>
+    	
+    	<h1>고객센터</h1>
+    	
+    <div id="help">        
         <div class="question"><span>Q</span>리뷰를 수정하고 싶어요.</div>
         <p class="content" style=""><span>A</span>
         	수정할 리뷰의 제목과 작성자, 수정할 내용을 관리자 메일로 보내주시면 수정해드립니다. <br />
@@ -51,7 +53,7 @@
         
         <div class="question"><span>Q</span>리뷰하고 싶은 상품이 있습니다.</div>
         <p class="content"><span>A</span>
-        	추가 되었으면 하는 상품의 정보를 관리자 메일로 보내주시면 추가 해드리겠습니다 ^^ <br />
+        	추가 되었으면 하는 상품의 정보를 관리자 메일로 보내주시면 추가 해드리겠습니다. <br />
         	관리자 메일 : test@test.com
         </p>
 
@@ -81,7 +83,7 @@
 
         <div class="question"><span>Q</span>제가 작성한 리뷰가 삭제되었습니다.</div>
         <p class="content"><span>A</span>
-        	욕설, 비방, 명예훼손의 내용이 담긴 리뷰나 불성실한 내용이나 관련 없는 내용, 광고성 내용일 경우에 관리자의 검수를 거친 후 삭제될 수 있습니다.
+        	욕설, 비방, 명예훼손의 내용이 담긴 리뷰 또는 불성실한 내용이나 관련 없는 내용, 광고성 내용일 경우에 관리자의 검수를 거친 후 삭제될 수 있습니다.
         </p>
 
         <div class="question"><span>Q</span>제가 작성한 리뷰는 어디서 확인하나요?</div>

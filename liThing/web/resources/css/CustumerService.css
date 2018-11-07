@@ -1,6 +1,5 @@
 h1{
     text-align: center;
-	margin-top:95px;
 }
 
 article {
@@ -48,5 +47,5 @@ article {
 }
 
 #help {
-    margin-top:95px;
+	margin-top: 0px;
 }

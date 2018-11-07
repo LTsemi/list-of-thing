@@ -7,9 +7,8 @@
 <title>리띵 회원가입</title>
 
         <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
-        <link rel="stylesheet" href="../../resources/css/sub.css">
         <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="../../resources/js/coomember.js"></script>
+
         <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
         <style>
     @font-face {
@@ -20,6 +19,7 @@
             font-family: NanumSquareRoundR !important; 
         }
    </style>
+
 </head>
 <body>
 
@@ -74,7 +74,7 @@
                             	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2"/>
 
                                 <span class="input">
-                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2">
+                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2" name="tel2" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  style="IME-MODE : disabled;">
                                 </span>
                                 <div class="tooltip blind" id="telTooltip"></div>
                             </div>
@@ -104,19 +104,19 @@
                         <div class="row birth">
                             <div class="col tooltip-wrap">
                                     <span class="select-wrap"> &nbsp;&nbsp;
-                                    <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthyear" id="birthyear" placeholder="출생 년도"/>
+                                    <input style="margin-left : 15px;" type="number" name="birthyear" min="1900" max="2018" id="birthyear" placeholder="년도"/>
      <!--                                    <span align=center> class="selectbox"
                                         </span> -->
                                     </span>
                                 <span class="select-wrap">&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span> <!-- class="selectbox" -->
-                                        	<input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthmon" id="birthmon" placeholder="월"/>
+                                        	<input style="margin-left : 25px;" type="number" name="birthmon" min="1" max="12"  id="birthmon" placeholder="월"/>
 
                                         </span>
                                     </span>
                                 <span class="select-wrap">&nbsp;&nbsp;&nbsp;&nbsp;
                                         <span> <!-- class="selectbox" -->
-                                        <input style="margin-left : 25px; margin-bottom: 15px;" type="text" name="birthdate" id="birthdate" placeholder="일"/>
+                                        <input style="margin-left : 25px; margin-bottom: 5px; margin-top : 5px;" type="number" name="birthdate" min="1" max="31"  id="birthdate"  placeholder="일"/>
 
                                         </span>
                                     </span>
@@ -194,6 +194,34 @@ function addrSearch() {
         }
     }).open();
 };
+
+$('#idCheck').click(function(){
+	$.ajax({
+		url : "/semi/idDup.me",
+		type : "post",
+		data : { userId : $('#userId').val()},
+		success : function(data){
+			
+			if(data == 'no'){
+				$('#userId').select();
+				$(".tooltip").addClass("blind");
+                $("#idTooltip").text("이미 사용중인 아이디 입니다.").removeClass("blind");
+                $("#userId").focus();
+			} else {
+				$("#idTooltip").text("사용가능한 아이디 입니다.").removeClass("blind");
+			}
+			
+			
+		}, error : function(data){
+
+			console.log("에러 발생");
+		}
+		
+		
+	});
+});
+
+
 
 </script>
 </body>

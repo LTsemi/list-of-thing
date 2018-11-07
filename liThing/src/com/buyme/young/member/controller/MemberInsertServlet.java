@@ -42,7 +42,7 @@ public class MemberInsertServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		
 		String phone = request.getParameter("tel1") + request.getParameter("tel2");
-		
+		System.out.println(request.getParameter("tel2"));
 		String address = request.getParameter("zipCode") + ", "
 				       + request.getParameter("address1") + ", "
 				       + request.getParameter("address2");

@@ -5,6 +5,7 @@ import static com.buyme.common.JDBCTemplate.commit;
 import static com.buyme.common.JDBCTemplate.getConnection;
 import static com.buyme.common.JDBCTemplate.rollback;
 
+
 import java.sql.Connection;
 
 import com.buyme.young.member.exception.MemberException;
@@ -67,6 +68,18 @@ public class MemberService {
 		if(result > 0) commit(con);
 		else  rollback(con);
 		
+		close(con);
+		
+		return result;
+	}
+	
+	public int idDupCheck(String id) {
+		// TODO Auto-generated method stub
+		
+		Connection con = getConnection();
+		
+		int result = mDao.idDupCheck(con, id);
+				
 		close(con);
 		
 		return result;
