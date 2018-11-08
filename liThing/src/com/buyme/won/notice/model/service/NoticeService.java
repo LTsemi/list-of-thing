@@ -31,6 +31,21 @@ public class NoticeService {
 			return list;
 			
 		}
+
+		public int insertNotice(Notice n) {
+			int result = 0;
+			
+			Connection con = getConnection();
+			
+			result = nDao.insertNotice(con, n);
+			
+			if(result > 0) commit(con);
+			else rollback(con);
+			
+			close(con);
+			
+			return result;
+		}
 	
 	
 }

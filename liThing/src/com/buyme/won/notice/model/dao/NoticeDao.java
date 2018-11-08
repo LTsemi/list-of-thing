@@ -115,6 +115,35 @@ public class NoticeDao {
 		return list;
 		
 	}
+
+	public int insertNotice(Connection con, Notice n) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("insertNotice");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, n.getNtitle());
+			pstmt.setString(2, n.getNcontent());
+			pstmt.setString(3, n.getNwriter());
+			pstmt.setDate(4, n.getNdate());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 }
