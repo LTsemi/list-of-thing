@@ -215,7 +215,7 @@ nav {
                       <a href="/semi/views/sic/Ranking.jsp">랭 킹</a>
                   </li>
                   <li>
-                      <a href="/semi/views/won/noticeList.jsp">공지사항</a>
+                      <a href="/semi/selectList.no">공지사항</a>
                   </li>
                   <li>
                       <a href="/semi/views/ju/LTpick.jsp">리띵's pick</a>
