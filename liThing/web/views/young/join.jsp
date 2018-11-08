@@ -50,9 +50,14 @@
                             <span class="input">
                                 <input type="password" placeholder="비밀번호 재확인" maxlength="15" id="userPwd2" name="userPwd2">
                             </span>
-                            <span class="input">
+                            <div class="input tooltip-wrap">
+                                <input type="text" placeholder="이름" id="userName" name="userName">
+                                <div class="tooltip blind" id="nameTooltip" ></div>
+                            </div>
+<!--                             <span class="input">
                                 <input type="text" placeholder="이름" id="userName" name="userName">
                             </span>
+                            	<div class="tooltip blind" id="nameTooltip"></div> -->
                         </div>
                         <div class="row domain">
                             <div class="col tooltip-wrap">
@@ -60,7 +65,6 @@
 <!--                                 <input type="email" name="email" id="email" /> -->
                                     <input type="email" placeholder="이메일주소" maxlength="30" id="email" name="email" style="border : none">
                                 </span>
-
                                     <div class="tooltip blind" id="mailTooltip"></div>
 
                             </div>
@@ -71,7 +75,7 @@
                         </div>
                         <div class="row tel">
                             <div class="col tooltip-wrap">
-                            	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2"/>
+                            	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2" id="tel1"/>
 
                                 <span class="input">
                                     <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2" name="tel2" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  style="IME-MODE : disabled;">
@@ -89,7 +93,7 @@
                                 <div class="input tooltip-wrap">
                                     <span class="input"><input type="text" id="zipCode" name="zipCode" placeholder="우편번호"></span>
                                     <button type="button" class="double-check" id="ckZip" onclick="addrSearch();">검색</button>
-                                    <div class="tooltip blind" id="idTooltip"></div>
+                                    <div class="tooltip blind" id="addressTooltip"></div>
                                 </div>
                             </div>
                             <div class="input tooltip-wrap">
@@ -145,84 +149,165 @@ function insertMember() {
 }
 
 $("#joinForm").submit(function(event){
-	if($("#userPwd").val() == "" || $("#userId").val() == "") alert("아이디나 비밀번호는 필수 값입니다.");
-	else if($('#userPwd').val() != $('#userPwd2').val()) alert("비밀번호 확인 값과 다릅니다.");
-	else return;
-	event.preventDefault();
+	if($("#userPwd").val() == "" || $("#userId").val() == ""){
+		alert("아이디나 비밀번호는 필수 값입니다.");
+		event.preventDefault();
+		return;
+	}else if($('#userPwd').val() != $('#userPwd2').val()){
+		alert("비밀번호 확인 값과 다릅니다.");
+		event.preventDefault();
+		return;
+	}
+	
+	
+	var email = $("#email").val();
+
+	var regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	var isEmailValid = true;
+
+	var name = $("#userName").val();
+	
+	if(name === ""){
+		$(".tooltip").addClass("blind");
+		$("#nameTooltip").text("이름을 입력해주세요.").removeClass("blind");
+		$("#userName").focus();
+		event.preventDefault();
+		return;
+	}
+	
+	
+	if (email === "") {
+		$(".tooltip").addClass("blind");
+		$("#mailTooltip").text("이메일 주소를 입력해주세요.")
+				.removeClass("blind");
+		$("#email").focus();
+		event.preventDefault();
+		return;
+	}
+	
+	if(!$('input:radio[name=gender]').is(':checked')){
+		$(".tooltip").addClass("blind");
+		$("#mailTooltip").append($("#mailTooltip").text("성별을 선택해주세요."))
+				.removeClass("blind");
+		event.preventDefault();
+		return;
+	}
+	
+
+	var tel1 = $("#tel1").val();
+	var tel2 = $("#tel2").val();
+	
+	if(tel1 === "" || tel2 ==="" ){
+		$(".tooltip").addClass("blind");
+		$("#telTooltip").text("연락처를 입력해주세요.").removeClass("blind");
+		$("#tel2").focus();
+		event.preventDefault();
+		return;
+	}
+	
+	var zipcode = $("#zipCode").val();
+	var add = $("#address1").val();
+	var ress = $("#address2").val();
+	
+	if(zipcode === "" || add === "" || ress === ""){
+		$(".tooltip").addClass("blind");
+		$("#addressTooltip").text("주소를 입력해주세요.").removeClass("blind");
+		$("#address2").focus();
+		event.preventDefault();
+		return;
+	}
+	
+	var birthyear = $("#birthyear").val();
+	var birthmon = $("#birthmon").val();
+	var birthdate = $("#birthdate").val();
+	
+	if(birthyear === "" || birthmon === "" || ress === ""){
+		$(".tooltip").addClass("blind");
+		$("#birthTooltip").text("생년월일을 입력해주세요.").removeClass("blind");
+		event.preventDefault();
+		return;
+	}
+
 });
 
-//참조 API : http://postcode.map.daum.net/guide
-function addrSearch() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var fullAddr = ''; // 최종 주소 변수
-            var extraAddr = ''; // 조합형 주소 변수
-
-            // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                fullAddr = data.roadAddress;
-
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                fullAddr = data.jibunAddress;
-            }
-
-            // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
-            if(data.userSelectedType === 'R'){
-                //법정동명이 있을 경우 추가한다.
-                if(data.bname !== ''){
-                    extraAddr += data.bname;
-                }
-                // 건물명이 있을 경우 추가한다.
-                if(data.buildingName !== ''){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-                fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-            }
-
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            $('#zipCode').val(data.zonecode); //5자리 새우편번호 사용
-            
-            $('#address1').val(fullAddr);
-
-            // 커서를 상세주소 필드로 이동한다.
-            $('#address2').focus();
-        }
-    }).open();
-};
-
-$('#idCheck').click(function(){
-	$.ajax({
-		url : "/semi/idDup.me",
-		type : "post",
-		data : { userId : $('#userId').val()},
-		success : function(data){
-			
-			if(data == 'no'){
-				$('#userId').select();
-				$(".tooltip").addClass("blind");
-                $("#idTooltip").text("이미 사용중인 아이디 입니다.").removeClass("blind");
-                $("#userId").focus();
-			} else {
-				$("#idTooltip").text("사용가능한 아이디 입니다.").removeClass("blind");
-			}
-			
-			
-		}, error : function(data){
-
-			console.log("에러 발생");
-		}
-		
-		
-	});
-});
 
 
+	//참조 API : http://postcode.map.daum.net/guide
+	function addrSearch() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var fullAddr = ''; // 최종 주소 변수
+						var extraAddr = ''; // 조합형 주소 변수
+
+						// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+							fullAddr = data.roadAddress;
+
+						} else { // 사용자가 지번 주소를 선택했을 경우(J)
+							fullAddr = data.jibunAddress;
+						}
+
+						// 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+						if (data.userSelectedType === 'R') {
+							//법정동명이 있을 경우 추가한다.
+							if (data.bname !== '') {
+								extraAddr += data.bname;
+							}
+							// 건물명이 있을 경우 추가한다.
+							if (data.buildingName !== '') {
+								extraAddr += (extraAddr !== '' ? ', '
+										+ data.buildingName : data.buildingName);
+							}
+							// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+							fullAddr += (extraAddr !== '' ? ' (' + extraAddr
+									+ ')' : '');
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						$('#zipCode').val(data.zonecode); //5자리 새우편번호 사용
+
+						$('#address1').val(fullAddr);
+
+						// 커서를 상세주소 필드로 이동한다.
+						$('#address2').focus();
+					}
+				}).open();
+	};
+
+	$('#idCheck').click(
+			function() {
+				$.ajax({
+					url : "/semi/idDup.me",
+					type : "post",
+					data : {
+						userId : $('#userId').val()
+					},
+					success : function(data) {
+
+						if (data == 'no') {
+							$('#userId').select();
+							$(".tooltip").addClass("blind");
+							$("#idTooltip").text("이미 사용중인 아이디 입니다.")
+									.removeClass("blind");
+							$("#userId").focus();
+						} else {
+							$("#idTooltip").text("사용가능한 아이디 입니다.").removeClass(
+									"blind");
+						}
+
+					},
+					error : function(data) {
+
+						console.log("에러 발생");
+					}
+
+				});
+			});
 </script>
 </body>
 </html>

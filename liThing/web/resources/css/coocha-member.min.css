@@ -826,7 +826,7 @@
     line-height:16px;
     padding-left:28px;
     display:inline-block;
-    background-image:url(../images/common/common/check-normal.svg);
+
     background-repeat:no-repeat;
     font-size:16px;
     color:#424242;
@@ -1002,22 +1002,21 @@ textarea{
     resize:none
 }
 .checkbox label{
-    background-image:url(../images/member/check-normal.svg)
-}
+ }
 .checkbox input[type="checkbox"]:checked+label{
-    background-image:url(../images/member/check-checked.svg)
+
 }
 .radio label{
-    background-image:url(../images/member/radio-normal.svg)
-}
+
+    }
 .radio input[type="radio"]:checked+label{
-    background-image:url(../images/member/radio-checked.svg)
+
 }
 .table-form .selectbox .cui-select .cui-select-inner .cui-select-i{
-    background-image:url(../images/member/select-arrow-down.svg)
+
 }
 .table-form .selectbox .cui-select.cui-select-open .cui-select-inner .cui-select-i{
-    background-image:url(../images/member/select-arrow-up.svg)
+
 }
 .member-container{
     position:relative;
@@ -1031,7 +1030,7 @@ textarea{
     display:block;
     width:90px;
     height:30px;
-    background-image:url(../images/member/logo-white.svg);
+
     background-repeat:no-repeat;
     background-size:90px auto
 }

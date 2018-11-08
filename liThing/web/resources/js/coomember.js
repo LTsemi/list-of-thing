@@ -49,10 +49,6 @@ JoinMember.prototype = {
 	},
 	
 	isAlphaNumetic : function(str){
-/*		if( /[^a-zA-Z0-9]/.test( str ) ) {
-	       return false;
-	    }
-	    return true;  */
 		var ID = /^[a-zA-Z0-9]{5,15}$/;
 		return(ID.test(str));
 	},
@@ -217,7 +213,7 @@ JoinMember.prototype = {
 			
 			
 			//이메일 유효성 체크
-			var email1 = $("#email1").val();
+			var email1 = $("#email").val();
 			var email2 = $("#emailDomain").val();
 
             if($("#emailDomain").val()=="직접입력"){
