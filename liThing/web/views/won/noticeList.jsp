@@ -10,7 +10,7 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	
-	String[] num = {"One", "Two", "Three", "Four", "Five"};
+	int i = 0;
 
 %>
 
@@ -196,37 +196,36 @@ body {
 
 	<div class="outer" style="height: 610px;">
 
-		<div class="container">
+		
+	 <div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center wow zoomIn">
-						<br />
-
-						<h1 style="font-family: Gugi;">공지사항</h1>
+					<br />
+					
+						<h1 style="font-family: Gugi;">공지사항 </h1>
+						
 						<span></span>
-
+						<!-- <p>Our Frequently Asked Questions here.</p> -->
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			
+			<div class="row">				
 				<div class="col-md-12">
-					<div class="panel-group" id="accordion" role="tablist"
-						aria-multiselectable="true">
-						
-						<% for(Notice n : list){ %>
-						<% int i = 0; %>
+
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<% for(Notice n : list){ %>
+					<% if((i%5 == 0)){ %>
 						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="heading<%= num[i] %>">
+							<div class="panel-heading" role="tab" id="headingOne">
 								<h4 class="panel-title">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion" href="#collapse<%= num[i] %>"
-										aria-expanded="true" aria-controls="collapse<%= num[i] %>"> 
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 										<%= n.getNtitle() %>
 									</a>
 								</h4>
 							</div>
-							<div id="collapse<%= num[i] %>" class="panel-collapse collapse in"
-								role="tabpanel" aria-labelledby="heading<%= num[i] %>">
+							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								<div class="panel-body">
 									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p><%= n.getNcontent() %></p>
@@ -234,41 +233,109 @@ body {
 								</div>
 							</div>
 						</div>
-						<% i++; %>
-					<% } %>
+					<% } else if(i%5 == 1 || i%5 == 6){%>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingTwo">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										<%= n.getNtitle() %>
+									</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+								<div class="panel-body">
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
+									<p><%= n.getNcontent() %></p>
+									<p>작성자:<%= n.getNwriter() %> &nbsp; 작성일 :<%= n.getNdate() %> </p>
+								</div>
+							</div>
+						</div>
+						<% }else if(i%5 == 2 || i%5 == 7){ %>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingThree">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+										<%= n.getNtitle() %>
+									</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+								<div class="panel-body">
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
+									<p><%= n.getNcontent() %></p>
+									<p>작성자:<%= n.getNwriter() %> &nbsp; 작성일 :<%= n.getNdate() %> </p>
+								</div>
+							</div>
+						</div>
+						<% }else if(i%5 == 3 || i%5 == 8){ %>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingFour">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+										<%= n.getNtitle() %>
+									</a>
+								</h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+								<div class="panel-body">
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
+									<p><%= n.getNcontent() %></p>
+									<p>작성자:<%= n.getNwriter() %> &nbsp; 작성일 :<%= n.getNdate() %> </p>
+								</div>
+							</div>
+						</div>
+						<% }else if(i%5 == 4 || i%5 == 9){ %>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingFive">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+										<%= n.getNtitle() %>
+									</a>
+								</h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+								<div class="panel-body">
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
+									<p><%= n.getNcontent() %></p>
+									<p>작성자:<%= n.getNwriter() %> &nbsp; 작성일 :<%= n.getNdate() %> </p>
+								</div>
+							</div>
+						</div>
+						<%} %>
+						<% i++; System.out.println("i: " + i);%>
+					<% } %>	
 					</div>
-				</div>
-				<!--- END COL -->
-			</div>
-			<!--- END ROW -->
+				</div><!--- END COL -->	
+				
+			</div><!--- END ROW -->			
 		</div>
 	</div>
 	
 	
 		<%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
-			<button class="numBtn" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
-			<button class="numBtn" disabled><</button>
+			<button disabled><</button>
 			<%  }else{ %>
-			<button class="numBtn" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
 					if(p == currentPage){	
 			%>
-				<button class="numBtn" disabled><%= p %></button>
+				<button disabled><%= p %></button>
 			<%      }else{ %>
-				<button class="numBtn" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
-			<%      } %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
+			<%  } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
-			<button class="numBtn" disabled>></button>
+			<button disabled>></button>
 			<%  }else{ %>
-			<button class="numBtn" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button class="numBtn" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
 	
@@ -315,6 +382,8 @@ body {
 						
 		})(jQuery);
 		
+
+
 	</script>
 
 

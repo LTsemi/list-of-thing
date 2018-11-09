@@ -45,10 +45,11 @@ public class NoticeListServlet extends HttpServlet {
 		currentPage = 1;
 		
 		// 한번에 보여 줄 페이지 수, 한페이지에 표시할 글 수 
-		limit = 6;
+		limit = 5;
 		
-		if(request.getParameter("currentPge") !=null){
+		if(request.getParameter("currentPage") !=null){
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			System.out.println("현재 page : " + currentPage);
 		}
 		
 		// 전체 게시글 수 조회
@@ -57,8 +58,11 @@ public class NoticeListServlet extends HttpServlet {
 		System.out.println("전체 공지글 수 : "+listCount);
 		
 		maxPage = (int)((double)listCount/limit +0.9);
-		startPage = ((int)((double)listCount/limit +0.9)-1)*limit+1;
+		startPage = ((int)((double)currentPage/limit +0.9)-1)*limit+1;
 		endPage = startPage + limit-1;
+		
+		System.out.println("endpage : " + endPage);
+		System.out.println("startPage : " + startPage);
 		
 		if(endPage > maxPage){
 			endPage = maxPage;
