@@ -3,6 +3,7 @@ package com.buyme.ju.customerService.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.buyme.common.JDBCTemplate.*;
+
 import com.buyme.ju.customerService.model.vo.CustomerService;
 
 public class CustomerServiceDao {
@@ -52,8 +54,8 @@ public class CustomerServiceDao {
 				CustomerService c = new CustomerService();
 				c.setCtitle(rset.getString("ctitle"));
 				c.setCcontent(rset.getString("ccontent"));
-				/*c.setCno(rset.getInt("cno"));
-				c.setUserid(rset.getString("name"));
+				c.setCno(rset.getInt("cno"));
+				/*c.setUserid(rset.getString("name"));
 				c.setCdate(rset.getDate("cdate"));*/
 				
 				list.add(c);
@@ -68,6 +70,71 @@ public class CustomerServiceDao {
 		}
 		
 		return list;
+	}
+
+	public int updateCustomerService(Connection con, CustomerService c) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateCustomerService");
+		
+		try{ 
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setString(1, c.getCtitle());
+			pstmt.setString(2, c.getCcontent());
+			pstmt.setInt(3, c.getCno());
+			
+			
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		
+		} catch (SQLException e) {
+			
+		} finally {
+			
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	public CustomerService selectOne(Connection con, int cno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		CustomerService c = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+		
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setInt(1, cno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				c = new CustomerService();
+				
+				c.setCno(cno);
+				c.setCtitle(rset.getString("ctitle"));
+				c.setCcontent(rset.getString("ccontent"));
+				c.setUserid(rset.getString("USERNAME"));
+				c.setCdate(rset.getDate("cdate"));
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return c;
 	}
 
 }

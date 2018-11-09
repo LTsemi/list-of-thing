@@ -9,6 +9,7 @@
         <script src="../../resources/js/vendor/jquery-3.3.1.min.js"></script>
 
         <link rel="stylesheet" href="../../resources/css/thema.css">
+        <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo-style.css">
         
         <style>
     	@font-face {
@@ -24,89 +25,106 @@
     <body>
         <%@ include file="../common/header.jsp" %>
         
-        <h1 id="ttitle" style="margin-top:100px;">OO 테마</h1>
-
-        <div id="thema_detail">
+        <div class="page-heading">
+	        <div class="container">
+	            <div class="heading-content">
+	                <h1>테마</h1>
+	            </div>
+	        </div>
+        </div>
+        
+      <div id="thema_detail">
+                <h1 style="text-align : left; margin-left: 15px;">테마명</h1>
             <section>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score" style="color:#FFA41F;">★★★★★</span>
                 </article>
                  <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
                             <img src="../../resources/img/big_portfolio_item_2.png" id="thema_view_pic">
                         </div>
-                        <p>상품링크</p>
+                        <p>상품명</p>
                     </a>
+                    5.0 <span id="score">★★★★★</span>
                 </article>
             </section>
         </div>

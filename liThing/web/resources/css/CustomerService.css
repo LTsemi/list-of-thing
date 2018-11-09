@@ -46,22 +46,18 @@ article {
 	font-family: 'Righteous', cursive;
 }
 
-/* #help {
-	margin-top: 0px;
-} */
-
-.insertBtn {
-    padding: 10px 20px;
+button {
+    padding: 5px 10px;
     background-color: white;
     border: 1px solid lightgray;
     color: gray;
     border-radius: 0;
     transition: .2s;
     margin: 0 auto;
-    vertical-align: right;
-
 }
-.insertBtn:hover, .btn:focus {
+
+
+button:hover {
     border: 1px solid rgb(255, 208, 56);
     background-color: rgb(255, 208, 56);
     color: rgb(255, 255, 255);
@@ -69,5 +65,4 @@ article {
 
 #insertForm {
     height: 660px;
-    padding-top: 50px;
 }
