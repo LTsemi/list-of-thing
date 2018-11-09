@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" 
+    import="java.util.*, com.buyme.seul.event.model.vo.*"%>
+<%
+	Event e = (Event)request.getAttribute("event");
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Highway Blog - Free CSS Template</title>
+        <title>List of Thing</title>
 <!-- 
 
 Highway Template
@@ -25,8 +30,8 @@ http://www.templatemo.com/tm-520-highway
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
 
-		<link rel="stylesheet" href="../../resources/css/evtPage.css">
-		<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
+		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/evtPage.css">
+		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">	
 		
 	<style>
 	 @font-face {
@@ -62,10 +67,10 @@ http://www.templatemo.com/tm-520-highway
       <h4><small>list of thing - 리띵!</small></h4>   
       <hr>
       
-      <h2>[새우깡] 10월 무료샘플 이벤트</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
+      <h2><%= e.getEvttitle() %></h2>
+      <h5><span class="glyphicon glyphicon-time"></span> &nbsp; <%= e.getEvtdate() %></h5>
       <br><br>
-      <img src="../../resources/img/evtbanner.jpg" width="700px">
+      <img src="/semi/resources/eventUploadFiles/<%=e.getE_cname()%>" width="700px">
       <br><br>
       <hr>
     </div>
@@ -102,7 +107,7 @@ http://www.templatemo.com/tm-520-highway
         <br><br>
     </div>
     <div class="listGo">
-        <a href="event.jsp" class="listbtn">목록으로</a> 
+        <a href="/semi/selectList.ev" class="listbtn">목록으로</a> 
         <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
         <a href="#" class="listbtn">수정하기</a>		  
         <a href="#" class="listbtn">삭제하기</a>		  

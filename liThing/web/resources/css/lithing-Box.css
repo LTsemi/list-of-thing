@@ -98,7 +98,7 @@
     .buybtn {
       padding: 5px 10px;
       background-color: rgb(255, 230, 161);
-      border: 1px solid lightgray ;
+      border: 1px solid rgb(255, 230, 161);
       border-radius: 0;
       transition: .2s;
       margin: 0 60px;

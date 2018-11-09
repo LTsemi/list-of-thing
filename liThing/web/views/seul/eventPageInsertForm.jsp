@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.buyme.young.member.model.vo.Member"%>
+<%
+	Member m = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Highway Blog - Free CSS Template</title>
+<title>List of Thing</title>
 
 
 <meta name="description" content="">
@@ -24,9 +27,9 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300"
 	rel="stylesheet">
-<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">	
 <link rel="stylesheet"
-	href="../../resources/css/eventPageInsertForm.css">
+	href="<%= request.getContextPath() %>/resources/css/eventPageInsertForm.css">
 
 <style>
 @font-face {
@@ -55,9 +58,10 @@ body {
 			</div>
 		</div>
 	</div>
-	<form action="<%=request.getContextPath()%>/eInsert.ev" method="post"
-		encType="multipart/form-data">
+
 		<div class="container-fluid">
+		<%-- <input type="hidden" name="userId" value="<%=m.getUserId()%>" /> --%>
+		
 			<div class="row content">
 
 
@@ -65,67 +69,92 @@ body {
 				<div class="evtEditor">
 					<br>
 					<br>
-
+				<form action="<%=request.getContextPath()%>/eInsert.ev" method="post"
+					encType="multipart/form-data">
 					<h2>
 						<input id="title" type="text" size="40" name="title"
 							placeholder="제목">
+						<input type="hidden" name="userId" value="<%= mh.getUserId() %>"/>
 					</h2>
 					<hr>
 					<h5>
-						<span class="glyphicon glyphicon-time"></span> Post by 오렌지,
-						2015/11/11
+						이벤트 시작일 : <input type="date" name="date"> &nbsp; | &nbsp;
+						이벤트 종료일 : <input type="date" name="dateEnd"> <br />						
 					</h5>
-					<p>
+					
 						<br>
-						<br>
-					<div id="evtImgArea">
-						<img id="evtImg">
-					</div>
+						<table align="center" style="width: 100%" class="editTable">
+							<tr>
+								<td>대표 이미지</td>
+								<td colspan="3">
+									<div id="titleImgArea">
+										<img id="titleImg">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>내용 사진</td>
+								<td>
+									<div id="contentImgArea1">
+										<img id="contentImg1" >
+									</div>
+								</td>						
+							</tr>
+							<tr>
+								<td width="100px">사진 메모</td>
+								<td width="700px"><textarea class="contentTxt" name="content" rows="5" cols="50"
+										style="resize: none;" placeholder="내용을 입력하세요."></textarea></td>
+							</tr>		
+						</table>
+					
 					<div id="fileArea">
-						<input type="file" id="thumbnailImg" multiple="multiple"
-							name="thumbnailImg1" onchange="LoadImg(this,1)">
+						<input type="file" id="thumbnailImg1" multiple="multiple"
+							name="thumbnailImg1" onchange="LoadImg(this,1)"> 
+						<input type="file" id="thumbnailImg2" multiple="multiple"
+							name="thumbnailImg2" onchange="LoadImg(this,2)"> 
 					</div>
+					
+					<br><br>
 
-					<br>
-					<br>
-					<div id="titleText">
-						<textarea name="content" rows="5" cols="120" style="resize: none;"
-							placeholder="내용을 입력하세요."></textarea>
-					</div>
-					<br>
-					<br>
-					</p>
 					<hr>
 					<br>
 					<button type="button" class="listbtn"
-						onclick="location.href='event.jsp'">취소하기</button>
+						onclick="location.href='/semi/selectList.ev'">취소하기</button>
 					<%-- <% if(m != null && m.getUserName().equals(t.getBwriter())){ %> --%>
 					<button type="submit" class="listbtn">작성 완료</button>
 					<%-- <% } %>	 --%>
+					</form>
 				</div>
 			</div>
 			<br />
 			<br /> <br />
 			<br />
 		</div>
-	</form>
+	
 	<script>
-        $(function(){
-            $('#fileArea').hide();
-            
-            $('#evtImgArea').click(() => {
-                $('#thumbnailImg').click();
-            });
-            
-        });
-
-        function LoadImg(value, num) {
+			// 사진 게시판 미리보기 기능 지원 스크립트
+			$(function(){
+				$('#fileArea').hide();
+				
+				$('#titleImgArea').click(() => {
+					$('#thumbnailImg1').click();
+				});
+				
+				$('#contentImgArea1').click(() => {
+					$('#thumbnailImg2').click();
+				});
+				
+			});
+			
+			function LoadImg(value, num) {
 				if(value.files && value.files[0]) {
 					var reader = new FileReader();
 					
 					reader.onload = function(e){
 						switch(num){
-						case 1: $('#evtImg').attr('src', e.target.result);
+						case 1: $('#titleImg').attr('src', e.target.result);
+							break;
+						case 2: $('#contentImg1').attr('src', e.target.result);
 							break;
 						}
 					}
@@ -133,8 +162,7 @@ body {
 					reader.readAsDataURL(value.files[0]);
 				}
 			}
-
-    </script>
+		</script>
 
 	<%@ include file="../common/footer.jsp"%>
 

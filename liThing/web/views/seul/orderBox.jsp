@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>About Highway - Free CSS Template</title>
+        <title>List of Thing</title>
 <!-- 
 
 Highway Template
@@ -25,8 +25,8 @@ http://www.templatemo.com/tm-520-highway
         
 
     	<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
-		<link rel="stylesheet" href="../../resources/css/orderBox.css">
- 		<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
+		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/orderBox.css">
+ 		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">	
  
  	<style>
 	 @font-face {

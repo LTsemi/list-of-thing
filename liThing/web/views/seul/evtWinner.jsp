@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Highway Blog - Free CSS Template</title>
+        <title>List of Thing</title>
 <!-- 
 
 Highway Template
@@ -23,7 +23,7 @@ http://www.templatemo.com/tm-520-highway
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
-		<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
+		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">	
 
 
     </head>
