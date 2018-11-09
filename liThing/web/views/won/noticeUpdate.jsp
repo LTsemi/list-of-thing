@@ -108,7 +108,6 @@ body {
 	<%@ include file="../common/header.jsp"%>
 
 
-
 	<div class="page-heading">
 		<div class="container">
 			<div class="heading-content">
@@ -118,7 +117,6 @@ body {
 			</div>
 		</div>
 	</div>
-
 
 
 	<div id="video-container" style="height: 720px;">
@@ -138,7 +136,7 @@ body {
 			제목 : &nbsp <input size="80" id="title" align="center"
 				placeholder="   제목을 입력하세요."><br> <br> 작성자 : <input
 				size="25" id="writer" align="center">&nbsp 작성일 : &nbsp <input
-				type="date" id="date" name="date">
+				type="date" id="date" name="date"  readonly>
 		</div>
 		<br>
 
@@ -152,9 +150,6 @@ body {
 		</div>
 
 		<br>
-
-
-
 
 	</div>
 

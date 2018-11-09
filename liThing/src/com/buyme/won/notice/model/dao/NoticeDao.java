@@ -119,6 +119,7 @@ public class NoticeDao {
 	public int insertNotice(Connection con, Notice n) {
 		
 		PreparedStatement pstmt = null;
+		
 		int result = 0;
 		
 		String sql = prop.getProperty("insertNotice");
@@ -127,10 +128,13 @@ public class NoticeDao {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, n.getNtitle());
-			pstmt.setString(2, n.getNcontent());
-			pstmt.setString(3, n.getNwriter());
+			pstmt.setString(1, n.getNwriter());
+			pstmt.setString(2, n.getNtitle());
+			pstmt.setString(3, n.getNcontent());
 			pstmt.setDate(4, n.getNdate());
+			
+			System.out.println("작성자 : " +  n.getNwriter());
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -143,6 +147,37 @@ public class NoticeDao {
 		}
 		
 		return result;
+	}
+
+	public int updateNotice(Connection con, Notice n) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, n.getNtitle());
+			pstmt.setString(2, n.getNcontent());
+			pstmt.setInt(3, n.getNno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+	
+		
 	}
 	
 	

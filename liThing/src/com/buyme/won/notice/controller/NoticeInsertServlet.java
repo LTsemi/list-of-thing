@@ -35,7 +35,7 @@ public class NoticeInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String ntitle = request.getParameter("title");
-		String writer = request.getParameter("writer");
+		String writer = request.getParameter("userId");
 		String content = request.getParameter("content");
 		String date = request.getParameter("date");
 		String userId = request.getParameter("userId");
@@ -45,14 +45,11 @@ public class NoticeInsertServlet extends HttpServlet {
 		Date writeDay = null;
 		
 		if(date != ""){
-			// 날짜가 들어 왔다면
-			
-			// 2018-10-23 --> 2018, 10, 23
+		
 			String[] dateArr = date.split("-");
 			
 			int[] drr = new int[dateArr.length];
 			
-			// String --> int
 			for(int i = 0; i < dateArr.length;i++){
 				drr[i] = Integer.parseInt(dateArr[i]);
 			}
@@ -61,7 +58,6 @@ public class NoticeInsertServlet extends HttpServlet {
 					new GregorianCalendar(drr[0], drr[1] -1, drr[2]).getTimeInMillis());
 			
 		} else {
-			// 날짜가 들어 오지 않았다면
 			
 			writeDay = new Date(new GregorianCalendar().getTimeInMillis());
 			
@@ -84,10 +80,11 @@ public class NoticeInsertServlet extends HttpServlet {
 			
 		} else {
 			
-			request.setAttribute("msg", "공지사항 등록 실패!");
+			request.setAttribute("msg", "공지사항 등록에 실패했습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp")
 			.forward(request, response);
 		}
+
 	}
 
 	/**

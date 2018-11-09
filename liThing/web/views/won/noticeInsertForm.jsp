@@ -115,14 +115,15 @@ body {
 		<div align="center">
 			제목 : &nbsp; <input type="text" size="80" id="title" name="title" align="center" placeholder="   제목을 입력하세요."><br> 
 			<br> 
-			작성자 : <input type="text" value="<%= mh.getUserName() %>" name="writer" readonly size="25" id="writer" align="center">&nbsp; 
+			작성자 : <input type="text" value="<%= mh.getUserName() %>" name="writer" readonly size="25" id="writer" align="center">&nbsp;
+			<input type="hidden" value="<%= mh.getUserId() %>" name="userId"> 
 			작성일 : &nbsp; <input type="date" id="date" name="date">
 		</div>
 		<br>
 
 		<div class="container" align="center">
 			<!-- <textarea id="summernote" name="content"></textarea> -->
-			<textarea id="summernote"></textarea>
+			<textarea id="summernote" name="content"></textarea>
 
 			<div align="center">
 				<button type="reset" id="btn1">취소하기</button>
