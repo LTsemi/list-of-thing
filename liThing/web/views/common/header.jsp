@@ -227,7 +227,7 @@ nav {
                       <a href="/semi/views/seul/event.jsp">이벤트</a>
                   </li>
                   <li>
-                      <a href="/semi/views/ju/CustomerService.jsp">고객센터</a>
+                      <a href="/semi/selectList.cs">고객센터</a>
                   </li>
               </ul>
               <p></p>
