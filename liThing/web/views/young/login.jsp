@@ -11,6 +11,7 @@
 
         <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
         <link rel="stylesheet" href="../../resources/css/sub.css">
+        <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
         <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
         <script src="../../resources/js/coomember.js"></script>
         
@@ -23,6 +24,8 @@
             font-family: NanumSquareRoundR !important; 
         }
    </style>
+   
+
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -34,10 +37,11 @@
 		<div class="member-inner">
 			<div class="contents">
 				<h1 class="logo"><a href="/semi/index.jsp"><span class="blind">리띵</span></a></h1>
+				<%if ( m == null ) { %>
 				<h2 class="title">LOGIN</h2>
 				<form id="loginForm" action="/semi/login.me" method="post">
 				<div class="login">
-					<%if ( m == null ) { %>
+					
 					<div class="forms">
 						<div class="input">
 							<input type="text" placeholder="아이디" id="userId" name="userId">
@@ -62,6 +66,7 @@
 				</div>
 			</div>
 			<% } else { %>
+			<br /><br /><br /><br /><br /><br /><br />
 			<div id="userInfo" style="width : 500px;">
 			<h3 class="title"><%= m.getUserName() %>님의 <br /> 방문을 환영합니다.</h3>
 			<div class="btns" align="right">
@@ -72,6 +77,12 @@
 			
 		</div>
 	<% } %>
+
+		</div>
+	</div>
+
+	<%@ include file="../common/footer.jsp" %>
+	
 	<script>
 		function login(){
 			$('#loginForm').submit();
@@ -93,9 +104,5 @@
 		$("#userPwd").keyup(function(e){if(e.keyCode == 13)  login(); })
 
 	</script>
-		</div>
-	</div>
-
-	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>
