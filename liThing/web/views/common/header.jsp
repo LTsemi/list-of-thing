@@ -225,7 +225,7 @@ nav {
                       <a href="/semi/views/seul/lithingbox.jsp">리띵 박스</a>
                   </li>
                   <li>
-                      <a href="/semi/views/seul/event.jsp">이벤트</a>
+                      <a href="/semi/selectList.ev">이벤트</a>
                   </li>
                   <li>
                       <a href="/semi/selectList.cs">고객센터</a>
