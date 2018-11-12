@@ -53,9 +53,9 @@ footer a:hover {
     <footer style="background : #FFA41F;">
         <div class="container-fluid" >
             <div class="col-md-12">
-                <p>Copyright &copy; 2018 Company Name 
+                <p>Copyright &copy; 2018 List of Thing
     
-    | Design: <a rel="nofollow" href="http://www.templatemo.com">Template Mo</a></p>
+    | Design: <a rel="nofollow" href="">Template Mo</a></p>
             </div>
         </div>
     </footer>
