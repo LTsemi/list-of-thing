@@ -84,6 +84,20 @@ public class MemberService {
 		
 		return result;
 	}
+
+
+	public Member idCheck(String name, String email) {
+		// TODO Auto-generated method stub
+		
+		Connection con = getConnection();
+		
+		Member result = mDao.idCheck(con, name, email);
+				
+		close(con);
+		
+		return result;
+		
+	}
 	
 }
 

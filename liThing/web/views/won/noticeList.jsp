@@ -11,6 +11,7 @@
 	int endPage = pi.getEndPage();
 	
 	int i = 0;
+	int endnum = listCount; 
 
 %>
 
@@ -215,6 +216,7 @@ body {
 			<div class="row">				
 				<div class="col-md-12">
         
+        			
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<% for(Notice n : list){ %>
 					<% if((i%5 == 0)){ %>
@@ -228,7 +230,7 @@ body {
 							</div>
 							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								<div class="panel-body">
-									<p name="nno">No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
+									<p name="nno">No. <%= endnum  %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p name="content"><%= n.getNcontent() %></p>
 									<p>작성자:<%= n.getNwriter() %> &nbsp;  작성일 :<%= n.getNdate() %>
 									<% if( mh != null && mh.getUserId().equals("admin")) { %>
@@ -323,7 +325,7 @@ body {
 							</div>
 						</div>
 						<%} %>
-						<% i++; System.out.println("i: " + i);%>
+						<% i++; System.out.println("i: " + i); %>
 					<% } %>	
 					</div>
 				</div><!--- END COL -->	

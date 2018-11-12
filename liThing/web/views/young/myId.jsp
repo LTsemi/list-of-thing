@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리띵 로그인</title>
+<title>리띵 아이디 찾기</title>
 
         <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
         <link rel="stylesheet" href="../../resources/css/sub.css">
@@ -38,27 +38,21 @@
 			<div class="contents">
 				<h1 class="logo"><a href="/semi/index.jsp"><span class="blind">리띵</span></a></h1>
 				<%if ( m == null ) { %>
-				<h2 class="title">LOGIN</h2>
-				<form id="loginForm" action="/semi/login.me" method="post">
+				<h2 class="title">ID 찾기</h2>
+				<form id="IDForm" action="<%= request.getContextPath() %>/mIDCheck.me" method="post">
 				<div class="login">
 					
 					<div class="forms">
 						<div class="input">
-							<input type="text" placeholder="아이디" id="userId" name="userId">
+							<input type="text" placeholder="이름" id="name" name="name">
 						</div>
 						<div class="input">
-							<input type="password" placeholder="비밀번호" id="userPwd" name="userPwd">
+							<input type="text" name="email" id="email" placeholder="가입시 사용했던 이메일을 입력해주세요"/>
 						</div>
 					</div>
 					<div class="btns tooltip-wrap">
-						<button type="button" class="btn-confirm" id="loginBtn" onclick='login()'>로그인</button>
+						<button type="button" class="btn-confirm" id="loginBtn" onclick='myId()'>ID 찾기</button>
 						<div class="tooltip blind" id="idpwInvalidTooltip"></div>
-					</div>
-
-					<div class="bottom">
-						<a href="/semi/views/young/myId.jsp" >아이디 찾기</a>
-						<a href="/semi/views/young/join.jsp">비밀번호 찾기</a>
-						<a href="/semi/views/young/join.jsp" id="memberJoinBtn" onclick="memberJoin()">회원가입</a>
 					</div>
 					</div>
 					</form>
@@ -84,16 +78,12 @@
 	<%@ include file="../common/footer.jsp" %>
 	
 	<script>
-		function login(){
-			$('#loginForm').submit();
+		function myId(){
+			$('#IDForm').submit();
 		}
 		
 		function logout(){
 			location.href="/semi/logout.me";
-		}
-		
-		function memberJoin(){
-			location.href="/semi/views/young/Join.jsp";
 		}
 		
 		function changeInfo(){
