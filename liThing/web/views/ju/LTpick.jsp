@@ -1,19 +1,24 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.buyme.ju.thema.model.vo.Thema"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% 
+	ArrayList<Thema> list = (ArrayList<Thema>)request.getAttribute("list");
+	Member m = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>리띵's Pick!</title>
-        <script src="../../resources/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="<%=request.getContextPath() %>/resources/js/vendor/jquery-3.3.1.min.js"></script>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         
-        <link rel="stylesheet" href="../../resources/css/thema.css">
+        <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/thema.css">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/templatemo-style.css">
         
 		<link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
@@ -21,7 +26,7 @@
         <style>
             @font-face {
                   font-family: 'NanumSquareRoundR' ;
-                  src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+                  src: url("<%=request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf");
                 }
                 body, h2, p { box-sizing: border-box;
                     font-family: NanumSquareRoundR !important; 
@@ -45,42 +50,23 @@
         <h1>리띵's Pick!</h1>
 
         <div id="div">
+        	<% if( m != null && m.getUserId().equals("admin")) { %>
+    		<button class="insertBtn" onclick="location.href='views/ju/Thema_Insert.jsp'">작성하기</button>
+    		<% } %>
             <section>
+            <% for(int i = 0; i < list.size(); i++){ %>
                 <article class="thema">     
-                    <a href="LTpick_view.jsp"><div>
-                        <img src="../../resources/img/big_portfolio_item_2.png" id="thema_pic">
-                        <h2>테마제목</h2>
-                        <p id="content">국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다.</p>
+                    <a href="views/ju/LTpick_view.jsp"><div>
+                        <img src="/bfdown.bo?path=<%= list.get(i).getTimage() %>" id="thema_pic">
+                        <h2><%= list.get(i).getTtitle() %></h2>
+                        <p id="content"><%= list.get(i).getTcontent() %></p>
+                        
                     </div></a>
+                        <% if( m != null && m.getUserId().equals("admin")) { %>
+				    	<button class="updateBtn" onclick="location.href='tUpView.tm?tno=<%= list.get(i).getTno() %>'">수정</button>
+				    	<%} %>
                 </article>
-                 <article class="thema">     
-                    <a href="LTpick_view.jsp"><div>
-                        <img src="../../resources/img/big_portfolio_item_2.png" id="thema_pic">
-                        <h2>테마제목</h2>
-                        <p id="content">국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다.</p>
-                    </div></a>
-                </article>
-                <article class="thema">     
-                    <a href="LTpick_view.jsp"><div>
-                        <img src="../../resources/img/big_portfolio_item_2.png" id="thema_pic">
-                        <h2>테마제목</h2>
-                        <p id="content">국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다.</p>
-                    </div></a>
-                </article>
-                <article class="thema">     
-                    <a href="LTpick_view.jsp"><div>
-                        <img src="../../resources/img/big_portfolio_item_2.png" id="thema_pic">
-                        <h2>테마제목</h2>
-                        <p id="content">국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다.</p>
-                    </div></a>
-                </article>
-                <article class="thema">     
-                    <a href="LTpick_view.jsp"><div>
-                        <img src="../../resources/img/big_portfolio_item_2.png" id="thema_pic">
-                        <h2>테마제목</h2>
-                        <p id="content">국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다.</p>
-                    </div></a>
-                </article>
+            <%} %>
             </section> 
 
         </div> <br /> <br />

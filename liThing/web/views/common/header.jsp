@@ -219,7 +219,7 @@ nav {
                       <a href="/semi/selectList.no">공지사항</a>
                   </li>
                   <li>
-                      <a href="/semi/views/ju/LTpick.jsp">리띵's pick</a>
+                      <a href="/semi/selectList.tm">리띵's pick</a>
                   </li>
                   <li>
                       <a href="/semi/views/seul/lithingbox.jsp">리띵 박스</a>

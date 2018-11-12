@@ -24,10 +24,10 @@
 }
 
 /* 큰 제목 설정 */
-h1 {
+ h1 {
     text-align:center;
     margin-top: 30px;
-}
+} 
 
 /* 테마 설명 설정 */
 p {
@@ -56,6 +56,7 @@ h2, p {
     width: 1325px;
     height: 800px;
     margin: 0 auto;
+    padding-top : 15px;
 }
 
 /* 테마 상품 배치 */
@@ -63,4 +64,21 @@ h2, p {
     width: 230px;
     display: inline-block;
     margin: 15px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid lightgray;
+    color: gray;
+    border-radius: 0;
+    transition: .2s;
+    margin: 0 auto;
+}
+
+
+button:hover {
+    border: 1px solid rgb(255, 208, 56);
+    background-color: rgb(255, 208, 56);
+    color: rgb(255, 255, 255);
 }

@@ -1,8 +1,6 @@
-package com.buyme.ju.customerService.controller;
+package com.buyme.ju.thema.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,18 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.ju.customerService.model.sevice.CSService;
 import com.buyme.ju.customerService.model.vo.CustomerService;
+import com.buyme.ju.thema.model.service.ThemaService;
+import com.buyme.ju.thema.model.vo.Thema;
 
 /**
- * Servlet implementation class CustomerServiceListServlet
+ * Servlet implementation class ThemaUpdateViewServlet
  */
-@WebServlet("/selectList.cs")
-public class CustomerServiceListServlet extends HttpServlet {
+@WebServlet("/tUpView.tm")
+public class ThemaUpdateViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomerServiceListServlet() {
+    public ThemaUpdateViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,26 +31,24 @@ public class CustomerServiceListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CustomerService> list = new ArrayList<CustomerService>();
-				
-		CSService cs = new CSService();
-				
-		list = cs.selectList();
-				
+		int tno = Integer.parseInt(request.getParameter("tno"));
+		
+		Thema t = new ThemaService().updateView(tno);
+		
 		String page = "";
-
-		if(list != null){
-					
-			page = "views/ju/CustomerService.jsp";
-			request.setAttribute("list", list);
+		
+		if (t != null) {
+			
+			page = "views/ju/Thema_Update.jsp";
+			request.setAttribute("thema", t);
 			
 		} else {
-					
+			
 			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "테마 조회 실패!");
-					
+			request.setAttribute("msg", "QnA 수정 페이지 보기 실패");
+			
 		}
-				
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

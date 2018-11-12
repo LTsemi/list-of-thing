@@ -1,4 +1,4 @@
-package com.buyme.ju.customerService.controller;
+package com.buyme.ju.thema.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.buyme.ju.customerService.model.sevice.CSService;
-import com.buyme.ju.customerService.model.vo.CustomerService;
+import com.buyme.ju.thema.model.service.ThemaService;
+import com.buyme.ju.thema.model.vo.Thema;
 
 /**
- * Servlet implementation class CustomerServiceListServlet
+ * Servlet implementation class ThemaListServlet
  */
-@WebServlet("/selectList.cs")
-public class CustomerServiceListServlet extends HttpServlet {
+@WebServlet("/selectList.tm")
+public class ThemaListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomerServiceListServlet() {
+    public ThemaListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,17 +31,17 @@ public class CustomerServiceListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CustomerService> list = new ArrayList<CustomerService>();
+		ArrayList<Thema> list = new ArrayList<Thema>();
+		
+		ThemaService ts = new ThemaService();
 				
-		CSService cs = new CSService();
-				
-		list = cs.selectList();
+		list = ts.selectList();
 				
 		String page = "";
 
 		if(list != null){
 					
-			page = "views/ju/CustomerService.jsp";
+			page = "views/ju/LTpick.jsp";
 			request.setAttribute("list", list);
 			
 		} else {
