@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="com.buyme.sic.ranking.model.vo.*, com.buyme.sic.review.model.vo.*"%>
+	import="com.buyme.sic.ranking.model.vo.*, com.buyme.sic.review.model.vo.*, java.util.*"%>
 <%
 	Product p = (Product) request.getAttribute("dRank");
-	Review r = (Review) request.getAttribute("review");
+	
+	ArrayList<Review> rlist = (ArrayList<Review>) request.getAttribute("rlist");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,13 +25,7 @@ http://www.templatemo.com/tm-520-highway
 
 
 
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="../resources/css/fontAwesome.css">
-<link rel="stylesheet" href="../resources/css/light-box.css">
-<link rel="stylesheet" href="../resources/css/templatemo-style.css">
 
-<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,12 +54,12 @@ http://www.templatemo.com/tm-520-highway
 <style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
-	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+	src: url('/semi/resources/css/fonts/NanumSquareRoundR.ttf');
 }
 
 * {
 	box-sizing: border-box;
-	font-family: NanumSquareRoundR;
+	font-family: NanumSquareRoundR !important;
 }
 
 .box {
@@ -151,48 +146,63 @@ http://www.templatemo.com/tm-520-highway
 				</div>
 				<form action="<%=request.getContextPath()%>/review.rv"
 					method="post">
-					<input name="userid" value="<%= r.getUserid() %>" />
-					<div
-						style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
+					<input name="userid" value="<%= mh.getUserId() %>" />
+					<input name="pno" value=<%= p.getPno() %> />
+					<input name="rank" value="1" />
+					
+					<div style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
 						<div class="box" style="padding-top: 10px">
-							<textarea name="" id="" cols="50" rows="4"
+							<textarea name="content" id="content" cols="50" rows="4"
 								style="display: inline-block; resize: none;"></textarea>
 						</div>
-						<div class="box"
-							style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
-							<input class="button" type="submit" value="작성하기"
-								style="vertical-align: top; width: 100%; height: 100%;">
+						<div class="box" style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
+							<input class="button" type="submit" value="작성하기"  style="vertical-align: top; width: 100%; height: 100%;">
 						</div>
 						<div>
 							<div class="starRev">
-								<span class="starR on">별1</span> <span class="starR">별2</span> <span
-									class="starR">별3</span> <span class="starR">별4</span> <span
-									class="starR">별5</span>
+								<span class="starR on">별1</span> 
+								<span class="starR">별2</span> 
+								<span class="starR">별3</span> 
+								<span class="starR">별4</span> 
+								<span class="starR">별5</span>
 							</div>
 						</div>
 
 						<div>
-							<table style="width: 100%">
+						<% if(rlist != null) { %>
+							<% for(Review r : rlist) { %>
+							<table style="width: 100%" border="1">
 								<tr>
-									<td colspan="3" style="text-align: right; padding: 10px">작성일</td>
+									<td colspan="3" style="text-align: right; padding: 10px"><%= r.getRdate() %></td>
 
 								</tr>
 								<tr>
-									<td style="width: 200px; padding: 10px">작성자ID</td>
-									<td colspan="2" style="text-align: left">별점</td>
-
+									<td style="width: 200px; padding: 10px"><%= r.getUserid() %></td>
+									<td colspan="2" style="text-align: left"><%= r.getRrank() %></td>
 								</tr>
 								<tr>
-									<td colspan="3"><p style="padding: 10px; text-align: left">국회의원은
-											국가이익을 우선하여 양심에 따라 직무를 행한다. 국회의원은 법률이 정하는 직을 겸할 수 없다. 지방자치단체는
-											주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다.
-
-											대법원과 각급법원의 조직은 법률로 정한다. 선거에 있어서 최고득표자가 2인 이상인 때에는 국회의 재적의원
-											과반수가 출석한 공개회의에서 다수표를 얻은 자를 당선자로 한다.</p></td>
+									<td colspan="3">
+										<p id="conP" style="padding-left: 80px; text-align: left"><%= r.getRcontent() %></p>
+										<textarea name="" id="" cols="50" rows="4" style="resize:none; display: none"></textarea>
+										<button type="button" class="button" onclick="uptConfirm(this)" style="vertical-align: top; width: 100px; height: 85px; display:none">수정</button>
+									</td>
 								</tr>
+								<% if(mh.getUserId().equals(r.getUserid())) { %>
+								<tr>
+									<td colspan="3">
+										<input name="rno" value="<%= r.getRno() %>"/>
+										<button type="button" onclick="udtReview(this)">수정하기</button>
+									<!-- 	<button type="button" onclick="cancelUdt(this)">수정취소</button> -->
+										<button type="button" onclick="delReview(this)">삭제하기</button>						
+									</td>
+								</tr>
+								<% } %>
 							</table>
 							<br>
 							<hr style="width: 550px; background-color: #D0D0D0">
+							<% } %>
+						<% } %>
+							
 						</div>
 					</div>
 				</form>
@@ -210,5 +220,33 @@ http://www.templatemo.com/tm-520-highway
 			return false;
 		});
 	});
+	
+	function udtReview(obj) {
+		$(obj).parent().parent().prev().find('#conP').css('display','none');
+		$(obj).parent().parent().prev().find('textarea').css('display','inline');
+		$(obj).parent().parent().prev().find('button').css('display','inline');
+		$(obj).css('display','none');
+		$(obj).siblings().css('display', 'none');
+		
+	}
+	
+	function delReview(obj) {
+		var result = confirm("리뷰를 삭제하시겠습니까?")
+		if(result){
+			alert("삭제");
+		}else{
+			alert("취소");
+		}
+	}
+	
+	function uptConfirm(obj) {
+		var content = $(obj).siblings('textarea').val();
+		
+		var rno = $(obj).parent().parent().next().children().find('input').val();
+		
+		var pno = '<%= p.getPno()%>'
+		
+		location.href= "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content;
+	}
 </script>
 </html>

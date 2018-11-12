@@ -9,11 +9,11 @@ public class Review implements Serializable{
 	private String userid;
 	private String rcontent;
 	private Date rdate;
-	private String rrank;
+	private int rrank;
 	
 	public Review() {}
 	
-	public Review(int rno, String pno, String userid, String rcontent, Date rdate, String rrank) {
+	public Review(int rno, String pno, String userid, String rcontent, Date rdate, int rrank) {
 		super();
 		this.rno = rno;
 		this.pno = pno;
@@ -63,11 +63,11 @@ public class Review implements Serializable{
 		this.rdate = rdate;
 	}
 
-	public String getRrank() {
+	public int getRrank() {
 		return rrank;
 	}
 
-	public void setRrank(String rrank) {
+	public void setRrank(int rrank) {
 		this.rrank = rrank;
 	}
 

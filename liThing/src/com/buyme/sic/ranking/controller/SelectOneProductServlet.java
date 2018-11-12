@@ -1,6 +1,8 @@
 package com.buyme.sic.ranking.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.sic.ranking.model.service.ProductService;
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.sic.review.model.service.ReviewService;
+import com.buyme.sic.review.model.vo.Review;
 
 /**
  * Servlet implementation class SelectOneProductServlet
@@ -29,18 +33,22 @@ public class SelectOneProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pno = request.getParameter("pno"); 
 		Product p = new Product();
 		ProductService ps = new ProductService();
 		
 		p = ps.selectOneList(pno);
 		
+		ArrayList<Review> rlist = new ArrayList<Review>();
+		rlist = new ReviewService().reviewList(pno);
 		String page = "";
 		
 		if(p != null){
 			
 			page = "views/sic/rankDetail.jsp";
 			request.setAttribute("dRank", p);
+			request.setAttribute("rlist", rlist);
 			
 		} else {
 			System.out.println("서블릿오류");
