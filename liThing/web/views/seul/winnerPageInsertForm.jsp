@@ -55,7 +55,7 @@
     <div class="evtEditor">
     <br><br>
     <form action="<%=request.getContextPath()%>/eInsertWin.ev" method="post"
-					encType="multipart/form-data">
+					>
       <h2><input id="title" type="text" size="40" name="title" placeholder="제목" >
           <input type="hidden" name="userId" value="<%= mh.getUserId() %>"/>
       </h2>

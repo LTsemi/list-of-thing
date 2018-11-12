@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*, com.buyme.seul.event.model.vo.*" %>
+    
+<%
+	Event e = (Event)request.getAttribute("event");
+%>
+ 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>List of Thing</title>
-<!-- 
 
-Highway Template
-
-http://www.templatemo.com/tm-520-highway
-
--->
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -129,22 +129,14 @@ http://www.templatemo.com/tm-520-highway
       <h4><small>list of thing - 리띵!</small></h4>   
       <hr>
       
-      <h2>[새우깡] 10월 무료샘플 당첨자 안내</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
+	  <h2><%= e.getEvttitle() %></h2>
+	  <h5><span class="glyphicon glyphicon-time"></span> <%= e.getEvtdate() %></h5>
       <br><br>
       <p>
-            안녕하세요. 리띵입니다^_^ <br><br>
+        <%= e.getEvtcontent() %>
 
-            10월 9일~10월 22일까지 진행되었던 새우깡 무료샘플 이벤트! <br>
-            
-            기간 내 참여해주신 모든 분들께 감사드리며, 당첨자를 발표하겠습니다. <br><br>
-                       
-            * 당첨되신 상품은 회원정보에 입력해주신 주소지로 7/24(화) 일괄지급됩니다.
-        </p>    
-             
+      </p>    
             <br><br>
-            
-             
             <h4 style="font-weight: 600"> *** [Ctrl + F] 를 이용하시면 쉽게 당첨여부를 확인 하실 수 있습니다.</h4>
         <br />
         <table class="winner-tab" border="1"> 
@@ -174,10 +166,11 @@ http://www.templatemo.com/tm-520-highway
       
       <hr>
       <br>
-      <a href="eventWin.jsp" class="listbtn">목록으로</a>
-      <%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
-      <a href="#" class="listbtn">수정하기</a>		  
-	  <%-- <% } %> --%>
+      <a href="/semi/selectWinList.ev" class="listbtn">목록으로</a>
+      <% if(mh != null && mh.getUserId().equals("admin")){ %>	
+      <button class="listbtn" onclick="#">수정하기</button>	
+      <button class="listbtn" onclick="location.href='eDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>	  
+	  <% } %>
     </div>
     </div>
 

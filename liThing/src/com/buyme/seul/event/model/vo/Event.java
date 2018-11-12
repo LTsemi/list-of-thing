@@ -20,10 +20,19 @@ public class Event implements Serializable {
 	private int Filelevel;
 	private String e_oname;
 	private String e_cname;
+	private int dday;
 
 
 	public Event() {
 		super();
+	}
+
+
+	public Event(String userid, String evtcontent, String evttitle) {
+		super();
+		this.userid = userid;
+		this.evtcontent = evtcontent;
+		this.evttitle = evttitle;
 	}
 
 
@@ -190,6 +199,14 @@ public class Event implements Serializable {
 		this.e_cname = e_cname;
 	}
 
+	public int getDday() {
+		return dday;
+	}
+
+
+	public void setDday(int dday) {
+		this.dday = dday;
+	}
 
 	@Override
 	public String toString() {

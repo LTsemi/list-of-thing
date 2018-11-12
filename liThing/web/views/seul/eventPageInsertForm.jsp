@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.buyme.young.member.model.vo.Member"%>
-<%
-	Member m = (Member)session.getAttribute("member");
-%>
+	pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +58,6 @@ body {
 	</div>
 
 		<div class="container-fluid">
-		<%-- <input type="hidden" name="userId" value="<%=m.getUserId()%>" /> --%>
 		
 			<div class="row content">
 
@@ -78,7 +75,7 @@ body {
 					</h2>
 					<hr>
 					<h5>
-						이벤트 시작일 : <input type="date" name="date"> &nbsp; | &nbsp;
+						이벤트 시작일 : <input type="date" name="dateStr"> &nbsp; | &nbsp;
 						이벤트 종료일 : <input type="date" name="dateEnd"> <br />						
 					</h5>
 					

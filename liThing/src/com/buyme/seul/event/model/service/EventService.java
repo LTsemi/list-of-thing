@@ -7,7 +7,6 @@ import static com.buyme.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.buyme.seul.event.model.dao.EventDao;
 import com.buyme.seul.event.model.vo.Event;
@@ -45,7 +44,7 @@ public class EventService {
 		Connection con = getConnection();
 		
 		int result = eDao.insertEvent(con, e, list);
-			
+		
 		if( result > 0 ) {
 			commit(con);
 			
@@ -75,23 +74,52 @@ public class EventService {
 
 
 
-	public HashMap<String, Object> selectEventMap(int eno) {
+	public Event selectEvent(int eno) {
 		Connection con = getConnection();
-		HashMap<String, Object> hmap = null;
 		
-		int result = 0;
-		
-		if(result > 0) {
-			commit(con);
-			hmap = eDao.selectEventMap(con, eno);
-		}else {
-			rollback(con);
-		}
+		Event e = eDao.selectOne(con, eno);
 		
 		close(con);
 		
-		return hmap;
+		return e;
 	}
+
+
+
+	public Event selectWinOne(int eno) {
+		Connection con = getConnection();
+		
+		
+		Event e = eDao.selectWinOne(con, eno);
+		
+		
+		close(con);
+		
+		return e;
+	}
+
+
+
+	public int deleteEvent(int eno) {
+		Connection con = getConnection();
+		
+		int result = 0, result1 = 0;
+		
+		result1 = eDao.deleteEvent(con, eno);
+		
+		if( result1 > 0 ) {
+			commit(con);
+			result = 1;
+			
+		} else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
 
 
 }

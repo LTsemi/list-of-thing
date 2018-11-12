@@ -93,9 +93,9 @@ body {
 
 				<div id="lithingevt">
 					<!--   이벤트 창    -->
-					<%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
+					<% if(mh != null && mh.getUserId().equals("admin")){ %> 
 					<a href="views/seul/winnerPageInsertForm.jsp" class="listbtn" >작성하기</a>
-					<%-- <% } %> --%>
+					<% } %>
 			
 					<table class="table table-hover" id="listArea">
 						<thead>
@@ -153,8 +153,8 @@ body {
 	<script>
 		$(function(){
 			$("#listArea td").click(function(){
-				var eno = $(this).parent().find("input").val();
-				location.href="<%=request.getContextPath()%>/selectWinOne.ev?eno=" + eno;
+				var eno = $(this).parent().children().eq(0).text();
+				location.href="<%=request.getContextPath()%>/eSelectWin.ev?eno=" + eno;
 			});
 		});
 	</script>

@@ -1,9 +1,6 @@
 package com.buyme.seul.event.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.seul.event.model.service.EventService;
-import com.buyme.seul.event.model.vo.Event;
 
 /**
- * Servlet implementation class EventSelectOneServlet
+ * Servlet implementation class EventDeleteServlet
  */
-@WebServlet("/selectOne.ev")
-public class EventSelectOneServlet extends HttpServlet {
+@WebServlet("/eDelete.ev")
+public class EventDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventSelectOneServlet() {
+    public EventDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,24 +29,16 @@ public class EventSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int eno = Integer.parseInt(request.getParameter("eno"));
-	
-		Event e = new EventService().selectEvent(eno);
-		
-		System.out.println("e : " +e);
-				
+		int result = new EventService().deleteEvent(eno);
 		String page = "";
-		if(e != null) {
+		if(result > 0) {
 			
-			page = "views/seul/eventPage.jsp";
-			request.setAttribute("event", e);
+			response.sendRedirect("selectWinList.ev");
 			
-		}else {
-//			page = "views/common/errorPage.jsp";
-//			request.setAttribute("msg", "사진게시판 상세보기 실패");
-			System.out.println("파일 전송 실패!");
+		} else {
+			System.out.println("글 삭제 실패!");
+			request.getRequestDispatcher(page).forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

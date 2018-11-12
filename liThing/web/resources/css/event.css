@@ -91,18 +91,18 @@ body {
 	/* position: absolute;    */
 	float: left;
 	position: relative;
-	width: 80px;
+	width: 90px;
 	height: 64px;
 	/* margin-top: 260px;
     margin-left: -770px; */
 	left: -32px;
 	padding: 30px;
 	padding-left: 6px;
-	font-size: 17px;
+	font-size: 16px;
 	font-weight: 600;
 	text-align: left;
 	color: rgb(255, 255, 255);
-	line-height: 20px;
+	line-height: 15px;
 	background: url(../../resources/img/bookmark.png) no-repeat;
 }
 

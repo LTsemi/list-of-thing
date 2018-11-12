@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
 import com.buyme.seul.event.model.service.EventService;
 import com.buyme.seul.event.model.vo.Event;
 
@@ -36,14 +34,18 @@ public class EventWinnerInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if(ServletFileUpload.isMultipartContent(request)){
+
+			 
+			String testid = request.getParameter("userId");
+			System.out.println(testid);
 			
 			Event e = new Event();
-			
 			e.setEvttitle(request.getParameter("title"));
 			e.setEvtcontent(request.getParameter("content"));
 			e.setUserid(request.getParameter("userId"));
-			/*e.setE_file(request.getParameter("file"));*/	
+			
+			System.out.println(e);
+			System.out.println("userid 서블릿 : " +e.getUserid());
 			
 			EventService es = new EventService();
 			
@@ -59,9 +61,7 @@ public class EventWinnerInsertServlet extends HttpServlet {
 				System.out.println("파일 전송 실패!");
 				/*request.getRequestDispatcher("index.jsp")
 				.forward(request, response);*/
-			}
-		}
-		
+			}		
 		
 	}
 

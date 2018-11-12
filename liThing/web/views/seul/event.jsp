@@ -67,7 +67,7 @@ body {
 
 <body>
 
-	<%@ include file="../common/header.jsp"%>
+	<%@ include file="../common/header.jsp" %>
 
 	<div class="page-heading">
 		<div class="container">
@@ -96,23 +96,25 @@ body {
 				<div id="lithingevt">
 					<br>
 					<br>
-
-					<%-- <% if(m != null && m.getUserId().equals("admin")){ %> --%>
+					
+					<% if(mh != null && mh.getUserId().equals("admin")){ %> 
 					<a href="views/seul/eventPageInsertForm.jsp" class="listbtn">이벤트 추가</a>
-					<%-- <% } %> --%>
+					<% } %>
 
 					<br>
 					<br>
 					<div class="row">
 						<%
-							for (Event evt : list) {							
+							for (Event evt : list) {	
+								
 						%>
 						<div class="thumbnail">
+							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
 								<p class="evtImg">
 									<img
 										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
 										width="770px">
-								</p> <span class="dday">D-<%=evt.getEvtdateend()%></span>
+								</p> <span class="dday">D-<%=evt.getDday()%></span>
 								<div class="evtText">
 									<h3><%=evt.getEvttitle()%></h3>
 									<p><%=evt.getEvtdate()%>
@@ -138,9 +140,9 @@ body {
 	<script>
 	$(function(){
 		$(".thumbnail").click(function(){
-			var eno = $(this).children().children().eq(0).val();
-			console.log(num);
+			var eno = $(this).children().eq(0).val();
 			location.href="<%=request.getContextPath()%>/selectOne.ev?eno="+ eno;
+			console.log(eno);
 			});
 		});
 	</script>

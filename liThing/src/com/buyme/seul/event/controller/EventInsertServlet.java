@@ -75,7 +75,7 @@ public class EventInsertServlet extends HttpServlet {
 			
 			
 			// 날짜관리
-			String dateEnd = request.getParameter("dateEnd");
+			String dateEnd = mrequest.getParameter("dateEnd");
 			
 			System.out.println("종료날짜 : "+dateEnd);
 			
@@ -146,7 +146,7 @@ public class EventInsertServlet extends HttpServlet {
 				ev.setE_oname(originFiles.get(i));
 				ev.setE_cname(saveFiles.get(i));
 				
-				System.out.println("ev : " + ev);
+
 				list.add(ev);
 			}
 			for(int i = 0; i<list.size(); i++){
