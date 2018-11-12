@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.buyme.won.notice.model.vo.*"%>
 
-
+<% Notice n = (Notice)request.getAttribute("notice"); %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Summernote</title>
+<title>공지사항 수정</title>
 <meta charset="UTF-8">
 
 <!-- include libraries(jQuery, bootstrap) -->
@@ -16,9 +16,9 @@
 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
 <script
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-	
-	<link rel="stylesheet" href="../../resources/css/evtPage.css">
-	<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
+
+<link rel="stylesheet" href="../../resources/css/evtPage.css">
+<link rel="stylesheet" href="../../resources/css/templatemo-style.css">
 
 <link href="https://fonts.googleapis.com/css?family=Gugi|Itim"
 	rel="stylesheet">
@@ -31,33 +31,6 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
 
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-		
-        width : 800,
-		height: 400,                 // set editor height
-		minHeight: null,             // set minimum height of editor
-		maxHeight: null,             // set maximum height of editor
-		focus: true,                  // set focus to editable area after initializing summernote
-  
-  
-		toolbar: [
-			// [groupName, [list of button]]
-			['style', ['style']],
-			['font', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['fontsize', 'color']],
-			['font', ['fontname']],
-			['para', ['paragraph']],
-			['table', ['table']]
-
-		]
-	
-		
-		
-		});
-    });
-  </script>
 
 <style>
 @font-face {
@@ -107,7 +80,7 @@ body {
 
 	<%@ include file="../common/header.jsp"%>
 
-
+	<% if(mh != null && mh.getUserId().equals("admin")){ %>
 	<div class="page-heading">
 		<div class="container">
 			<div class="heading-content">
@@ -131,38 +104,84 @@ body {
 			</div>
 		</div>
 		<br>
-
-		<div align="center">
-			제목 : &nbsp <input size="80" id="title" align="center"
-				placeholder="   제목을 입력하세요."><br> <br> 작성자 : <input
-				size="25" id="writer" align="center">&nbsp 작성일 : &nbsp <input
-				type="date" id="date" name="date"  readonly>
-		</div>
-		<br>
-
-		<div class="container" align="center">
-			<textarea id="summernote"></textarea>
-
+		<form id="updateForm" method="post">
 			<div align="center">
-				<button id="btn1" onclick="complete();">작성완료</button>
-				<button id="btn2" onclick="deleteNotice();">삭제하기</button>
+
+				제목 : &nbsp; <input size="80" id="title" align="center" type="text"
+					size="50" name="title"
+					value="<%= n.getNtitle().replace("\"", "&#34;") %>"><br>
+				<br> 작성자 : <input size="25" id="writer" align="center"
+					type="text" value="<%= n.getNwriter() %>" name="writer" readonly>&nbsp;
+				작성일 : &nbsp; <input type="date" id="date" name="date"
+					value="<%= n.getNdate() %>"> <input type="hidden"
+					name="nno" value="<%= n.getNno() %>" />
+				<% System.out.println("nno jsp : " + n.getNno()); %>
 			</div>
-		</div>
+			<br>
 
-		<br>
+			<div class="container" align="center">
+				<textarea id="summernote" name="content"><%= n.getNcontent() %></textarea>
 
+				<div align="center">
+					<button id="btn1" onclick="complete();">작성완료</button>
+					<button id="btn2" onclick="deleteNotice();">삭제하기</button>
+				</div>
+			</div>
+
+			<script>
+					function complete(){
+						$("#updateForm").attr("action","<%=request.getContextPath() %>/nUpdate.no");
+						
+					}
+					
+					function deleteNotice(){
+						$("#updateForm").attr("action","<%=request.getContextPath() %>/nDelete.no");
+					}
+				
+				</script>
+			<br>
+		</form>
 	</div>
 
 
 	<br>
 	<br />
 
+	<% } else {
+		request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
+		request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+	 } %>
+
 	<%@ include file="../common/footer.jsp"%>
 
 
 
 
+	<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+		
+        width : 800,
+		height: 400,                 // set editor height
+		minHeight: null,             // set minimum height of editor
+		maxHeight: null,             // set maximum height of editor
+		focus: true,                  // set focus to editable area after initializing summernote
+  
+  
+		toolbar: [
+			// [groupName, [list of button]]
+			['style', ['style']],
+			['font', ['bold', 'italic', 'underline', 'clear']],
+			['font', ['fontsize', 'color']],
+			['font', ['fontname']],
+			['para', ['paragraph']],
+			['table', ['table']]
 
+		]
+
+		});
+    });
+  </script>
 
 
 

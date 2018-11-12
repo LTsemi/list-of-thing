@@ -15,6 +15,7 @@ import com.buyme.won.notice.model.vo.Notice;
 
 import static com.buyme.common.JDBCTemplate.*;
 
+
 public class NoticeDao {
 
 	private Properties prop = new Properties();
@@ -79,8 +80,8 @@ public class NoticeDao {
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
-			System.out.println("endRow : " +endRow);
-			System.out.println("startRow : " +startRow);
+			/*System.out.println("endRow : " +endRow);
+			System.out.println("startRow : " +startRow);*/
 			
 			rset = pstmt.executeQuery();
 
@@ -100,7 +101,7 @@ public class NoticeDao {
 				
 				list.add(n);
 				
-				System.out.println("리스트값 : " +i +"번째" +list.get(i).toString());
+				/*System.out.println("리스트값 : " +i +"번째" +list.get(i).toString());*/
 				i++;
 			}
 			
@@ -166,6 +167,8 @@ public class NoticeDao {
 			
 			result = pstmt.executeUpdate();
 			
+			System.out.println("result");
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -175,8 +178,103 @@ public class NoticeDao {
 		}
 		return result;
 		
+
+	}
+
+
+	public int updateCount(Connection con, int nno) {
 		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateCount");
+		
+		try {
+		
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, nno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	public Notice updateView(Connection con,int nno) {
+		// TODO Auto-generated method stub
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Notice n = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+		
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setInt(1, nno);
+			 
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				n = new Notice();
+				
+				n.setNwriter(rset.getString("NWRITER"));
+				n.setNtitle(rset.getString("NTITLE"));
+				n.setNcontent(rset.getString("NCONTENT"));
+				n.setNdate(rset.getDate("NDATE"));
+				n.setNno(rset.getInt("NNO"));
+				
+			}
+			
+			System.out.println("notice 한 개 : " + n);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return n;
+		
+	}
+
+	public int deleteNotice(Connection con, int nno) {
 	
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, nno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 		
 	}
 	

@@ -26,11 +26,11 @@
 	rel="stylesheet">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-	
-	
-	
-	<link rel="stylesheet" href="../../resources/css/evtPage.css">
-	<link rel="stylesheet" href="../../resources/css/templatemo-style.css">	
+
+
+
+<link rel="stylesheet" href="../../resources/css/evtPage.css">
+<link rel="stylesheet" href="../../resources/css/templatemo-style.css">
 
 
 
@@ -77,13 +77,44 @@ body {
 ​
 </style>
 
+<script>
+	$(document).ready(
+			function() {
+				$('#summernote').summernote(
+						{
+
+							width : 800,
+							height : 400, // set editor height
+							minHeight : null, // set minimum height of editor
+							maxHeight : null, // set maximum height of editor
+							focus : true, // set focus to editable area after initializing summernote
+
+							toolbar : [
+									// [groupName, [list of button]]
+									[ 'style', [ 'style' ] ],
+									[
+											'font',
+											[ 'bold', 'italic', 'underline',
+													'clear' ] ],
+									[ 'font', [ 'fontsize', 'color' ] ],
+									[ 'font', [ 'fontname' ] ],
+									[ 'para', [ 'paragraph' ] ],
+									[ 'table', [ 'table' ] ]
+
+							]
+
+						});
+			});
+</script>
+
+
 </head>
 
 <body>
 
 	<%@ include file="../common/header.jsp"%>
 
-  
+
 	<div class="page-heading">
 		<div class="container">
 			<div class="heading-content">
@@ -95,7 +126,9 @@ body {
 	</div>
 
 
-  <% if(mh != null && mh.getUserId().equals("admin")) { %>
+	<%
+		if (mh != null && mh.getUserId().equals("admin")) {
+	%>
 	<div id="video-container" style="height: 720px;">
 
 		<div class="row">
@@ -110,30 +143,32 @@ body {
 		<br>
 
 
-<form action="<%= request.getContextPath() %>/nInsert.no" method="post">
-
-		<div align="center">
-			제목 : &nbsp; <input type="text" size="80" id="title" name="title" align="center" placeholder="   제목을 입력하세요."><br> 
-			<br> 
-			작성자 : <input type="text" value="<%= mh.getUserName() %>" name="writer" readonly size="25" id="writer" align="center">&nbsp;
-			<input type="hidden" value="<%= mh.getUserId() %>" name="userId"> 
-			작성일 : &nbsp; <input type="date" id="date" name="date">
-		</div>
-		<br>
-
-		<div class="container" align="center">
-			<!-- <textarea id="summernote" name="content"></textarea> -->
-			<textarea id="summernote" name="content"></textarea>
+		<form action="<%=request.getContextPath()%>/nInsert.no"
+			method="post">
 
 			<div align="center">
-				<button type="reset" id="btn1">취소하기</button>
-				<button type="submit" id="btn2">등록하기</button>
+				제목 : &nbsp; <input type="text" size="80" id="title" name="title"
+					align="center" placeholder="   제목을 입력하세요."><br> <br>
+				작성자 : <input type="text" value="<%=mh.getUserName()%>"
+					name="writer" readonly size="25" id="writer" align="center">&nbsp;
+				<input type="hidden" value="<%=mh.getUserId()%>" name="userId">
+				작성일 : &nbsp; <input type="date" id="date" name="date">
 			</div>
-		</div>
+			<br>
 
-		<br>
+			<div class="container" align="center">
+				<!-- <textarea id="summernote" name="content"></textarea> -->
+				<textarea id="summernote" name="content"></textarea>
 
-	</form>
+				<div align="center">
+					<button type="reset" id="btn1">취소하기</button>
+					<button type="submit" id="btn2">등록하기</button>
+				</div>
+			</div>
+
+			<br>
+
+		</form>
 
 
 	</div>
@@ -141,43 +176,18 @@ body {
 
 	<br>
 	<br />
-	
-	<% } else {
-		request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
-		request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-	} %>
+
+	<%
+		} else {
+			request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+	%>
 
 	<%@ include file="../common/footer.jsp"%>
 
 
 
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-		
-        width : 800,
-		height: 400,                 // set editor height
-		minHeight: null,             // set minimum height of editor
-		maxHeight: null,             // set maximum height of editor
-		focus: true,                  // set focus to editable area after initializing summernote
-  
-  
-		toolbar: [
-			// [groupName, [list of button]]
-			['style', ['style']],
-			['font', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['fontsize', 'color']],
-			['font', ['fontname']],
-			['para', ['paragraph']],
-			['table', ['table']]
-
-		]
-	
-		
-		
-		});
-    });
-  </script>
 
 
 

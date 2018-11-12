@@ -11,7 +11,6 @@
 	int endPage = pi.getEndPage();
 	
 	int i = 0;
-	int endnum = listCount;
 
 %>
 
@@ -149,13 +148,33 @@ body {
 	font-family: NanumSquareRoundR !important;
 }
 
-#searchBtn, #searchCondition, #insertBtn, #updateBtn, #paging, .numBtn {
+#searchBtn {
 	background-color: white;
 	color: black;
 	border: 0.5px solid #BDBDBD;
 	height: 24px;
 }
 
+#searchCondition {
+	background-color: white;
+	color: black;
+	border: 0.5px solid #BDBDBD;
+	height: 24px;
+}
+
+#insertBtn {
+    background-color: white;
+	color: black;
+	border: 0.5px solid #BDBDBD;
+	height: 24px;
+}
+
+.numBtn {
+ background-color: white;
+	color: black;
+	border: 0.5px solid #BDBDBD;
+	height: 24px;
+}
 </style>
 
 </head>
@@ -175,7 +194,7 @@ body {
 		</div>
 	</div>
 
-	<div class="outer" style="auto">
+	<div class="outer" style="height: 610px;">
 
 		
 	 <div class="container">
@@ -209,13 +228,11 @@ body {
 							</div>
 							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								<div class="panel-body">
-									<p name="nno">No.<%= endnum %></p>
-									<p><hr /></p>
+									<p name="nno">No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p name="content"><%= n.getNcontent() %></p>
-									<p><hr /></p>
-									<p>작성자 : <%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>&nbsp;&nbsp;
+									<p>작성자:<%= n.getNwriter() %> &nbsp;  작성일 :<%= n.getNdate() %>
 									<% if( mh != null && mh.getUserId().equals("admin")) { %>
-						            <button id="updateBtn" onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
+						            <button onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
 					                <% } %>
 									 </p>
 								</div>
@@ -232,13 +249,11 @@ body {
 							</div>
 							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 								<div class="panel-body">
-									<p>No.<%= endnum %></p>
-									<p><hr /></p>
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p name="content"><%= n.getNcontent() %></p>
-									<p><hr /></p>
-									<p>작성자 : <%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>&nbsp;&nbsp;
+									<p>작성자:<%= n.getNwriter() %> &nbsp;  작성일 :<%= n.getNdate() %>
 									<% if( mh != null && mh.getUserId().equals("admin")) { %>
-						            <button id="updateBtn" onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
+						            <button onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
 					                <% } %>
 									 </p>
 								</div>
@@ -255,13 +270,11 @@ body {
 							</div>
 							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body">
-									<p>No.<%= endnum %>></p>
-									<p><hr /></p>
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p name="content"><%= n.getNcontent() %></p>
-									<p><hr /></p>
-									<p>작성자 : <%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>&nbsp;&nbsp;
+									<p>작성자:<%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %> 
 									<% if( mh != null && mh.getUserId().equals("admin")) { %>
-						            <button id="updateBtn" onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
+						            <button onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
 					                <% } %>
 									</p>
 								</div>
@@ -278,13 +291,11 @@ body {
 							</div>
 							<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
 								<div class="panel-body">
-									<p>No.<%= endnum %></p>
-									<p><hr /></p>
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p name="content"><%= n.getNcontent() %></p>
-									<p><hr /></p>
-									<p>작성자 : <%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>&nbsp;&nbsp;
+									<p>작성자:<%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>
 									<% if( mh != null && mh.getUserId().equals("admin")) { %>
-						            <button id="updateBtn" onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
+						            <button onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
 					                <% } %>
 									</p>
 								</div>
@@ -301,55 +312,53 @@ body {
 							</div>
 							<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
 								<div class="panel-body">
-									<p>No.<%= endnum %></p>
-									<p><hr /></p>
+									<p>No.<%= n.getNno() %>&nbsp; 조회수 : <%= n.getNcount() %></p>
 									<p name="content"><%= n.getNcontent() %></p>
-									<p><hr /></p>
-									<p>작성자 : <%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>&nbsp;&nbsp;
+									<p>작성자:<%= n.getNwriter() %> &nbsp;  작성일 : <%= n.getNdate() %>
 									<% if( mh != null && mh.getUserId().equals("admin")) { %>
-						            <button id="updateBtn" onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
+						            <button onclick="location.href='nUpView.no?nno=<%=n.getNno()%>'">수정하기</button>
 					                <% } %>
 									</p>
 								</div>
 							</div>
 						</div>
 						<%} %>
-						<% i++;%>
-						<% endnum--; %>
+						<% i++; System.out.println("i: " + i);%>
 					<% } %>	
 					</div>
 				</div><!--- END COL -->	
 				
 			</div><!--- END ROW -->		
 			
+
 		</div>
 	</div>
 	
-	<br />
+	
 		<%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
-			<button id="paging" disabled><</button>
+			<button disabled><</button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
 					if(p == currentPage){	
 			%>
-				<button id="paging" disabled><%= p %></button>
+				<button disabled><%= p %></button>
 			<%      }else{ %>
-				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
 			<%  } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
-			<button id="paging" disabled>></button>
+			<button disabled>></button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
 	
@@ -368,12 +377,14 @@ body {
 		<button id="insertBtn" onclick="location.href='views/won/noticeInsertForm.jsp'">작성하기</button>
 		<% } %>
 
+
 	</div>
 	<br />
 	<br />
 
 	<%@ include file="../common/footer.jsp"%>
 	
+
 	<script>
 		
 		(function($) {
@@ -388,11 +399,16 @@ body {
 						}, 1500);
 						e.preventDefault();
 					});		
+
 			}); 	
-			
+
+						
 		})(jQuery);
+		
+
 
 	</script>
+
 
 </body>
 </html>

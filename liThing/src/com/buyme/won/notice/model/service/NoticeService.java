@@ -48,19 +48,43 @@ public class NoticeService {
 			return result;
 		}
 
-		public int updateNotice(Notice n) {
+		public Notice updateView(int nno) {
+			Notice n = null;
 			
+			Connection con = getConnection();
+			
+			n = nDao.updateView(con, nno);
+			
+			return n;
+		}
+		
+		public int updateNotice(Notice n) {
 			Connection con = getConnection();
 			
 			int result = nDao.updateNotice(con, n);
 			
-			if(result>0) commit(con);
+			if( result > 0) commit(con);
+			else rollback(con);
+			
+			return result;
+		}
+
+		public int deleteNotice(int nno) {
+		
+           int result = 0;
+			
+			Connection con = getConnection();
+			
+			result = nDao.deleteNotice(con, nno);
+			
+			if( result > 0) commit(con);
 			else rollback(con);
 			
 			return result;
 			
 		}
 
+		
 	
 	
 	

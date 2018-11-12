@@ -18,7 +18,7 @@ import com.buyme.won.notice.model.vo.Notice;
 /**
  * Servlet implementation class NoticeUpdateServlet
  */
-@WebServlet("/nUpView.no")
+@WebServlet("/nUpdate.no")
 public class NoticeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class NoticeUpdateServlet extends HttpServlet {
 		System.out.println("content : " + content);
 		int nno = Integer.parseInt(request.getParameter("nno"));
 		System.out.println("nno : " + nno);
-
+ 
 		Notice n = new Notice();
 
 		n.setNtitle(title);
@@ -54,6 +54,7 @@ public class NoticeUpdateServlet extends HttpServlet {
 
 		if (result > 0) {
 			response.sendRedirect("selectList.no");
+			/*response.sendRedirect("selectOne.no?nno="+nno);*/
 		} else {
 			request.setAttribute("msg", "공지사항 수정에 실패했습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
