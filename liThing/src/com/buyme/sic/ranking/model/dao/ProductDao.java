@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.sic.review.model.vo.Review;
 
 import static com.buyme.common.JDBCTemplate.*;
 
@@ -164,6 +165,8 @@ public class ProductDao {
 		
 		return p;
 	}
+
+
 
 }
 

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.buyme.sic.ranking.model.dao.ProductDao;
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.sic.review.model.vo.Review;
 
 public class ProductService {
 	private ProductDao pDao = new ProductDao();
@@ -60,5 +61,6 @@ public class ProductService {
 		
 		return p;
 	}
+
 
 }
