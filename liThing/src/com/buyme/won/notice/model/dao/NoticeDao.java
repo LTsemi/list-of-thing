@@ -15,7 +15,6 @@ import com.buyme.won.notice.model.vo.Notice;
 
 import static com.buyme.common.JDBCTemplate.*;
 
-
 public class NoticeDao {
 
 	private Properties prop = new Properties();
@@ -277,6 +276,62 @@ public class NoticeDao {
 		return result;
 		
 	}
+
+	public Object searchNotice(Connection con, String condition, String keyword) {
+		
+		ArrayList<Notice> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch(condition) {
+		case "writer" :
+			sql = prop.getProperty("searchWriterNotice");
+			break;
+		case "title" :
+			sql = prop.getProperty("searchTitleNotice");
+			break;
+		case "content" :
+			sql = prop.getProperty("searchContentNotice");
+			break;
+		}
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, keyword);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Notice>();
+			
+			while(rset.next()){
+				
+				Notice n = new Notice();
+				
+				
+				
+				list.add(n);
+				
+			}
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		// 확인용 출력문
+		for(Notice n : list) System.out.println(n);
+		
+		return list;
+	}
+	
 	
 	
 }

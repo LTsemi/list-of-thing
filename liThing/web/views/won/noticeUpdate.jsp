@@ -135,7 +135,15 @@ body {
 					}
 					
 					function deleteNotice(){
-						$("#updateForm").attr("action","<%=request.getContextPath() %>/nDelete.no");
+						
+						var checkdel = window.confirm("정말로 삭제하시겠습니까?");
+						
+						if(checkdel){
+							$("#updateForm").attr("action","<%=request.getContextPath() %>/nDelete.no");
+						}else{
+							$("#updateForm").attr("action","<%=request.getContextPath() %>/nUpdate.no");
+						}
+						
 					}
 				
 				</script>
