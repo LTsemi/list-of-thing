@@ -1,7 +1,10 @@
 <%@page import="com.buyme.ju.customerService.model.vo.CustomerService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% CustomerService c = (CustomerService)request.getAttribute("customerService"); %>
+<% 
+	CustomerService c = (CustomerService)request.getAttribute("customerService");
+	Member m = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,15 +30,17 @@
 
 <%@ include file="../common/header.jsp" %>
 
-<div class="page-heading">
-	        <div class="container">
-	            <div class="heading-content">
-	                <h1 id="ctitle">List of Thing</h1>
-	            </div>
-	        </div>
-    	</div>
+<% if(m != null && m.getUserId().equals("admin")){ %>
 
-<h2 align="center">QnA 수정</h2>
+	<div class="page-heading">
+	   <div class="container">
+	       <div class="heading-content">
+	           <h1 id="ctitle">List of Thing</h1>
+	       </div>
+	   </div>
+    </div>
+
+	<h2 align="center">QnA 수정</h2>
 		<div class="tableArea" align="center">
 			<form id="updateForm" method="post">
 				<table>
@@ -77,12 +82,15 @@
 				</div>
 				<script>
 					function complete(){
-						$("#updateForm").attr("action","<%=request.getContextPath() %>/csUpdate.cs");
-
+						$("#updateForm").attr("action","<%=request.getContextPath() %>/csUpdate.cs?cno=<%=c.getCno() %>");
+						$("#updateForm").submit();
 					}
 				
 				</script>
-			</form>
+			<% } else {
+				request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
+				request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
+			 } %>
 			
 	<%@ include file="../common/footer.jsp" %>
 </body>

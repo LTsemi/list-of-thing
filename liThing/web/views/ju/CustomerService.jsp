@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<CustomerService> list = (ArrayList<CustomerService>)request.getAttribute("list");
+	Member m = (Member)session.getAttribute("member");
 %>    
 
 <!DOCTYPE html>
@@ -51,11 +52,16 @@
     	
     	
     <div id="help" align="center">
-    	<button class="insertBtn" onclick="location.href='csInsert.cs'">작성하기</button>
+    <% if( m != null && m.getUserId().equals("admin")) { %>
+    	<button class="insertBtn" onclick="location.href='views/ju/CustomerService_Insert.jsp'">작성하기</button>
+    <% } %>
     <% for(int i = 0; i < list.size(); i++) { %>       
         <div class="question"><span>Q</span>
         <%= list.get(i).getCtitle() %>
-    	<div><button class="updateBtn" onclick="location.href='csUpView.cs?cno=<%= list.get(i).getCno() %>'">수정</button></div>
+        
+        <% if( m != null && m.getUserId().equals("admin")) { %>
+    	<button class="updateBtn" onclick="location.href='csUpView.cs?cno=<%= list.get(i).getCno() %>'">수정</button>
+    	<%} %>
     	
         </div>
         <p class="content" ><span>A</span>

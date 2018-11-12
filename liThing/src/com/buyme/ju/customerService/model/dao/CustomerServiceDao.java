@@ -1,6 +1,6 @@
 package com.buyme.ju.customerService.model.dao;
 
-import java.io.FileReader;
+import java.io.FileReader; 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,4 +137,60 @@ public class CustomerServiceDao {
 		return c;
 	}
 
+	public int updateCustomerSerivce(Connection con, CustomerService c) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateCustomerService");
+		
+		try{ 
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setString(1, c.getCtitle());
+			pstmt.setString(2, c.getCcontent());
+			pstmt.setInt(3, c.getCno());
+			
+			result = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			
+		} finally {
+			
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	public int insertCustomerServicce(Connection con, CustomerService c) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("insertCustomerService");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, c.getCtitle());
+			pstmt.setString(2, "admin");
+			pstmt.setString(3, c.getCcontent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }
+
+

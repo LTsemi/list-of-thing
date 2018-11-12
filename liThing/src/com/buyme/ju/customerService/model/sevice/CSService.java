@@ -1,6 +1,6 @@
 package com.buyme.ju.customerService.model.sevice;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 
 import java.util.ArrayList;
 import static com.buyme.common.JDBCTemplate.*;
@@ -25,8 +25,18 @@ public class CSService {
 	}
 
 	public int insertCustomerService(CustomerService c) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		
+		Connection con = getConnection();
+		
+		result = cDao.insertCustomerServicce(con, c);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
 	}
 
 	public int updateCustomerService(CustomerService c) {
@@ -51,9 +61,15 @@ public class CSService {
 		return c;
 	}
 
-	public int updateNotice(CustomerService c) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateCustomerSerivce(CustomerService c) {
+		Connection con = getConnection();
+		
+		int result = cDao.updateCustomerSerivce(con, c);
+		
+		if( result > 0) commit(con);
+		else rollback(con);
+		
+		return result;
 	}
 
 }
