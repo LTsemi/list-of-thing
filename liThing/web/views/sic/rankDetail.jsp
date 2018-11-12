@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="com.buyme.sic.ranking.model.vo.*, com.buyme.sic.review.model.vo.*"%>
+<%
+	Product p = (Product) request.getAttribute("dRank");
+	Review r = (Review) request.getAttribute("review");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,17 +58,17 @@ http://www.templatemo.com/tm-520-highway
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 @font-face {
-    font-family: 'NanumSquareRoundR';
-    src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
-    }
-    
-    * 
-    { box-sizing: border-box;
-    font-family: NanumSquareRoundR; 
-    }
+	font-family: 'NanumSquareRoundR';
+	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+}
+
+* {
+	box-sizing: border-box;
+	font-family: NanumSquareRoundR;
+}
+
 .box {
 	display: inline-block;
-	
 }
 
 .text {
@@ -71,7 +76,7 @@ http://www.templatemo.com/tm-520-highway
 }
 
 .starR {
-	background: url('../../resources/img/ico.png') no-repeat right 0;
+	background: url('/semi/resources/img/ico.png') no-repeat right 0;
 	background-size: auto 100%;
 	width: 30px;
 	height: 30px;
@@ -85,7 +90,7 @@ http://www.templatemo.com/tm-520-highway
 }
 
 .RstarR {
-	background: url('../../resources/img/ico.png') no-repeat right 0;
+	background: url('/semi/resources/img/ico.png') no-repeat right 0;
 	background-size: auto 100%;
 	width: 30px;
 	height: 30px;
@@ -112,29 +117,23 @@ http://www.templatemo.com/tm-520-highway
 
 	<div style="width: 1200px; margin: 200px auto;">
 		<div style="width: 1100px; margin: 0 auto;">
-			<div class="box" style="width: 430px;">
+			<div class="box">
 				<div
-					style="border: 1px solid #D0D0D0; padding: 20px; font-size: 25px; padding-top: 20px; background: white; border-radius: 4px; height: 410px;">
-					<img src="../../resources/img/blog_post_2.png"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%;">
+					style="border: 1px solid #D0D0D0; padding: 20px; font-size: 25px; padding-top: 20px; background: white; border-radius: 4px; width: 430px;">
+					<img src="/semi/resources/productImg/<%=p.getCname()%>"
+						width="300px" height="300px"
+						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; margin-left: 50px">
 				</div>
 				<div
 					style="border: 1px solid #D0D0D0; padding: 20px; font-size: 25px; background: white; border-radius: 4px; text-align: center; margin-top: 10px">
-					<h2>제품명</h2>
-					<div
-						style="padding: 20px; text-align: left">
+					<h2><%=p.getPname()%></h2>
+					<div style="padding: 20px; text-align: left">
 						<h4>제품 설명</h4>
-						<p class="text">국회의원은 법률이 정하는 직을 겸할 수 없다. 통신·방송의 시설기준과 신문의 기능을
-							보장하기 위하여 필요한 사항은 법률로 정한다. 재산권의 행사는 공공복리에 적합하도록 하여야 한다. 국회의원이 회기전에
-							체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 공무원의 직무상 불법행위로 손해를
-							받은 국민은 법률이 정하는 바에 의하여 국가 또는 공공단체에 정당한 배상을 청구할 수 있다. 이 경우 공무원 자신의
-							책임은 면제되지 아니한다. 모든 국민은 근로의 의무를 진다. 국가는 근로의 의무의 내용과 조건을 민주주의원칙에 따라
-							법률로 정한다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이
-							스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다.</p>
+						<p class="text"><%=p.getPexp()%></p>
 					</div>
 					<div
 						style="border: 1px solid #D0D0D0; padding: 20px; background: white; border-radius: 4px; text-align: left">
-						성분아이콘 공간</div>
+						<%=p.getPindg()%></div>
 				</div>
 			</div>
 			<div class="box"
@@ -150,48 +149,53 @@ http://www.templatemo.com/tm-520-highway
 					<div style="border: 1px solid black; height: 250px;">그래프 들어갈
 						공간</div>
 				</div>
-				<div
-					style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
-					<div class="box" style="padding-top: 10px">
-						<textarea name="" id="" cols="50" rows="4"
-							style="display: inline-block; resize: none;"></textarea>
-					</div>
-					<div class="box"
-						style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
-						<input class="button" type="button" value="작성하기"
-							style="vertical-align: top; width: 100%; height: 100%;">
-					</div>
-					<div>
-						<div class="starRev">
-							<span class="starR on">별1</span> <span class="starR">별2</span> <span
-								class="starR">별3</span> <span class="starR">별4</span> <span
-								class="starR">별5</span>
+				<form action="<%=request.getContextPath()%>/review.rv"
+					method="post">
+					<input name="userid" value="<%= r.getUserid() %>" />
+					<div
+						style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
+						<div class="box" style="padding-top: 10px">
+							<textarea name="" id="" cols="50" rows="4"
+								style="display: inline-block; resize: none;"></textarea>
+						</div>
+						<div class="box"
+							style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
+							<input class="button" type="submit" value="작성하기"
+								style="vertical-align: top; width: 100%; height: 100%;">
+						</div>
+						<div>
+							<div class="starRev">
+								<span class="starR on">별1</span> <span class="starR">별2</span> <span
+									class="starR">별3</span> <span class="starR">별4</span> <span
+									class="starR">별5</span>
+							</div>
+						</div>
+
+						<div>
+							<table style="width: 100%">
+								<tr>
+									<td colspan="3" style="text-align: right; padding: 10px">작성일</td>
+
+								</tr>
+								<tr>
+									<td style="width: 200px; padding: 10px">작성자ID</td>
+									<td colspan="2" style="text-align: left">별점</td>
+
+								</tr>
+								<tr>
+									<td colspan="3"><p style="padding: 10px; text-align: left">국회의원은
+											국가이익을 우선하여 양심에 따라 직무를 행한다. 국회의원은 법률이 정하는 직을 겸할 수 없다. 지방자치단체는
+											주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다.
+
+											대법원과 각급법원의 조직은 법률로 정한다. 선거에 있어서 최고득표자가 2인 이상인 때에는 국회의 재적의원
+											과반수가 출석한 공개회의에서 다수표를 얻은 자를 당선자로 한다.</p></td>
+								</tr>
+							</table>
+							<br>
+							<hr style="width: 550px; background-color: #D0D0D0">
 						</div>
 					</div>
-					<div>
-						<table style="width: 100%">
-							<tr>
-								<td colspan="3" style="text-align: right; padding: 10px">작성일</td>
-
-							</tr>
-							<tr>
-								<td style="width: 200px; padding: 10px">작성자ID</td>
-								<td colspan="2" style="text-align: left">별점</td>
-
-							</tr>
-							<tr>
-								<td colspan="3"><p style="padding: 10px; text-align: left">국회의원은
-										국가이익을 우선하여 양심에 따라 직무를 행한다. 국회의원은 법률이 정하는 직을 겸할 수 없다. 지방자치단체는
-										주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다.
-
-										대법원과 각급법원의 조직은 법률로 정한다. 선거에 있어서 최고득표자가 2인 이상인 때에는 국회의 재적의원
-										과반수가 출석한 공개회의에서 다수표를 얻은 자를 당선자로 한다.</p></td>
-							</tr>
-						</table>
-						<br>
-						<hr style="width: 550px; background-color: #D0D0D0">
-					</div>
-				</div>
+				</form>
 			</div>
 
 		</div>

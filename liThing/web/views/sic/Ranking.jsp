@@ -1,6 +1,9 @@
+<%@page import="java.util.ArrayList, com.buyme.sic.ranking.model.vo.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +29,8 @@ http://www.templatemo.com/tm-520-highway
 <link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="../resources/css/fontAwesome.css">
 <link rel="stylesheet" href="../resources/css/light-box.css">
-<link rel="stylesheet" href="../resources/css/templatemo-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">   
+
 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
@@ -49,7 +53,6 @@ http://www.templatemo.com/tm-520-highway
 
 
 
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -58,7 +61,7 @@ http://www.templatemo.com/tm-520-highway
 <style>
 @font-face {
     font-family: 'NanumSquareRoundR';
-    src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+    src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
     }
     
     * 
@@ -79,7 +82,7 @@ http://www.templatemo.com/tm-520-highway
 	/* font-family: "Nanum Gothic", sans-serif; */
 }
 .button {
-	background: url('../../resources/img/reload.png') no-repeat;
+	background: url('<%= request.getContextPath() %>resources/img/reload.png') no-repeat;
 	background-size: auto 100%;
 	width: 100px;
 	height: 30px;
@@ -148,7 +151,7 @@ http://www.templatemo.com/tm-520-highway
     margin-top: 5px;
     display: inline-block;
    	margin-right: 5px;
-	background-image: url('../../resources/img/reload.png');
+	background-image: url('<%= request.getContextPath() %>/resources/img/reload.png');
 
 } 
 .resetBtn:hover{
@@ -161,13 +164,21 @@ http://www.templatemo.com/tm-520-highway
 <body>
 
 	<%@ include file="../common/header.jsp"%>
-	
+	<div class="page-heading">
+      <div class="container">
+         <div class="heading-content">
+            <h1>
+               list of<em>thing ;)</em>
+            </h1>
+         </div>
+      </div>
+   </div>
 	<div style="width: 1200px; margin: 200px auto">
 		<div style="width: 1100px; margin: 0 auto">
 			<div class="box" style="width: 380px">
 				<div
 					style="border: 1px solid #D0D0D0; padding-left: 20px; font-size: 25px; padding-top: 20px; background: white; border-radius: 4px">
-					<span><img src="../../resources/img/list.png"/></span><b>&nbsp;&nbsp;정렬</b><br>
+					<span><img src="<%= request.getContextPath() %>/resources/img/list.png"/></span><b>&nbsp;&nbsp;정렬</b><br>
 					<br> <select class="listcss" name="" id=""
 						style="color: black; font-size: 15px; margin-bottom: 20px; width: 200px; outline: none;">
 						<option value="랭킹순">랭킹순</option>
@@ -180,7 +191,7 @@ http://www.templatemo.com/tm-520-highway
 				</div>
 				<div
 					style="border: 1px solid #D0D0D0; padding-left: 20px; font-size: 25px; padding-top: 20px; margin-top: 20px; padding-bottom: 20px; background: white; border-radius: 4px">
-					<span><img src="../../resources/img/filter.png"/></span><b>&nbsp;필터</b>
+					<span><img src="<%= request.getContextPath() %>/resources/img/filter.png"/></span><b>&nbsp;필터</b>
 					
 					<button class="resetBtn" id="resetFrm"><span></span>초기화</button><br />
 				
@@ -260,33 +271,22 @@ http://www.templatemo.com/tm-520-highway
 			<div id="dbox" class="box"
 				style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border:1px solid #D0D0D0; border-radius: 4px">
 				<table id="rList" style=" width: 659px; height: 150px; text-align: center; border-radius: 4px">
-					<%-- <% for(int i=1; i<7; i++){ %>
-					<tr>
-						<td rowspan="3" style="width: 100px; height: 150px;"><b><%= i %></b></td>
-						<td rowspan="3" style="width: 100px; height: 150px;">이미지</td>
-						<td>브랜드명</td>
-						<td rowspan="3" style="width: 250px; height: 150px;">별점</td>
-					</tr>
-					<tr class="pn">
-						<td>제품명</td>
-					</tr>
-					<tr class="pp">
-						<td>가격</td>
 					
-					</tr>
-					<% } %> --%>
-					<% for(int i=1; i<7; i++){ %>
+					<% for(Product p : list){ %>
 					<tr>
-						<td style="width: 100px; height: 150px;"><b><%= i %></b></td>
-						<td style="width: 100px; height: 150px;">이미지</td>
+						<td style="display: none"><b><%= p.getPno() %></b></td>
+						<td style="width: 100px; height: 150px;"><b>번호</b></td>
+						<td style="width: 100px; height: 150px;">
+							<img src="/semi/resources/productImg/<%=p.getCname() %>"  width="200px" height="150px" style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important"/>
+						</td>
 						<td style="text-align: left">
 							<ul style="text-align: left; list-style: none; " >
-								<li><h5 style="color: red">브랜드명</h5></li>
-								<li><h4>제품명</h4></li>
-								<li><h5>가격</h5></li>
+								<li><h5 style="color: red"><%= p.getBrand() %></h5></li>
+								<li><h4><%= p.getPname() %></h4></li>
+								<li><h5><%= p.getPprice() %></h5></li>
 							</ul> 
 						</td>
-						<td style="width: 250px; height: 150px;">별점</td>
+						<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>
 					</tr>
 					<% } %>
 				</table> 
@@ -368,7 +368,8 @@ http://www.templatemo.com/tm-520-highway
 		$('#rList td').mouseenter(function() {
 			$(this).parent().css({"background":"#FAF2F0","cursor":"pointer"});
 		}).click(function() {
-			location.href="rankDetail.jsp";
+			var pno = $(this).parent().children().eq(0).text();
+			location.href="<%=request.getContextPath()%>/selectOne.po?pno=" + pno;
 		}).mouseleave(function() {
 			$(this).parent().css({"background":"white"});
 		});
@@ -376,7 +377,7 @@ http://www.templatemo.com/tm-520-highway
 	
 	$(function() {
 		$('#upPduct').click(function() {
-			location.href="UploadProduct.jsp";
+			location.href="views/sic/UploadProduct.jsp";
 		});
 	});
 

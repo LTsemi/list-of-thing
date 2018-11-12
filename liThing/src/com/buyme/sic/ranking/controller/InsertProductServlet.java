@@ -59,13 +59,14 @@ public class InsertProductServlet extends HttpServlet {
 			
 			Product p = new Product();
 			
-			p.setPno(mrequest.getParameter("pno"));
+			p.setPnn(mrequest.getParameter("pnn"));
 			p.setKno(mrequest.getParameter("kno"));
 			p.setPname(mrequest.getParameter("pname"));
 			p.setPprice(Integer.parseInt(mrequest.getParameter("pprice")));
-			p.setPindg(mrequest.getParameter("pindg"));
+			p.setPindg(String.join(", ",mrequest.getParameterValues("pindg")));
 			p.setBrand(mrequest.getParameter("brand"));
 			p.setPcap(mrequest.getParameter("pcap"));
+			p.setPexp(mrequest.getParameter("pexp"));
 			
 
 			String saveFile;
