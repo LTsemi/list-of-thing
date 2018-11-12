@@ -213,7 +213,7 @@ nav {
           <div class="main-menu">
               <ul>
                   <li>
-                      <a href="/semi/views/sic/Ranking.jsp">랭 킹</a>
+                      <a href="/semi/selectList.po">랭 킹</a>
                   </li>
                   <li>
                       <a href="/semi/selectList.no">공지사항</a>
