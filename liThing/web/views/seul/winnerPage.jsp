@@ -130,7 +130,7 @@
       <hr>
       
 	  <h2><%= e.getEvttitle() %></h2>
-	  <h5><span class="glyphicon glyphicon-time"></span> <%= e.getEvtdate() %></h5>
+	  <h5><span class="glyphicon glyphicon-time"></span><%= e.getEvtdate() %></h5>
       <br><br>
       <p>
         <%= e.getEvtcontent() %>

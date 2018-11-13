@@ -112,7 +112,7 @@ body {
 							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
 								<p class="evtImg">
 									<img
-										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
+										src="/semi/resources/eventUploadFiles/<%=evt.getE_dtl_cname()%>"
 										width="770px">
 								</p> <span class="dday">D-<%=evt.getDday()%></span>
 								<div class="evtText">

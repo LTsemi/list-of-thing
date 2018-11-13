@@ -109,8 +109,8 @@ http://www.templatemo.com/tm-520-highway
     <div class="listGo">
         <a href="/semi/selectList.ev" class="listbtn">목록으로</a> 
         <% if(mh != null && mh.getUserId().equals("admin")){ %>
-         <button class="listbtn" onclick="#">수정하기</button>	  
-         <button class="listbtn" onclick="#">삭제하기</button>	  		  
+         <button class="listbtn" onclick="location.href='eUpdateView.ev?eno=<%=e.getEno()%>'">수정하기</button>	
+         <button class="listbtn" onclick="location.href='eDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>		  
 		<% } %>
     </div>
         

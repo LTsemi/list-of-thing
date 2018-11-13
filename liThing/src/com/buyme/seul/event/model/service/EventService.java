@@ -40,10 +40,10 @@ public class EventService {
 	
 	
 
-	public int insertEvent(Event e, ArrayList<Event> list) {
+	public int insertEvent(Event e) {
 		Connection con = getConnection();
 		
-		int result = eDao.insertEvent(con, e, list);
+		int result = eDao.insertEvent(con, e);
 		
 		if( result > 0 ) {
 			commit(con);
@@ -135,6 +135,50 @@ public class EventService {
 		Connection con = getConnection();
 		
 		int result = eDao.updateWinner(con, e);
+		
+		if( result > 0) commit(con);
+		else rollback(con);
+		
+		return result;
+	}
+
+
+
+	public int deleteEvent(int eno) {
+		Connection con = getConnection();
+		
+		int result = 0, result1 = 0;
+		
+		result1 = eDao.deleteEvent(con, eno);
+		
+		if( result1 > 0 ) {
+			commit(con);
+			result = 1;
+			
+		} else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
+	public Event updateEvtView(int eno) {
+		Event e = null;
+		Connection con = getConnection();
+		
+		e = eDao.selectOne(con, eno);
+		
+		return e;
+	}
+
+
+
+	public int updateEvent(Event e) {
+		Connection con = getConnection();
+		
+		int result = eDao.updateEvent(con, e);
 		
 		if( result > 0) commit(con);
 		else rollback(con);

@@ -1,6 +1,5 @@
 package com.buyme.seul.event.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -21,48 +20,38 @@ import com.buyme.seul.event.model.vo.Event;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
- * Servlet implementation class eventInsertServlet
+ * Servlet implementation class EventUpdateServlet
  */
-@WebServlet("/eInsert.ev")
-public class EventInsertServlet extends HttpServlet {
+@WebServlet("/eUpdate.ev")
+public class EventUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EventUpdateServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public EventInsertServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EventService es = new EventService();
 		
 		if(ServletFileUpload.isMultipartContent(request)){
-			// 만약 multipart/form-data 로 전송이 되었다면 실행해라!
-			
-			// 전송할 파일의 용량 선정
 			int maxSize = 1024 * 1024 * 10;
-			
-			// 저장할 경로 설정하기
 			String root = request.getServletContext().getRealPath("/resources");
-			
-			System.out.println("root 경로 확인 : " + root);
-			
 			String savePath = root + "/eventUploadFiles/";
 			
 			MultipartRequest mrequest =
-					new MultipartRequest(request, 
-										 savePath,
-										 maxSize,
-										 "UTF-8",
+					new MultipartRequest(request,savePath,
+										 maxSize,"UTF-8",
 										 new MyRenamePolicy());
 			
+			int eno = Integer.parseInt(request.getParameter("eno"));
+
 			
 			// 날짜관리
 			String dateStr = mrequest.getParameter("dateStr");
@@ -117,12 +106,8 @@ public class EventInsertServlet extends HttpServlet {
 				originFiles.add(mrequest.getOriginalFileName(name));				
 			}
 			
-			// 다중 파일 업로드 시 처리하는 방법
-			// 다중 파일을 업로드 할 경우 컬렉션을 사용하여
-			// 파일을 별도로 관리한다.
-			Event e = new Event();
+			Event e = new Event();		
 			e.setEvttitle(mrequest.getParameter("title"));
-			e.setUserid(mrequest.getParameter("userId"));
 			e.setE_file(savePath);		
 			e.setE_oname(originFiles.get(0));
 			e.setE_cname(saveFiles.get(0));
@@ -132,33 +117,25 @@ public class EventInsertServlet extends HttpServlet {
 			e.setEvtdateend(endDay);
 			
 			System.out.println("e :" + e);
-			int result = es.insertEvent(e);
+			int result = es.updateEvent(e);
 			
-	
 			if(result > 0) {
-				System.out.println("성공하였습니다!");
-				response.sendRedirect("selectList.ev");
+				
+				response.sendRedirect("selectOne.ev?eno="+eno);
+				System.out.println("이벤트 수정 성공!");
 				
 			} else {
-				/*request.setAttribute("msg", "파일 전송 실패!");*/
-				System.out.println("파일 전송 실패!");
-				File file1 = new File(savePath+saveFiles);
-				System.out.println("파일삭제 : " + file1.delete());
-				
-				/*request.getRequestDispatcher("index.jsp")
-				.forward(request, response);*/
+				System.out.println("이벤트 수정  실패!");
+				request.getRequestDispatcher("views/seul/eventWinList.jsp")
+				.forward(request, response);	
 			}
 		}
-		
 	}
 
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

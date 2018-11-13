@@ -36,16 +36,42 @@ public class EventWinnerInsertServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 			 
-			String testid = request.getParameter("userId");
-			System.out.println(testid);
+			String date = request.getParameter("date");
+			
+			System.out.println("날짜 : "+date);
+			
+			Date writeDay = null;
+			
+			if(date != ""){
+				// 날짜가 들어 왔다면
+				
+				// 2018-10-23 --> 2018, 10, 23
+				String[] dateArr = date.split("-");
+				
+				int[] drr = new int[dateArr.length];
+				
+				// String --> int
+				for(int i = 0; i < dateArr.length;i++){
+					drr[i] = Integer.parseInt(dateArr[i]);
+				}
+				
+				writeDay = new Date(
+						new GregorianCalendar(drr[0], drr[1] -1, drr[2]).getTimeInMillis());
+				
+			} else {
+				// 날짜가 들어 오지 않았다면
+				
+				writeDay = new Date(new GregorianCalendar().getTimeInMillis());
+				
+			}
 			
 			Event e = new Event();
 			e.setEvttitle(request.getParameter("title"));
 			e.setEvtcontent(request.getParameter("content"));
 			e.setUserid(request.getParameter("userId"));
+			e.setEvtdate(writeDay);
 			
-			System.out.println(e);
-			System.out.println("userid 서블릿 : " +e.getUserid());
+			System.out.println("e: "+e);
 			
 			EventService es = new EventService();
 			

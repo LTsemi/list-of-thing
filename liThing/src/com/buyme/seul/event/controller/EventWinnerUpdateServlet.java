@@ -1,6 +1,8 @@
 package com.buyme.seul.event.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,11 +36,39 @@ public class EventWinnerUpdateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		System.out.println("title:" + title);
 		String content = request.getParameter("content");
+		String date = request.getParameter("date");
 		int eno = Integer.parseInt(request.getParameter("eno"));
+		
+		Date writeDay = null;
+		
+		if(date != ""){
+			// 날짜가 들어 왔다면
+			
+			// 2018-10-23 --> 2018, 10, 23
+			String[] dateArr = date.split("-");
+			
+			int[] drr = new int[dateArr.length];
+			
+			// String --> int
+			for(int i = 0; i < dateArr.length;i++){
+				drr[i] = Integer.parseInt(dateArr[i]);
+			}
+			
+			writeDay = new Date(
+					new GregorianCalendar(drr[0], drr[1] -1, drr[2]).getTimeInMillis());
+			
+		} else {
+			// 날짜가 들어 오지 않았다면
+			
+			writeDay = new Date(new GregorianCalendar().getTimeInMillis());
+			
+		}
+		
 		Event e = new Event();
 		
 		e.setEvttitle(title);
 		e.setEvtcontent(content);
+		e.setEvtdate(writeDay);
 		e.setEno(eno);
 		
 		int result = new EventService().updateWinner(e);
@@ -46,10 +76,10 @@ public class EventWinnerUpdateServlet extends HttpServlet {
 		if(result > 0) {
 			
 			response.sendRedirect("eSelectWin.ev?eno="+eno);
-			System.out.println("당첨자 수정 확인창 불러오기 성공!");
+			System.out.println("당첨자 수정 성공!");
 			
 		} else {
-			System.out.println("당첨자 수정 확인창 불러오기 실패!");
+			System.out.println("당첨자 수정 실패!");
 			request.getRequestDispatcher("views/seul/eventWinList.jsp")
 			.forward(request, response);	
 		}

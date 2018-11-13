@@ -17,27 +17,31 @@ public class Event implements Serializable {
 	private String evttitle;
 	private String e_file;
 	private String Delflag;
-	private int Filelevel;
 	private String e_oname;
 	private String e_cname;
+	private String e_dtl_oname;
+	private String e_dtl_cname;
 	private int dday;
-
 
 	public Event() {
 		super();
 	}
 
 
-	public Event(String userid, String evtcontent, String evttitle) {
+
+
+	public Event(String userid, String evtcontent, String evttitle, Date evtdate) {
 		super();
 		this.userid = userid;
 		this.evtcontent = evtcontent;
 		this.evttitle = evttitle;
+		this.evtdate = evtdate;
 	}
 
 
 	public Event(int eventallno, int etype, int eno, String userid, Date evtdate, Date evtdateend, String evtcontent,
-			String evttitle, String e_file, String delflag, int filelevel, String e_oname, String e_cname) {
+			String evttitle, String e_file, String delflag, String e_oname, String e_cname,
+			String e_dtl_oname, String e_dtl_cname) {
 		super();
 		this.eventallno = eventallno;
 		this.etype = etype;
@@ -49,14 +53,16 @@ public class Event implements Serializable {
 		this.evttitle = evttitle;
 		this.e_file = e_file;
 		Delflag = delflag;
-		Filelevel = filelevel;
 		this.e_oname = e_oname;
 		this.e_cname = e_cname;
+		this.e_dtl_oname = e_dtl_oname;
+		this.e_dtl_cname = e_dtl_cname;
 	}
 
 
+
 	public Event(int eventallno, int etype, int eno, String userid, Date evtdate, String evtcontent, String evttitle,
-			String delflag, int filelevel) {
+			String delflag) {
 		super();
 		this.eventallno = eventallno;
 		this.etype = etype;
@@ -66,7 +72,6 @@ public class Event implements Serializable {
 		this.evtcontent = evtcontent;
 		this.evttitle = evttitle;
 		Delflag = delflag;
-		Filelevel = filelevel;
 	}
 
 
@@ -103,6 +108,34 @@ public class Event implements Serializable {
 	public String getUserid() {
 		return userid;
 	}
+
+
+	public String getE_dtl_oname() {
+		return e_dtl_oname;
+	}
+
+
+
+
+	public void setE_dtl_oname(String e_dtl_oname) {
+		this.e_dtl_oname = e_dtl_oname;
+	}
+
+
+
+
+	public String getE_dtl_cname() {
+		return e_dtl_cname;
+	}
+
+
+
+
+	public void setE_dtl_cname(String e_dtl_cname) {
+		this.e_dtl_cname = e_dtl_cname;
+	}
+
+
 
 
 	public void setUserid(String userid) {
@@ -170,16 +203,6 @@ public class Event implements Serializable {
 	}
 
 
-	public int getFilelevel() {
-		return Filelevel;
-	}
-
-
-	public void setFilelevel(int filelevel) {
-		Filelevel = filelevel;
-	}
-
-
 	public String getE_oname() {
 		return e_oname;
 	}
@@ -208,13 +231,25 @@ public class Event implements Serializable {
 		this.dday = dday;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "Event [eventallno=" + eventallno + ", etype=" + etype + ", eno=" + eno + ", userid=" + userid
 				+ ", evtdate=" + evtdate + ", evtdateend=" + evtdateend + ", evtcontent=" + evtcontent + ", evttitle="
-				+ evttitle + ", e_file=" + e_file + ", Delflag=" + Delflag + ", Filelevel=" + Filelevel + ", e_oname="
-				+ e_oname + ", e_cname=" + e_cname + "]";
+				+ evttitle + ", e_file=" + e_file + ", Delflag=" + Delflag + ", e_oname="
+				+ e_oname + ", e_cname=" + e_cname + ", e_dtl_oname=" + e_dtl_oname + ", e_dtl_cname=" + e_dtl_cname
+				+ ", dday=" + dday + ", getEventallno()=" + getEventallno() + ", getEtype()=" + getEtype()
+				+ ", getEno()=" + getEno() + ", getUserid()=" + getUserid() + ", getE_dtl_oname()=" + getE_dtl_oname()
+				+ ", getE_dtl_cname()=" + getE_dtl_cname() + ", getEvtdate()=" + getEvtdate() + ", getEvtdateend()="
+				+ getEvtdateend() + ", getEvtcontent()=" + getEvtcontent() + ", getEvttitle()=" + getEvttitle()
+				+ ", getE_file()=" + getE_file() + ", getDelflag()=" + getDelflag() + ", getE_oname()=" + getE_oname() + ", getE_cname()=" + getE_cname() + ", getDday()="
+				+ getDday() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
+
+
 	
 
 

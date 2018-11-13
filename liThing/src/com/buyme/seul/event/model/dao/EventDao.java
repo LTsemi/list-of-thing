@@ -61,7 +61,7 @@ public class EventDao {
 				e.setEvttitle(rset.getString("EVTTITLE"));
 				e.setE_file(rset.getString("E_FILE"));
 				e.setDelflag(rset.getString("DELFLAG"));
-				e.setE_cname(rset.getString("E_CNAME"));
+				e.setE_dtl_cname(rset.getString("E_DTL_CNAME"));
 				e.setDday(rset.getInt("DDAY"));
 				
 				list.add(e);
@@ -148,7 +148,7 @@ public class EventDao {
 		return eid;
 	}
 
-	public int insertEvent(Connection con, Event e, ArrayList<Event> list) {
+	public int insertEvent(Connection con, Event e) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -157,28 +157,20 @@ public class EventDao {
 		try{
 			pstmt = con.prepareStatement(sql);
 			
-			for(int i = 0 ; i < list.size(); i++){
-				 System.out.println("userid : " + e.getUserid());
-				/*pstmt.setInt(1, list.get(i).getEventallno());				
-				pstmt.setInt(2, list.get(i).getEno());	*/			
-				pstmt.setString(1,e.getUserid());
-				pstmt.setDate(2, (Date) e.getEvtdateend());
-				pstmt.setString(3, e.getEvtcontent());
-				pstmt.setString(4, e.getEvttitle());
-				pstmt.setString(5, list.get(i).getE_file());
+			System.out.println("userid : " + e.getUserid());
 				
-				int level = 0;
-				if(i != 0 ) level = 1;
+			pstmt.setString(1,e.getUserid());				
+			pstmt.setDate(2, (Date) e.getEvtdate());
+			pstmt.setDate(3, (Date) e.getEvtdateend());
+			pstmt.setString(4, e.getEvttitle());
+			pstmt.setString(5, e.getE_file());				
+			pstmt.setString(6, e.getE_oname());
+			pstmt.setString(7, e.getE_cname());
+			pstmt.setString(8, e.getE_dtl_oname());
+			pstmt.setString(9, e.getE_dtl_cname());
 				
-				pstmt.setInt(6, level);
-				
-				pstmt.setString(7, list.get(i).getE_oname());
-				System.out.println("7: " + list.get(i).getE_oname());
-				pstmt.setString(8, list.get(i).getE_cname());
-				System.out.println("8: " + list.get(i).getE_cname());
-				
-				result += pstmt.executeUpdate();
-			}
+			result += pstmt.executeUpdate();
+			
 			
 			
 		} catch (SQLException ex) {
@@ -202,13 +194,14 @@ public class EventDao {
 				pstmt = con.prepareStatement(sql);	
 				
 				pstmt.setString(1, e.getUserid());
-				pstmt.setDate(2, (Date)e.getEvtdateend());
+				pstmt.setDate(2, (Date)e.getEvtdate());
 				pstmt.setString(3, e.getEvtcontent());
 				pstmt.setString(4, e.getEvttitle());
-				pstmt.setString(5, e.getE_file());
+				pstmt.setNull(5, Types.NULL);
 				pstmt.setNull(6, Types.NULL);
 				pstmt.setNull(7, Types.NULL);
 				pstmt.setNull(8, Types.NULL);
+				pstmt.setNull(9, Types.NULL);
 				
 				result += pstmt.executeUpdate();		
 			
@@ -224,7 +217,6 @@ public class EventDao {
 	public Event selectOne(Connection con, int eno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<Event> list = null;
 		Event e = null;
 		
 		String sql = prop.getProperty("selectEventOne");
@@ -235,15 +227,16 @@ public class EventDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()){
-				e = new Event();
-				
-				e.setEno(eno);
-				e.setUserid(rset.getString("USERID"));
-				e.setEvtdate(rset.getDate("EVTDATE"));
-				e.setEvtdateend(rset.getDate("EVTDATEEND"));
-				e.setEvtcontent(rset.getString("EVTCONTENT"));
-				e.setEvttitle(rset.getString("EVTTITLE"));
-				e.setE_cname(rset.getString("E_CNAME"));					
+			e = new Event();
+			
+			e.setEno(eno);
+			e.setUserid(rset.getString("USERID"));
+			e.setEvtdate(rset.getDate("EVTDATE"));
+			e.setEvtdateend(rset.getDate("EVTDATEEND"));
+			e.setEvtcontent(rset.getString("EVTCONTENT"));
+			e.setEvttitle(rset.getString("EVTTITLE"));
+			e.setE_cname(rset.getString("E_CNAME"));					
+			e.setE_dtl_cname(rset.getString("E_DTL_CNAME"));					
 								
 			}
 			
@@ -326,9 +319,10 @@ public class EventDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, e.getEvttitle());
-			pstmt.setString(2, e.getEvtcontent());
-			pstmt.setInt(3, e.getEno());
+			pstmt.setDate(1, (Date) e.getEvtdate());
+			pstmt.setString(2, e.getEvttitle());
+			pstmt.setString(3, e.getEvtcontent());
+			pstmt.setInt(4, e.getEno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -340,6 +334,62 @@ public class EventDao {
 		
 		return result;
 	}
+
+	public int deleteEvent(Connection con, int eno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteEvent");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, eno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateEvent(Connection con, Event e) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateEvent");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, e.getEvttitle());
+			pstmt.setDate(2, (Date) e.getEvtdate());
+			pstmt.setDate(3, (Date) e.getEvtdateend());
+			pstmt.setString(4, e.getEvttitle());
+			pstmt.setString(5, e.getE_file());				
+			pstmt.setString(6, e.getE_oname());
+			pstmt.setString(7, e.getE_cname());
+			pstmt.setString(8, e.getE_dtl_oname());
+			pstmt.setString(9, e.getE_dtl_cname());
+			pstmt.setInt(10, e.getEno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
 
 
 

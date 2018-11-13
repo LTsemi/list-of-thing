@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
-
+	pageEncoding="UTF-8" 
+	import="java.util.*, com.buyme.seul.event.model.vo.*"%>
+    
+<%
+	Event e = (Event)request.getAttribute("event");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,17 +70,16 @@ body {
 				<div class="evtEditor">
 					<br>
 					<br>
-				<form action="<%=request.getContextPath()%>/eInsert.ev" method="post"
-					encType="multipart/form-data">
+				<form id="updateForm" method="post">
 					<h2>
 						<input id="title" type="text" size="40" name="title"
-							placeholder="제목">
-						<input type="hidden" name="userId" value="<%= mh.getUserId() %>"/>
+							value="<%= e.getEvttitle().replace("\"", "&#34;") %>">
+						<input type="hidden" name="eno" value="<%= e.getEno() %>">
 					</h2>
 					<hr>
 					<h5>
-						이벤트 시작일 : <input type="date" name="dateStr"> &nbsp; | &nbsp;
-						이벤트 종료일 : <input type="date" name="dateEnd"> <br />						
+						이벤트 시작일 : <input type="date" name="dateStr" value="<%= e.getEvtdate()%>"> &nbsp; | &nbsp;
+						이벤트 종료일 : <input type="date" name="dateEnd" value="<%= e.getEvtdateend()%>"> <br />						
 					</h5>
 					
 						<br>
@@ -85,7 +88,7 @@ body {
 								<td>대표 이미지</td>
 								<td colspan="3">
 									<div id="titleImgArea">
-										<img id="titleImg">
+										<img id="contentImg1" src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%= e.getE_dtl_cname() %>">
 									</div>
 								</td>
 							</tr>
@@ -93,7 +96,8 @@ body {
 								<td>내용 사진</td>
 								<td>
 									<div id="contentImgArea1">
-										<img id="contentImg1" >
+										<img id="titleImg" src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%= e.getE_cname() %>">
+										
 									</div>
 								</td>						
 							</tr>
@@ -101,21 +105,20 @@ body {
 						</table>
 					
 					<div id="fileArea">
-						<input type="file" id="thumbnailImg1" multiple="multiple"
-							name="thumbnailImg1" onchange="LoadImg(this,1)"> 
 						<input type="file" id="thumbnailImg2" multiple="multiple"
 							name="thumbnailImg2" onchange="LoadImg(this,2)"> 
+						<input type="file" id="thumbnailImg1" multiple="multiple"
+							name="thumbnailImg1" onchange="LoadImg(this,1)"> 
 					</div>
 					
 					<br><br>
 
 					<hr>
 					<br>
-					<button type="button" class="listbtn"
-						onclick="location.href='/semi/selectList.ev'">취소하기</button>
-					<%-- <% if(m != null && m.getUserName().equals(t.getBwriter())){ %> --%>
-					<button type="submit" class="listbtn">작성 완료</button>
-					<%-- <% } %>	 --%>
+					
+					<button class="listbtn" onclick="complete();">수정하기</button>	  
+      				<button class="listbtn" onClick="history.back()">목록으로</button>
+
 					</form>
 				</div>
 			</div>
@@ -124,38 +127,43 @@ body {
 			<br />
 		</div>
 	
-	<script>
-			// 사진 게시판 미리보기 기능 지원 스크립트
-			$(function(){
-				$('#fileArea').hide();
-				
-				$('#titleImgArea').click(() => {
-					$('#thumbnailImg1').click();
-				});
-				
-				$('#contentImgArea1').click(() => {
-					$('#thumbnailImg2').click();
-				});
-				
+<script>
+		// 사진 게시판 미리보기 기능 지원 스크립트
+		$(function(){
+			$('#fileArea').hide();
+			
+			$('#contentImgArea1').click(() => {
+				$('#thumbnailImg2').click();
+			});
+			$('#titleImgArea').click(() => {
+				$('#thumbnailImg1').click();
 			});
 			
-			function LoadImg(value, num) {
-				if(value.files && value.files[0]) {
-					var reader = new FileReader();
-					
-					reader.onload = function(e){
-						switch(num){
-						case 1: $('#titleImg').attr('src', e.target.result);
-							break;
-						case 2: $('#contentImg1').attr('src', e.target.result);
-							break;
-						}
+			
+		});
+		
+		function LoadImg(value, num) {
+			if(value.files && value.files[0]) {
+				var reader = new FileReader();
+				
+				reader.onload = function(e){
+					switch(num){
+					case 2: $('#titleImg').attr('src', e.target.result);
+						break;
+					case 1: $('#contentImg1').attr('src', e.target.result);
+						break;
 					}
-					
-					reader.readAsDataURL(value.files[0]);
 				}
+				
+				reader.readAsDataURL(value.files[0]);
 			}
-		</script>
+		}
+		
+		function complete(){
+			$("#updateForm").attr("action","<%=request.getContextPath() %>/eUpdate.ev");
+			
+		}
+	</script>
 
 	<%@ include file="../common/footer.jsp"%>
 
