@@ -1,8 +1,6 @@
 package com.buyme.seul.event.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.seul.event.model.service.EventService;
-import com.buyme.seul.event.model.vo.Event;
 
 /**
- * Servlet implementation class EventListServlet
+ * Servlet implementation class EventDeleteServlet
  */
-@WebServlet("/selectList.ev")
-public class EventListServlet extends HttpServlet {
+@WebServlet("/eWinDelete.ev")
+public class EventWinnerDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventListServlet() {
+    public EventWinnerDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +28,17 @@ public class EventListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 이벤트 글 여러 개를 받기 위한 리스트
-		ArrayList<Event> list = null;
-		
-		list = new EventService().selectEventList();
-		
-		System.out.println(list);
-		
+		int eno = Integer.parseInt(request.getParameter("eno"));
+		int result = new EventService().deleteWinner(eno);
 		String page = "";
-
-		if(list != null){
+		if(result > 0) {
 			
-			page = "views/seul/eventList.jsp";
-			request.setAttribute("list", list);
+			response.sendRedirect("selectWinList.ev");
 			
 		} else {
-			/*
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 조회 실패!");
-			*/
-			System.out.println("조회 실패!");
+			System.out.println("글 삭제 실패!");
+			request.getRequestDispatcher(page).forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page)
-		.forward(request, response);
 	}
 
 	/**

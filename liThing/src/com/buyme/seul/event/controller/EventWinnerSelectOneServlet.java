@@ -37,7 +37,7 @@ public class EventWinnerSelectOneServlet extends HttpServlet {
 		
 		if(e != null){
 			System.out.println("성공하였습니다~");
-			page = "views/seul/evtWinner.jsp";
+			page = "views/seul/winnerPage.jsp";
 			request.setAttribute("event", e);
 		}else{
 			System.out.println("당첨자 상세보기 실패!");

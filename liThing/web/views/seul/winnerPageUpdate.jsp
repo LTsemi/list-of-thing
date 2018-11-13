@@ -125,56 +125,39 @@
 
   
     <div class="evtbanner">
+   	  <form id="updateForm" method="post">
     <br><br>
       <h4><small>list of thing - 리띵!</small></h4>   
       <hr>
-      
-	  <h2><%= e.getEvttitle() %></h2>
-	  <h5><span class="glyphicon glyphicon-time"></span> <%= e.getEvtdate() %></h5>
-      <br><br>
-      <p>
-        <%= e.getEvtcontent() %>
-
-      </p>    
-            <br><br>
-            <h4 style="font-weight: 600"> *** [Ctrl + F] 를 이용하시면 쉽게 당첨여부를 확인 하실 수 있습니다.</h4>
+	   <h2><input id="title" type="text" size="40" name="title" 
+				value="<%= e.getEvttitle().replace("\"", "&#34;") %>">
+				<input type="hidden" name="eno" value="<%= e.getEno() %>">
+      </h2>
+      <hr>
+      <h5><span class="glyphicon glyphicon-time"></span> &nbsp; <input type="date" name="date" value="<%= e.getEvtdate()%>"></h5>
+        
+        <br><br>
+        <div id="titleText">
+            <textarea name="content" rows="15" cols="120" style="resize:none;"><%= e.getEvtcontent() %></textarea>
+        </div>
+        <br><br>
+ 
         <br />
-        <table class="winner-tab" border="1"> 
-            <tr class="first">
-                <th>당첨자ID</th>
-                <th>이름</th>
-            </tr>
-            <tr>
-                <td>user01</td>
-                <td>사용*</td>
-            </tr>
-            <tr>
-                <td>user02</td>
-                <td>너구*</td>
-            </tr>
-            <tr>
-                <td>user03</td>
-                <td>복숭*</td>
-            </tr>
-            <tr>
-                <td>user04</td>
-                <td>라이*</td>
-            </tr>
-        </table>	
-        <br /><br />
-
-      
       <hr>
       <br>
-      <a href="/semi/selectWinList.ev" class="listbtn">목록으로</a>
-      <% if(mh != null && mh.getUserId().equals("admin")){ %>	
-      <button class="listbtn" onclick="#">수정하기</button>	
-      <button class="listbtn" onclick="location.href='eDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>	  
-	  <% } %>
+      <button class="listbtn" onclick="complete();">수정하기</button>	  
+      <button class="listbtn" onClick="history.back()">목록으로</button>
+      </form>
     </div>
     </div>
 
 </div>
+<script>
+	function complete(){
+		$("#updateForm").attr("action","<%=request.getContextPath() %>/eWinUpdate.ev");
+		
+	}
+</script>
 
 <%@ include file="../common/footer.jsp" %>
 

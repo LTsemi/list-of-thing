@@ -64,22 +64,11 @@
         
         <br><br>
         <div id="titleText">
-            <textarea name="content" rows="5" cols="120" style="resize:none;" placeholder="내용을 입력하세요."></textarea>
+            <textarea name="content" rows="15" cols="120" style="resize:none;" placeholder="내용을 입력하세요."></textarea>
         </div>
         <br><br>
-          <br />
-        <table class="winner-tab" border="1"> 
-            <tr class="first">
-                <th>당첨자ID</th>
-                <th>이름</th>
-            </tr>
-            <tr>
-                <td>user01</td>
-                <td>사용*</td>
-            </tr>
-            
-        </table>	
-        <br /><br />
+ 
+        <br />
       <hr>
       <br>
 		<button type="button" class="listbtn" onclick="location.href='/semi/selectWinList.ev'">취소하기</button>
