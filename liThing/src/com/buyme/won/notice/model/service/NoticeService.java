@@ -84,15 +84,15 @@ public class NoticeService {
 			
 		}
 
-		public ArrayList<Notice> searchNotice(String condition, String keyword) {
+		public ArrayList<Notice> searchNotice(String condition, String keyword, int currentPage, int limit) {
 			
 			Connection con = getConnection();
 			
 			ArrayList<Notice> list = null;
 			
-			list = (condition.length() > 0) ? 
-					nDao.searchNotice(con, condition, keyword) : nDao.selectList(con);
-			
+			 if(condition.length() > 0 ) list = nDao.searchNotice(con, condition, keyword);
+		     else list = nDao.selectList(con, currentPage, limit);
+
 			return list;
 		}
 

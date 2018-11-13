@@ -184,7 +184,7 @@ body {
 					<div class="section-title text-center wow zoomIn">
 					<br />
 					
-						<h1 style="font-family: Gugi;">공지사항 </h1>
+						<h1 id="ttitle" style="font-family: Gugi;" onclick="repage();">공지사항</h1>
 						
 						<span></span>
 						<!-- <p>Our Frequently Asked Questions here.</p> -->
@@ -395,6 +395,11 @@ body {
 		function search(){
 			location.href="<%=request.getContextPath()%>/searchNotice.no?con="+$('#searchCondition').val()+"&keyword="+$('#keyword').val();
 		}
+		
+		function repage(){
+			location.href="/semi/selectList.no"; 
+
+		};
 
 	</script>
 

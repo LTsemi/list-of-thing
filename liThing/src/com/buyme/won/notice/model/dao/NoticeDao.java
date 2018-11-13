@@ -85,14 +85,15 @@ public class NoticeDao {
 			rset = pstmt.executeQuery();
 
 			list = new ArrayList<Notice>();
-
 			
 			int i = 0;
+			
 			while(rset.next()){
+				
 				Notice n = new Notice();
 				
 				n.setNno(rset.getInt("NNO"));
-				n.setNwriter(rset.getString("NWRITER"));
+				n.setNwriter(rset.getString("USERNAME"));
 				n.setNtitle(rset.getString("NTITLE"));
 				n.setNcontent(rset.getString("NCONTENT"));
 				n.setNcount(rset.getInt("NCOUNT"));
@@ -107,6 +108,7 @@ public class NoticeDao {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+			
 		} finally {
 			close(rset);
 			close(pstmt);
@@ -181,33 +183,6 @@ public class NoticeDao {
 	}
 
 
-	public int updateCount(Connection con, int nno) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String sql = prop.getProperty("updateCount");
-		
-		try {
-		
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, nno);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-		
-			e.printStackTrace();
-			
-		} finally {
-			
-			close(pstmt);
-			
-		}
-		
-		return result;
-	}
-
 	public Notice updateView(Connection con,int nno) {
 		// TODO Auto-generated method stub
 		
@@ -277,7 +252,7 @@ public class NoticeDao {
 		
 	}
 
-	public Object searchNotice(Connection con, String condition, String keyword) {
+	public ArrayList<Notice> searchNotice(Connection con, String condition, String keyword) {
 		
 		ArrayList<Notice> list = null;
 		PreparedStatement pstmt = null;
@@ -311,7 +286,11 @@ public class NoticeDao {
 				
 				Notice n = new Notice();
 				
-				
+				n.setNno(rset.getInt("NNO"));
+				n.setNtitle(rset.getString("NTITLE"));
+				n.setNcontent(rset.getString("NCONTENT"));
+				n.setNdate(rset.getDate("NDATE"));
+				n.setNwriter(rset.getString("NAME"));
 				
 				list.add(n);
 				
@@ -331,6 +310,10 @@ public class NoticeDao {
 		
 		return list;
 	}
+
+	
+
+
 	
 	
 	

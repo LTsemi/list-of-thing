@@ -10,35 +10,21 @@
 <meta charset="UTF-8">
 
 
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-	rel="stylesheet">
-<script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<!-- <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script> -->
 
-<link href="https://fonts.googleapis.com/css?family=Gugi|Itim"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gugi|Itim" rel="stylesheet">
 
 <!-- include summernote css/js -->
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css"
-	rel="stylesheet">
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote.css" rel="stylesheet">
 
-
-
-<link rel="stylesheet" href="../../resources/css/evtPage.css">
-<link rel="stylesheet" href="../../resources/css/templatemo-style.css">
-
-
-
+<link rel="stylesheet" href="/semi/resources/css/evtPage.css">
+<link rel="stylesheet" href="/semi/resources/css/templatemo-style.css">
 
 <style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
-	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+	src: url('/semi/resources/css/fonts/NanumSquareRoundR.ttf');
 }
 
 body {
@@ -76,44 +62,13 @@ body {
 }
 ​
 </style>
-
-<script>
-	$(document).ready(
-			function() {
-				$('#summernote').summernote(
-						{
-
-							width : 800,
-							height : 400, // set editor height
-							minHeight : null, // set minimum height of editor
-							maxHeight : null, // set maximum height of editor
-							focus : true, // set focus to editable area after initializing summernote
-
-							toolbar : [
-									// [groupName, [list of button]]
-									[ 'style', [ 'style' ] ],
-									[
-											'font',
-											[ 'bold', 'italic', 'underline',
-													'clear' ] ],
-									[ 'font', [ 'fontsize', 'color' ] ],
-									[ 'font', [ 'fontname' ] ],
-									[ 'para', [ 'paragraph' ] ],
-									[ 'table', [ 'table' ] ]
-
-							]
-
-						});
-			});
-</script>
-
-
 </head>
 
 <body>
 
-	<%@ include file="../common/header.jsp"%>
-
+	 <%@ include file="../common/header.jsp"%> 
+	 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote.js"></script>
 
 	<div class="page-heading">
 		<div class="container">
@@ -143,8 +98,7 @@ body {
 		<br>
 
 
-		<form action="<%=request.getContextPath()%>/nInsert.no"
-			method="post">
+		<form action="<%=request.getContextPath()%>/nInsert.no" method="post">
 
 			<div align="center">
 				제목 : &nbsp; <input type="text" size="80" id="title" name="title"
@@ -157,7 +111,7 @@ body {
 			<br>
 
 			<div class="container" align="center">
-				<!-- <textarea id="summernote" name="content"></textarea> -->
+				
 				<textarea id="summernote" name="content"></textarea>
 
 				<div align="center">
@@ -175,7 +129,7 @@ body {
 
 
 	<br>
-	<br />
+	<br>
 
 	<%
 		} else {
@@ -183,15 +137,48 @@ body {
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 	%>
+	
+<script>
+	$(function(){
+		$('#summernote').summernote({
+
+			width : 800,
+			height : 400, // set editor height
+			minHeight : null, // set minimum height of editor
+			maxHeight : null, // set maximum height of editor
+			focus : true, // set focus to editable area after initializing summernote
+			toolbar : [
+					// [groupName, [list of button]]
+					[ 'style', [ 'style' ] ],
+					[
+							'font',
+							[ 'bold', 'italic', 'underline',
+									'clear' ] ],
+					[ 'font', [ 'fontsize', 'color' ] ],
+					[ 'font', [ 'fontname' ] ],
+					[ 'para', [ 'paragraph' ] ],
+					[ 'table', [ 'table' ] ]
+
+			]
+		});
+		
+		var str = $('#summernote').val();
+
+		str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
+		$('#summernote').val(str);
+		
+		
+		var str = $('#summernote').val();
+
+		str = str.split('<br/>').join("\r\n");
+
+		$('#summernote').val(str); 
+		
+	});	 
+	
+</script>
 
 	<%@ include file="../common/footer.jsp"%>
-
-
-
-
-
-
-
-
 </body>
 </html>

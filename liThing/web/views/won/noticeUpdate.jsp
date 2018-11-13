@@ -13,12 +13,9 @@
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
 	rel="stylesheet">
-<script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
-<link rel="stylesheet" href="../../resources/css/evtPage.css">
-<link rel="stylesheet" href="../../resources/css/templatemo-style.css">
+<link rel="stylesheet" href="/semi/resources/css/evtPage.css">
+<link rel="stylesheet" href="/semi/resources/css/templatemo-style.css">
 
 <link href="https://fonts.googleapis.com/css?family=Gugi|Itim"
 	rel="stylesheet">
@@ -27,10 +24,6 @@
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css"
 	rel="stylesheet">
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-
-
 
 <style>
 @font-face {
@@ -79,7 +72,11 @@ body {
 <body>
 
 	<%@ include file="../common/header.jsp"%>
-
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+	
 	<% if(mh != null && mh.getUserId().equals("admin")){ %>
 	<div class="page-heading">
 		<div class="container">
@@ -111,7 +108,7 @@ body {
 					size="50" name="title"
 					value="<%= n.getNtitle().replace("\"", "&#34;") %>"><br>
 				<br> 작성자 : <input size="25" id="writer" align="center"
-					type="text" value="<%= n.getNwriter() %>" name="writer" readonly>&nbsp;
+					type="text" value="관리자" name="writer" readonly>&nbsp;
 				작성일 : &nbsp; <input type="date" id="date" name="date"
 					value="<%= n.getNdate() %>"> <input type="hidden"
 					name="nno" value="<%= n.getNno() %>" />
@@ -145,6 +142,8 @@ body {
 						}
 						
 					}
+					
+					
 				
 				</script>
 			<br>
