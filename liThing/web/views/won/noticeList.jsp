@@ -391,6 +391,10 @@ body {
 			}); 	
 			
 		})(jQuery);
+		
+		function search(){
+			location.href="<%=request.getContextPath()%>/searchNotice.no?con="+$('#searchCondition').val()+"&keyword="+$('#keyword').val();
+		}
 
 	</script>
 

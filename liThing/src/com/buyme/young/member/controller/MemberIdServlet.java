@@ -38,7 +38,6 @@ public class MemberIdServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		
 		Member m = new MemberService().idCheck( name, email);
-		System.out.println("name :" + name + "email : " + email);
 				
 		PrintWriter out = response.getWriter();
 		if(m != null) {
