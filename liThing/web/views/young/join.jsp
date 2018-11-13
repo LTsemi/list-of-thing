@@ -143,7 +143,9 @@
 </form>
 
 <script>
-
+$(function (){
+	console.log($('#birthyear').val());
+})
 function insertMember() {
 	$("#joinForm").submit();
 }

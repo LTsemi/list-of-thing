@@ -26,7 +26,7 @@
 <body>
 
 	<%@ include file="../common/header.jsp" %>
-	<form id="joinForm" action="<%=request.getContextPath()%>/mInsert.me" method="post">
+	<form id="updateForm" action="<%=request.getContextPath()%>/mUpdate.me" method="post">
 	<div class="member-container join-container"><div class="w"> 
     <div class="img"></div>
     <div class="bg" style="opacity : 0.3;" ></div>
@@ -40,7 +40,7 @@
                         <div class="row id">
                             <div class="input-wrap">
                                 <div class="input tooltip-wrap">
-                                    <span class="input" ><input type="text"maxlength="15" id="userId" name="userId" value="<%= mh.getUserId() %>" style="font-size:2em;" readonly >
+                                    <span class="input" ><input type="text" id="userId" name="userId" value="<%= mh.getUserId() %>" style="font-size:2em;" readonly >
                                     </span>
                                     
                                     <div class="tooltip blind" id="idTooltip"></div>
@@ -77,7 +77,7 @@
                             	<input style="margin-left : 25px; margin-top:15px;" type="text" placeholder="ex) 010" maxlength="3" name="tel1" size="2" value="<%= mh.getPhone().substring(0, 3) %>"/>
 								
                                 <span class="input">
-                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2" value="<%= mh.getPhone().substring(3, 10) %>" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  style="IME-MODE : disabled;">
+                                    <input type="text" placeholder="휴대폰 뒷 번호 8자리" maxlength="8" id="tel2" name="tel2" value="<%= mh.getPhone().substring(3) %>" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  style="IME-MODE : disabled;">
                                 </span>
                                 <div class="tooltip blind" id="telTooltip"></div>
                             </div>

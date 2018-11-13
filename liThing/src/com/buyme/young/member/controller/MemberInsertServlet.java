@@ -42,7 +42,7 @@ public class MemberInsertServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		
 		String phone = request.getParameter("tel1") + request.getParameter("tel2");
-		System.out.println(request.getParameter("tel2"));
+
 		String address = request.getParameter("zipCode") + ", "
 				       + request.getParameter("address1") + ", "
 				       + request.getParameter("address2");
@@ -53,7 +53,7 @@ public class MemberInsertServlet extends HttpServlet {
 			// ex) 2018-10-23 --> 2018, 10, 23 (현재 문자열 상태)
 
 			// String --> int
-				int birthyear = Integer.parseInt(birth1);
+				int birthyear = Integer.parseInt(birth1) +1900;
 				int birthmon = Integer.parseInt(birth2);
 				int birthdate = Integer.parseInt(birth3);
 				
