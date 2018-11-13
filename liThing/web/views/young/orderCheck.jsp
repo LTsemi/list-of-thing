@@ -253,19 +253,19 @@ http://www.templatemo.com/tm-520-highway
 								<input type="button" value="우편번호 찾기" onclick="addrSearch();"><br></td>
 							</tr>
 							<tr>
-								<td><input type="text" id="address1" size="40" value="<%= address[1] %> ">
-								<input type="text" id="address2" size="40" value="<%= address[2] %>"></td>
+								<td><input type="text" id="address1" size="40" value="<%= address[1]%> ">
+								<input type="text" id="address2" size="40" value="<%= address[2]%>"></td>
 							</tr>
 							<tr>
 								<td>연락처</td>
 								<% if( mh.getPhone().length() == 11){
-									num1 = mh.getPhone().substring(0, 3);
-									num2 = mh.getPhone().substring(3, 7);
-									num3 = mh.getPhone().substring(7 , 11);
+									num1 = mh.getPhone().substring(0, 2);
+									num2 = mh.getPhone().substring(3, 6);
+									num3 = mh.getPhone().substring(7 , 10);
 								 } else { 
-									 num1 = mh.getPhone().substring(0, 3);
-									 num2 = mh.getPhone().substring(3, 6);
-									 num3 = mh.getPhone().substring(6 ,10);
+									 num1 = mh.getPhone().substring(0, 2);
+									 num2 = mh.getPhone().substring(3, 5);
+									 num3 = mh.getPhone().substring(6 ,9);
 								 }
 								 %>
 								<td><input type="text" id="tel1" value="<%= num1 %>"> - 
@@ -283,7 +283,7 @@ http://www.templatemo.com/tm-520-highway
 					
 					<div class="panel-footer"> 주문시 요청사항은 배송기사가 배송시 참고하는 사항으로써, 사전에
 						협의되지 않은 지정일 배송 등의 요청사항은 반영되지 않을 수 있습니다.</div>
-						<input type="hidden" id="email" value="<%= mh.getEmail() %>" /> 
+						<input type="hidden" id="email" value="<% mh.getEmail() %>" /> 
 				</div>
 			</div>
 

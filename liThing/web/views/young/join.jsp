@@ -91,13 +91,13 @@
                         <div class="row id">
                             <div class="input-wrap">
                                 <div class="input tooltip-wrap">
-                                    <span class="input"><input type="text" id="zipCode" name="zipCode" placeholder="우편번호"></span>
+                                    <span class="input"><input type="text" id="zipCode" name="zipCode" placeholder="우편번호" readonly></span>
                                     <button type="button" class="double-check" id="ckZip" onclick="addrSearch();">검색</button>
                                     <div class="tooltip blind" id="addressTooltip"></div>
                                 </div>
                             </div>
                             <div class="input tooltip-wrap">
-                                 <input type="text" id="address1" name="address1"  placeholder="주소">
+                                 <input type="text" id="address1" name="address1"  placeholder="주소" readonly>
                                    
                                 <div class="tooltip blind" id="pwdTooltip"></div>
                             </div>
