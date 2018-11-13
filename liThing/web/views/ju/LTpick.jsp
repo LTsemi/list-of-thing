@@ -57,10 +57,9 @@
             <% for(int i = 0; i < list.size(); i++){ %>
                 <article class="thema">     
                     <a href="views/ju/LTpick_view.jsp"><div>
-                        <img src="/bfdown.bo?path=<%= list.get(i).getTimage() %>" id="thema_pic">
+                        <img src="<%= request.getContextPath()+"/resources/themaUploadFiles/" + list.get(i).getTimage() %>" id="thema_pic">
                         <h2><%= list.get(i).getTtitle() %></h2>
                         <p id="content"><%= list.get(i).getTcontent() %></p>
-                        
                     </div></a>
                         <% if( m != null && m.getUserId().equals("admin")) { %>
 				    	<button class="updateBtn" onclick="location.href='tUpView.tm?tno=<%= list.get(i).getTno() %>'">수정</button>

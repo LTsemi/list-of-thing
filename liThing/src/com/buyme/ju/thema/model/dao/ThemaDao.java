@@ -130,6 +130,7 @@ public class ThemaDao {
 		} finally{
 			close(pstmt);
 		}
+		
 		return result;
 	}
 

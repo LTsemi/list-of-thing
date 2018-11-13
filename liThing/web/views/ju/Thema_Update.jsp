@@ -26,7 +26,7 @@
                   font-family: 'NanumSquareRoundR' ;
                   src: url("<%=request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf");
                 }
-                * { box-sizing: border-box;
+                body { box-sizing: border-box;
                     font-family: NanumSquareRoundR !important; 
                 }
         </style>
@@ -52,7 +52,7 @@
 					<tr>
 						<td>제목 </td>
 						<td colspan="3">
-							<input type="text" size="65" name="title" value="<%=t.getTtitle() %>">
+							<input type="text" size="66" name="title" value="<%=t.getTtitle() %>">
 							<input type="hidden" name="bno" value="<%=t.getTno()%>">
 						</td>
 					</tr>
@@ -64,8 +64,8 @@
 					<tr>
 						<td>기존 파일 </td>
 						<td colspan="3">
-							<a href="/semi/tidown.tm?path=<%=t.getTimage()%>">
-							<%=t.getTimage()%></a>	
+							<a href="/semi/tidown.tm?path=<%=t.getTimage()%>" width="67">
+							<%= t.getTimage()%></a>	
 						</td>
 					</tr>
 					<% } %>

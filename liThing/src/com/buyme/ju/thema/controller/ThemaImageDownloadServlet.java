@@ -33,6 +33,8 @@ public class ThemaImageDownloadServlet extends HttpServlet {
 			// 저장하고자 하는 파일 이름 가져오기
 			String fileName = request.getParameter("path");
 			
+			System.out.println("fileName : " + fileName);
+			
 			// 저장된 폴더의 경로 가져오기
 			String folder = request.getServletContext()
 					.getRealPath("/resources/themaUploadFiles");
