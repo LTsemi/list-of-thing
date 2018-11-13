@@ -70,30 +70,53 @@ http://www.templatemo.com/tm-520-highway
             </div>
         </div>
         <div id="buytab"> 
-            
+
+
             <div class="buy">
                 <div class="box leftbox">
                     <img src="../../resources/img/box1.png" width="120px" height="120px" alt="리띵박스테마">
                     <h3 class="buyMonth">1개월</h3>
                     <h4 class="price">12,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>                 
-                    <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">               
+                    <input type="button" value="구매하기" class="btn pull-right buybtn" id="one" onclick="ordersubmit(this);">               
                 </div>
                 <div class="box centerbox">
                     <img src="../../resources/img/box2.png" width="120px" height="120px" alt="리띵박스테마">
                     <h3 class="buyMonth">3개월</h3>
-                    <h4 class="price">36,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>                 
-                    <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">              
+                    <h4 class="price" name="36">36,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>   
+                    <input type="button" value="구매하기" class="btn pull-right buybtn" id="three" onclick="ordersubmit(this);">              
                 </div>
                 <div class="box rightbox">
                     <img src="../../resources/img/box3.png" width="120px" height="120px" alt="리띵박스테마">
                     <h3 class="buyMonth">6개월</h3>
-                    <h4 class="price">72,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>                 
-                     <input type="button" value="구매하기" class="btn pull-right buybtn" onclick="location.href='orderBox.jsp'">
+                    <h4 class="price">72,000<span style="font-size: 13px; font-weight: 500" >원</span></h4>
+                     <input type="button" value="구매하기" class="btn pull-right buybtn" id="six" onclick="ordersubmit(this);">
                </div>
         </div>
-
+        <form id = "goOrder" method = "post" action ="<%= request.getContextPath() %>/views/seul/orderBox.jsp" >
+            <input type="hidden" name="price" id="price" />                 
+		</form>
     </div>
-
+<script>
+	
+		
+	function ordersubmit(now){
+		var nowid = $(now).attr('id');
+		
+		console.log(nowid);
+		
+		if(nowid == "one"){
+			$('#price').val("12");
+			console.log($('#price').val());
+			$("#goOrder").submit();
+		} else if(nowid == "three"){
+			$('#price').val("36");
+			$("#goOrder").submit();
+		} else if(nowid == "six"){
+			$('#price').val("72");
+			$("#goOrder").submit();
+		}
+	};
+</script>
 
 
 <%@ include file="../common/footer.jsp" %>

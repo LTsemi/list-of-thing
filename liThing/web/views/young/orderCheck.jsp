@@ -283,7 +283,7 @@ http://www.templatemo.com/tm-520-highway
 					
 					<div class="panel-footer"> 주문시 요청사항은 배송기사가 배송시 참고하는 사항으로써, 사전에
 						협의되지 않은 지정일 배송 등의 요청사항은 반영되지 않을 수 있습니다.</div>
-						<input type="hidden" id="email" value="<% mh.getEmail() %>" /> 
+						<input type="hidden" id="email" value="<%= mh.getEmail() %>" /> 
 				</div>
 			</div>
 

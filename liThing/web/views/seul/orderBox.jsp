@@ -4,7 +4,9 @@
 <%	String num1 = null;
 	String num2 = null;
 	String num3 = null; 
-	String[] address = null;%>
+	String[] address = null;
+	int price = Integer.parseInt(request.getParameter("price"));
+%>
 
     
 
@@ -70,7 +72,7 @@ http://www.templatemo.com/tm-520-highway
 			    pay_method : 'card',
 			    merchant_uid : 'merchant_' + new Date().getTime(),
 			    name : '리띵 박스 구매',
-			    amount : 100 ,
+			    amount : <%= price%>*1000 ,
 			    buyer_email : $('#email').val(),
 			    buyer_name : $('#userName').val(),
 			    buyer_tel : $('#tel1').val() + '-' + $('#tel2').val() + '-' + $('#tel1').val(),
@@ -219,12 +221,12 @@ http://www.templatemo.com/tm-520-highway
 					<tr>
 						<td><img src="../../resources/img/buybox.png" width="50px"
 							height="50px"> &nbsp;리띵박스</td>
-						<td>12,000원</td>
+						<td><%= price%>,000</td>
 						<td>1</td>
 					</tr>
 				</table>
 				<div class="totalpay">
-					<b>결제예정금액</b> &nbsp; <em>12,000</em>원
+					<b>결제예정금액</b> &nbsp; <em><%= price%>,000</em>원
 				</div>
 			</div>
 		</div>
