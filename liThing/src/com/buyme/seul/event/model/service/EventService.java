@@ -100,12 +100,12 @@ public class EventService {
 
 
 
-	public int deleteEvent(int eno) {
+	public int deleteWinner(int eno) {
 		Connection con = getConnection();
 		
 		int result = 0, result1 = 0;
 		
-		result1 = eDao.deleteEvent(con, eno);
+		result1 = eDao.deleteWinner(con, eno);
 		
 		if( result1 > 0 ) {
 			commit(con);
@@ -114,6 +114,30 @@ public class EventService {
 		} else rollback(con);
 		
 		close(con);
+		
+		return result;
+	}
+
+
+
+	public Event updateWinView(int eno) {
+		Event e = null;
+		Connection con = getConnection();
+		
+		e = eDao.selectWinOne(con, eno);
+		
+		return e;
+	}
+
+
+
+	public int updateWinner(Event e) {
+		Connection con = getConnection();
+		
+		int result = eDao.updateWinner(con, e);
+		
+		if( result > 0) commit(con);
+		else rollback(con);
 		
 		return result;
 	}

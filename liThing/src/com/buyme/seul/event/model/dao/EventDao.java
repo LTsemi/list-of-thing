@@ -294,11 +294,11 @@ public class EventDao {
 		return e;
 	}
 
-	public int deleteEvent(Connection con, int eno) {
+	public int deleteWinner(Connection con, int eno) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String sql = prop.getProperty("deleteEvent");
+		String sql = prop.getProperty("deleteWinner");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -311,6 +311,30 @@ public class EventDao {
 
 			e.printStackTrace();
 		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateWinner(Connection con, Event e) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateWinner");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, e.getEvttitle());
+			pstmt.setString(2, e.getEvtcontent());
+			pstmt.setInt(3, e.getEno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally{
 			close(pstmt);
 		}
 		

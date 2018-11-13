@@ -1,6 +1,7 @@
 package com.buyme.seul.event.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,18 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.seul.event.model.service.EventService;
+import com.buyme.seul.event.model.vo.Event;
 
 /**
- * Servlet implementation class EventDeleteServlet
+ * Servlet implementation class EventWinnerUpdateViewServlet
  */
-@WebServlet("/eDelete.ev")
-public class EventDeleteServlet extends HttpServlet {
+@WebServlet("/eWinUpdateView.ev")
+public class EventWinnerUpdateViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventDeleteServlet() {
+    public EventWinnerUpdateViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +31,23 @@ public class EventDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int eno = Integer.parseInt(request.getParameter("eno"));
-		int result = new EventService().deleteEvent(eno);
+		
+		Event e = new EventService().updateWinView(eno);
+		
 		String page = "";
-		if(result > 0) {
-			
-			response.sendRedirect("selectWinList.ev");
+		
+		if (e != null) {
+			page = "views/seul/winnerPageUpdate.jsp";
+			request.setAttribute("event", e);
+			System.out.println("당첨자 글 보기 완료!");
 			
 		} else {
-			System.out.println("글 삭제 실패!");
-			request.getRequestDispatcher(page).forward(request, response);
+			
+			System.out.println("당첨자 수정 창 보기 실패!");
+			
 		}
+		
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

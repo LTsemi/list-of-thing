@@ -42,7 +42,7 @@ public class EventWinnerListServlet extends HttpServlet {
 
 		if(list != null){
 			
-			page = "views/seul/eventWin.jsp";
+			page = "views/seul/eventWinList.jsp";
 			request.setAttribute("list", list);
 			
 		} else {

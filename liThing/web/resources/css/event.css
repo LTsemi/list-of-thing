@@ -105,10 +105,13 @@ body {
 	line-height: 15px;
 	background: url(../../resources/img/bookmark.png) no-repeat;
 }
-
+.table th {
+	cursor: default;
+}	
 .table td {
 	font-size: 15px;
 	color: #333;
+	cursor: pointer !important;
 }
 
 .pagingArea a:link {
