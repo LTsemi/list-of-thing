@@ -134,4 +134,29 @@ public class ThemaDao {
 		return result;
 	}
 
+	public int insertThema(Connection con, Thema t) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("insertThema");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, t.getTtitle());
+			pstmt.setString(2, t.getTcontent());
+			pstmt.setString(3, t.getTimage());
+			 
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
+
 }

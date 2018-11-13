@@ -56,4 +56,19 @@ public class ThemaService {
 		return result;
 	}
 
+	public int insertThema(Thema t) {
+		Connection con = getConnection();
+		
+		int result = tDao.insertThema(con, t);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		System.out.println("result2 : " + result);
+		
+		return result;
+	}
+
 }

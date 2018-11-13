@@ -42,16 +42,16 @@
   		<div class="page-heading">
 	        <div class="container">
 	            <div class="heading-content">
-	                <h1 id="ttitle">List of Thing</h1>
+	                <h1 id="title">List of Thing</h1>
 	            </div>
 	        </div>
     	</div>
 
         <h1>리띵's Pick!</h1>
 
-        <div id="div">
+        <div>
         	<% if( m != null && m.getUserId().equals("admin")) { %>
-    		<button class="insertBtn" onclick="location.href='views/ju/Thema_Insert.jsp'">작성하기</button>
+    		<div align="center"><button class="insertBtn" onclick="location.href='views/ju/Thema_Insert.jsp'">작성하기</button></div>
     		<% } %>
             <section>
             <% for(int i = 0; i < list.size(); i++){ %>
