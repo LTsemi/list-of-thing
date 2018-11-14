@@ -61,6 +61,27 @@ body {
 		opacity:0.8;
 		cursor:pointer;
 	}
+	
+.box {
+	display: inline-block;
+}
+
+
+#borderBox{
+
+ margin-top: 0px;
+        background-color: rgb(255, 230, 161);
+        width: 100%;
+        height: 700;
+        margin-bottom:0px;
+}
+
+#paging{
+    background-color: white;
+	color: black;
+	border: 0.5px solid #BDBDBD;
+	height: 24px;
+}
 </style>
 
 </head>
@@ -80,68 +101,76 @@ body {
 	</div>
 
 	<div id="eventPage">
-		<br>
-		<h2>Event</h2>
-		<p>혜택이 가득한 리띵박스의 이벤트에 참여해보세요^_^</p>
+		<h2>Mypage</h2>
+
 		<br>
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="/semi/selectList.ev">&nbsp; 이벤트 &nbsp;</a></li>
-			<li><a href="/semi/selectWinList.ev">당첨자발표</a></li>
+			<li ><a href="/semi/selectList.ev">&nbsp;
+					위시리스트 &nbsp;</a></li>
+			<li class="active"><a href="/semi/selectWinList.ev">주문내역</a></li>
+			<li><a href="/semi/selectWinList.ev">내가 작성한 리뷰</a></li>
 		</ul>
 
-		<div class="tab-content">
-			<div id="home" class="tab-pane fade in active">
-				<!--   이벤트 창    -->
-				<div id="lithingevt">
-					<br>
-					<br>
-					
-				
-					<a href="views/seul/eventPageInsertForm.jsp" class="listbtn">이벤트 추가</a>
-				
+		<br /> 
+		<br /> 
 
-					<br>
-					<br>
-					<div class="row">
-						
-						<div class="thumbnail">
-							<input type="hidden" name="eno" />
-								<p class="evtImg">
-									<img
-										src="/semi/resources/eventUploadFiles/evt.getE_dtl_cname()%>"
-										width="770px">
-								</p> <span class="dday">D-evt.getDday()%></span>
-								<div class="evtText">
-									<h3>evt.getEvttitle()%></h3>
-									<p>evt.getEvtdate()%>
-										~
-										evt.getEvtdateend()%>까지
-									</p>
-								</div>
-							
-						</div>
-						
+		
+		
+		<div id= "borderBox">
+<br />
+<br />
+<br />
+		
+		
+<br />
+<br />
+<br />
 
-					</div>
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
-			</div>
+		
+
+	<br />
+	<br />
+	<br />
+	
+	
+	
+	<button id="paging"><<<</button>&nbsp;<button id="paging">1</button> &nbsp;<button id="paging">2</button> &nbsp;<button id="paging">>>></button>
+		<%-- <div class="pagingArea" align="center">
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
+			<%  if(currentPage <= 1){  %>
+			<button id="paging" disabled><</button>
+			<%  }else{ %>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
+			<%  } %>
+			
+			<% for(int p = startPage; p <= endPage; p++){
+					if(p == currentPage){	
+			%>
+				<button id="paging" disabled><%= p %></button>
+			<%      }else{ %>
+				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
+			<%  } %>
+			<% } %>
+				
+			<%  if(currentPage >= maxPage){  %>
+			<button id="paging" disabled>></button>
+			<%  }else{ %>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
+			<%  } %>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
+			
+		</div> --%>
+	
+	<br />
+	<br />
+	<br />
+	
+	
 		</div>
 	</div>
-	<script>
-<%-- 	$(function(){
-		$(".thumbnail").click(function(){
-			var eno = $(this).children().eq(0).val();
-			location.href="<%=request.getContextPath()%>/selectOne.ev?eno="+ eno;
-			console.log(eno);
-			});
-		}); --%>
-	</script>
-
+<br />
+<br />
 
 
 	<%@ include file="../common/footer.jsp"%>

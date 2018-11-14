@@ -62,19 +62,16 @@ body {
 		cursor:pointer;
 	}
 	
-.box {
-	display: inline-block;
-}
 
 
-#borderBox{
+/*   #borderBox{
 
  margin-top: 0px;
-        background-color: rgb(255, 230, 161);
+         background-color: #CEF2CE; 
         width: 100%;
         height: 700;
         margin-bottom:0px;
-}
+}   */
 
 #paging{
     background-color: white;
@@ -82,7 +79,40 @@ body {
 	border: 0.5px solid #BDBDBD;
 	height: 24px;
 }
+
+.bubble {
+    position: relative;
+    background: #ffda91;
+    color: #000000;
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 45px;
+    text-align: center;
+    width: 600px;
+    height: 230px;
+    border-radius: 17px;
+    padding: 16px;
+}
+.bubble:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 1;
+    border-style: solid;
+    border-color: transparent #ffda91;
+    border-width: 18px 0 18px 52px;
+    top: 34%;
+    right: -52px;
+    margin-top: -18px;
+}
+
+
+
+
+ 
 </style>
+
 
 </head>
 
@@ -106,10 +136,10 @@ body {
 		<br>
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="/semi/selectList.ev">&nbsp;
+			<li ><a href="/semi/selectList.ev">&nbsp;
 					위시리스트 &nbsp;</a></li>
 			<li><a href="/semi/selectWinList.ev">주문내역</a></li>
-			<li><a href="/semi/selectWinList.ev">내가 작성한 리뷰</a></li>
+			<li class="active"><a href="/semi/selectWinList.ev">내가 작성한 리뷰</a></li>
 		</ul>
 
 		<br /> 
@@ -120,66 +150,21 @@ body {
 		<div id= "borderBox">
 <br />
 <br />
-<br />
-		<div id="dbox" class="box"
-			style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border: 1px solid #D0D0D0; border-radius: 4px">
-			<table id="rList"
-				style="width: 659px; height: 150px; text-align: center; border-radius: 4px">
-
-
-				<tr>
-					<td style="display: none"><b> p.getPno() %></b></td>
-					<td style="width: 100px; height: 150px;"><b>번호</b></td>
-					<td style="width: 100px; height: 150px;"><img
-						src="/semi/resources/productImg/" width="200px" height="150px"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important" />
-					</td>
-					<td style="text-align: left">
-						<ul style="text-align: left; list-style: none;">
-							<li><h5 style="color: red">p.getBrand() %></h5></li>
-							<li><h4>p.getPname() %></h4></li>
-							<li><h5>p.getPprice() %></h5></li>
-						</ul>
-					</td>
-					<td style="width: 250px; height: 150px;">p.getRank() %></td>
-				</tr>
-
-
-			</table>
-
-		</div>
-		
+<div id= "borderBox">
+	<div class="bubble" >CSS Speech Bubble</div>
 <br />
 <br />
 <br />
+</div>
 
-		<div id="dbox" class="box"
-			style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border: 1px solid #D0D0D0; border-radius: 4px">
-			<table id="rList"
-				style="width: 659px; height: 150px; text-align: center; border-radius: 4px">
+	<div class="bubble">CSS Speech Bubble</div>
 
 
-				<tr>
-					<td style="display: none"><b> p.getPno() %></b></td>
-					<td style="width: 100px; height: 150px;"><b>번호</b></td>
-					<td style="width: 100px; height: 150px;"><img
-						src="/semi/resources/productImg/" width="200px" height="150px"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important" />
-					</td>
-					<td style="text-align: left">
-						<ul style="text-align: left; list-style: none;">
-							<li><h5 style="color: red">p.getBrand() %></h5></li>
-							<li><h4>p.getPname() %></h4></li>
-							<li><h5>p.getPprice() %></h5></li>
-						</ul>
-					</td>
-					<td style="width: 250px; height: 150px;">p.getRank() %></td>
-				</tr>
-
-
-			</table>
-
-		</div>
+	<br />
+	<br />
+	<br />
+	
+	<div class="bubble">CSS Speech Bubble</div>
 
 
 	<br />
