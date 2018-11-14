@@ -209,7 +209,7 @@ body {
 							</div>
 							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								<div class="panel-body">
-									<p name="nno">No.<%= endnum %></p>
+									<p name="nno">No.<%= n.getRnum() %></p>
 									<p><hr /></p>
 									<p name="content"><%= n.getNcontent() %></p>
 									<p><hr /></p>
@@ -232,7 +232,7 @@ body {
 							</div>
 							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 								<div class="panel-body">
-									<p>No.<%= endnum %></p>
+									<p>No.<%= n.getRnum() %></p>
 									<p><hr /></p>
 									<p name="content"><%= n.getNcontent() %></p>
 									<p><hr /></p>
@@ -255,7 +255,7 @@ body {
 							</div>
 							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body">
-									<p>No.<%= endnum %>></p>
+									<p>No.<%= n.getRnum() %></p>
 									<p><hr /></p>
 									<p name="content"><%= n.getNcontent() %></p>
 									<p><hr /></p>
@@ -278,7 +278,7 @@ body {
 							</div>
 							<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
 								<div class="panel-body">
-									<p>No.<%= endnum %></p>
+									<p>No.<%= n.getRnum() %></p>
 									<p><hr /></p>
 									<p name="content"><%= n.getNcontent() %></p>
 									<p><hr /></p>
@@ -301,7 +301,7 @@ body {
 							</div>
 							<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
 								<div class="panel-body">
-									<p>No.<%= endnum %></p>
+									<p>No.<%= n.getRnum() %></p>
 									<p><hr /></p>
 									<p name="content"><%= n.getNcontent() %></p>
 									<p><hr /></p>
