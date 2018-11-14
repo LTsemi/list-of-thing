@@ -19,8 +19,7 @@ public class Notice implements Serializable {
 	private String nwriter;
 	private int ncount;
 	private Date ndate;
-	
-	
+	private int rnum; 
 	
 	public Notice() {
 		super();
@@ -91,6 +90,14 @@ public class Notice implements Serializable {
 
 	public void setNdate(Date ndate) {
 		this.ndate = ndate;
+	}
+	
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
 	}
 
 	@Override

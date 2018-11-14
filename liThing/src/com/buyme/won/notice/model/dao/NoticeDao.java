@@ -92,6 +92,7 @@ public class NoticeDao {
 				
 				Notice n = new Notice();
 				
+				n.setRnum(rset.getInt("N_NUM"));
 				n.setNno(rset.getInt("NNO"));
 				n.setNwriter(rset.getString("USERNAME"));
 				n.setNtitle(rset.getString("NTITLE"));
