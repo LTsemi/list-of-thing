@@ -40,4 +40,30 @@ public class EventCommentService {
 		return result;
 	}
 
+	public int deleteComment(int cno) {
+		Connection con = getConnection();
+		
+		int result = ecDao.deleteComment(con, cno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int updateComment(EventComment eco) {
+		Connection con = getConnection();
+		
+		int result = ecDao.updateComment(con, eco);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
 }

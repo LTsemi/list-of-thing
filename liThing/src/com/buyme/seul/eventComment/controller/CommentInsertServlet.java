@@ -14,7 +14,7 @@ import com.buyme.seul.eventComment.model.vo.EventComment;
 /**
  * Servlet implementation class CommentInsertServlet
  */
-@WebServlet("/insertComment.eo")
+@WebServlet("/insertComment.co")
 public class CommentInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,21 +30,21 @@ public class CommentInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String cwriter = request.getParameter("writer");
 		String ccontent = request.getParameter("replyContent");
 		int eno = Integer.parseInt(request.getParameter("eno"));
 		
 		EventComment eco = new EventComment();
 		eco.setEno(eno);
 		eco.setCcontent(ccontent);
-		eco.setUserid(userId);
+		eco.setCwriter(cwriter);
 		
 		int result = new EventCommentService().insertComment(eco);
 		
 		if(result > 0) {
 			System.out.println("댓글 작성 성공~");
 			response.sendRedirect(request.getContextPath()
-					+"/selectOne.eo?eno="+eno);
+					+"/selectOne.ev?eno="+eno);
 		} else {
 			System.out.println("댓글 작성 실패!");
 			request.getRequestDispatcher("views/seul/eventList.jsp")

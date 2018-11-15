@@ -1,7 +1,6 @@
-package com.buyme.seul.event.controller;
+package com.buyme.seul.eventComment.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.buyme.seul.event.model.service.EventService;
-import com.buyme.seul.event.model.vo.Event;
 import com.buyme.seul.eventComment.model.service.EventCommentService;
-import com.buyme.seul.eventComment.model.vo.EventComment;
 
 /**
- * Servlet implementation class EventSelectOneServlet
+ * Servlet implementation class CommentDeleteServlet
  */
-@WebServlet("/selectOne.ev")
-public class EventSelectOneServlet extends HttpServlet {
+@WebServlet("/deleteComment.co")
+public class CommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventSelectOneServlet() {
+    public CommentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,29 +29,20 @@ public class EventSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int cno = Integer.parseInt(request.getParameter("cno"));
 		int eno = Integer.parseInt(request.getParameter("eno"));
-	
-		Event e = new EventService().selectEvent(eno);
-		ArrayList<EventComment> clist
-		   = new EventCommentService().selectList(eno);
+		System.out.println("댓글번호 : " +cno);
+		System.out.println("게시글 : " +eno);
 		
+		int result = new EventCommentService().deleteComment(cno);
 		
-		System.out.println("e : " +e);
-				
-		String page = "";
-		if(e != null) {
-			
-			page = "views/seul/eventPage.jsp";
-			request.setAttribute("event", e);
-			request.setAttribute("clist", clist);
-			
-		}else {
-//			page = "views/common/errorPage.jsp";
-//			request.setAttribute("msg", "사진게시판 상세보기 실패");
-			System.out.println("파일 전송 실패!");
+		if(result > 0) {
+			response.sendRedirect("selectOne.ev?eno="+eno);
+		} else {
+			System.out.println("댓글 삭제 실패!");
+			request.getRequestDispatcher("/semi/selectList.ev")
+			.forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

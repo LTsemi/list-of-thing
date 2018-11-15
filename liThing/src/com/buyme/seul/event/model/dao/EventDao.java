@@ -169,7 +169,7 @@ public class EventDao {
 			pstmt.setString(8, e.getE_dtl_oname());
 			pstmt.setString(9, e.getE_dtl_cname());
 				
-			result += pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 			
 			

@@ -3,27 +3,29 @@ package com.buyme.seul.eventComment.model.vo;
 import java.sql.Date;
 
 public class EventComment {
-	
+
 	private int cno;
 	private int eno;
-	private String userid;
-	private String name;
 	private String ccontent;
+	private String cwriter;
 	private Date cdate;
-	
+
 	public EventComment() {
 		super();
 	}
 
-	public EventComment(int cno, int eno, String userid, String name, String ccontent, Date cdate) {
+	
+
+	public EventComment(int cno, int eno, String ccontent, String cwriter, Date cdate) {
 		super();
 		this.cno = cno;
 		this.eno = eno;
-		this.userid = userid;
-		this.name = name;
 		this.ccontent = ccontent;
+		this.cwriter = cwriter;
 		this.cdate = cdate;
 	}
+
+
 
 	public int getCno() {
 		return cno;
@@ -33,29 +35,22 @@ public class EventComment {
 		this.cno = cno;
 	}
 
+	
+	
 	public int getEno() {
 		return eno;
 	}
+
+
+
+
+
 
 	public void setEno(int eno) {
 		this.eno = eno;
 	}
 
-	public String getUserid() {
-		return userid;
-	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getCcontent() {
 		return ccontent;
@@ -63,6 +58,14 @@ public class EventComment {
 
 	public void setCcontent(String ccontent) {
 		this.ccontent = ccontent;
+	}
+
+	public String getCwriter() {
+		return cwriter;
+	}
+
+	public void setCwriter(String cwriter) {
+		this.cwriter = cwriter;
 	}
 
 	public Date getCdate() {
@@ -73,12 +76,15 @@ public class EventComment {
 		this.cdate = cdate;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "EventComment [cno=" + cno + ", eno=" + eno + ", userid=" + userid + ", name=" + name + ", ccontent="
-				+ ccontent + ", cdate=" + cdate + "]";
+		return "EventComment [cno=" + cno + ", eno=" + eno + ", ccontent="
+				+ ccontent+ ", cwriter=" + cwriter  + ", cdate=" + cdate + "]";
 	}
-	
+
+
 	
 	
 	

@@ -5,7 +5,7 @@
 <%
 	Event e = (Event)request.getAttribute("event");
 //댓글 리스트
-//	ArrayList<EventComment> clist = (ArrayList<EventComment>) request.getAttribute("clist"); 
+	ArrayList<EventComment> clist = (ArrayList<EventComment>) request.getAttribute("clist"); 
 
 %>
 <!DOCTYPE html>
@@ -37,14 +37,54 @@ http://www.templatemo.com/tm-520-highway
 		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">	
 		
 	<style>
-	 @font-face {
-          font-family: 'NanumSquareRoundR' ;
-          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
-        }
-        body { box-sizing: border-box;
-            font-family: NanumSquareRoundR !important; 
-        }
-	</style>
+@font-face {
+	font-family: 'NanumSquareRoundR';
+	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+}
+
+body {
+	box-sizing: border-box;
+	font-family: NanumSquareRoundR !important;
+}
+.rebtn {
+	margin-top:10px;
+    padding: 2px 5px;
+    border: 1px solid lightgray;
+    background-color: white;
+    color: gray;
+    border-radius: 0;
+    transition: .2s;
+
+}
+  .rebtn:hover, .btn:focus {
+   border: 1px solid gray;
+   background-color:  gray;
+   color: rgb(255, 255, 255) !important;
+  }
+.replyUpdateBox{
+	width:600px;
+	height: 50px;
+}
+.rightbtn{
+	margin-left: 400px;
+}
+.reUpbtn {
+	width: 65px;
+	height: 65px;
+	padding: 2px 5px;
+	margin-top:20px;
+    border: 1px solid lightgray;
+    background-color: white;
+    color: gray;
+    border-radius: 0;
+    transition: .2s;
+}
+.reUpbtn:hover, .btn:focus {
+   border: 1px solid rgb(255, 230, 161);
+      background-color: rgb(255, 230, 161);
+      color: rgb(255, 255, 255) !important;
+  }
+</style>
         
     </head>
 
@@ -79,16 +119,17 @@ http://www.templatemo.com/tm-520-highway
       <br />
     </div>
       <!-- <h4>Leave a Comment:</h4> -->     
-     <%--<div class="replyArea comment">
+      <div class="replyArea comment">
 		<div class="replyWriteArea">
-			<form action="/semi/insertComment.eo" method="post">
-				<input type="hidden" name="userId" value="user01"/>
-				<input type="hidden" name="eno" value="01" />
+			<form action="/semi/insertComment.co" method="post">
+				<input type="hidden" name="writer" value="<%=mh.getUserId()%>"/>
+				<input type="hidden" name="eno" value="<%=e.getEno() %>" />
 				
 
 					<div class="form-group">
 					  <textarea class="form-control" rows="3" required
-					  			id="replyContent" name="replyContent"></textarea>
+					  			id="replyContent" name="replyContent"
+					  			style="outline: none; overflow:visible;resize: none;"></textarea>
 					</div>
 					 <button type="submit" class="btn pull-right" id="addReply">응모하기</button>				
 			</form>
@@ -98,43 +139,48 @@ http://www.templatemo.com/tm-520-highway
 		<br>
         <p><span class="badge">1</span> Comments:</p><br>
 	     <% if( clist != null ) { %>
-	      	<% for(EventComment eco : clist) { %> 
+	      	<% for(EventComment eco : clist) { %>
 	      	
-	      	<div id="replySelectTable" class="replyList">
+	      	<div id="replySelectTable" class="replyList" >
 
 				<div class="col-sm-2 text-center">
-	            	<h4>김길동</h4>
-	            	<small> 2018-11-11</small>
+	            	<h4><%= eco.getCwriter() %></h4>
+	            	<small><%= eco.getCdate() %></small>
 	            </div>
 	            
-	            <div class="col-sm-6">
-	            	
-	            	<textarea class="reply-content" cols="80" rows="2"
-					 readonly="readonly">응모합니다 ^_^ 저 주세요~!~!</textarea>	
-					 				 
-				<div class="text-right" style="width: 550px">		
-				<%if(mh.getUserName().equals(eco.getName())) { %>			
-						<input type="hidden" name="cno" value="01"/>							  
-						<button type="button" class="updateBtn" 
-							onclick="updateReply(this);">수정하기</button>
-							
-						<button type="button" class="updateConfirm"
-							onclick="updateConfirm(this);"
-							style="display:none;" >수정완료</button> &nbsp;&nbsp; 
-							
-						<button type="button" class="deleteBtn"
-							onclick="deleteReply(this);">삭제하기</button>
+	            <div class="col-sm-10">  
+	             
+	            <div class="replyBox">    	
+	            	<textarea class="reply-content autosize" cols="85" rows="3"
+					 readonly="readonly" style="border: 0px solid black;
+					  resize: none; outline: none; overflow:visible;background: transparent; cursor: default; " >
+					 <%= eco.getCcontent() %></textarea>					 
+				<%if(mh.getUserName().equals(eco.getCwriter())) { %>			
+					<input type="hidden" name="cno" value="<%=eco.getCno()%>"/>							  
+					<button type="button" class="updateBtn rebtn rightbtn" 
+						onclick="updateReply(this);">수정하기</button> &nbsp;	
+						
+					<button type="button" class="deleteBtn rebtn"
+						onclick="deleteReply(this);">삭제하기</button>
 				<% } %>
-				</div>
-				
-	            <br>
-	            <br /><br />
+				</div>  				 		
+				<div class="replyUpdateBox" style="display: none;">
+					 <input type="hidden" name="cno" value="<%=eco.getCno()%>"/>	
+					 <textarea class="reply-content autosize" cols="70" rows="3"
+						style="border: 1px solid rgb(255, 230, 161); resize: none;
+						overflow:visible; " ><%= eco.getCcontent() %></textarea>	&nbsp;
+					 <button type="button" class="updateConfirm reUpbtn" 
+						 onclick="updateConfirm(this);" style="position: absolute; margin-top: 0px" >
+						 	수정<br>완료</button>
+				</div>				
+								            
+				<hr />
 	            </div>	
 
 			</div>
-	  	<% } } %>
+	  		<% } } %> 
 		</div>
-	</div>--%>
+	</div>
 	
       
         <br><br>
@@ -152,30 +198,38 @@ http://www.templatemo.com/tm-520-highway
 
 </div>
 <script>
+
+		$(function () {
+			$('.badge').html(<%= clist.size() %>);
+		});
 		function updateReply(obj) {
 			// 현재 위치와 가장 근접한 textarea 접근하기
 			$(obj).parent().parent().next().find('textarea')
 			.removeAttr('readonly');
 			
 			// 수정 완료 버튼을 화면 보이게 하기
-			$(obj).siblings('.updateConfirm').css('display','inline');
+			$(obj).parent().next('.replyUpdateBox').css('display','inline');
 			
 			// 수정하기 버튼 숨기기
-			$(obj).css('display', 'none');
+			$(obj).parent('.replyBox').css('display','none');
 		}
+		
 		
 		function updateConfirm(obj) {
 			// 댓글의 내용 가져오기
-			var content
-			  = $(obj).parent().parent().next().find('textarea').val();
+			/* var content
+			  = $(obj).parent().parent().next().find('textarea').val(); */
+			  var content
+			  = $(obj).siblings('textarea').val();
+			console.log(content); // 못받아온다 ㅜㅜ
 			
 			// 댓글의 번호 가져오기
 			var cno = $(obj).siblings('input').val();
 			
 			// 게시글 번호 가져오기
 			var eno = '<%=e.getEno()%>';
-			
-			location.href="/myWeb/updateComment.bo?"
+
+			location.href="/semi/updateComment.co?"
 					 +"cno="+cno+"&eno="+eno+"&content="+content;
 		}
 		
@@ -186,51 +240,14 @@ http://www.templatemo.com/tm-520-highway
 			// 게시글 번호 가져오기
 			var eno = '<%=e.getEno()%>';
 			
-			location.href="/myWeb/deleteComment.bo"
-			+"?cno="+cno+"&eno="+eno;
+			location.href="/semi/deleteComment.co"
+			+"?eno="+eno+"&cno="+cno;
 		}
+	
 		
-		function reComment(obj){
-			// 추가 완료 버튼을 화면 보이게 하기
-			$(obj).siblings('.insertConfirm').css('display','inline');
-			
-			// 클릭한 버튼 숨기기
-			$(obj).css('display', 'none');
-			
-			// 내용 입력 공간 만들기
-			var htmlForm = 
-				'<tr class="comment"><td></td>'
-					+'<td colspan="3" style="background : transparent;">'
-						+ '<textarea class="reply-content" style="background : ivory;" cols="105" rows="3"></textarea>'
-					+ '</td>'
-				+ '</tr>';
-			
-			$(obj).parents('table').append(htmlForm);
-			
-		}
-		
-		function reConfirm(obj) {
-			// 댓글의 내용 가져오기
-			
-			// 참조할 댓글의 번호 가져오기
-			var refcno = $(obj).siblings('input[name="refcno"]').val();
-			
-			
-			// 게시글 번호 가져오기
-			var eno = '<%=e.getEno()%>';
-			
-			var parent = $(obj).parent();
-			var grandparent = parent.parent();
-			var siblingsTR = grandparent.siblings().last();
-			
-			var content = siblingsTR.find('textarea').val();
-			
-			location.href='/myWeb/insertComment.bo'
-			           + '?writer=<%= mh.getUserId() %>' 
-			           + '&replyContent=' + content
-			           + '&eno=' + eno
-			           + '&refcno=' + refcno;
-		}
+		/* $("textarea.autosize").on('keydown keyup', function () {
+			  $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
+			}); */
 	</script>
 
 <%@ include file="../common/footer.jsp" %>
