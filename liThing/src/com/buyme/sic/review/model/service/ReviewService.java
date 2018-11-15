@@ -37,4 +37,35 @@ public class ReviewService {
 
 		return rlist;
 	}
+
+	public int updateReview(Review r) {
+		Connection con = getConnection();
+		
+		int result = rDao.updateReview(con, r);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		System.out.println("Service : " + result);
+		return result;
+	}
+
+	public int deleteReview(int rno) {
+		Connection con = getConnection();
+		
+		int result = rDao.deleteReview(con, rno);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
+	}
 }

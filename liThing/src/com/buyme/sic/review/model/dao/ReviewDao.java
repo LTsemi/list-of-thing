@@ -85,8 +85,7 @@ public class ReviewDao {
 				r.setRrank(rset.getInt("R_RANK"));
 				
 				rlist.add(r);
-				
-				System.out.println(rlist);
+			
 			}
 			
 		} catch (SQLException e) {
@@ -96,6 +95,53 @@ public class ReviewDao {
 			close(pstmt);
 		}
 		return rlist;
+	}
+
+	public int updateReview(Connection con, Review r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateReview");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, r.getRcontent());
+			pstmt.setInt(2, r.getRrank());
+			pstmt.setInt(3, r.getRno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("DAO : " + result);
+		return result;
+	}
+
+	public int deleteReview(Connection con, int rno) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteReview");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, rno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

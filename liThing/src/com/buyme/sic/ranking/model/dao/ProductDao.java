@@ -72,6 +72,7 @@ public class ProductDao {
 	C_NAME
 	*/
 	public ArrayList<Product> selectList(Connection con) {
+		System.out.println("select DAO 들어옴");
 		ArrayList<Product> list = null;
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -91,7 +92,7 @@ public class ProductDao {
 				p.setPname(rset.getString("P_NAME"));
 				p.setPprice(rset.getInt("P_PRICE"));
 				p.setBrand(rset.getString("BRAND"));
-				p.setRank(rset.getInt("RANK"));
+				p.setRank(rset.getDouble("RANK"));
 				p.setCname(rset.getString("C_NAME"));
 				
 				list.add(p);
@@ -143,7 +144,7 @@ public class ProductDao {
 				p.setPindg(rset.getString("P_INGD"));
 				p.setBrand(rset.getString("BRAND"));
 				p.setPcap(rset.getString("P_CAP"));
-				p.setRank(rset.getInt("RANK"));
+				p.setRank(rset.getDouble("RANK"));
 				p.setCount(rset.getInt("COUNT"));
 				p.setPimg(rset.getString("P_IMG"));
 				p.setOname(rset.getString("O_NAME"));

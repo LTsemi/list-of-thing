@@ -32,6 +32,7 @@ public class ProductService {
 	}
 
 	public ArrayList<Product> selectList() {
+		System.out.println("select Service 들어옴");
 		ArrayList<Product> list = null;
 		
 		Connection con = getConnection();

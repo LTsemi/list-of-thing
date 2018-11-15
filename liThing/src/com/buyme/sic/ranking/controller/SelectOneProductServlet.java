@@ -42,6 +42,9 @@ public class SelectOneProductServlet extends HttpServlet {
 		
 		ArrayList<Review> rlist = new ArrayList<Review>();
 		rlist = new ReviewService().reviewList(pno);
+		
+		
+		
 		String page = "";
 		
 		if(p != null){

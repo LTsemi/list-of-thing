@@ -47,7 +47,7 @@ public class InsertReviewServlet extends HttpServlet {
 		int result = rs.insertReview(r);
 		
 		if(result > 0) {
-			System.out.println("댓글작성성공");
+			response.sendRedirect("selectOne.po?pno="+pno);
 		}else {
 			System.out.println("댓글작성실패");
 		}

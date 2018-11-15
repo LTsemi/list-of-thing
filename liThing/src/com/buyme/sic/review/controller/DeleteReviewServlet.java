@@ -1,28 +1,25 @@
-package com.buyme.sic.ranking.controller;
+package com.buyme.sic.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.buyme.sic.ranking.model.service.ProductService;
-import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.sic.review.model.service.ReviewService;
 
 /**
- * Servlet implementation class SelectProductServlet
+ * Servlet implementation class DeleteReviewServlet
  */
-@WebServlet("/selectList.po")
-public class SelectProductServlet extends HttpServlet {
+@WebServlet("/delReview.dr")
+public class DeleteReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectProductServlet() {
+    public DeleteReviewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,27 +28,20 @@ public class SelectProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("select servlet 들어옴");
-		ArrayList<Product> list = new ArrayList<Product>();
-		ProductService ps = new ProductService();
-		list = ps.selectList();
+		System.out.println("서블릿접속성공");
 		
-		String page = "";
+		int rno = Integer.parseInt(request.getParameter("rno"));
 		
-		if (list != null) {
-			System.out.println("연결성공");
-			System.out.println(list);
-			page = "views/sic/Ranking.jsp";
-			request.setAttribute("list", list);
-			
-		} else {
-			
-			System.out.println("에러발생");
-			/*page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 검색 실패!");*/
+		String pno = request.getParameter("pno");
+		
+		ReviewService rs = new ReviewService();
+		int result = rs.deleteReview(rno);
+		
+		if(result > 0) {
+			response.sendRedirect("selectOne.po?pno="+pno);
+		}else {
+			System.out.println("댓글삭제실패!");
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 		
 	}
 

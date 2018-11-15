@@ -277,7 +277,7 @@ http://www.templatemo.com/tm-520-highway
 						<td style="display: none"><b><%= p.getPno() %></b></td>
 						<td style="width: 100px; height: 150px;"><b>번호</b></td>
 						<td style="width: 100px; height: 150px;">
-							<img src="/semi/resources/productImg/<%=p.getCname() %>"  width="200px" height="150px" style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important"/>
+							<img src="/semi/resources/productImg/<%=p.getCname() %>"  style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important"/>
 						</td>
 						<td style="text-align: left">
 							<ul style="text-align: left; list-style: none; " >

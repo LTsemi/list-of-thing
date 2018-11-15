@@ -11,7 +11,7 @@ public class Product implements Serializable{
 	private String pindg;
 	private String brand;
 	private String pcap;
-	private int rank;
+	private double rank;
 	private int count;
 	private String pimg;
 	private String oname;
@@ -24,8 +24,12 @@ public class Product implements Serializable{
 
 	
 
+	
+
+
+
 	public Product(String pno, String pnn, String kno, String pname, int pprice, String pindg, String brand,
-			String pcap, int rank, int count, String pimg, String oname, String cname, String pexp) {
+			String pcap, double rank, int count, String pimg, String oname, String cname, String pexp) {
 		super();
 		this.pno = pno;
 		this.pnn = pnn;
@@ -42,6 +46,10 @@ public class Product implements Serializable{
 		this.cname = cname;
 		this.pexp = pexp;
 	}
+
+
+
+
 
 
 
@@ -126,13 +134,18 @@ public class Product implements Serializable{
 		this.pcap = pcap;
 	}
 
-	public int getRank() {
+	
+	public double getRank() {
 		return rank;
 	}
 
-	public void setRank(int rank) {
+
+
+	public void setRank(double rank) {
 		this.rank = rank;
 	}
+
+
 
 	public int getCount() {
 		return count;
