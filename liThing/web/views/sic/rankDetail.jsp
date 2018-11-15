@@ -215,7 +215,7 @@ http://www.templatemo.com/tm-520-highway
 					<div style=" height: 250px; padding: 30px;">
 						<div>
 							<div class="graph">
-							<strong class="bar" style="width: 24%;"></strong>
+							<strong class="bar" style="width: 0%;"></strong>
 							</div>
 							<div class="gtext" >
 								<span class="gstarR on">별1</span> 
@@ -226,7 +226,7 @@ http://www.templatemo.com/tm-520-highway
 								<span class="gNum"><strong>1992</strong></span>
 							</div>
 							<div class="graph">
-							<strong class="bar" style="width: 24%; "></strong>
+							<strong class="bar" style="width: 0%; "></strong>
 							</div>
 							<div class="gtext" >
 								<span class="gstarR on">별1</span> 
@@ -237,7 +237,7 @@ http://www.templatemo.com/tm-520-highway
 								<span class="gNum"><strong>1992</strong></span>
 							</div>
 							<div class="graph">
-							<strong class="bar" style="width: 24%;"></strong>
+							<strong class="bar" style="width: 0%;"></strong>
 							</div>
 							<div class="gtext" >
 								<span class="gstarR on">별1</span> 
@@ -248,7 +248,7 @@ http://www.templatemo.com/tm-520-highway
 								<span class="gNum"><strong>1992</strong></span>
 							</div>
 							<div class="graph">
-							<strong class="bar" style="width: 24%;"></strong>
+							<strong class="bar" style="width: 0%;"></strong>
 							</div>
 							<div class="gtext" >
 								<span class="gstarR on">별1</span> 
@@ -259,7 +259,7 @@ http://www.templatemo.com/tm-520-highway
 								<span class="gNum"><strong>1992</strong></span>
 							</div>
 							<div class="graph">
-							<strong class="bar" style="width: 24%;"></strong>
+							<strong class="bar" style="width: 0%;"></strong>
 							</div>
 							<div class="gtext" >
 								<span class="gstarR on">별1</span> 
@@ -353,7 +353,7 @@ http://www.templatemo.com/tm-520-highway
 	$(function() {
 		<%-- console.log(<%= p.getRank() %>); --%>
 		if(<%= p.getRank() %> == 5){
-			console.log("5개");	
+
 			$('.RstarRev span').prevAll('span').addClass('on');
 		}else if(<%= p.getRank() %> >= 4.0 && <%= p.getRank() %> <= 4.99){
 			$('.RstarRev span').prevAll('span').addClass('on');
@@ -395,7 +395,11 @@ http://www.templatemo.com/tm-520-highway
 		var cnt2 = 0;
 		var cnt1 = 0; 
 		var cnt = new Array();
-		
+		cnt[0] = 0;
+		cnt[1] = 0;
+		cnt[2] = 0;
+		cnt[3] = 0;
+		cnt[4] = 0;
 		
 		<% for(Review r : rlist) { %>
 	
@@ -419,7 +423,7 @@ http://www.templatemo.com/tm-520-highway
 		
 		
 		for(var i=0; i<4; i++){
-			if(tmp<cnt[i+1]){
+			if(tmp<=cnt[i+1]){
 				tmp = cnt[i+1];
 			}
 		}
@@ -432,9 +436,13 @@ http://www.templatemo.com/tm-520-highway
 		console.log("cnt1:" + cnt1);
 		
 		
-		console.log(cnt[4]);
-		console.log(((100 /  tmp) * cnt5)); */
-		
+		console.log(cnt[4]);*/
+		/* console.log(((100 /  tmp) * cnt5));
+		console.log(((100 /  tmp) * cnt4));
+		console.log(((100 /  tmp) * cnt3));
+		console.log(((100 /  tmp) * cnt2));
+		console.log(((100 /  tmp) * cnt1));
+		 */
 		$('.bar').eq(0).css('width', (((100 /  tmp) * cnt5)+'%'));
 		$('.bar').eq(1).css('width', (((100 /  tmp)  * cnt4)+'%'));
 		$('.bar').eq(2).css('width', (((100 /  tmp)  * cnt3)+'%'));
