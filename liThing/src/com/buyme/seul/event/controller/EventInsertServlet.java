@@ -123,14 +123,15 @@ public class EventInsertServlet extends HttpServlet {
 			Event e = new Event();
 			e.setEvttitle(mrequest.getParameter("title"));
 			e.setUserid(mrequest.getParameter("userId"));
-			e.setE_file(savePath);		
-			e.setE_oname(originFiles.get(0));
-			e.setE_cname(saveFiles.get(0));
-			e.setE_dtl_oname(originFiles.get(1));
-			e.setE_dtl_cname(saveFiles.get(1));
+			
+				e.setE_file(savePath);		
+				e.setE_oname(originFiles.get(1));
+				e.setE_cname(saveFiles.get(1));
+				e.setE_dtl_oname(originFiles.get(0));
+				e.setE_dtl_cname(saveFiles.get(0));				
+			
 			e.setEvtdate(strDay);
 			e.setEvtdateend(endDay);
-			
 			System.out.println("e :" + e);
 			int result = es.insertEvent(e);
 			

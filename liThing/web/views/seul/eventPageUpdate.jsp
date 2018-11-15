@@ -70,7 +70,7 @@ body {
 				<div class="evtEditor">
 					<br>
 					<br>
-				<form id="updateForm" method="post">
+				<form id="updateForm" method="post" encType="multipart/form-data">
 					<h2>
 						<input id="title" type="text" size="40" name="title"
 							value="<%= e.getEvttitle().replace("\"", "&#34;") %>">
@@ -88,7 +88,8 @@ body {
 								<td>대표 이미지</td>
 								<td colspan="3">
 									<div id="titleImgArea">
-										<img id="contentImg1" src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%= e.getE_dtl_cname() %>">
+										<img id="titleImg" name="titleImg" src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%= e.getE_cname() %>">
+										<input type="hidden" id="titleImgFile" name="titleImgFile" value="<%= e.getE_cname() %>">
 									</div>
 								</td>
 							</tr>
@@ -96,8 +97,8 @@ body {
 								<td>내용 사진</td>
 								<td>
 									<div id="contentImgArea1">
-										<img id="titleImg" src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%= e.getE_cname() %>">
-										
+										<img id="contentImg1" name="contentImg1" src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%= e.getE_dtl_cname() %>">
+										<input type="hidden" id="contentImgFile" name="contentImgFile" value="<%= e.getE_dtl_cname() %>">
 									</div>
 								</td>						
 							</tr>
@@ -105,10 +106,10 @@ body {
 						</table>
 					
 					<div id="fileArea">
-						<input type="file" id="thumbnailImg2" multiple="multiple"
-							name="thumbnailImg2" onchange="LoadImg(this,2)"> 
 						<input type="file" id="thumbnailImg1" multiple="multiple"
 							name="thumbnailImg1" onchange="LoadImg(this,1)"> 
+						<input type="file" id="thumbnailImg2" multiple="multiple"
+							name="thumbnailImg2" onchange="LoadImg(this,2)"> 
 					</div>
 					
 					<br><br>
@@ -117,8 +118,7 @@ body {
 					<br>
 					
 					<button class="listbtn" onclick="complete();">수정하기</button>	  
-      				<button class="listbtn" onClick="history.back()">목록으로</button>
-
+      				<button class="listbtn" onClick="history.go(-1); return false ;">목록으로</button>
 					</form>
 				</div>
 			</div>
@@ -132,11 +132,11 @@ body {
 		$(function(){
 			$('#fileArea').hide();
 			
-			$('#contentImgArea1').click(() => {
-				$('#thumbnailImg2').click();
-			});
 			$('#titleImgArea').click(() => {
 				$('#thumbnailImg1').click();
+			});
+			$('#contentImgArea1').click(() => {
+				$('#thumbnailImg2').click();
 			});
 			
 			
@@ -148,9 +148,11 @@ body {
 				
 				reader.onload = function(e){
 					switch(num){
-					case 2: $('#titleImg').attr('src', e.target.result);
+					case 1: $('#titleImg').attr('src', e.target.result);
+							$('#titleImgFile').val("changed");
 						break;
-					case 1: $('#contentImg1').attr('src', e.target.result);
+					case 2: $('#contentImg1').attr('src', e.target.result);
+							$('#contentImgFile').val("changed");
 						break;
 					}
 				}

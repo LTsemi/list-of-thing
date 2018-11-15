@@ -61,7 +61,7 @@ public class EventDao {
 				e.setEvttitle(rset.getString("EVTTITLE"));
 				e.setE_file(rset.getString("E_FILE"));
 				e.setDelflag(rset.getString("DELFLAG"));
-				e.setE_dtl_cname(rset.getString("E_DTL_CNAME"));
+				e.setE_cname(rset.getString("E_CNAME"));
 				e.setDday(rset.getInt("DDAY"));
 				
 				list.add(e);
@@ -370,13 +370,12 @@ public class EventDao {
 			pstmt.setString(1, e.getEvttitle());
 			pstmt.setDate(2, (Date) e.getEvtdate());
 			pstmt.setDate(3, (Date) e.getEvtdateend());
-			pstmt.setString(4, e.getEvttitle());
-			pstmt.setString(5, e.getE_file());				
-			pstmt.setString(6, e.getE_oname());
-			pstmt.setString(7, e.getE_cname());
-			pstmt.setString(8, e.getE_dtl_oname());
-			pstmt.setString(9, e.getE_dtl_cname());
-			pstmt.setInt(10, e.getEno());
+			pstmt.setString(4, e.getE_file());				
+			pstmt.setString(5, e.getE_oname());
+			pstmt.setString(6, e.getE_cname());
+			pstmt.setString(7, e.getE_dtl_oname());
+			pstmt.setString(8, e.getE_dtl_cname());
+			pstmt.setInt(9, e.getEno());
 			
 			result = pstmt.executeUpdate();
 			

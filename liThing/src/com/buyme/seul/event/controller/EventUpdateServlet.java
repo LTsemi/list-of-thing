@@ -1,5 +1,6 @@
 package com.buyme.seul.event.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class EventUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EventService es = new EventService();
-		
+		System.out.println("서블릿 접속 성공");
 		if(ServletFileUpload.isMultipartContent(request)){
 			int maxSize = 1024 * 1024 * 10;
 			String root = request.getServletContext().getRealPath("/resources");
@@ -50,9 +51,8 @@ public class EventUpdateServlet extends HttpServlet {
 										 maxSize,"UTF-8",
 										 new MyRenamePolicy());
 			
-			int eno = Integer.parseInt(request.getParameter("eno"));
+			int eno = Integer.parseInt(mrequest.getParameter("eno"));
 
-			
 			// 날짜관리
 			String dateStr = mrequest.getParameter("dateStr");
 			String dateEnd = mrequest.getParameter("dateEnd");
@@ -88,7 +88,6 @@ public class EventUpdateServlet extends HttpServlet {
 				endDay = new Date(new GregorianCalendar().getTimeInMillis());				
 			}
 			
-			
 			ArrayList<String> saveFiles = new ArrayList<String>();
 			ArrayList<String> originFiles = new ArrayList<String>();
 			
@@ -106,17 +105,69 @@ public class EventUpdateServlet extends HttpServlet {
 				originFiles.add(mrequest.getOriginalFileName(name));				
 			}
 			
-			Event e = new Event();		
+			// Event e = new Event();
+			Event e = es.selectEvent(eno);
+			
 			e.setEvttitle(mrequest.getParameter("title"));
-			e.setE_file(savePath);		
-			e.setE_oname(originFiles.get(0));
-			e.setE_cname(saveFiles.get(0));
-			e.setE_dtl_oname(originFiles.get(1));
-			e.setE_dtl_cname(saveFiles.get(1));
+			
+			// 4가지 
+			// 1. 아무 값도 없을 때
+			// 2. 둘 중 하나만 있을 때 --> 2가지
+			// 3. 둘 다 있을 때
+			
+			// ------
+			System.out.println("원본 : " + e.getE_cname());
+			System.out.println("변경 : " + mrequest.getParameter("titleImgFile"));
+			
+			System.out.println("원본 : " + e.getE_dtl_cname());
+			System.out.println("변경 : " + mrequest.getParameter("contentImgFile"));
+			
+			/*
+			if(originFiles.size() == 1) {
+				if(mrequest.getParameter("titleImg").equals(e.getE_cname())) {
+					// 타이틀이 변경되지 않았을 때
+					new File(savePath+e.getE_dtl_cname()).delete();
+					e.setE_file(savePath);	
+					e.setE_dtl_oname(originFiles.get(0));
+					e.setE_dtl_cname(saveFiles.get(0));
+					
+					e.setE_cname(mrequest.getParameter("titleImg"));
+				} else {
+					// 타이틀이 변경됐을 때
+					new File(savePath+e.getE_cname()).delete();
+					e.setE_file(savePath);	
+					e.setE_oname(originFiles.get(1));
+					e.setE_cname(saveFiles.get(1));
+					
+					e.setE_dtl_cname(mrequest.getParameter("contentImg1"));		
+					
+				}
+			} else if (originFiles.size() > 1) {
+				
+				new File(savePath+e.getE_cname()).delete();
+				e.setE_file(savePath);	
+				e.setE_oname(originFiles.get(1));
+				e.setE_cname(saveFiles.get(1));
+				
+				new File(savePath+e.getE_dtl_cname()).delete();
+				e.setE_file(savePath);	
+				e.setE_dtl_oname(originFiles.get(0));
+				e.setE_dtl_cname(saveFiles.get(0));
+				
+			}*/
+			
+			e.setE_file(savePath);	
+			e.setE_oname(originFiles.get(1));
+			e.setE_cname(saveFiles.get(1));
+			e.setE_dtl_oname(originFiles.get(0));
+			e.setE_dtl_cname(saveFiles.get(0));
+			
 			e.setEvtdate(strDay);
 			e.setEvtdateend(endDay);
-			
+
+
 			System.out.println("e :" + e);
+			
 			int result = es.updateEvent(e);
 			
 			if(result > 0) {
@@ -126,7 +177,7 @@ public class EventUpdateServlet extends HttpServlet {
 				
 			} else {
 				System.out.println("이벤트 수정  실패!");
-				request.getRequestDispatcher("views/seul/eventWinList.jsp")
+				request.getRequestDispatcher("views/seul/eventList.jsp")
 				.forward(request, response);	
 			}
 		}

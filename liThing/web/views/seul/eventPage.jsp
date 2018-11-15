@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
-    import="java.util.*, com.buyme.seul.event.model.vo.*"%>
+    import="java.util.*, com.buyme.seul.event.model.vo.*,
+    		com.buyme.seul.eventComment.model.vo.*"%>
 <%
 	Event e = (Event)request.getAttribute("event");
+//댓글 리스트
+//	ArrayList<EventComment> clist = (ArrayList<EventComment>) request.getAttribute("clist"); 
 
 %>
 <!DOCTYPE html>
@@ -70,40 +73,70 @@ http://www.templatemo.com/tm-520-highway
       <h2><%= e.getEvttitle() %></h2>
       <h5><span class="glyphicon glyphicon-time"></span> &nbsp; <%= e.getEvtdate() %></h5>
       <br><br>
-      <img src="/semi/resources/eventUploadFiles/<%=e.getE_cname()%>" width="700px">
+      <img src="/semi/resources/eventUploadFiles/<%=e.getE_dtl_cname()%>" width="700px">
       <br><br>
       <hr>
+      <br />
     </div>
-      <!-- <h4>Leave a Comment:</h4> -->
-      <div class="comment">
-        <form role="form">
-            <div class="form-group">
-            <textarea class="form-control" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn pull-right">응모하기</button>
-        </form>
-        <br><br><br>
-        
-        <div class="row cmtbar">
-            <br>
-            <p><span class="badge">2</span> Comments:</p><br>
-            <div class="col-sm-2 text-center">
-            <img src="../../resources/img/user.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-sm-10">
-            <h4>라이언 <small>Sep 29, 2015, 9:12 PM</small></h4>
-            <p>응모합니다 ^_^ 저 주세요~!~!</p>
-            <br>
-            </div>
-            <div class="col-sm-2 text-center">
-            <img src="../../resources/img/user.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-sm-10">
-            <h4>무지 <small>Sep 25, 2015, 8:25 PM</small></h4>
-            <p>무지무지 갖고싶당..</p>
-            <br>
-            </div>
-        </div> 
+      <!-- <h4>Leave a Comment:</h4> -->     
+     <%--<div class="replyArea comment">
+		<div class="replyWriteArea">
+			<form action="/semi/insertComment.eo" method="post">
+				<input type="hidden" name="userId" value="user01"/>
+				<input type="hidden" name="eno" value="01" />
+				
+
+					<div class="form-group">
+					  <textarea class="form-control" rows="3" required
+					  			id="replyContent" name="replyContent"></textarea>
+					</div>
+					 <button type="submit" class="btn pull-right" id="addReply">응모하기</button>				
+			</form>
+		</div>
+		<br /><br /><br />
+		<div id="replySelectArea" class="row cmtbar">
+		<br>
+        <p><span class="badge">1</span> Comments:</p><br>
+	     <% if( clist != null ) { %>
+	      	<% for(EventComment eco : clist) { %> 
+	      	
+	      	<div id="replySelectTable" class="replyList">
+
+				<div class="col-sm-2 text-center">
+	            	<h4>김길동</h4>
+	            	<small> 2018-11-11</small>
+	            </div>
+	            
+	            <div class="col-sm-6">
+	            	
+	            	<textarea class="reply-content" cols="80" rows="2"
+					 readonly="readonly">응모합니다 ^_^ 저 주세요~!~!</textarea>	
+					 				 
+				<div class="text-right" style="width: 550px">		
+				<%if(mh.getUserName().equals(eco.getName())) { %>			
+						<input type="hidden" name="cno" value="01"/>							  
+						<button type="button" class="updateBtn" 
+							onclick="updateReply(this);">수정하기</button>
+							
+						<button type="button" class="updateConfirm"
+							onclick="updateConfirm(this);"
+							style="display:none;" >수정완료</button> &nbsp;&nbsp; 
+							
+						<button type="button" class="deleteBtn"
+							onclick="deleteReply(this);">삭제하기</button>
+				<% } %>
+				</div>
+				
+	            <br>
+	            <br /><br />
+	            </div>	
+
+			</div>
+	  	<% } } %>
+		</div>
+	</div>--%>
+	
+      
         <br><br>
     </div>
     <div class="listGo">
@@ -118,6 +151,87 @@ http://www.templatemo.com/tm-520-highway
      </div>
 
 </div>
+<script>
+		function updateReply(obj) {
+			// 현재 위치와 가장 근접한 textarea 접근하기
+			$(obj).parent().parent().next().find('textarea')
+			.removeAttr('readonly');
+			
+			// 수정 완료 버튼을 화면 보이게 하기
+			$(obj).siblings('.updateConfirm').css('display','inline');
+			
+			// 수정하기 버튼 숨기기
+			$(obj).css('display', 'none');
+		}
+		
+		function updateConfirm(obj) {
+			// 댓글의 내용 가져오기
+			var content
+			  = $(obj).parent().parent().next().find('textarea').val();
+			
+			// 댓글의 번호 가져오기
+			var cno = $(obj).siblings('input').val();
+			
+			// 게시글 번호 가져오기
+			var eno = '<%=e.getEno()%>';
+			
+			location.href="/myWeb/updateComment.bo?"
+					 +"cno="+cno+"&eno="+eno+"&content="+content;
+		}
+		
+		function deleteReply(obj){
+			// 댓글의 번호 가져오기
+			var cno = $(obj).siblings('input').val();
+			
+			// 게시글 번호 가져오기
+			var eno = '<%=e.getEno()%>';
+			
+			location.href="/myWeb/deleteComment.bo"
+			+"?cno="+cno+"&eno="+eno;
+		}
+		
+		function reComment(obj){
+			// 추가 완료 버튼을 화면 보이게 하기
+			$(obj).siblings('.insertConfirm').css('display','inline');
+			
+			// 클릭한 버튼 숨기기
+			$(obj).css('display', 'none');
+			
+			// 내용 입력 공간 만들기
+			var htmlForm = 
+				'<tr class="comment"><td></td>'
+					+'<td colspan="3" style="background : transparent;">'
+						+ '<textarea class="reply-content" style="background : ivory;" cols="105" rows="3"></textarea>'
+					+ '</td>'
+				+ '</tr>';
+			
+			$(obj).parents('table').append(htmlForm);
+			
+		}
+		
+		function reConfirm(obj) {
+			// 댓글의 내용 가져오기
+			
+			// 참조할 댓글의 번호 가져오기
+			var refcno = $(obj).siblings('input[name="refcno"]').val();
+			
+			
+			// 게시글 번호 가져오기
+			var eno = '<%=e.getEno()%>';
+			
+			var parent = $(obj).parent();
+			var grandparent = parent.parent();
+			var siblingsTR = grandparent.siblings().last();
+			
+			var content = siblingsTR.find('textarea').val();
+			
+			location.href='/myWeb/insertComment.bo'
+			           + '?writer=<%= mh.getUserId() %>' 
+			           + '&replyContent=' + content
+			           + '&eno=' + eno
+			           + '&refcno=' + refcno;
+		}
+	</script>
 
 <%@ include file="../common/footer.jsp" %>
 
