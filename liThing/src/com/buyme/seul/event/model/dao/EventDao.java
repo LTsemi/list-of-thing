@@ -79,23 +79,33 @@ public class EventDao {
 		return list;
 	}
 	
-	public ArrayList<Event> selectWinList(Connection con) {
-		Statement stmt = null;
+	public ArrayList<Event> selectWinList(Connection con, int currentPage, int limit) {
 		ArrayList<Event> list = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectWinList");
 		
 		try {
 			
-			stmt= con.createStatement();
+			pstmt = con.prepareStatement(sql);
 			
-			rset = stmt.executeQuery(sql);
+			// 1, 마지막 행 번호
+			// 2, 첫 행 번호
+			
+			int startRow = (currentPage -1) * limit + 1; // 1 -> 1, 2 -> 11
+			int endRow = startRow + limit -1;
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<Event>();
 			
 			while(rset.next()){
 				Event e = new Event();
+				
 				e.setEventallno(rset.getInt("EVENTALLNO"));
 				e.setEtype(rset.getInt("ETYPE"));
 				e.setEno(rset.getInt("ENO"));
@@ -114,7 +124,7 @@ public class EventDao {
 			e.printStackTrace();
 		} finally{
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return list;
@@ -386,6 +396,37 @@ public class EventDao {
 		}
 		
 		return result;
+	}
+
+	public int getListCount(Connection con) {
+		Statement stmt = null;
+		int listCount = 0;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()){
+				
+				listCount = rset.getInt(1);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
 	}
 
 
