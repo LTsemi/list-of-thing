@@ -110,57 +110,7 @@ public class EventUpdateServlet extends HttpServlet {
 			
 			e.setEvttitle(mrequest.getParameter("title"));
 			
-			// 4가지 
-			// 1. 아무 값도 없을 때
-			// 2. 둘 중 하나만 있을 때 --> 2가지
-			// 3. 둘 다 있을 때
-			
-			// ------
-			System.out.println("원본 : " + e.getE_cname());
-			System.out.println("변경 : " + mrequest.getParameter("titleImgFile"));
-			
-			System.out.println("원본 : " + e.getE_dtl_cname());
-			System.out.println("변경 : " + mrequest.getParameter("contentImgFile"));
-			
-			/*
-			if(originFiles.size() == 1) {
-				if(mrequest.getParameter("titleImg").equals(e.getE_cname())) {
-					// 타이틀이 변경되지 않았을 때
-					new File(savePath+e.getE_dtl_cname()).delete();
-					e.setE_file(savePath);	
-					e.setE_dtl_oname(originFiles.get(0));
-					e.setE_dtl_cname(saveFiles.get(0));
-					
-					e.setE_cname(mrequest.getParameter("titleImg"));
-				} else {
-					// 타이틀이 변경됐을 때
-					new File(savePath+e.getE_cname()).delete();
-					e.setE_file(savePath);	
-					e.setE_oname(originFiles.get(1));
-					e.setE_cname(saveFiles.get(1));
-					
-					e.setE_dtl_cname(mrequest.getParameter("contentImg1"));		
-					
-				}
-			} else if (originFiles.size() > 1) {
-				
-				new File(savePath+e.getE_cname()).delete();
-				e.setE_file(savePath);	
-				e.setE_oname(originFiles.get(1));
-				e.setE_cname(saveFiles.get(1));
-				
-				new File(savePath+e.getE_dtl_cname()).delete();
-				e.setE_file(savePath);	
-				e.setE_dtl_oname(originFiles.get(0));
-				e.setE_dtl_cname(saveFiles.get(0));
-				
-			}*/
-			
-			e.setE_file(savePath);	
-			e.setE_oname(originFiles.get(1));
-			e.setE_cname(saveFiles.get(1));
-			e.setE_dtl_oname(originFiles.get(0));
-			e.setE_dtl_cname(saveFiles.get(0));
+			e = fileUpdate(mrequest, savePath, e, originFiles, saveFiles);
 			
 			e.setEvtdate(strDay);
 			e.setEvtdateend(endDay);
@@ -191,4 +141,27 @@ public class EventUpdateServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private Event fileUpdate(MultipartRequest mre, String savePath, Event e, ArrayList<String> originFiles, ArrayList<String> saveFiles){
+
+		if(mre.getParameter("titleImgFile").equals("changed")){
+			
+			new File(savePath+e.getE_cname()).delete();
+			e.setE_file(savePath);	
+			e.setE_oname(originFiles.get(1));
+			e.setE_cname(saveFiles.get(1));
+				
+		} 
+		
+		if(mre.getParameter("contentImgFile").equals("changed")) {
+			
+			new File(savePath+e.getE_dtl_cname()).delete();
+			e.setE_file(savePath);	
+			e.setE_dtl_oname(originFiles.get(0));
+			e.setE_dtl_cname(saveFiles.get(0));
+		}
+		
+		return e;
+		
+	}
+	
 }
