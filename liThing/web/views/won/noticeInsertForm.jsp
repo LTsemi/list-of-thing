@@ -84,7 +84,7 @@ body {
 	<%
 		if (mh != null && mh.getUserId().equals("admin")) {
 	%>
-	<div id="video-container" style="height: 720px;">
+	<div id="video-container" style="height: 730px;">
 
 		<div class="row">
 			<div class="col-md-12">
@@ -115,12 +115,13 @@ body {
 				<textarea id="summernote" name="content"></textarea>
 
 				<div align="center">
-					<button type="reset" id="btn1">취소하기</button>
+					<button type="reset" id="btn1" onclick="gotoList()">취소하기</button>
 					<button type="submit" id="btn2">등록하기</button>
 				</div>
 			</div>
 
 			<br>
+			<br />
 
 		</form>
 
@@ -176,6 +177,10 @@ body {
 		$('#summernote').val(str); 
 		
 	});	 
+	
+	function gotoList(){
+		location.href="/semi/selectList.no";
+	}
 	
 </script>
 

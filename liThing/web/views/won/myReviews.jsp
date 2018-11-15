@@ -64,14 +64,15 @@ body {
 	
 
 
-/*   #borderBox{
+
+/* #borderBox{
 
  margin-top: 0px;
-         background-color: #CEF2CE; 
+        background-color: rgb(255, 230, 161);
         width: 100%;
         height: 700;
         margin-bottom:0px;
-}   */
+} */
 
 #paging{
     background-color: white;
@@ -85,13 +86,14 @@ body {
     background: #ffda91;
     color: #000000;
     font-family: Arial;
-    font-size: 18px;
-    line-height: 45px;
+    font-size: 19px;
+    line-height: 58px;
+    box-shadow: 5px 5px 8px -1px #a3a3a3;
     text-align: center;
-    width: 600px;
-    height: 230px;
-    border-radius: 17px;
-    padding: 16px;
+    width: 700px;
+    height: 260px;
+    border-radius: 10px;
+    padding: 15px;
 }
 .bubble:after {
     content: '';
@@ -101,18 +103,14 @@ body {
     z-index: 1;
     border-style: solid;
     border-color: transparent #ffda91;
-    border-width: 18px 0 18px 52px;
-    top: 34%;
-    right: -52px;
-    margin-top: -18px;
+    border-width: 24px 0 24px 62px;
+    top: 33%;
+    right: -60px;
+    margin-top: -24px;
 }
 
 
-
-
- 
 </style>
-
 
 </head>
 
@@ -136,10 +134,10 @@ body {
 		<br>
 
 		<ul class="nav nav-tabs">
-			<li ><a href="/semi/selectList.ev">&nbsp;
+			<li ><a href="/semi/views/won/myPage.jsp">&nbsp;
 					위시리스트 &nbsp;</a></li>
-			<li><a href="/semi/selectWinList.ev">주문내역</a></li>
-			<li class="active"><a href="/semi/selectWinList.ev">내가 작성한 리뷰</a></li>
+			<li><a href="/semi/orderList.mp">주문내역</a></li>
+			<li class="active"><a href=" ">내가 작성한 리뷰</a></li>
 		</ul>
 
 		<br /> 
@@ -147,25 +145,32 @@ body {
 
 		
 		
-		<div id= "borderBox">
-<br />
-<br />
-<div id= "borderBox">
-	<div class="bubble" >CSS Speech Bubble</div>
+		<!-- <div id= "borderBox"> -->
 <br />
 <br />
 <br />
+
+<div class="row">
+<div class="col-sm-9">
+<div class="bubble">맛있어요</div>
 </div>
+<br />	
 
-	<div class="bubble">CSS Speech Bubble</div>
-
-
-	<br />
-	<br />
-	<br />
+<img src="../../resources/img/portfolio_item_8.png" width="220px" height="220px" >
+</div>
 	
-	<div class="bubble">CSS Speech Bubble</div>
+<br />
+<br />
+<br />
 
+<div class="row">
+<div class="col-sm-9">
+<div class="bubble">맛있어요</div>
+</div>
+<br />	
+
+<img src="../../resources/img/portfolio_item_8.png" width="220px" height="220px" >
+</div>
 
 	<br />
 	<br />
@@ -206,7 +211,7 @@ body {
 	
 	
 		</div>
-	</div>
+	<!-- </div> -->
 <br />
 <br />
 

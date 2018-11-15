@@ -106,10 +106,10 @@ body {
 		<br>
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="/semi/selectList.ev">&nbsp;
+			<li class="active"><a href=" ">&nbsp;
 					위시리스트 &nbsp;</a></li>
-			<li><a href="/semi/selectWinList.ev">주문내역</a></li>
-			<li><a href="/semi/selectWinList.ev">내가 작성한 리뷰</a></li>
+			<li><a href="/semi/orderList.mp">주문내역</a></li>
+			<li><a href="/semi/views/won/myReviews.jsp">내가 작성한 리뷰</a></li>
 		</ul>
 
 		<br /> 

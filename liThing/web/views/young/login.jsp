@@ -70,6 +70,7 @@
 			<div id="userInfo" style="width : 500px;">
 			<h3 class="title"><%= m.getUserName() %>님의 <br /> 방문을 환영합니다.</h3>
 			<div class="btns" align="right">
+			    <div id="gotoMypage" onclick="gotoMypage()" class="btn btn-warning" >마이페이지</div>
 				<div id="changeInfo" onclick="changeInfo()" class="btn btn-warning" >정보수정</div>
 				<div id="logoutBtn" onclick='logout()' class="btn btn-warning" >로그아웃</div> 
 
@@ -98,6 +99,10 @@
 		
 		function changeInfo(){
 			location.href="/semi/views/young/update.jsp";
+		}
+		
+		function gotoMypage(){
+			location.href="/semi/views/won/myPage.jsp";
 		}
 		
 		$("#userId").keyup(function(e){if(e.keyCode == 13)  login(); })
