@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%	String num1 = null;
+<%-- <%	String num1 = null;
 	String num2 = null;
 	String num3 = null; 
 	String[] address = null;
 	int price = Integer.parseInt(request.getParameter("price"));
 %>    
-
+ --%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,8 +69,7 @@
     </div>
 
  
- <%if ( mh != null ) { %>
- <% address = mh.getAddress().split(", "); %>
+
 <br><br><br>
 	<div class="cont">
 		
@@ -93,12 +92,12 @@
 					<tr>
 						<td><img src="../../resources/img/buybox.png" width="50px"
 							height="50px"> &nbsp;리띵박스</td>
-						<td><%= price%>,000</td>
+						<td>,000</td>
 						<td>1</td>
 					</tr>
 				</table>
 				<div class="totalpay">
-					<b>결제된 금액</b> &nbsp; <em><%= price%>,000</em>원
+					<b>결제된 금액</b> &nbsp; <em>,000</em>원
 				</div>
 			</div>
 		</div>
@@ -119,22 +118,22 @@
 						<table class="userif" width="100%">
 							<tr>
 								<td width="100px">받으시는 분</td>
-								<td width="200px"><input type="text" id="userName" value="<%= mh.getUserName() %>" ></td>
+								<td width="200px"><input type="text" id="userName"  ></td>
 							</tr>
 							<tr>
 								<td width="100px" rowspan="2">주소</td>
 								<td width="200px" height="50px">
-								<input type="text" id="zipCode" value="<%= address[0] %>"  readonly>
+								<input type="text" id="zipCode"  readonly>
 								<!-- <input type="button" value="우편번호 찾기" onclick="addrSearch();" ><br> -->
 								</td>
 							</tr>
 							<tr>
-								<td><input type="text" id="address1" size="40" value="<%= address[1] %> " >
-								<input type="text" id="address2" size="40" value="<%= address[2] %>"></td>
+								<td><input type="text" id="address1" size="40"  >
+								<input type="text" id="address2" size="40"></td>
 							</tr>
 							<tr>
 								<td>연락처</td>
-								<% if( mh.getPhone().length() == 11){
+							<%-- 	<% if( mh.getPhone().length() == 11){
 									num1 = mh.getPhone().substring(0, 3);
 									num2 = mh.getPhone().substring(3, 7);
 									num3 = mh.getPhone().substring(7 , 11);
@@ -143,10 +142,10 @@
 									 num2 = mh.getPhone().substring(3, 6);
 									 num3 = mh.getPhone().substring(6 ,10);
 								 }
-								 %>
-								<td><input type="text" id="tel1" value="<%= num1 %>"> - 
-									<input type="text" id="tel2" value="<%= num2 %>"> - 
-									<input type="text" id="tel3" value="<%= num3 %>"></td>
+								 %> --%>
+								<td><input type="text" id="tel1" > - 
+									<input type="text" id="tel2" > - 
+									<input type="text" id="tel3" ></td>
 							</tr>
 							<tr>
 								<td width="70px" height="50px">배송시 유의사항</td>
@@ -159,7 +158,7 @@
 					
 					<div class="panel-footer"> 주문시 요청사항은 배송기사가 배송시 참고하는 사항으로써, 사전에
 						협의되지 않은 지정일 배송 등의 요청사항은 반영되지 않을 수 있습니다.</div>
-						<input type="hidden" id="email" value="<%= mh.getEmail() %>" /> 
+						<input type="hidden" id="email"  /> 
 				</div>
 			</div>
 			
@@ -197,10 +196,16 @@
 			<div class="col-sm-12">
 				<div class="panel payList">
 					<div class="paypic">
+						<b>주문 번호</b> 
+						<br>
+					
+						<input type="text" id="orderNumber" >
+						<br />
+						<br />
 						<b>운송장 번호</b> 
 						<br>
-						<br>
-						<input type="text" id="userName" >
+						
+						<input type="text" id="deliverNum" >
 					</div>
 				</div>
 			</div>
@@ -214,7 +219,7 @@
 	<br>
 	
 	
-	
+<%-- 	
 	<% } else { %>
 			<script>
 				$(function(){
@@ -223,7 +228,7 @@
 				})
 			
 			</script>
-	<% } %>
+	<% } %> --%>
 	
 	<%@ include file="../common/footer.jsp" %>
 

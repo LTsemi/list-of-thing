@@ -9,14 +9,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
- <title>List of Thing</title>
-<!-- 
+ <title>리띵 마이리뷰</title>
 
-Highway Template
-
-http://www.templatemo.com/tm-520-highway
-
--->
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -26,25 +20,17 @@ http://www.templatemo.com/tm-520-highway
 
 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link
-	href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300" rel="stylesheet">
 
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/event.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">
 
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <style>
@@ -62,8 +48,6 @@ body {
 		cursor:pointer;
 	}
 	
-
-
 
 /* #borderBox{
 
@@ -143,8 +127,6 @@ body {
 		<br /> 
 		<br /> 
 
-		
-		
 		<!-- <div id= "borderBox"> -->
 <br />
 <br />
@@ -176,8 +158,6 @@ body {
 	<br />
 	<br />
 	
-	
-	
 	<button id="paging"><<<</button>&nbsp;<button id="paging">1</button> &nbsp;<button id="paging">2</button> &nbsp;<button id="paging">>>></button>
 		<%-- <div class="pagingArea" align="center">
 			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
@@ -208,17 +188,12 @@ body {
 	<br />
 	<br />
 	<br />
-	
-	
 		</div>
 	<!-- </div> -->
 <br />
 <br />
 
-
 	<%@ include file="../common/footer.jsp"%>
-
-
 
 </body>
 </html>
