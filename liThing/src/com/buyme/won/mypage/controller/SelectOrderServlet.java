@@ -12,18 +12,17 @@ import com.buyme.won.mypage.model.service.OrderService;
 import com.buyme.won.mypage.model.vo.OrderLT;
 
 
-
 /**
- * Servlet implementation class OrderListServlet
+ * Servlet implementation class SelectOrderServlet
  */
-@WebServlet("/orderList.mp")
-public class OrderListServlet extends HttpServlet {
+@WebServlet("/sOrder.mp")
+public class SelectOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderListServlet() {
+    public SelectOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,36 +32,31 @@ public class OrderListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userid = request.getParameter("userid");
-		String price = request.getParameter("price");
-		String address = request.getParameter("address");
+		String userid = request.getParameter("userid"); 
+		System.out.println("userid : " + userid);
+		OrderLT o = new OrderLT();
 		
 		OrderService os = new OrderService();
 		
-		OrderLT o = new OrderLT();
+		o = os.selectOneList(userid);
 		
-		System.out.println("userid : " + userid);
-		System.out.println("price : " + price);
-		System.out.println("address : " + address);
+		System.out.println("o :" + o);
 		
-		int price2 = Integer.parseInt(price)*1000;
+		String page = "";
 		
-		o.setUserid(userid);
-		o.setPrice(price2);
-		o.setUseraddress(address);
-		
-		// 회원 가입 확인용 메소드
-		try{ 
-			os.insertOrder(o);
-			System.out.println("주문 완료 : " + o);
-			response.sendRedirect("index.jsp");
+		if(o != null){
 			
-		} catch(Exception e) {
-			request.setAttribute("msg", "리띵박스 주문 중 에러가 발생하였습니다.");
-			request.setAttribute ("exception", e);
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			page = "views/won/orderList.jsp";
+			request.setAttribute("order", o);
+			
+		} else {
+			System.out.println("서블릿오류");
+			/*page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "공지사항 상세보기 실패!");*/
+			
 		}
 		
+		request.getRequestDispatcher(page).forward(request, response);
 		
 	}
 

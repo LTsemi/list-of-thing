@@ -61,7 +61,8 @@ http://www.templatemo.com/tm-520-highway
 	
 	<script>
 
-		function orderClick(price){
+		
+		function orderClick(){
 			
 		console.log($('#tel1').val() + '-' + $('#tel2').val() + '-' + $('#tel1').val());
 		
@@ -100,6 +101,7 @@ http://www.templatemo.com/tm-520-highway
 			    			msg += '카드 승인번호 : ' + rsp.apply_num;
 			    			
 			    			alert(msg);
+			    			
 			    		} else {
 			    			//[3] 아직 제대로 결제가 되지 않았습니다.
 			    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
@@ -197,6 +199,7 @@ http://www.templatemo.com/tm-520-highway
     </div>
 
  <%if ( mh != null ) { %>
+ 	<input type="hidden" name="address" value="<%= mh.getAddress() %>" /> 
  <% address = mh.getAddress().split(", "); %>
 <br><br><br>
 	<div class="cont">
@@ -221,7 +224,7 @@ http://www.templatemo.com/tm-520-highway
 					<tr>
 						<td><img src="../../resources/img/buybox.png" width="50px"
 							height="50px"> &nbsp;리띵박스</td>
-						<td><%= price%>,000</td>
+						<td><%= price%>,000</td> <input type="hidden" name="price" value="<%= price %>" />
 						<td>1</td>
 					</tr>
 				</table>
@@ -247,6 +250,7 @@ http://www.templatemo.com/tm-520-highway
 							<tr>
 								<td width="100px">받으시는 분</td>
 								<td width="200px"><input type="text" id="userName" value="<%= mh.getUserName() %>"></td>
+								<input type="hidden" name="userid" value="<%= mh.getUserId() %>" />
 							</tr>
 							<tr>
 								<td width="100px" rowspan="2">주소</td>
@@ -303,7 +307,7 @@ http://www.templatemo.com/tm-520-highway
 			</div>
 			<div class="btnbar">
 				<input type="button" value="이전 페이지" class="btn backbtn" onclick="location.href='lithingbox.jsp'"> 
-				<input type="text" id="order" value="구매하기" class="btn buybtn" onclick="orderClick(12000);">
+				<input type="text" id="order" value="구매하기" class="btn buybtn" onclick="orderClick();">
 			</div>
 	</div>
 	<br>
