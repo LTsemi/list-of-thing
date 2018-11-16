@@ -66,8 +66,6 @@ public class ThemaService {
 		
 		close(con);
 		
-		System.out.println("result2 : " + result);
-		
 		return result;
 	}
 

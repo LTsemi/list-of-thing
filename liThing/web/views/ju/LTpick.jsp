@@ -1,9 +1,11 @@
+<%@page import="com.buyme.sic.ranking.model.vo.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.buyme.ju.thema.model.vo.Thema"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	ArrayList<Thema> list = (ArrayList<Thema>)request.getAttribute("list");
+	ArrayList<Thema> tlist = (ArrayList<Thema>)request.getAttribute("list");
+	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("list");
 	Member m = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
@@ -54,36 +56,22 @@
     		<div align="center"><button class="insertBtn" onclick="location.href='views/ju/Thema_Insert.jsp'">작성하기</button></div>
     		<% } %>
             <section>
-            <% for(int i = 0; i < list.size(); i++){ %>
+            <% for(int i = 0; i < tlist.size(); i++){ %>
                 <article class="thema">     
-                    <a href="views/ju/LTpick_view.jsp"><div>
-                        <img src="<%= request.getContextPath()+"/resources/themaUploadFiles/" + list.get(i).getTimage() %>" id="thema_pic">
-                        <h2><%= list.get(i).getTtitle() %></h2>
-                        <p id="content"><%= list.get(i).getTcontent() %></p>
+                    <a href="/semi/selectList.td?tno=<%= tlist.get(i).getTno()%>"><div>
+                    <%-- <input type="hidden" name="pno" value="<%= plist.get(i).getPno() %>" /> --%>
+                        <img src="<%= request.getContextPath()+"/resources/themaUploadFiles/" + tlist.get(i).getTimage() %>" id="thema_pic">
+                        <h2><%= tlist.get(i).getTtitle() %></h2>
+                        <p id="content"><%= tlist.get(i).getTcontent() %></p>
                     </div></a>
                         <% if( m != null && m.getUserId().equals("admin")) { %>
-				    	<button class="updateBtn" onclick="location.href='tUpView.tm?tno=<%= list.get(i).getTno() %>'">수정</button>
+				    	<button class="updateBtn" onclick="location.href='tUpView.tm?tno=<%= tlist.get(i).getTno() %>'">수정</button>
 				    	<%} %>
                 </article>
             <%} %>
             </section> 
 
-        </div> <br /> <br />
-        
-        
-        
-        
+        </div> <br /> <br />         
 <%@ include file="../common/footer.jsp" %>
-
-<!-- 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/semi/resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-    <script src="/semi/resources/js/vendor/bootstrap.min.js"></script>
-    
-    <script src="/semi/resources/js/plugins.js"></script>
-    <script src="/semi/resources/js/main.js"></script> -->
-
 </body>
 </html>

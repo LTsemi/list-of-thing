@@ -85,9 +85,6 @@ public class ThemaUpdateServlet extends HttpServlet {
 			
 			if(result > 0) {
 				
-				/*page = "views/ju/LTpick.jsp";
-				request.setAttribute("thema", t);*/
-				
 				response.sendRedirect("selectList.tm");
 				
 			} else {

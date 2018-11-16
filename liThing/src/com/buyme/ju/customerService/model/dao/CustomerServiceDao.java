@@ -55,8 +55,6 @@ public class CustomerServiceDao {
 				c.setCtitle(rset.getString("ctitle"));
 				c.setCcontent(rset.getString("ccontent"));
 				c.setCno(rset.getInt("cno"));
-				/*c.setUserid(rset.getString("name"));
-				c.setCdate(rset.getDate("cdate"));*/
 				
 				list.add(c);
 						
