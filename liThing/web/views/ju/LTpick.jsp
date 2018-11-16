@@ -59,16 +59,15 @@
             <% for(int i = 0; i < tlist.size(); i++){ %>
                 <article class="thema">     
                     <a href="/semi/selectList.td?tno=<%= tlist.get(i).getTno()%>"><div>
-                    <%-- <input type="hidden" name="pno" value="<%= plist.get(i).getPno() %>" /> --%>
-                        <img src="<%= request.getContextPath()+"/resources/themaUploadFiles/" + tlist.get(i).getTimage() %>" id="thema_pic">
+                        <img src="<%= request.getContextPath() %>/resources/themaUploadFiles/<%=tlist.get(i).getTimage() %>" id="thema_pic">
                         <h2><%= tlist.get(i).getTtitle() %></h2>
                         <p id="content"><%= tlist.get(i).getTcontent() %></p>
-                    </div></a>
+                    </div></a> 
                         <% if( m != null && m.getUserId().equals("admin")) { %>
 				    	<button class="updateBtn" onclick="location.href='tUpView.tm?tno=<%= tlist.get(i).getTno() %>'">수정</button>
 				    	<%} %>
                 </article>
-            <%} %>
+                <%} %>
             </section> 
 
         </div> <br /> <br />         

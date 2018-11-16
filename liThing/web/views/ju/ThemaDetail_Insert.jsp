@@ -1,12 +1,17 @@
+<%@page import="com.buyme.sic.ranking.model.vo.Product"%>
 <%@page import="com.buyme.ju.thema.model.vo.Thema"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
+	ArrayList<Thema> tlist = (ArrayList<Thema>)request.getAttribute("tlist");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>테마 추가</title>
-
+<title>상세테마 추가</title>
 <script src="<%=request.getContextPath() %>/resources/js/vendor/jquery-3.3.1.min.js"></script>
 
         <meta name="description" content="">
@@ -42,30 +47,28 @@
 	
 		<% if (mh != null) { %>
 		<div class="outer" align="center">
-			<h2>테마추가</h2>
+			<h2>테마 상품 추가</h2>
 			<div class="tableArea">
-				<form id="insertForm" method="post" enctype="multipart/form-data">
+				<form id="insertPrdForm" method="get">
 					<table>
 						<tr>
-							<td>제목 </td>
-							<td colspan="3"><input type="text" size="51" name="title" id="title"></td>
-						</tr>
-						<tr>
-							<td>작성자 </td>
-							<td colspan="3"><%= mh.getUserName() %>
-								<input type="hidden" name="userId" value="<%= mh.getUserId() %>"/>
+							<td>테마명 </td>
+							<td colspan="3">
+								<select name="ttitle" id="ttitle">
+									<% for(int i = 0; i < tlist.size(); i++){ %>
+										<option value="<%= tlist.get(i).getTno() %>"><%= tlist.get(i).getTtitle() %></option>
+									<%} %>
+								</select>
 							</td>
 						</tr>
 						<tr>
-							<td>첨부파일 </td>
+							<td>상품명 </td>
 							<td colspan="3">
-								<input type="file" name="file" id="file" />
-							</td>
-						</tr>
-						<tr>
-							<td>내용 </td>
-							<td colspan="3">
-								<textarea name="content" cols="52" rows="15" style="resize:none;"></textarea>
+								<select name="pname" id="pname">
+								<% for(int i = 0; i < plist.size(); i++){ %>
+									<option value="<%= plist.get(i).getPno() %>">[<%= plist.get(i).getBrand() %>] <%= plist.get(i).getPname() %></option>
+								<%} %>
+								</select>
 							</td>
 						</tr>
 					</table>
@@ -76,8 +79,8 @@
 					</div>
 					<script>
 					function complete(){
-						$("#insertForm").attr("action","<%=request.getContextPath() %>/tInsert.tm");
-						$("#insertForm").submit();
+						$("#insertPrdForm").attr("action","<%=request.getContextPath() %>/tdInsert.td");
+						$("#insertPrdForm").submit();
 					}
 					</script>
 				</form>
@@ -88,5 +91,5 @@
 			request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
 		 } %>
 		<%@ include file="../common/footer.jsp" %>
-</body>
+	</body>
 </html>

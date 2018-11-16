@@ -82,10 +82,8 @@ public class CustomerServiceDao {
 			pstmt.setString(1, c.getCtitle());
 			pstmt.setString(2, c.getCcontent());
 			pstmt.setInt(3, c.getCno());
-			
-			
+						
 			result = pstmt.executeUpdate();
-			System.out.println(result);
 		
 		} catch (SQLException e) {
 			

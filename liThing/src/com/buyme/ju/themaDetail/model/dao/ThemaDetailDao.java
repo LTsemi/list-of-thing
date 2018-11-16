@@ -6,12 +6,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 import static com.buyme.common.JDBCTemplate.*;
 
-import com.buyme.ju.thema.model.vo.Thema;
 import com.buyme.ju.themaDetail.model.vo.ThemaProduct;
+import com.buyme.sic.ranking.model.vo.Product;
 
 public class ThemaDetailDao {
 	
@@ -49,18 +50,18 @@ public class ThemaDetailDao {
 			
 			rset = pstmt.executeQuery();
 			
-			list = new ArrayList<ThemaProduct>();
+			list = new ArrayList<ThemaProduct>();		
 			
 			while(rset.next()){
-				
 				ThemaProduct tp = new ThemaProduct();
-				
+					
 				tp.setPno(rset.getString("p_no"));
 				tp.setProd_no(rset.getString("p_no"));
 				tp.setThema_no(rset.getInt("tno"));
 				tp.setPname(rset.getString("p_name"));
 				tp.setRank(rset.getInt("rank"));
 				tp.setBrand(rset.getString("brand"));
+				tp.setCname(rset.getString("c_name"));
 				
 				list.add(tp);
 				
@@ -123,7 +124,7 @@ public class ThemaDetailDao {
 		return tp;
 	}
 
-	public int insertThemaProduct(Connection con, ThemaProduct tp) {
+	public int insertThemaProduct(Connection con, int tno, String pno) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -131,14 +132,13 @@ public class ThemaDetailDao {
 		String sql = prop.getProperty("insertThemaProduct");
 
 		try {
-			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, tp.getThema_no());
-			pstmt.setString(2, tp.getProd_no());
+			pstmt.setInt(1, tno);
+			pstmt.setString(2, pno);
 					
-			rset = pstmt.executeQuery();
-			
+			result = pstmt.executeUpdate();		
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -171,6 +171,45 @@ public class ThemaDetailDao {
 		}
 
 		return result;
+	}
+
+	public ArrayList<Product> insertView(Connection con) {
+		
+		ArrayList<Product> list = new ArrayList<Product>();
+		Product p = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+				
+		String sql = prop.getProperty("selectProduct");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()){
+				
+				p = new Product();
+				
+				p.setPname(rset.getString("p_name"));
+				p.setPno(rset.getString("p_no"));
+				p.setBrand(rset.getString("brand"));
+				
+				System.out.println("dao tp : " + p);
+			
+				list.add(p);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}	
+		
+		System.out.println("dao list : " + list);
+		return list;
 	}
 
 }

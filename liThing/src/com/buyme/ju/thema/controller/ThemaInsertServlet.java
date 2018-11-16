@@ -62,8 +62,6 @@ public class ThemaInsertServlet extends HttpServlet {
 		String userId = mrequest.getParameter("userId");
 		String timage = mrequest.getFilesystemName("file");
 		
-		System.out.println("userid : " + userId);
-		
 		Thema t = new Thema();
 		
 		t.setTtitle(ttitle);

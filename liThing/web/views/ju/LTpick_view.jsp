@@ -46,7 +46,7 @@
       <div id="thema_detail">
       <% if( mh != null && mh.getUserId().equals("admin")) { %>
         <div align="left" style="margin-left:15px;">
-        	<button onclick="location.href='views/ju/ThemaDetail_Insert.jsp'">추가하기</button>
+        	<button onclick="location.href='tdInView.td'">추가하기</button>
         </div>
         <%} %>
             <h1 style="text-align : left; margin-left: 15px;"><%= t.getTtitle() %></h1>
@@ -55,12 +55,11 @@
                 <article id="thema_prd">     
                     <a href="#">
                         <div>
-                            <img src="<%= request.getContextPath() %>/resources/img/big_portfolio_item_2.png" id="thema_view_pic">
+                            <img src="<%= request.getContextPath() %>/resources/productImg/<%= list.get(i).getCname() %>" id="thema_view_pic">
                         </div>
                         <p>[<%= list.get(i).getBrand() %>] <%= list.get(i).getPname() %></p>
                         <input type="hidden" name="pno" id="pno" value="<%= list.get(i).getPno() %>"/>
                         <input type="hidden" name="tno" id="tno" value="<%= t.getTno() %>"/>
-                    
                     </a><%= list.get(i).getRank() %>
                     <% for(int j = 0; j < list.get(i).getRank() ; j++){ %>
                     <span id="rank" style="color:#FFA41F;">★</span>
