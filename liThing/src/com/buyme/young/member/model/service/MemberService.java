@@ -7,10 +7,12 @@ import static com.buyme.common.JDBCTemplate.rollback;
 
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.buyme.young.member.exception.MemberException;
 import com.buyme.young.member.model.dao.MemberDao;
 import com.buyme.young.member.model.vo.Member;
+
 
 public class MemberService {
 
@@ -96,6 +98,20 @@ public class MemberService {
 		close(con);
 		
 		return result;
+		
+	}
+
+
+	public ArrayList<Member> selectAllMember() {
+		// TODO Auto-generated method stub
+		ArrayList<Member> list = null;
+		Connection con = getConnection();
+		
+		list = mDao.selectList(con);
+		
+		close(con);
+		
+		return list;
 		
 	}
 	

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	String tnum = request.getParameter("tnum");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +94,7 @@ tr:nth-child(even) {
 	<br />
 
 	<span id="invoiceNumber">운송장번호: </span>
-	<input type="text" id="invoiceNumberText" name="invoiceNumberText">
+	<input type="text" id="invoiceNumberText" name="invoiceNumberText" value="<%= tnum%>">
 	<br />
 	<br />
 	<button id="myButton1">택배 조회하기</button>

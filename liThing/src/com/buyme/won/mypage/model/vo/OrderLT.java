@@ -11,7 +11,7 @@ public class OrderLT {
 	private int price;
 	private String useraddress;
 	private String priceck;
-	private int tracking_num;
+	private String tracking_num;
 	
 	
 	
@@ -20,8 +20,9 @@ public class OrderLT {
 	}
 
 
+
 	public OrderLT(int ordernum, String userid, Date orderdate, int price, String useraddress, String priceck,
-			int tracking_num) {
+			String tracking_num) {
 		super();
 		this.ordernum = ordernum;
 		this.userid = userid;
@@ -33,9 +34,11 @@ public class OrderLT {
 	}
 
 
+
 	public int getOrdernum() {
 		return ordernum;
 	}
+
 
 
 	public void setOrdernum(int ordernum) {
@@ -43,9 +46,11 @@ public class OrderLT {
 	}
 
 
+
 	public String getUserid() {
 		return userid;
 	}
+
 
 
 	public void setUserid(String userid) {
@@ -53,9 +58,11 @@ public class OrderLT {
 	}
 
 
+
 	public Date getOrderdate() {
 		return orderdate;
 	}
+
 
 
 	public void setOrderdate(Date orderdate) {
@@ -63,9 +70,11 @@ public class OrderLT {
 	}
 
 
+
 	public int getPrice() {
 		return price;
 	}
+
 
 
 	public void setPrice(int price) {
@@ -73,9 +82,11 @@ public class OrderLT {
 	}
 
 
+
 	public String getUseraddress() {
 		return useraddress;
 	}
+
 
 
 	public void setUseraddress(String useraddress) {
@@ -83,9 +94,11 @@ public class OrderLT {
 	}
 
 
+
 	public String getPriceck() {
 		return priceck;
 	}
+
 
 
 	public void setPriceck(String priceck) {
@@ -93,14 +106,17 @@ public class OrderLT {
 	}
 
 
-	public int getTracking_num() {
+
+	public String getTracking_num() {
 		return tracking_num;
 	}
 
 
-	public void setTracking_num(int tracking_num) {
+
+	public void setTracking_num(String tracking_num) {
 		this.tracking_num = tracking_num;
 	}
+
 
 
 	@Override
@@ -108,7 +124,6 @@ public class OrderLT {
 		return "OrderLT [ordernum=" + ordernum + ", userid=" + userid + ", orderdate=" + orderdate + ", price=" + price
 				+ ", useraddress=" + useraddress + ", priceck=" + priceck + ", tracking_num=" + tracking_num + "]";
 	}
-	
-	
+
 	
 }

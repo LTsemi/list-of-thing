@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.buyme.young.member.exception.MemberException;
@@ -232,6 +234,48 @@ public class MemberDao {
 		}
 		
 		return m;
+	}
+
+	public ArrayList<Member> selectList(Connection con) {
+		// TODO Auto-generated method stub
+		ArrayList<Member> list = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListMember");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<Member>();
+			
+			while(rset.next()){
+				Member m = new Member();
+				
+				m.setUserId(rset.getString(1));
+				m.setUserName(rset.getString(3));
+				m.setGender(rset.getString("GENDER"));
+				m.setBirth(rset.getDate("birth"));
+				m.setEmail(rset.getString("email"));
+				m.setPhone(rset.getString("phone"));
+				m.setAddress(rset.getString("address"));
+				m.setEnrollDate(rset.getDate("ENROLLDATE"));
+				
+				list.add(m);
+			}
+			
+			System.out.println(list);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
 	}
 	
 }

@@ -39,6 +39,9 @@ public class OrderDao {
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("insertOrder");
+		String[] tr = {"6521300236", "363047068382", "6486504570", "6463410833", "346231128470" };
+		int i  = (int)((Math.random()*5));
+		
 		
 		try {
 			
@@ -47,7 +50,7 @@ public class OrderDao {
 			pstmt.setString(1, o.getUserid());
 			pstmt.setInt(2, o.getPrice());
 			pstmt.setString(3, o.getUseraddress());
-			pstmt.setInt(4, (int)((Math.random()*8) +1));
+			pstmt.setString(4, tr[i]);
 			
 			result = pstmt.executeUpdate();
 		
@@ -86,7 +89,7 @@ public class OrderDao {
 				o.setOrderdate(rset.getDate("ORDERDATE"));
 				o.setPrice(rset.getInt("price"));
 				o.setUseraddress(rset.getString("useraddress"));
-				o.setTracking_num(rset.getInt("TRACKING_NUM"));
+				o.setTracking_num(rset.getString("TRACKING_NUM"));
 				
 			}
 			
