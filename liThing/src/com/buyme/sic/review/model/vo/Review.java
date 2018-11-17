@@ -10,6 +10,7 @@ public class Review implements Serializable{
 	private String rcontent;
 	private Date rdate;
 	private int rrank;
+	private String c_name;
 	
 	public Review() {}
 	
@@ -69,6 +70,16 @@ public class Review implements Serializable{
 
 	public void setRrank(int rrank) {
 		this.rrank = rrank;
+	}
+	
+	
+
+	public String getC_name() {
+		return c_name;
+	}
+
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
 	}
 
 	@Override

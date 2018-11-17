@@ -189,7 +189,7 @@ http://www.templatemo.com/tm-520-highway
 				</div>
 				<div
 					style="border: 1px solid #D0D0D0; padding: 20px; font-size: 25px; background: white; border-radius: 4px; text-align: center; margin-top: 10px">
-					<h2><%=p.getPname()%></h2>
+					<h2><%=p.getPname()%></h2> <h4><button onclick="myWish();">찜 하기</button></h4>
 					<div style="padding: 20px; text-align: left">
 						<h4>제품 설명</h4>
 						<p class="text"><%=p.getPexp()%></p>
@@ -490,6 +490,11 @@ http://www.templatemo.com/tm-520-highway
 		var pno = '<%= p.getPno()%>'
 		
 		location.href= "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content+"&rank="+rank;
+	}
+	
+	function myWish(){
+		location.href="/semi/mWishlist.mp?pno=<%= p.getPno()%>&userid=<%= mh.getUserId() %>"; 
+
 	}
 </script>
 </html>

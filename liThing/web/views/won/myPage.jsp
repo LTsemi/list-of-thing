@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	%>
+	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, java.util.*"%>
 <%
-	/* ArrayList<Event> list = (ArrayList<Event>) request.getAttribute("list"); */
+	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -109,7 +108,7 @@ body {
 			<li class="active"><a href=" ">&nbsp;
 					위시리스트 &nbsp;</a></li>
 			<li><a href="/semi/sOrder.mp?userid=<%= mh.getUserId() %>">주문내역</a></li>
-			<li><a href="/semi/views/won/myReviews.jsp">내가 작성한 리뷰</a></li>
+			<li><a href="/semi/sMyreview.mp?userid=<%= mh.getUserId()%>">내가 작성한 리뷰</a></li>
 		</ul>
 
 		<br /> 
@@ -121,6 +120,7 @@ body {
 <br />
 <br />
 <br />
+	<% for(Product p : list) {%>
 		<div id="dbox" class="box"
 			style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border: 1px solid #D0D0D0; border-radius: 4px">
 			<table id="rList"
@@ -128,58 +128,29 @@ body {
 
 
 				<tr>
-					<td style="display: none"><b> p.getPno() %></b></td>
-					<td style="width: 100px; height: 150px;"><b>번호</b></td>
+
 					<td style="width: 100px; height: 150px;"><img
-						src="/semi/resources/productImg/" width="200px" height="150px"
+						src="/semi/resources/productImg/<%= p.getCname() %>" width="200px" height="150px"
 						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important" />
 					</td>
 					<td style="text-align: left">
 						<ul style="text-align: left; list-style: none;">
-							<li><h5 style="color: red">p.getBrand() %></h5></li>
-							<li><h4>p.getPname() %></h4></li>
-							<li><h5>p.getPprice() %></h5></li>
+							<li><h5 style="color: red"><%=p.getBrand() %></h5></li>
+							<li><h4><%= p.getPname() %></h4></li>
+							<li><h5><%= p.getPprice() %></h5></li>
 						</ul>
 					</td>
-					<td style="width: 250px; height: 150px;">p.getRank() %></td>
+					<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>
 				</tr>
 
 
 			</table>
 
 		</div>
-		
+		<% } %>
 <br />
 <br />
 <br />
-
-		<div id="dbox" class="box"
-			style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border: 1px solid #D0D0D0; border-radius: 4px">
-			<table id="rList"
-				style="width: 659px; height: 150px; text-align: center; border-radius: 4px">
-
-
-				<tr>
-					<td style="display: none"><b> p.getPno() %></b></td>
-					<td style="width: 100px; height: 150px;"><b>번호</b></td>
-					<td style="width: 100px; height: 150px;"><img
-						src="/semi/resources/productImg/" width="200px" height="150px"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important" />
-					</td>
-					<td style="text-align: left">
-						<ul style="text-align: left; list-style: none;">
-							<li><h5 style="color: red">p.getBrand() %></h5></li>
-							<li><h4>p.getPname() %></h4></li>
-							<li><h5>p.getPprice() %></h5></li>
-						</ul>
-					</td>
-					<td style="width: 250px; height: 150px;">p.getRank() %></td>
-				</tr>
-
-
-			</table>
-
-		</div>
 
 
 	<br />

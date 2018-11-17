@@ -65,7 +65,6 @@ http://www.templatemo.com/tm-520-highway
 		function orderClick(){
 			
 		console.log($('#tel1').val() + '-' + $('#tel2').val() + '-' + $('#tel1').val());
-		
 		IMP.init('imp22647459'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		
 			IMP.request_pay({
@@ -79,7 +78,7 @@ http://www.templatemo.com/tm-520-highway
 			    buyer_tel : $('#tel1').val() + '-' + $('#tel2').val() + '-' + $('#tel1').val(),
 			    buyer_addr : $('#address1').val() + ' ' + $('#address2').val(),
 			    buyer_postcode : $('#zipCode').val(),
-			    m_redirect_url : 'http://localhost:8088/semi/index.jsp'
+			    m_redirect_url : '/orderList.mp'
 			}, function(rsp) {
 				if ( rsp.success ) {
 			    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
@@ -90,7 +89,7 @@ http://www.templatemo.com/tm-520-highway
 			    		data: {
 				    		imp_uid : rsp.imp_uid
 				    		//기타 필요한 데이터가 있으면 추가 전달
-			    		}
+			    		}, success : orderSubmit() ,
 			    	}).done(function(data) {
 			    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
 			    		if ( everythings_fine ) {
@@ -101,6 +100,7 @@ http://www.templatemo.com/tm-520-highway
 			    			msg += '카드 승인번호 : ' + rsp.apply_num;
 			    			
 			    			alert(msg);
+
 			    			
 			    		} else {
 			    			//[3] 아직 제대로 결제가 되지 않았습니다.
@@ -114,8 +114,17 @@ http://www.templatemo.com/tm-520-highway
 			        alert(msg);
 			    }
 			});
+		console.log(i);
+		if(i == 1){
+			$("#orderForm").submit();
+		}
 
 		};
+		
+		function orderSubmit(){
+			$("#orderForm").submit();
+			location
+		}
 		
 
 		//참조 API : http://postcode.map.daum.net/guide
@@ -199,6 +208,7 @@ http://www.templatemo.com/tm-520-highway
     </div>
 
  <%if ( mh != null ) { %>
+<form action="<%=request.getContextPath() %>/orderList.mp" id="orderForm">
  	<input type="hidden" name="address" value="<%= mh.getAddress() %>" /> 
  <% address = mh.getAddress().split(", "); %>
 <br><br><br>
@@ -311,7 +321,7 @@ http://www.templatemo.com/tm-520-highway
 			</div>
 	</div>
 	<br>
-	
+	</form>
 	<% } else { %>
 			<script>
 				$(function(){

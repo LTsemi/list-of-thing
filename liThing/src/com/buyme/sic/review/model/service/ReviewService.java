@@ -68,4 +68,14 @@ public class ReviewService {
 		
 		return result;
 	}
+
+	public ArrayList<Review> MyreviewList(String userid) {
+		Connection con = getConnection();
+
+		ArrayList<Review> rlist = rDao.MyreviewList(con, userid);
+
+		close(con);
+
+		return rlist;
+	}
 }

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	%>
+	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, com.buyme.sic.review.model.vo.*, java.util.*"%>
 <%
-	/* ArrayList<Event> list = (ArrayList<Event>) request.getAttribute("list"); */
+	Product p = (Product) request.getAttribute("dRank");
+	ArrayList<Review> rlist = (ArrayList<Review>) request.getAttribute("rlist");
 %>
 <!DOCTYPE html>
 <html>
@@ -128,35 +128,32 @@ body {
 		<br /> 
 
 		<!-- <div id= "borderBox"> -->
-<br />
-<br />
-<br />
 
-<div class="row">
-<div class="col-sm-9">
-<div class="bubble">맛있어요</div>
-</div>
-<br />	
-
-<img src="../../resources/img/portfolio_item_8.png" width="220px" height="220px" >
-</div>
-	
+		<%
+			for (Review r : rlist) {
+		%>
+		<br />
 <br />
 <br />
-<br />
-
-<div class="row">
-<div class="col-sm-9">
-<div class="bubble">맛있어요</div>
-</div>
-<br />	
-
-<img src="../../resources/img/portfolio_item_8.png" width="220px" height="220px" >
-</div>
-
+		
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="bubble">
+					작성자 :<input type="text" id="id" name="id" value="<%=mh.getUserId()%>" readonly /> 
+					내용 : <input type="text" id="review" name="review" value="<%= r.getRcontent() %>" readonly /> 
+					별점 : <input type="text" id="rank" name="rank" value="<%= r.getRrank() %>" readonly />
+					작성일 : <input type="text" id="rdate" name="rdate" value=<%= r.getRdate() %> readonly />
+				</div>
+			</div>
+			<br /> <img src="/semi/resources/productImg/<%= r.getC_name() %>"
+				width="220px" height="220px">
+		</div>
+			<br />
 	<br />
 	<br />
-	<br />
+		<% } %>
+
+
 	
 	<button id="paging"><<<</button>&nbsp;<button id="paging">1</button> &nbsp;<button id="paging">2</button> &nbsp;<button id="paging">>>></button>
 		<%-- <div class="pagingArea" align="center">

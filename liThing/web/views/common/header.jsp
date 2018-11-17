@@ -114,12 +114,13 @@ nav {
   width: 100%;
   padding: 50px 0;
   opacity: 0;
-  text-align: center;
+  text-align: right;
   transform: translateY(-100%);
   transition: all 0.5s;
 }
 
 .overlay-menu.open {
+  width : 100%; 
   opacity: 1;
   transform: translateY(0%);
 }
@@ -186,6 +187,32 @@ nav {
   text-align: center;
 }
 
+.one ul{list-style:none; margin:0 auto; margin-top:50px; top:0px;}
+/* .one{float:left;} *//* 전체 메뉴를 float 시킴 */
+.one > li{float:left;}   /*1단 메뉴를 일렬로 늘어놓기 */
+.one ul{display:none;}  /*2단, 3단 메뉴를 숨기기 */
+.one li:hover > ul {display:block; background : gray;}  /*주 메뉴에 마우스 오버했을 때 부 메뉴 드러내가 */
+.two{position:absolute;left:120px; top: 20px; margin-top:120px;}  /*2단 메뉴 절대 위치*/
+.three{position:absolute;left:120px; top:0px;}  /*3단 메뉴 절대 위치*/ 
+ 
+.one li a{text-decoration:none; display:block; width:120px;height: 30px;line-height: 30px;text-align:center;} 
+.one  li {width:120px;}  
+.one li:hover{background-color:#FFA41F;}
+.three li { height : 60px;}
+
+#sero { 
+
+    width:10px;
+    background-color:#fff;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left : 50%;
+	margin :0 auto;
+ 	display: inline-block;
+ 
+}
+ 
 </style>
 </head>
 <body>
@@ -209,30 +236,46 @@ nav {
     
       <section class="overlay-menu">
       <div class="container">
-        <div class="row">
-          <div class="main-menu">
-              <ul>
-                  <li>
-                      <a href="/semi/selectList.po">랭 킹</a>
-                  </li>
-                  <li>
-                      <a href="/semi/selectList.no">공지사항</a>
-                  </li>
-                  <li>
-                      <a href="/semi/selectList.tm">리띵's pick</a>
-                  </li>
-                  <li>
-                      <a href="/semi/views/seul/lithingbox.jsp">리띵 박스</a>
-                  </li>
-                  <li>
-                      <a href="/semi/selectList.ev">이벤트</a>
-                  </li>
-                  <li>
-                      <a href="/semi/selectList.cs">고객센터</a>
-                  </li>
-              </ul>
-              <p></p>
-          </div>
+        <div class="row" style="padding-right : 100px;">
+          <div class="main-menu" style="float:left; width:50%;">
+          
+          			<ul class="one" id="rankul" style="color : #FFA41F !important;">
+								<li><a href="/semi/selectList.po">랭킹</a>
+									<ul class="two">
+										<li><a href="#">간편식</a>
+											<ul class="three">
+												<li><a href="#">냉장식품</a></li>
+												<li><a href="#">냉동식품</a></li>
+											</ul></li>
+										<li><a href="#">라면</a>
+											<ul class="three">
+												<li><a href="#">봉지라면</a></li>
+												<li><a href="#">컵라면</a></li>
+											</ul></li>
+										<li><a href="#">스낵</a>
+											<ul class="three">
+												<li><a href="#">과자</a></li>
+												<li><a href="#">사탕</a></li>
+												<li><a href="#">젤리</a></li>
+												<li><a href="#">초콜릿</a></li>
+											</ul></li>
+									</ul></li>
+					</ul>
+					 </div>
+							<div id="sero"></div>
+				 <div class="main-menu" style="float:right; width:50%; text-align:center;">
+          			
+					<ul style="text-align :center;">
+						
+						<li><a href="/semi/selectList.no">공지사항</a></li>
+						<li><a href="/semi/selectList.tm">리띵's pick</a></li>
+						<li><a href="/semi/views/seul/lithingbox.jsp">리띵 박스</a></li>
+						<li><a href="/semi/selectList.ev">이벤트</a></li>
+						<li><a href="/semi/selectList.cs">고객센터</a></li>
+					</ul>
+					<p></p>
+				</div>
+         
         </div>
       </div>
     </section>

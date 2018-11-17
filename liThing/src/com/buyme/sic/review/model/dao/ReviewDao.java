@@ -144,4 +144,43 @@ public class ReviewDao {
 		return result;
 	}
 
+	public ArrayList<Review> MyreviewList(Connection con, String userid) {
+		ArrayList<Review> rlist = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectMyReview");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, userid);
+			rset = pstmt.executeQuery();
+			
+			rlist = new ArrayList<Review>();
+			
+			while(rset.next()) {
+				Review r = new Review();
+				
+				r.setRno(rset.getInt("R_NO"));
+				r.setPno(rset.getString("P_NO"));
+				r.setUserid(userid);
+				r.setRcontent(rset.getString("R_CONTENT"));
+				r.setRdate(rset.getDate("R_DATE"));
+				r.setRrank(rset.getInt("R_RANK"));
+				r.setC_name(rset.getString("P_C_NAME"));
+				
+				rlist.add(r);
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return rlist;
+	}
+
 }

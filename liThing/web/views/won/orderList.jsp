@@ -71,6 +71,7 @@
         </div>
     </div>
 
+<% if( o != null){ %>
   <% address = o.getUseraddress().split(", "); %>
 
 <br><br><br>
@@ -206,7 +207,7 @@
 						<b>운송장 번호</b> 
 						<br>
 						
-						<input type="text" id="deliverNum" >
+						<a href="/semi/views/young/delivery.jsp?tnum=<%= o.getTracking_num()%>"><%= o.getTracking_num() %></a>
 					</div>
 				</div>
 			</div>
@@ -220,7 +221,7 @@
 	<br>
 	
 	
-<%-- 	
+	
 	<% } else { %>
 			<script>
 				$(function(){
@@ -229,7 +230,7 @@
 				})
 			
 			</script>
-	<% } %> --%>
+	<% } %> 
 	
 	<%@ include file="../common/footer.jsp" %>
 

@@ -51,14 +51,14 @@
 						</div>
 					</div>
 					<div class="btns tooltip-wrap">
-						<button type="button" class="btn-confirm" id="loginBtn" onclick='login()'>로그인</button>
+						<button type="button" class="btn-confirm" id="loginBtn" onclick='login();'>로그인</button>
 						<div class="tooltip blind" id="idpwInvalidTooltip"></div>
 					</div>
 
 					<div class="bottom">
 						<a href="/semi/views/young/myId.jsp" >아이디 찾기</a>
 						<a href="/semi/views/young/join.jsp">비밀번호 찾기</a>
-						<a href="/semi/views/young/join.jsp" id="memberJoinBtn" onclick="memberJoin()">회원가입</a>
+						<a href="/semi/views/young/join.jsp" id="memberJoinBtn" onclick="memberJoin();">회원가입</a>
 					</div>
 					</div>
 					</form>
@@ -70,9 +70,13 @@
 			<div id="userInfo" style="width : 500px;">
 			<h3 class="title"><%= m.getUserName() %>님의 <br /> 방문을 환영합니다.</h3>
 			<div class="btns" align="right">
-			    <div id="gotoMypage" onclick="gotoMypage()" class="btn btn-warning" >마이페이지</div>
-				<div id="changeInfo" onclick="changeInfo()" class="btn btn-warning" >정보수정</div>
-				<div id="logoutBtn" onclick='logout()' class="btn btn-warning" >로그아웃</div> 
+			<%  if(m.getUserId().equals("admin")) { %>
+				<div id="gotoAdmin" onclick="gotoAdmin();" class="btn btn-warning" >회원 관리 페이지</div>
+			<%} %>
+			<input type="hidden" id="userid" value="<%= mh.getUserId()%>" />
+			    <div id="gotoMypage" onclick="gotoMypage();" class="btn btn-warning" >마이페이지</div>
+				<div id="changeInfo" onclick="changeInfo();" class="btn btn-warning" >정보수정</div>
+				<div id="logoutBtn" onclick='logout();' class="btn btn-warning" >로그아웃</div> 
 
 			</div>
 			
@@ -102,7 +106,11 @@
 		}
 		
 		function gotoMypage(){
-			location.href="/semi/views/won/myPage.jsp";
+			var userid = $('#userid').val();
+			location.href="/semi/sWish.mp?userid="+userid;
+		}
+		function gotoAdmin(){
+			location.href="/semi/mList.me";
 		}
 		
 		$("#userId").keyup(function(e){if(e.keyCode == 13)  login(); })

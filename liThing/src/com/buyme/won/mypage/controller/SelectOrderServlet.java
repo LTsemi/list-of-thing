@@ -1,6 +1,7 @@
 package com.buyme.won.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +52,12 @@ public class SelectOrderServlet extends HttpServlet {
 			
 		} else {
 			System.out.println("서블릿오류");
-			/*page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 상세보기 실패!");*/
+			PrintWriter out = response.getWriter();
+				
+				out.println("<script> alert('구매내역이 없습니다.'); location.href='/semi/views/seul/lithingbox.jsp'; </script>");
+				 
+				out.flush();
+				out.close();
 			
 		}
 		
