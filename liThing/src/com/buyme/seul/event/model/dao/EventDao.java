@@ -62,7 +62,9 @@ public class EventDao {
 				e.setE_file(rset.getString("E_FILE"));
 				e.setDelflag(rset.getString("DELFLAG"));
 				e.setE_cname(rset.getString("E_CNAME"));
+				e.setWinner_cnt(rset.getInt("WINNER_CNT"));
 				e.setDday(rset.getInt("DDAY"));
+				e.setUserCnt(rset.getInt("USERCNT"));
 				
 				list.add(e);
 				
@@ -114,7 +116,7 @@ public class EventDao {
 				e.setEvtcontent(rset.getString("EVTCONTENT"));
 				e.setEvttitle(rset.getString("EVTTITLE"));
 				e.setDelflag(rset.getString("DELFLAG"));
-				
+				/*e.setWinner_cnt(rset.getInt("WINNER_CNT"));*/
 				list.add(e);
 				
 			}
@@ -178,6 +180,7 @@ public class EventDao {
 			pstmt.setString(7, e.getE_cname());
 			pstmt.setString(8, e.getE_dtl_oname());
 			pstmt.setString(9, e.getE_dtl_cname());
+			pstmt.setInt(10,  e.getWinner_cnt());
 				
 			result = pstmt.executeUpdate();
 			
@@ -246,7 +249,8 @@ public class EventDao {
 			e.setEvtcontent(rset.getString("EVTCONTENT"));
 			e.setEvttitle(rset.getString("EVTTITLE"));
 			e.setE_cname(rset.getString("E_CNAME"));					
-			e.setE_dtl_cname(rset.getString("E_DTL_CNAME"));					
+			e.setE_dtl_cname(rset.getString("E_DTL_CNAME"));	
+			e.setWinner_cnt(rset.getInt("WINNER_CNT"));
 								
 			}
 			
@@ -385,7 +389,8 @@ public class EventDao {
 			pstmt.setString(6, e.getE_cname());
 			pstmt.setString(7, e.getE_dtl_oname());
 			pstmt.setString(8, e.getE_dtl_cname());
-			pstmt.setInt(9, e.getEno());
+			pstmt.setInt(9, e.getWinner_cnt());
+			pstmt.setInt(10, e.getEno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -429,9 +434,5 @@ public class EventDao {
 		return listCount;
 	}
 
-
-
-
-
-
+	
 }

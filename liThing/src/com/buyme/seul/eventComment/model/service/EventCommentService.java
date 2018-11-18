@@ -8,6 +8,7 @@ import static com.buyme.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.buyme.seul.event.model.vo.Event;
 import com.buyme.seul.eventComment.model.dao.EventCommentDao;
 import com.buyme.seul.eventComment.model.vo.EventComment;
 
@@ -65,5 +66,37 @@ public class EventCommentService {
 		
 		return result;
 	}
+
+	public ArrayList<EventComment> allSelectList() {
+		Connection con = getConnection();
+		
+		ArrayList<EventComment> clist = ecDao.allSelectList(con);
+		
+		close(con);
+		
+		return clist;
+	}
+
+	public ArrayList<EventComment> userSelectList(int eno, int winner_cut) {
+		Connection con = getConnection();
+		
+		ArrayList<EventComment> clist = ecDao.userSelectList(con, eno, winner_cut);
+		
+		close(con);
+		
+		return clist;
+	}
+
+	public ArrayList<EventComment> winnerSelectList(int eno, int winner_cut) {
+		Connection con = getConnection();
+		
+		ArrayList<EventComment> clist = ecDao.winnerSelectList(con, eno, winner_cut);
+		
+		close(con);
+		
+		return clist;
+	}
+
+
 
 }

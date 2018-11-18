@@ -152,9 +152,7 @@ body {
 	             
 	            <div class="replyBox">    	
 	            	<textarea class="reply-content autosize" cols="85" rows="3"
-					 readonly="readonly" style="border: 0px solid black;
-					  resize: none; outline: none; overflow:visible;background: transparent; cursor: default; " >
-					 <%= eco.getCcontent() %></textarea>					 
+					 readonly="readonly" style="border: 0px solid black;resize: none; outline: none; overflow:visible;background: transparent; cursor: default; " ><%= eco.getCcontent() %></textarea>					 
 				<%if(mh.getUserName().equals(eco.getCwriter())) { %>			
 					<input type="hidden" name="cno" value="<%=eco.getCno()%>"/>							  
 					<button type="button" class="updateBtn rebtn rightbtn" 
@@ -166,9 +164,7 @@ body {
 				</div>  				 		
 				<div class="replyUpdateBox" style="display: none;">
 					 <input type="hidden" name="cno" value="<%=eco.getCno()%>"/>	
-					 <textarea class="reply-content autosize" cols="70" rows="3"
-						style="border: 1px solid rgb(255, 230, 161); resize: none;
-						overflow:visible; " ><%= eco.getCcontent() %></textarea>	&nbsp;
+					 <textarea class="reply-content autosize" cols="70" rows="3" style="border: 1px solid rgb(255, 230, 161); resize: none; overflow:visible; " ><%= eco.getCcontent() %></textarea>	&nbsp;
 					 <button type="button" class="updateConfirm reUpbtn" 
 						 onclick="updateConfirm(this);" style="position: absolute; margin-top: 0px" >
 						 	수정<br>완료</button>

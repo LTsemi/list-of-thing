@@ -70,13 +70,14 @@ body {
 					encType="multipart/form-data">
 					<h2>
 						<input id="title" type="text" size="40" name="title"
-							placeholder="제목">
+							placeholder="제목" required="required">
 						<input type="hidden" name="userId" value="<%= mh.getUserId() %>"/>
 					</h2>
 					<hr>
 					<h5>
-						이벤트 시작일 : <input type="date" name="dateStr"> &nbsp; | &nbsp;
-						이벤트 종료일 : <input type="date" name="dateEnd"> <br />						
+						이벤트 시작일 : <input type="date" name="dateStr"  required="required"> &nbsp; | &nbsp;
+						이벤트 종료일 : <input type="date" name="dateEnd"  required="required"> &nbsp; | &nbsp;
+						당첨자 수 : <input type="number" name="winner_cnt" class="winner_cnt" min="1" required="required"/>	<br />					
 					</h5>
 					
 						<br>
@@ -125,6 +126,7 @@ body {
 		</div>
 	
 	<script>
+
 			// 사진 게시판 미리보기 기능 지원 스크립트
 			$(function(){
 				$('#fileArea').hide();
@@ -155,6 +157,8 @@ body {
 					reader.readAsDataURL(value.files[0]);
 				}
 			}
+			
+		
 		</script>
 
 	<%@ include file="../common/footer.jsp"%>

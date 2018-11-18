@@ -57,10 +57,30 @@ body {
 	box-sizing: border-box;
 	font-family: NanumSquareRoundR !important;
 }
-.thumbnail:hover {
+.thumbnailori:hover {
 		opacity:0.8;
 		cursor:pointer;
 	}
+
+.endevt {
+	width:790px;
+	text-shadow: 1px 1px 2px #666;
+	color: white;
+	position:absolute;
+	margin: 140px auto;
+	text-align: center;
+	font-size: 18px;
+	line-height: 24px;
+}
+.image-cover{
+	/* 이벤트 기간 지날 시 어두운색으로 가리고 종료된 이벤트입니다 문자 띄우기 */
+
+	position: relative;
+	background:rgba(0, 0, 0, 0.6);
+} 
+.image-cover:HOVER {
+	opacity:1;
+}
 </style>
 
 </head>
@@ -105,10 +125,10 @@ body {
 					<br>
 					<div class="row">
 						<%
-							for (Event evt : list) {	
-								
+							for (Event evt : list) {
+								if(evt.getDday() >0){
 						%>
-						<div class="thumbnail">
+						<div class="thumbnail thumbnailori">
 							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
 								<p class="evtImg">
 									<img
@@ -124,11 +144,42 @@ body {
 								</div>
 							
 						</div>
-						<%
+						<%  }else if(evt.getDday() ==0){  %>
+							<div class="thumbnail thumbnailori">
+							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
+								<p class="evtImg">
+									<img
+										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
+										width="770px">
+								</p> <span class="dday">D-day</span>
+								<div class="evtText">
+									<h3><%=evt.getEvttitle()%></h3>
+									<p><%=evt.getEvtdate()%>
+										~
+										<%=evt.getEvtdateend()%>까지
+									</p>
+								</div>
+							
+						</div>
+						<%  }else{  %>
+							<div class="thumbnail image-cover" >
+							<p class="endevt">종료된 이벤트 입니다 ^_^</p>
+							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
+								<p class="evtImg">
+									<img style="opacity:0.5;"
+										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
+										width="770px">
+								<div class="evtText">
+									<h3><%=evt.getEvttitle()%></h3>
+									<p><%=evt.getEvtdate()%>
+										~
+										<%=evt.getEvtdateend()%>까지
+									</p>
+								</div>
+							</div>
+						<% 		}
 							}
 						%>
-
-					</div>
 					<br>
 					<br>
 					<br>
@@ -139,7 +190,7 @@ body {
 	</div>
 	<script>
 	$(function(){
-		$(".thumbnail").click(function(){
+		$(".thumbnailori").click(function(){
 			var eno = $(this).children().eq(0).val();
 			location.href="<%=request.getContextPath()%>/selectOne.ev?eno="+ eno;
 			console.log(eno);

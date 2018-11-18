@@ -34,7 +34,7 @@ public class EventWinnerInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+			
 			 
 			String date = request.getParameter("date");
 			

@@ -10,21 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.seul.event.model.service.EventService;
+import com.buyme.seul.event.model.service.EventWinnerService;
 import com.buyme.seul.event.model.vo.Event;
+import com.buyme.seul.event.model.vo.EventWinner;
 import com.buyme.seul.eventComment.model.service.EventCommentService;
 import com.buyme.seul.eventComment.model.vo.EventComment;
 
 /**
- * Servlet implementation class EventSelectOneServlet
+ * Servlet implementation class EventWinnerUpdateViewServlet
  */
-@WebServlet("/selectOne.ev")
-public class EventSelectOneServlet extends HttpServlet {
+@WebServlet("/eWinInsertView.ev")
+public class EventWinnerInsertViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventSelectOneServlet() {
+    public EventWinnerInsertViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +36,25 @@ public class EventSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int eno = Integer.parseInt(request.getParameter("eno"));
-	
-		Event e = new EventService().selectEvent(eno);
-		ArrayList<EventComment> clist
-		   = new EventCommentService().selectList(eno);
+		// 이벤트 글 여러 개를 받기 위한 리스트
+		ArrayList<Event> list = null;
+		list = new EventService().selectEventList();
 		
+		ArrayList<EventWinner> ewlist
+		   = new EventWinnerService().SelectWinnerList(eno);
 		
-		System.out.println("e : " +e);
 		String page = "";
-		if(e != null) {
+		
+		if (ewlist != null) {
+			page = "views/seul/winnerPageInsertForm.jsp";
+			request.setAttribute("list", list);
+			request.setAttribute("ewlist", ewlist);
+			System.out.println("당첨자 작성페이지 접속 성공!");
 			
-			page = "views/seul/eventPage.jsp";
-			request.setAttribute("event", e);
-			request.setAttribute("clist", clist);
+		} else {
 			
-		}else {
-//			page = "views/common/errorPage.jsp";
-//			request.setAttribute("msg", "사진게시판 상세보기 실패");
-			System.out.println("파일 전송 실패!");
+			System.out.println("당첨자 작성페이지 접속 실패!");
+			
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);

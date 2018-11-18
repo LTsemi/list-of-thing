@@ -8,9 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import com.buyme.seul.event.model.vo.Event;
 import com.buyme.seul.eventComment.model.vo.EventComment;
 
 public class EventCommentDao {
@@ -82,6 +85,7 @@ public class EventCommentDao {
 				comment.setCcontent(rset.getString("CCONTENT"));
 				comment.setCwriter(rset.getString("USERNAME"));
 				comment.setCdate(rset.getDate("CDATE"));
+				comment.setUserCnt(rset.getInt("USERCNT"));
 				
 				clist.add(comment);
 				
@@ -144,5 +148,125 @@ public class EventCommentDao {
 		
 		return result;
 	}
+
+	public ArrayList<EventComment> allSelectList(Connection con) {
+		ArrayList<EventComment> clist = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("allSelectList");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			
+			rset = stmt.executeQuery(sql);
+			
+			clist = new ArrayList<EventComment>();
+			
+			while(rset.next()) {
+				EventComment comment = new EventComment();
+				
+				comment.setCno(rset.getInt("CNO"));
+				comment.setEno(rset.getInt("ENO"));
+				comment.setCcontent(rset.getString("CCONTENT"));
+				comment.setCwriter(rset.getString("USERNAME"));
+				comment.setCdate(rset.getDate("CDATE"));
+				
+				clist.add(comment);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return clist;
+	}
+
+	public ArrayList<EventComment> userSelectList(Connection con, int eno, int winner_cut) {
+		ArrayList<EventComment> clist = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectUserList");
+		
+try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, eno);
+			
+			rset = pstmt.executeQuery();
+			
+			clist = new ArrayList<EventComment>();
+			
+			while(rset.next()){
+				EventComment ec = new EventComment();
+				
+				ec.setEno(rset.getInt("ENO"));
+				ec.setCwriter(rset.getString("CWRITER"));
+				ec.setUserName(rset.getString("USERNAME"));
+				ec.setUserCnt(rset.getInt("USERCNT"));
+				clist.add(ec);
+				
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return clist;
+	}
+
+	public ArrayList<EventComment> winnerSelectList(Connection con, int eno, int winner_cut) {
+		ArrayList<EventComment> clist = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("drawWinList");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, eno);
+			pstmt.setInt(2, winner_cut);
+			
+			rset = pstmt.executeQuery();
+			
+			clist = new ArrayList<EventComment>();
+			
+			while(rset.next()){
+				EventComment ec = new EventComment();
+				
+				ec.setEno(rset.getInt("ENO"));
+				ec.setCwriter(rset.getString("CWRITER"));
+				ec.setUserName(rset.getString("USERNAME"));
+				clist.add(ec);
+				
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return clist;
+	}
+
+
+	
 	
 }

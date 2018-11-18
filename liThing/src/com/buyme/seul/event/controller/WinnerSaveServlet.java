@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.buyme.seul.event.model.service.EventService;
-import com.buyme.seul.event.model.vo.Event;
+import com.buyme.seul.event.model.service.EventWinnerService;
+import com.buyme.seul.event.model.vo.EventWinner;
 import com.buyme.seul.eventComment.model.service.EventCommentService;
 import com.buyme.seul.eventComment.model.vo.EventComment;
 
 /**
- * Servlet implementation class EventSelectOneServlet
+ * Servlet implementation class WinnerSaveServlet
  */
-@WebServlet("/selectOne.ev")
-public class EventSelectOneServlet extends HttpServlet {
+@WebServlet("/winnerSave.ev")
+public class WinnerSaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventSelectOneServlet() {
+    public WinnerSaveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,29 +33,35 @@ public class EventSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int winner_cut = Integer.parseInt(request.getParameter("winner_cut"));
 		int eno = Integer.parseInt(request.getParameter("eno"));
-	
-		Event e = new EventService().selectEvent(eno);
-		ArrayList<EventComment> clist
-		   = new EventCommentService().selectList(eno);
+		String cwriter = request.getParameter("cwriter");
+		
+//		ArrayList<EventComment> clist
+//		   = new EventCommentService().userSelectList(eno, winner_cut);
+//		
+		
+		int result = new EventWinnerService().insertWinner(eno, winner_cut);
+		//ArrayList<EventWinner> ewlist = new EventWinnerService().insertWinner(eno, winner_cut);
+		
+		//System.out.println("ewlist : " + ewlist);
 		
 		
-		System.out.println("e : " +e);
-		String page = "";
-		if(e != null) {
+		if(result > 0) {
+			System.out.println("성공하였습니다!");
+			//response.sendRedirect("eventManager.ev");
+			response.sendRedirect(request.getContextPath()
+					+"/eventManager.ev");
 			
-			page = "views/seul/eventPage.jsp";
-			request.setAttribute("event", e);
-			request.setAttribute("clist", clist);
-			
-		}else {
-//			page = "views/common/errorPage.jsp";
-//			request.setAttribute("msg", "사진게시판 상세보기 실패");
-			System.out.println("파일 전송 실패!");
+		} else {
+			/*request.setAttribute("msg", "파일 전송 실패!");*/
+			System.out.println("당첨자 리스트 전송 실패!");	
+			request.getRequestDispatcher("/eventManager.ev")
+			.forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
+		
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

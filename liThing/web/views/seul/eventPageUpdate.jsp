@@ -79,7 +79,8 @@ body {
 					<hr>
 					<h5>
 						이벤트 시작일 : <input type="date" name="dateStr" value="<%= e.getEvtdate()%>"> &nbsp; | &nbsp;
-						이벤트 종료일 : <input type="date" name="dateEnd" value="<%= e.getEvtdateend()%>"> <br />						
+						이벤트 종료일 : <input type="date" name="dateEnd" value="<%= e.getEvtdateend()%>"> &nbsp; | &nbsp;
+						당첨자 수 : <input type="number" name="winner_cnt" class="winner_cnt" value="<%= e.getWinner_cnt() %>" min="1" required="required"/>	<br />						
 					</h5>
 					
 						<br>

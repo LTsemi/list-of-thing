@@ -111,7 +111,7 @@ public class EventUpdateServlet extends HttpServlet {
 			e.setEvttitle(mrequest.getParameter("title"));
 			
 			e = fileUpdate(mrequest, savePath, e, originFiles, saveFiles);
-			
+			e.setWinner_cnt(Integer.parseInt(mrequest.getParameter("winner_cnt")));
 			e.setEvtdate(strDay);
 			e.setEvtdateend(endDay);
 

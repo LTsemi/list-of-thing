@@ -27,8 +27,10 @@ public class EventDeleteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {int eno = Integer.parseInt(request.getParameter("eno"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int eno = Integer.parseInt(request.getParameter("eno"));
 		int result = new EventService().deleteEvent(eno);
+		System.out.println("eno :" + eno);
 		String page = "";
 		if(result > 0) {
 			

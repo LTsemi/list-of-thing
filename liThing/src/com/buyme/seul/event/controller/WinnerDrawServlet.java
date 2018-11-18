@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.buyme.seul.event.model.service.EventService;
-import com.buyme.seul.event.model.vo.Event;
 import com.buyme.seul.eventComment.model.service.EventCommentService;
 import com.buyme.seul.eventComment.model.vo.EventComment;
 
 /**
- * Servlet implementation class EventSelectOneServlet
+ * Servlet implementation class WinnerDrawServlet
  */
-@WebServlet("/selectOne.ev")
-public class EventSelectOneServlet extends HttpServlet {
+@WebServlet("/winnerDraw.ev")
+public class WinnerDrawServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventSelectOneServlet() {
+    public WinnerDrawServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,27 +32,33 @@ public class EventSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int eno = Integer.parseInt(request.getParameter("eno"));
-	
-		Event e = new EventService().selectEvent(eno);
+		int winner_cut = Integer.parseInt(request.getParameter("winner_cut")); 
+		
 		ArrayList<EventComment> clist
-		   = new EventCommentService().selectList(eno);
+		   = new EventCommentService().userSelectList(eno, winner_cut);
 		
+
+	
 		
-		System.out.println("e : " +e);
+		System.out.println(clist);
+		
 		String page = "";
-		if(e != null) {
-			
-			page = "views/seul/eventPage.jsp";
-			request.setAttribute("event", e);
+
+		if(clist != null){
+
+			page = "views/seul/winnerDrawManager.jsp";
 			request.setAttribute("clist", clist);
 			
-		}else {
-//			page = "views/common/errorPage.jsp";
-//			request.setAttribute("msg", "사진게시판 상세보기 실패");
-			System.out.println("파일 전송 실패!");
+		} else {
+			/*
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "공지사항 조회 실패!");
+			*/
+			System.out.println("조회 실패!");
 		}
 		
-		request.getRequestDispatcher(page).forward(request, response);
+		request.getRequestDispatcher(page)
+		.forward(request, response);
 	}
 
 	/**
