@@ -4,6 +4,7 @@
     		com.buyme.seul.eventComment.model.vo.*"%>
 <%
 	Event e = (Event)request.getAttribute("event");
+	EventWinner ew = (EventWinner)request.getAttribute("EventWinner");
 	ArrayList<Event> list = (ArrayList<Event>) request.getAttribute("list");
 	//댓글 리스트
 	ArrayList<EventComment> clist = (ArrayList<EventComment>) request.getAttribute("clist");
@@ -130,7 +131,11 @@ color: lightgray;
 								<% } else { %>
 								<td>종료</td>
 								<% } %>
+								<%-- <% if(evt.getEvtEno() == ew.getEno()){ %> --%>
 								<td class="checkWinner">O</td>
+								<%-- <% }else{ %>
+								<td class="checkWinner"><p style="color: red">X</p></td>
+								<% } %> --%>
 							</tr>
 							<% 		}
 								}

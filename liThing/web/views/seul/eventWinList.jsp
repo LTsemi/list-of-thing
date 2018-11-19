@@ -99,9 +99,9 @@ body {
 
 				<div id="lithingevt">
 					<!--   이벤트 창    -->
-					<% if(mh != null && mh.getUserId().equals("admin")){ %> 
+					<%-- <% if(mh != null && mh.getUserId().equals("admin")){ %> 
 					<a href="views/seul/winnerPageInsertForm.jsp" class="listbtn" >작성하기</a>
-					<% } %>
+					<% } %> --%>
 			
 					<table class="table table-hover" id="listArea">
 						<thead>
