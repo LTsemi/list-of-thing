@@ -130,5 +130,22 @@ public class ProductService {
 		return pno;
 	}
 
+	public int updateProduct(Product p) {
+		Connection con = getConnection();
+		
+		int result = pDao.updateProduct(con, p);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		System.out.println("service:" + result);
+		
+		return result;
+	}
+
 
 }

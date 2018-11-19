@@ -291,6 +291,43 @@ public class ProductDao {
 		
 		return pno;
 	}
+
+	public int updateProduct(Connection con, Product p) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("updateProduct");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			/* P_NAME = ?, P_PRICE = ?, P_INGD = ?, BRAND = ?, P_CAP = ?, COUNT = ?, O_NAME = ?, C_NAME = ? WHERE P_NO = ?*/
+			
+	
+			pstmt.setString(1, p.getPname());
+			pstmt.setInt(2, p.getPprice());
+			pstmt.setString(3, p.getPindg());
+			pstmt.setString(4, p.getBrand());
+			pstmt.setString(5, p.getPcap());
+			pstmt.setInt(6, p.getCount());
+			pstmt.setString(7, p.getOname());
+			pstmt.setString(8, p.getCname());
+			pstmt.setString(9, p.getPexp());
+			
+			pstmt.setString(10, p.getPno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		System.out.println("dao :" +result);
+		return result;
+	}
 	
 }
 

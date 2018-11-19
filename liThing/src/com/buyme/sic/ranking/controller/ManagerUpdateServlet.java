@@ -18,16 +18,16 @@ import com.buyme.sic.ranking.model.vo.Product;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
- * Servlet implementation class InsertProductServlet
+ * Servlet implementation class ManagerUpdateServlet
  */
-@WebServlet("/pInsert.pn")
-public class InsertProductServlet extends HttpServlet {
+@WebServlet("/mUpdate.mu")
+public class ManagerUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertProductServlet() {
+    public ManagerUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,16 +54,18 @@ public class InsertProductServlet extends HttpServlet {
 										 "UTF-8",
 										 new MyRenamePolicy());
 			
+			String pno = mrequest.getParameter("pno");
+			
 			Product p = new Product();
 			
-			p.setPnn(mrequest.getParameter("pnn"));
-			p.setKno(mrequest.getParameter("kno"));
+			
+			p.setPno(mrequest.getParameter("pno"));
 			p.setPname(mrequest.getParameter("pname"));
 			p.setPprice(Integer.parseInt(mrequest.getParameter("pprice")));
 			p.setPindg(String.join(", ",mrequest.getParameterValues("pindg")));
 			p.setBrand(mrequest.getParameter("brand"));
 			p.setPcap(mrequest.getParameter("pcap"));
-			p.setCount(Integer.parseInt(mrequest.getParameter("pcount")));
+			p.setCount(Integer.parseInt(mrequest.getParameter("count")));
 			p.setPexp(mrequest.getParameter("pexp"));
 			
 
@@ -79,16 +81,31 @@ public class InsertProductServlet extends HttpServlet {
 			saveFile = mrequest.getFilesystemName(name);
 			originFile = mrequest.getOriginalFileName(name);
 			
-			p.setPimg(savePath);
-			p.setOname(originFile);
-			p.setCname(saveFile);
+			System.out.println("savepath" + savePath);
+			System.out.println("saveFile " + saveFile);
+			System.out.println("originFile " + originFile);
+			
+			p = ps.selectOneList(pno);
 			
 			System.out.println(p);
 			
-			int result = ps.insertProduct(p);
+			if(originFile != null) {
+				new File(savePath + p.getCname()).delete();
+				p.setPimg(savePath);
+				p.setOname(originFile);
+				p.setCname(saveFile);
+				
+				System.out.println("p1 :" + p);
+			}
+			
+			
+			
+			int result = ps.updateProduct(p);
 			
 			if(result > 0) {
-				request.getRequestDispatcher("views/sic/ManagerPage.jsp").forward(request, response);
+				System.out.println("성공");
+				response.sendRedirect("mselectOne.mo?pno="+pno);
+		
 			}else {
 				System.out.println("실패하였습니다..");
 				File file1 = new File(savePath+saveFile);
@@ -107,16 +124,3 @@ public class InsertProductServlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
