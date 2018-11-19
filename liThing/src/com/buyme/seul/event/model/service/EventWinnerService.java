@@ -43,6 +43,19 @@ public class EventWinnerService {
 		
 		return ewlist;
 	}
+
+
+
+
+	public ArrayList<EventWinner> SelectWinnerOneList(int evtEno) {
+Connection con = getConnection();
+		
+		ArrayList<EventWinner> ewlist = ewDao.SelectWinnerOneList(con, evtEno);
+		
+		close(con);
+		
+		return ewlist;
+	}
 	
 	
 

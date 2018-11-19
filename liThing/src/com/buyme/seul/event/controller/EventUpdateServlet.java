@@ -102,7 +102,9 @@ public class EventUpdateServlet extends HttpServlet {
 				System.out.println("name : " + name);
 				
 				saveFiles.add(mrequest.getFilesystemName(name));
-				originFiles.add(mrequest.getOriginalFileName(name));				
+				originFiles.add(mrequest.getOriginalFileName(name));	
+				System.out.println("saveFiles : "+saveFiles);
+				System.out.println("originFiles : " +originFiles);
 			}
 			
 			// Event e = new Event();

@@ -4,6 +4,7 @@
     
 <%
 	Event e = (Event)request.getAttribute("event");
+	ArrayList<EventWinner> ewlist = (ArrayList<EventWinner>) request.getAttribute("ewlist");
 %>
  
 <!DOCTYPE html>
@@ -137,9 +138,42 @@
 
       </p>    
 
-        <br /><br />
+	<div class="winTab">
+		 <br>
+		 <input type="hidden" name="evtEno" value="<%=e.getEvtEno()%>"/>
+			<table border="1" width="500"  align="center" cellspacing="0" cellpadding="3" >
+			    
+			    
+			    <tr>
+			    	<td colspan="4" style="padding: 5px 10px;"> 당첨자 내역 </td>
+			    </tr>
+			    <tr>
+			    	<td colspan="4">
+			    		<table width="80%" style="margin: 0 auto">
+						  <tr>
+						    <th style="text-align: center;"> 당첨자 ID </th>
+						    <th style="text-align: center;"> 당첨자 이름 </th>
+						  </tr>
+						<%
+							for (EventWinner ew : ewlist) {
+								if(e.getEvtEno() == ew.getEvtEno()){
+						  %>
+						  <tr>
+						    <td><%= ew.getCwriter() %></td>
+						    <td><%= ew.getUserName() %></td>
+						  </tr>
+						  <% 		}
+								}
+						   %>
+						</table>
 
-      
+			    	</td>
+			    	
+			    </tr>
+			</table>
+			
+ 		</div>
+      <br /><br />
       <hr>
       <br>
       <a href="/semi/selectWinList.ev" class="listbtn">목록으로</a>

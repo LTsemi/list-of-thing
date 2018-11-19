@@ -1,6 +1,8 @@
 package com.buyme.seul.event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.seul.event.model.service.EventService;
+import com.buyme.seul.event.model.service.EventWinnerService;
 import com.buyme.seul.event.model.vo.Event;
+import com.buyme.seul.event.model.vo.EventWinner;
 
 /**
  * Servlet implementation class EventWinnerSelectOneServlet
@@ -30,8 +34,13 @@ public class EventWinnerSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int eno = Integer.parseInt(request.getParameter("eno"));
-
+		int evtEno = Integer.parseInt(request.getParameter("evtEno"));
+		
+		
 		Event e = new EventService().selectWinOne(eno);
+		
+		ArrayList<EventWinner> ewlist
+		   = new EventWinnerService().SelectWinnerOneList(evtEno);
 		
 		String page = "";
 		
@@ -39,6 +48,7 @@ public class EventWinnerSelectOneServlet extends HttpServlet {
 			System.out.println("성공하였습니다~");
 			page = "views/seul/winnerPage.jsp";
 			request.setAttribute("event", e);
+			request.setAttribute("ewlist", ewlist);
 		}else{
 			System.out.println("당첨자 상세보기 실패!");
 		}

@@ -24,6 +24,7 @@ public class Event implements Serializable {
 	private int winner_cnt;
 	private int dday;
 	private int userCnt;
+	private int evtEno;
 
 	public Event() {
 		super();
@@ -32,12 +33,13 @@ public class Event implements Serializable {
 
 
 
-	public Event(String userid, String evtcontent, String evttitle, Date evtdate) {
+	public Event(String userid, String evtcontent, String evttitle, Date evtdate, int evtEno) {
 		super();
 		this.userid = userid;
 		this.evtcontent = evtcontent;
 		this.evttitle = evttitle;
 		this.evtdate = evtdate;
+		this.evtEno = evtEno;
 		
 	}
 
@@ -47,7 +49,7 @@ public class Event implements Serializable {
 
 	public Event(int eventallno, int etype, int eno, String userid, Date evtdate, Date evtdateend, String evtcontent,
 			String evttitle, String e_file, String delflag, String e_oname, String e_cname, String e_dtl_oname,
-			String e_dtl_cname, int winner_cnt, int dday, int userCnt) {
+			String e_dtl_cname, int winner_cnt, int dday, int userCnt , int evtEno) {
 		super();
 		this.eventallno = eventallno;
 		this.etype = etype;
@@ -66,13 +68,14 @@ public class Event implements Serializable {
 		this.winner_cnt = winner_cnt;
 		this.dday = dday;
 		this.userCnt = userCnt;
+		this.evtEno = evtEno;
 	}
 
 
 
 
 	public Event(int eventallno, int etype, int eno, String userid, Date evtdate, String evtcontent, String evttitle,
-			String delflag, int winner_cnt, int userCnt) {
+			String delflag, int winner_cnt, int userCnt, int evtEno) {
 		super();
 		this.eventallno = eventallno;
 		this.etype = etype;
@@ -84,6 +87,7 @@ public class Event implements Serializable {
 		this.Delflag = delflag;
 		this.winner_cnt = winner_cnt;
 		this.userCnt = userCnt;
+		this.evtEno = evtEno;
 		
 	}
 
@@ -273,20 +277,29 @@ public class Event implements Serializable {
 
 
 
+	public int getEvtEno() {
+		return evtEno;
+	}
+
+
+
+
+	public void setEvtEno(int evtEno) {
+		this.evtEno = evtEno;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Event [eventallno=" + eventallno + ", etype=" + etype + ", eno=" + eno + ", userid=" + userid
 				+ ", evtdate=" + evtdate + ", evtdateend=" + evtdateend + ", evtcontent=" + evtcontent + ", evttitle="
 				+ evttitle + ", e_file=" + e_file + ", Delflag=" + Delflag + ", e_oname=" + e_oname + ", e_cname="
 				+ e_cname + ", e_dtl_oname=" + e_dtl_oname + ", e_dtl_cname=" + e_dtl_cname + ", winner_cnt="
-				+ winner_cnt + ", dday=" + dday + ", userCnt=" + userCnt + "]";
+				+ winner_cnt + ", dday=" + dday + ", userCnt=" + userCnt + ", evtEno=" + evtEno + "]";
 	}
 
-
-
-
-
-	
 
 
 

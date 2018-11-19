@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"
     import="java.util.*, com.buyme.seul.event.model.vo.*, java.util.*"%>
 <%
-	ArrayList<Event> list = (ArrayList<Event>) request.getAttribute("list");
+	Event e = (Event)request.getAttribute("event");
 	ArrayList<EventWinner> ewlist = (ArrayList<EventWinner>) request.getAttribute("ewlist");
 %>
 <!DOCTYPE html>
@@ -59,9 +59,10 @@
   
     <div class="evtEditor">
     <br><br>
-    <form id="insertForm" method="post">
+    <form action="<%=request.getContextPath()%>/eInsertWin.ev" method="post">
       <h2><input id="title" type="text" size="40" name="title" placeholder="제목" >
           <input type="hidden" name="userId" value="<%= mh.getUserId() %>"/>
+          <input type="hidden" name="evtEno" value="<%= e.getEvtEno() %>"/>
       </h2>
       <hr>
       <h5><span class="glyphicon glyphicon-time"></span> &nbsp; <input type="date" name="date"></h5>
@@ -77,23 +78,13 @@
 			<table border="1" width="500"  align="center" cellspacing="0" cellpadding="3" >
 			    
 			    <tr>
-			    <td width="140px"> 이벤트 선택 </td>
-			    <td >
-					<!-- <input name="evtTit" type="text" size="30" maxlength="50"> -->
-					<select name="selectEvt" onchange="eventDisplay(this.form)" >
-					    <option  selected value=0> &nbsp; - - 이벤트명을 선택하세요 - - &nbsp;  
-				<%-- <%
-					for (Event e : list) {
-				%> --%>
-					    <option value="">
-				<%-- <% 		
-					}
-				%>  --%>
-				    </select>
+			    <td width="140px"> 이벤트 명 </td>
+			    <td style="padding: 2px 10px" ><%= e.getEvttitle() %>	
+					
 				</td>
 			    <td width="140px"> 당첨자 수 </td>
-			    <td >
-					<input name="wincount" type="text" size="2"></td>
+			    <td style="padding: 2px 10px">
+					<%= e.getWinner_cnt() %></td>
 			    </tr>
 			    <tr>
 			    	<td colspan="4" style="padding: 5px 10px;"> 당첨자 내역 </td>
@@ -105,17 +96,17 @@
 						    <th style="text-align: center;"> 당첨자 ID </th>
 						    <th style="text-align: center;"> 당첨자 이름 </th>
 						  </tr>
-						 <%--  <%
+						 <%
 							for (EventWinner ew : ewlist) {
-								//if(e.getUserId().equals("admin")){
+								
 						  %>
 						  <tr>
 						    <td><%= ew.getCwriter() %></td>
 						    <td><%= ew.getUserName() %></td>
 						  </tr>
-						  <% 		//}
+						  <% 		
 								}
-						   %>  --%>
+						   %>
 						</table>
 
 			    	</td>
@@ -128,7 +119,7 @@
         <br />
       <hr>
       <br>
-		<button type="button" class="listbtn"  onClick="history.go(-1); return false ;">취소하기</button>
+		<button type="button" class="listbtn"  onclick="location.href='/semi/eventManager.ev'">취소하기</button>
 		<%-- <% if(m != null && m.getUserName().equals(t.getBwriter())){ %> --%>
 		<button type="submit" class="listbtn">작성 완료</button>
 		<%-- <% } %>	 --%>
@@ -162,24 +153,12 @@
 					reader.readAsDataURL(value.files[0]);
 				}
 			}
- /*        function eventDisplay(frm) {
 
-        var evtInfo = frm.selectEvt.selectedIndex;
-
-        switch( evtInfo ){
-    	   case 1:
-    	     frm.wincount.value = '';
-    		 break;
-    	  
-        }
-    	
-        return true;
-    }  */
     <script>
-	function complete(){
-		$("#insertForm").attr("action","<%=request.getContextPath() %>/eInsertWin.ev");
+	<%-- function complete(){
+		$("#insertForm").attr("action","<%=request.getContextPath() %>/eventManager.ev");
 		
-	}
+	} --%>
 </script>
     </script>
 

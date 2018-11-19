@@ -116,6 +116,7 @@ public class EventDao {
 				e.setEvtcontent(rset.getString("EVTCONTENT"));
 				e.setEvttitle(rset.getString("EVTTITLE"));
 				e.setDelflag(rset.getString("DELFLAG"));
+				e.setEvtEno(rset.getInt("EVTENO"));
 				/*e.setWinner_cnt(rset.getInt("WINNER_CNT"));*/
 				list.add(e);
 				
@@ -200,7 +201,7 @@ public class EventDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String sql = prop.getProperty("insertEventWinner");
+		String sql = prop.getProperty("insertWinEvent");
 		
 		try {
 				
@@ -215,6 +216,7 @@ public class EventDao {
 				pstmt.setNull(7, Types.NULL);
 				pstmt.setNull(8, Types.NULL);
 				pstmt.setNull(9, Types.NULL);
+				pstmt.setInt(10,  e.getEvtEno());
 				
 				result += pstmt.executeUpdate();		
 			
@@ -288,7 +290,8 @@ public class EventDao {
 				e.setEvtdate(rset.getDate("EVTDATE"));
 				e.setEvtcontent(rset.getString("EVTCONTENT"));
 				e.setEvttitle(rset.getString("EVTTITLE"));
-				
+				e.setWinner_cnt(rset.getInt("WINNER_CNT"));
+				e.setEvtEno(rset.getInt("EVTENO"));
 			}
 			System.out.println("event 한 개 : " + e);
 		} catch (SQLException ex) {

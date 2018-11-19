@@ -45,7 +45,8 @@ public class EventWinnerDao {
 			pstmt = con.prepareStatement(sql);
 							
 			pstmt.setInt(1,eno);
-			pstmt.setInt(2, winner_cut);
+			pstmt.setInt(2,eno);
+			pstmt.setInt(3, winner_cut);
 			
 			result = pstmt.executeUpdate();
 				
@@ -63,26 +64,70 @@ public class EventWinnerDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<EventWinner> ewlist = null;
-		
+		System.out.println(eno);
 		String sql = prop.getProperty("selectWinnerList");
-		
 		try {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, eno);
 			
 			rset = pstmt.executeQuery();
+			
 			ewlist = new ArrayList<EventWinner>();
 			
-			if(rset.next()){
+			while(rset.next()){
 				EventWinner ewin = new EventWinner();
 				
+				ewin.setEno(rset.getInt("ENO"));
 				ewin.setCwriter(rset.getString("CWRITER"));
 				ewin.setUserName(rset.getString("USERNAME"));
+				ewin.setEvtEno(rset.getInt("ENO"));
 				
 				ewlist.add(ewin);
 				
-				System.out.println("ewin : " + ewin);				
+				
+				System.out.println("ewin : " + ewin);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return ewlist;
+	}
+
+
+	public ArrayList<EventWinner> SelectWinnerOneList(Connection con, int evtEno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<EventWinner> ewlist = null;
+		System.out.println(evtEno);
+		String sql = prop.getProperty("selectWinnerList");
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, evtEno);
+			
+			rset = pstmt.executeQuery();
+			
+			ewlist = new ArrayList<EventWinner>();
+			
+			while(rset.next()){
+				EventWinner ewin = new EventWinner();
+				
+				ewin.setEno(rset.getInt("ENO"));
+				ewin.setCwriter(rset.getString("CWRITER"));
+				ewin.setUserName(rset.getString("USERNAME"));
+				ewin.setEvtEno(rset.getInt("ENO"));
+				
+				ewlist.add(ewin);
+				
+				
+				System.out.println("ewin : " + ewin);
+				
 			}
 			
 		} catch (SQLException e) {

@@ -35,19 +35,20 @@ public class EventWinnerInsertViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eno = Integer.parseInt(request.getParameter("eno"));
 		// 이벤트 글 여러 개를 받기 위한 리스트
-		ArrayList<Event> list = null;
-		list = new EventService().selectEventList();
+		
+		int eno = Integer.parseInt(request.getParameter("eno"));
+		System.out.println("swl 서블릿 들어옴");
+		Event e = new EventService().updateWinView(eno);
 		
 		ArrayList<EventWinner> ewlist
 		   = new EventWinnerService().SelectWinnerList(eno);
 		
 		String page = "";
 		
-		if (ewlist != null) {
+		if (e != null) {
 			page = "views/seul/winnerPageInsertForm.jsp";
-			request.setAttribute("list", list);
+			request.setAttribute("event", e);
 			request.setAttribute("ewlist", ewlist);
 			System.out.println("당첨자 작성페이지 접속 성공!");
 			

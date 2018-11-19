@@ -106,14 +106,15 @@ body {
 					<table class="table table-hover" id="listArea">
 						<thead>
 							<tr>
-								<th>No</th>
-								<th>이멘트명</th>
-								<th>등록일</th>
+								<th style="text-align: center;">No</th>
+								<th style="text-align: center;">이멘트명</th>
+								<th style="text-align: center;">등록일</th>
 							</tr>
 						</thead>
 						<tbody>
 						<% for(Event evt : list){ %>
 							<tr>
+								<td style="display: none;"><%= evt.getEvtEno() %></td>
 								<td><%= evt.getEno() %></td>
 								<td><%= evt.getEvttitle() %></td>
 								<td><%= evt.getEvtdate() %></td>
@@ -175,8 +176,10 @@ body {
 	<script>
 		$(function(){
 			$("#listArea td").click(function(){
-				var eno = $(this).parent().children().eq(0).text();
-				location.href="<%=request.getContextPath()%>/eSelectWin.ev?eno=" + eno;
+				var evtEno =  $(this).parent().children().eq(0).text();
+				var eno = $(this).parent().children().eq(1).text();
+				console.log(evtEno);
+				location.href="/semi/eSelectWin.ev?eno="+ eno+"&evtEno="+evtEno;			
 			});
 		});
 	</script>

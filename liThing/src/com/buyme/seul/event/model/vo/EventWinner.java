@@ -4,6 +4,7 @@ public class EventWinner {
 	private int eno;
 	private String cwriter;
 	private String userName;
+	private int evtEno;
 	
 	
 	public EventWinner() {
@@ -21,6 +22,14 @@ public class EventWinner {
 	}
 
 	
+
+	public EventWinner(int eno, String cwriter, String userName, int evtEno) {
+		super();
+		this.eno = eno;
+		this.cwriter = cwriter;
+		this.userName = userName;
+		this.evtEno = evtEno;
+	}
 
 	public EventWinner(int eno, String cwriter) {
 		super();
@@ -53,10 +62,25 @@ public class EventWinner {
 		this.userName = userName;
 	}
 
+	
+
+	public int getEvtEno() {
+		return evtEno;
+	}
+
+	public void setEvtEno(int evtEno) {
+		this.evtEno = evtEno;
+	}
+
 	@Override
 	public String toString() {
-		return "EventWinner [eno=" + eno + ", cwriter=" + cwriter + "]";
+		return "EventWinner [eno=" + eno + ", cwriter=" + cwriter + ", userName=" + userName + ", evtEno=" + evtEno
+				+ "]";
 	}
+
+
+
+
 
 
 	
