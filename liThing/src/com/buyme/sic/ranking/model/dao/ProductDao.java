@@ -114,22 +114,13 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Product p = null;
-		/*	
-		
-		
-		P_NAME
-		P_INGD
-		RANK
-		C_NAME
-		P_EXP*/
-		System.out.println(pno);
+
 		String sql = prop.getProperty("selectOneList");
 		
 		try {
 		
 			pstmt = con.prepareStatement(sql);
 		
-			System.out.println(pno);
 			pstmt.setString(1, pno);
 			
 			rset = pstmt.executeQuery();
@@ -154,7 +145,6 @@ public class ProductDao {
 				
 			}
 			
-			System.out.println("product 한 개 : " + p);
 			
 		} catch (SQLException e) {
 			
@@ -270,7 +260,7 @@ public class ProductDao {
 		return list;
 	}
 
-
+	
 }
 
 

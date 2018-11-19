@@ -104,5 +104,22 @@ public class ProductService {
 		return list;
 	}
 
+	public Product mselectOneList(String pno) {
+		Connection con = getConnection();
+		
+		int result = 0;
+		
+		Product p = pDao.selectOne(con, pno);
+		
+		if( p != null ){
+			if(result > 0) commit(con);
+			else rollback(con);
+		}
+		
+		close(con);
+		
+		return p;
+	}
+
 
 }

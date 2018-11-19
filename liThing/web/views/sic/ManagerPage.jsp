@@ -93,12 +93,17 @@ $(function(){
 				}
 			});
 			$('#mtable tbody').children().mouseenter(function () {
-				$(this).css({'background':'pink', 'cursor':'pointer'});
+				$(this).children().not(':first').css({'background':'pink', 'cursor':'pointer'});
+				$(this).children().not(':first').click(function () {
+					var pno = $(this).parent().children().eq(1).text()
+					updateItem(pno);
+				});
+					
 			}).mouseleave(function () {
-				$(this).css({'background':'white'});
-			}).click(function () {
-				updateItem();
+				$(this).children().not(':first').css({'background':'white'});
 			});
+			
+			
 		}, error : function(data){
 			console.log("제품 조회 실패!!");
 		}
@@ -149,8 +154,10 @@ function insertItem(){
 	location.href="UploadProduct.jsp";
 }
 
-function updateItem() {
-	location.href="UpdateProduct.jsp";
+function updateItem(pno) {
+	var dpno = pno;
+	console.log(dpno);
+	location.href="<%=request.getContextPath()%>/mselectOne.mo?pno=" + dpno;
 }
 
 
