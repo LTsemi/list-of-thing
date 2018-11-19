@@ -18,9 +18,9 @@
 <%@ include file="../common/header.jsp"%>
 <form action="<%= request.getContextPath() %>/mUpdate.mu" method="post" enctype="multipart/form-data">
 
-	<div style="margin: 100px auto; border: 1px solid black; width: 900px;">
+	<div style="margin: 100px auto; width: 900px;">
 	<input type="text" name="pno" value="<%=p.getPno() %>" style="display: none"/>
-		<table border="1" style="margin: 0 auto; width: 800px">
+		<table style="margin: 0 auto; width: 800px; border: 1px solid black">
 			<tr>
 				<td>제품명:</td>
 				<td><%= p.getPname() %></td>
