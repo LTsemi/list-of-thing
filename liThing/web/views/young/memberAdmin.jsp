@@ -3,7 +3,7 @@
     <%
     	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
     
-    	int i = 0;
+    	int i = 1;
     %>
 <!DOCTYPE html>
 <html>

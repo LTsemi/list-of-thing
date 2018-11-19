@@ -91,6 +91,18 @@ public class ProductService {
 		System.out.println("Service : " + result);
 		return result;
 	}
+	
+	public ArrayList<String> selectSearchList(String keyword) {
+		ArrayList<String> list = null;
+		
+		Connection con = getConnection();
+		
+		list = pDao.selectSearchList(con, keyword);
+		
+		close(con);
+		
+		return list;
+	}
 
 
 }

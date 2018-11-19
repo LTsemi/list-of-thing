@@ -237,6 +237,38 @@ public class ProductDao {
 		return result;
 	}
 
+	public ArrayList<String> selectSearchList(Connection con, String keyword) {
+		ArrayList<String> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		// String sql = prop.getProperty("selectList");
+		String sql = "SELECT P_NAME FROM PRODUCT WHERE P_NAME LIKE CONCAT('%', CONCAT(?, '%'))";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<String>();
+			
+			while(rset.next()) {
+				list.add(rset.getString(1));
+			}
+
+			System.out.println(list.get(0));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
 
 }
