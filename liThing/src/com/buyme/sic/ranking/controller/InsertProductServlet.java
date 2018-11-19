@@ -66,6 +66,7 @@ public class InsertProductServlet extends HttpServlet {
 			p.setPindg(String.join(", ",mrequest.getParameterValues("pindg")));
 			p.setBrand(mrequest.getParameter("brand"));
 			p.setPcap(mrequest.getParameter("pcap"));
+			p.setCount(Integer.parseInt(mrequest.getParameter("pcount")));
 			p.setPexp(mrequest.getParameter("pexp"));
 			
 
@@ -90,7 +91,7 @@ public class InsertProductServlet extends HttpServlet {
 			int result = ps.insertProduct(p);
 			
 			if(result > 0) {
-				System.out.println("성공하였습니다!");
+				request.getRequestDispatcher("views/sic/ManagerPage.jsp").forward(request, response);
 			}else {
 				System.out.println("실패하였습니다..");
 				File file1 = new File(savePath+saveFile);

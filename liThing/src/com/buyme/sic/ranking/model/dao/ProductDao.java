@@ -48,10 +48,11 @@ public class ProductDao {
 			pstmt.setString(5, p.getPindg());
 			pstmt.setString(6, p.getBrand());
 			pstmt.setString(7, p.getPcap());
-			pstmt.setString(8, p.getPimg());
-			pstmt.setString(9, p.getOname());
-			pstmt.setString(10, p.getCname());
-			pstmt.setString(11, p.getPexp());
+			pstmt.setInt(8, p.getCount());
+			pstmt.setString(9, p.getPimg());
+			pstmt.setString(10, p.getOname());
+			pstmt.setString(11, p.getCname());
+			pstmt.setString(12, p.getPexp());
 			
 			result = pstmt.executeUpdate();
 			
@@ -165,6 +166,75 @@ public class ProductDao {
 		}
 		
 		return p;
+	}
+
+	public ArrayList<Product> mselectList(Connection con) {
+		System.out.println("mselect DAO 들어옴");
+		ArrayList<Product> list = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectProduct");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			list = new ArrayList<Product>();
+			
+			while(rset.next()) {
+				Product p = new Product();
+				
+				p.setPno(rset.getString("P_NO"));
+				p.setPnn(rset.getString("P_NN"));
+				p.setKno(rset.getString("K_NO"));
+				
+				p.setPname(rset.getString("P_NAME"));
+				p.setPprice(rset.getInt("P_PRICE"));
+				p.setPindg(rset.getString("P_INGD"));
+				
+				p.setBrand(rset.getString("BRAND"));
+				p.setPcap(rset.getString("P_CAP"));
+				p.setRank(rset.getDouble("RANK"));
+				p.setCount(rset.getInt("COUNT"));
+				// p.setCname(rset.getString("C_NAME"));
+				
+				list.add(p);
+				
+				System.out.println(list);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+
+	public int updateReview(Connection con, String pno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteProduct");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("DAO : " + result);
+		return result;
 	}
 
 

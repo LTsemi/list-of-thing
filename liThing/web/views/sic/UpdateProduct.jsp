@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품입력</title>
-<script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
-
+<title>Insert title here</title>
 </head>
 <body>
-	<form action="<%= request.getContextPath() %>/pInsert.pn" method="post" enctype="multipart/form-data">
-		<div style="margin: 0 auto; border: 1px solid black; width: 600px;">
+<%@ include file="../common/header.jsp"%>
+<form action="<%= request.getContextPath() %>/pInsert.pn" method="post" enctype="multipart/form-data">
+		<div style="margin: 100px auto; border: 1px solid black; width: 600px;">
 			<table style="margin: 0 auto;">
 				<tr>
 					<td>종류코드 :</td>
@@ -117,48 +116,4 @@
 		</div>
 	</form>
 </body>
-<script>
-	function LoadImg(value) {
-		if(value.files && value.files[0]) {
-			var reader = new FileReader();
-			
-			reader.onload = function(e) {
-				$('#proImg').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(value.files[0]);
-		}
-	}
-	
-	function ChangeItem() {
-		var ramen = ["컵라면", "봉지라면"];
-		var simple = ["냉동식품", "냉장식품"];
-		var snack = ["과자", "젤리", "사탕", "초콜릿"];
-		var ramenCode = ["CM", "OM"];
-		var simpleCode = ["FF", "RF"];
-		var snackCode = ["SN", "JL", "CD", "CO"];
-		
-		
-		var selItem = $("#sel").val();
-		var chgItem;
-		var chgCode;
-		
-		if(selItem == "간편식"){
-			chgItem = simple;
-			chgCode = simpleCode;
-		}else if(selItem == "스낵"){
-			chgItem = snack;
-			chgCode = snackCode;
-		}else if(selItem == "라면"){
-			chgItem = ramen;
-			chgCode = ramenCode;
-		}
-		
-		$('#sel2').empty();
-		
-		for(var cnt=0; cnt<chgItem.length; cnt++){
-			var option = $("<option value=" + chgCode[cnt] + ">" + chgItem[cnt] +"</option>");	
-			$("#sel2").append(option);
-		}
-	} 
-</script>
 </html>

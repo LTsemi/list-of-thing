@@ -63,7 +63,34 @@ public class ProductService {
 		return p;
 	}
 
+	public ArrayList<Product> mselectList() {
+		System.out.println("mselect Service 들어옴");
+		ArrayList<Product> list = null;
+		
+		Connection con = getConnection();
+		
+		list = pDao.mselectList(con);
+		
+		close(con);
+		
+		return list;
+	}
 
+	public int deleteProduct(String pno) {
+		Connection con = getConnection();
+		
+		int result = pDao.updateReview(con, pno);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		System.out.println("Service : " + result);
+		return result;
+	}
 
 
 }
