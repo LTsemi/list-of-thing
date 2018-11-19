@@ -145,7 +145,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int deleteMember(Connection con, String userId) throws MemberException {
+	public int deleteMember(Connection con, String userId){
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -162,14 +162,14 @@ public class MemberDao {
 		
 		} catch (SQLException e) {
 		
-			//e.printStackTrace();
-			throw new MemberException(e.getMessage());
+			e.printStackTrace();
+
 		} finally {
 			
 			close(pstmt);
 			
 		}
-		
+
 		return result;
 	}
 	
