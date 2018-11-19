@@ -79,10 +79,16 @@
 				</div>
 				<div align="center">
 					<button onclick="complete();">수정완료</button>
+					<button onclick="deleteCS();">삭제하기</button>
 				</div>
 				<script>
 					function complete(){
 						$("#updateForm").attr("action","<%=request.getContextPath() %>/csUpdate.cs?cno=<%=c.getCno() %>");
+						$("#updateForm").submit();
+					}
+					
+					function deleteCS(){
+						$("#updateForm").attr("action", "<%=request.getContextPath() %>/csDelete.cs?cno=<%= c.getCno() %>");
 						$("#updateForm").submit();
 					}
 				

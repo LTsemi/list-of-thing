@@ -72,4 +72,15 @@ public class CSService {
 		return result;
 	}
 
+	public int deleteCustomerService(int cno) {
+		
+		Connection con = getConnection();
+		
+		int result = cDao.deleteCustomerService(con, cno);
+		
+		close(con);
+		
+		return result;
+	}
+
 }

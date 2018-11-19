@@ -187,6 +187,30 @@ public class CustomerServiceDao {
 		return result;
 	}
 
+	public int deleteCustomerService(Connection con, int cno) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteCustomerService");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, cno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}	
+		
+		return result;
+	}
+
 }
 
 
