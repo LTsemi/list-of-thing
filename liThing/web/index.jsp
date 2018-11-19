@@ -260,7 +260,7 @@ input[type=submit] {
                     <input type="text" class="form-control input-lg" id="search" name="search" placeholder="지금 당신이 먹고 싶은 바로 그 음식!  리뷰가 궁금하지 않나요?" />
                    <!--  style="background-color:transparent" -->
                     <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
+                        <button class="btn btn-info btn-lg" type="button" onclick="searchProduct();">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
@@ -572,12 +572,28 @@ input[type=submit] {
 		   
 
 		//  나중에 for문으로 위의 searchP에 다가 상품 이름들 추가하기
-
-
+		
+		
 		/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 		autocomplete(document.getElementById("search"), searchP);
- 			
+ 		
+ 	 		$("#search").keyup(function(e){
+ 	 			var pName = $('#search').val();
+ 	 			
+ 	 			console.log(pName);
+ 	 			if(e.keyCode == 13)  {
+ 	 				location.href="/semi/sMain.po?pname=" + pName;
+ 	 			}
+ 	 			
+ 	 		});  
 
+ 		
+ 		function searchProduct(){
+ 			var pName = $('#search').val();
+ 			
+ 			location.href="<%=request.getContextPath()%>/sMain.po?pname=" + pName;
+ 		}
+ 				
 	</script>
 
 </body>

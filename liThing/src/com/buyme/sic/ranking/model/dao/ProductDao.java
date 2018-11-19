@@ -260,6 +260,37 @@ public class ProductDao {
 		return list;
 	}
 
+	public String selectMainOne(Connection con, String pName) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String pno = null;
+
+		String sql = prop.getProperty("selectMainOne");
+		
+		try {
+		
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setString(1, pName);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				pno = rset.getString("P_NO");
+			}
+
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return pno;
+	}
 	
 }
 

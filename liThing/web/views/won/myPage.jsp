@@ -141,8 +141,9 @@ body {
 						</ul>
 					</td>
 					<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>
+					<td><button onclick="deleteWish();">삭제하기</button></td>
 				</tr>
-
+				
 
 			</table>
 
@@ -157,7 +158,19 @@ body {
 	<br />
 	<br />
 	
-	
+	<script>
+		function deleteWish(){
+			var val = confirm("정말로 위시리스트에서 삭제하시겠습니까? ");
+			if(val == true){
+				var thisid = $(this).attr('id');
+				console.log(thisid);
+				console.log($('#userid'+thisid).val());
+
+				location.href='<%= request.getContextPath() %>/mdeleteWish.mp';
+			}
+		}
+		
+	</script>
 	
 	<button id="paging"><<<</button>&nbsp;<button id="paging">1</button> &nbsp;<button id="paging">2</button> &nbsp;<button id="paging">>>></button>
 		<%-- <div class="pagingArea" align="center">

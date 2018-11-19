@@ -35,16 +35,12 @@ public class MainSearchServlet extends HttpServlet {
 		
 		ProductService ps = new ProductService();
 		String keyword = request.getParameter("keyword");
-		
-		System.out.println("keyword 1: " + keyword);
-		
+				
 		if(keyword == null || keyword.equals("")) keyword = "_";
 		
-		System.out.println("keyword 2: " + keyword);
-		
+
 		ArrayList<String> list = ps.selectSearchList(keyword);
 
-		System.out.println("검색 리스트 출력 내용");
 		response.setContentType("application/json; charset=UTF-8");
 		
 		new Gson().toJson(list, response.getWriter());

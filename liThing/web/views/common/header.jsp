@@ -218,7 +218,7 @@ nav {
 <body>
     <nav style="background : #FFA41F !important;">
         <div class="logo">
-            <a href="/semi/index.jsp" style="font-family: 'Gugi'; color : #fff;">리띵</a> &nbsp; &nbsp; &nbsp;
+            <a href="/semi/index.jsp" style="font-family: 'Gugi' !important; color : #fff;">리띵</a> &nbsp; &nbsp; &nbsp;
           
         </div>
          
