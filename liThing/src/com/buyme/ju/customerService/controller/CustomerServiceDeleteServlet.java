@@ -1,6 +1,8 @@
 package com.buyme.ju.customerService.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,13 +37,23 @@ public class CustomerServiceDeleteServlet extends HttpServlet {
 		
 		if (result > 0) {
 		
-			response.sendRedirect("selectList.cs");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('삭제되었습니다.'); location.href='selectList.cs';</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*response.sendRedirect("selectList.cs");*/
 		
 		} else {
 		
-			request.setAttribute("msg", "QnA 삭제 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp")
-			.forward(request, response);
+			PrintWriter out = response.getWriter();
+			 
+			out.println("<script> alert('QnA 삭제 실패'); location.href='views/ju/CustomerService.jsp';</script>");
+			 
+			out.flush();
+			out.close();
 		
 		}
 	}

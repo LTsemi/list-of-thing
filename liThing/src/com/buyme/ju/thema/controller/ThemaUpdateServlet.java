@@ -2,6 +2,8 @@ package com.buyme.ju.thema.controller;
 
 import java.io.File; 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,13 +87,27 @@ public class ThemaUpdateServlet extends HttpServlet {
 			
 			if(result > 0) {
 				
-				response.sendRedirect("selectList.tm");
+				PrintWriter out = response.getWriter();
+				
+				out.println("<script> alert('테마가 수정되었습니다.'); location.href='selectList.tm';</script>");
+				
+				out.flush();
+				out.close();
+				
+				/*response.sendRedirect("selectList.tm");*/
 				
 			} else {
 				
-				page = "views/common/errorPage.jsp";
+				PrintWriter out = response.getWriter();
+				
+				out.println("<script> alert('테마 수정 실패'); location.href='selectList.tm';</script>");
+				
+				out.flush();
+				out.close();
+				
+				/*page = "views/common/errorPage.jsp";
 				request.setAttribute("msg", "게시글 수정 실패!");
-				request.getRequestDispatcher(page).forward(request, response);
+				request.getRequestDispatcher(page).forward(request, response);*/
 			}
 	}
 

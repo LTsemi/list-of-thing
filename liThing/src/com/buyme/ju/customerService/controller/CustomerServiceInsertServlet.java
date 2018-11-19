@@ -1,6 +1,7 @@
 package com.buyme.ju.customerService.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
@@ -80,12 +81,26 @@ public class CustomerServiceInsertServlet extends HttpServlet implements Servlet
 		
 		if(result > 0){
 			
-			response.sendRedirect("selectList.cs");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('QnA가 추가 되었습니다.'); location.href='selectList.cs' </script>");
+			
+			out.flush();
+			out.close();
+			
+			/*response.sendRedirect("selectList.cs");*/
 			
 		} else {
 			
-			request.setAttribute("msg", "공지사항 등록 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('QnA 추가 실패'); location.href='selectList.cs' </script>");
+			
+			out.flush();
+			out.close();
+			
+			/*request.setAttribute("msg", "QnA 등록 실패!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);*/
 		}
 	}
 

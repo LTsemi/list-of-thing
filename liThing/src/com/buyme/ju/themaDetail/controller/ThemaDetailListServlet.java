@@ -1,6 +1,7 @@
 package com.buyme.ju.themaDetail.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -57,8 +58,12 @@ public class ThemaDetailListServlet extends HttpServlet {
 			
 		} else {
 					
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "상세테마 조회 실패!");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('해당 테마에 상품이 없습니다.'); location.href='selectList.tm';</script>");
+			
+			out.flush();
+			out.close();
 					
 		}
 				

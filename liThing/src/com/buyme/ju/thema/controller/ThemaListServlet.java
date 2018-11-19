@@ -1,6 +1,7 @@
 package com.buyme.ju.thema.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -45,9 +46,16 @@ public class ThemaListServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			
 		} else {
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('테마 페이지 로드에 실패하였습니다.'); location.href='index.jsp';</script>");
+			
+			out.flush();
+			out.close();
 					
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "테마 조회 실패!");
+			/*page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "테마 조회 실패!");*/
 					
 		}
 				

@@ -1,6 +1,7 @@
 package com.buyme.ju.themaDetail.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -55,12 +56,27 @@ public class ThemaDetailInsertServlet extends HttpServlet {
 			
 			request.setAttribute("tplist", tplist);
 			request.setAttribute("tlist", tlist);
-			response.sendRedirect("selectList.td?tno=" + tno);
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('추가 되었습니다.'); location.href='selectList.td?tno="+tno+"\'"+"</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*response.sendRedirect("selectList.td?tno=" + tno);*/
 			
 		} else {
 			
-			request.setAttribute("msg", "테마 상품 등록 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('테마 상품 추가 실패'); location.href='selectList.td?tno="+tno+"\'"+"</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*request.setAttribute("msg", "테마 상품 등록 실패!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);*/
 		}
 	}
 

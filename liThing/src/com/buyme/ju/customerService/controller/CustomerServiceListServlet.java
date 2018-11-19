@@ -1,6 +1,7 @@
 package com.buyme.ju.customerService.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -46,8 +47,12 @@ public class CustomerServiceListServlet extends HttpServlet {
 			
 		} else {
 					
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "테마 조회 실패!");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('고객센터 로드에 실패하였습니다.'); location.href='index.jsp';</script>");
+			
+			out.flush();
+			out.close();
 					
 		}
 				

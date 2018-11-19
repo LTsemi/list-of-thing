@@ -1,6 +1,7 @@
 package com.buyme.ju.thema.controller;
 
-import java.io.IOException; 
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,9 +39,17 @@ public class ThemaInsertServlet extends HttpServlet {
 		int maxSize = 1024 * 1024 * 10;
 		
 		if(!ServletFileUpload.isMultipartContent(request)){
-			request.setAttribute("msg", "enctype 을 통한 multipart 전송이 필요합니다.");
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('파일 전송 방식에 오류가 있습니다.'); location.href='selectList.tm';</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*request.setAttribute("msg", "enctype 을 통한 multipart 전송이 필요합니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp")
-			.forward(request, response);
+			.forward(request, response);*/
 		}
 		
 		String root = request.getServletContext()
@@ -81,8 +90,15 @@ public class ThemaInsertServlet extends HttpServlet {
 			
 		} else {
 			
-			request.setAttribute("msg", "테마 등록 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('테마 등록에 실패하였습니다.'); location.href='selectList.tm';</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*request.setAttribute("msg", "테마 등록 실패!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);*/
 		}
 	}
 

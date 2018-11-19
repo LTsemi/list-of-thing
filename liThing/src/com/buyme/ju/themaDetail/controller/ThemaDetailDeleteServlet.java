@@ -1,6 +1,8 @@
 package com.buyme.ju.themaDetail.controller;
 
-import java.io.IOException; 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,14 +39,28 @@ public class ThemaDetailDeleteServlet extends HttpServlet {
 		int result = new ThemaDetailService().deleteThemaProduct(pno, tno);	
 		
 		if (result > 0) {
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('삭제되었습니다.'); location.href='selectList.td?tno="+tno+"\'"+"</script>");
+			
+			out.flush();
+			out.close();
 		
-			response.sendRedirect("selectList.td?tno="+tno);
+			/*response.sendRedirect("selectList.td?tno="+tno);*/
 		
 		} else {
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('삭제 실패'); location.href='selectList.td?tno="+tno+"\'"+"</script>");
+			
+			out.flush();
+			out.close();
 		
-			request.setAttribute("msg", "테마 상품 삭제 실패!");
+			/*request.setAttribute("msg", "테마 상품 삭제 실패!");
 			request.getRequestDispatcher("views/common/errorPage.jsp")
-			.forward(request, response);
+			.forward(request, response);*/
 		
 		}
 	}

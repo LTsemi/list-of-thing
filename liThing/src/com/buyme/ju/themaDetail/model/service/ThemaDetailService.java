@@ -58,14 +58,4 @@ public class ThemaDetailService {
 		return result;
 	}
 
-	public ArrayList<Product> insertView() {
-		Connection con = getConnection();
-		
-		ArrayList<Product> list = tdDao.insertView(con);
-		
-		close(con);
-		
-		return list;
-	}
-
 }

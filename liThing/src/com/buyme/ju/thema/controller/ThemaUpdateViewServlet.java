@@ -1,6 +1,8 @@
 package com.buyme.ju.thema.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,8 +46,15 @@ public class ThemaUpdateViewServlet extends HttpServlet {
 			
 		} else {
 			
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "QnA 수정 페이지 보기 실패");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('테마 수정 페이지 로드 실패'); location.href='selectList.tm';</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "QnA 수정 페이지 보기 실패");*/
 			
 		}
 		

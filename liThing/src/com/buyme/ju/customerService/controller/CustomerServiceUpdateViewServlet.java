@@ -1,6 +1,7 @@
 package com.buyme.ju.customerService.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,8 +44,15 @@ public class CustomerServiceUpdateViewServlet extends HttpServlet {
 			
 		} else {
 			
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "QnA 수정 페이지 보기 실패");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('QnA 수정 페이지 로드에 실패하였습니다.'); location.href='selectList.cs';</script>");
+			
+			out.flush();
+			out.close();
+			
+			/*page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "QnA 수정 페이지 보기 실패");*/
 			
 		}
 		

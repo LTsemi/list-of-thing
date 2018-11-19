@@ -1,6 +1,7 @@
 package com.buyme.ju.themaDetail.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import com.buyme.ju.thema.model.service.ThemaService;
 import com.buyme.ju.thema.model.vo.Thema;
 import com.buyme.ju.themaDetail.model.service.ThemaDetailService;
 import com.buyme.ju.themaDetail.model.vo.ThemaProduct;
+import com.buyme.sic.ranking.model.service.ProductService;
 import com.buyme.sic.ranking.model.vo.Product;
 
 /**
@@ -36,7 +38,7 @@ public class ThemaDetailInsertViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Product> plist = new ThemaDetailService().insertView();
+		ArrayList<Product> plist = new ProductService().selectList();
 		ArrayList<Thema> tlist = new ThemaService().selectList();
 		
 		String page = "";
@@ -49,8 +51,15 @@ public class ThemaDetailInsertViewServlet extends HttpServlet {
 			
 		} else {
 			
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "상세테마 추가 페이지 보기 실패");
+			/*page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "상세테마 추가 페이지 보기 실패");*/
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script> alert('테마 상품 추가 페이지 로드 실패'); location.href='selectList.tm';</script>");
+			
+			out.flush();
+			out.close();
 			
 		}
 		

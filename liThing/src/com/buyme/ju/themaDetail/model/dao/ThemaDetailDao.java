@@ -137,7 +137,7 @@ public class ThemaDetailDao {
 			pstmt.setInt(1, tno);
 			pstmt.setString(2, pno);
 					
-			result = pstmt.executeUpdate();		
+			result = pstmt.executeUpdate();
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -171,45 +171,6 @@ public class ThemaDetailDao {
 		}
 
 		return result;
-	}
-
-	public ArrayList<Product> insertView(Connection con) {
-		
-		ArrayList<Product> list = new ArrayList<Product>();
-		Product p = null;
-		Statement stmt = null;
-		ResultSet rset = null;
-				
-		String sql = prop.getProperty("selectProduct");
-		
-		try {
-			
-			stmt = con.createStatement();
-			
-			rset = stmt.executeQuery(sql);
-			
-			while(rset.next()){
-				
-				p = new Product();
-				
-				p.setPname(rset.getString("p_name"));
-				p.setPno(rset.getString("p_no"));
-				p.setBrand(rset.getString("brand"));
-				
-				System.out.println("dao tp : " + p);
-			
-				list.add(p);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(stmt);
-		}	
-		
-		System.out.println("dao list : " + list);
-		return list;
 	}
 
 }
