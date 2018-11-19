@@ -132,31 +132,37 @@ body {
 		<%
 			for (Review r : rlist) {
 		%>
-		<br />
-<br />
+		
+
 <br />
 		
 		<div class="row">
 			<div class="col-sm-9">
 				<div class="bubble">
-					작성자 :<input type="text" id="id" name="id" value="<%=mh.getUserId()%>" readonly /> 
-					내용 : <input type="text" id="review" name="review" value="<%= r.getRcontent() %>" readonly /> 
-					별점 : <input type="text" id="rank" name="rank" value="<%= r.getRrank() %>" readonly />
-					작성일 : <input type="text" id="rdate" name="rdate" value=<%= r.getRdate() %> readonly />
+
+					<input type="text" id="review" name="review"
+						style="border: none; background: transparent;"
+						value="<%=r.getRcontent()%>" readonly />
+
 				</div>
 			</div>
-			<br /> <img src="/semi/resources/productImg/<%= r.getC_name() %>"
-				width="220px" height="220px">
+			<img src="/semi/resources/productImg/<%=r.getC_name()%>"
+				width="170px" height="170px"> <br /> <br /> 
+			작성자 :&nbsp;<input type="text" id="id" name="id" value="<%=mh.getUserId()%>" style="width: 100px;" readonly /> <br /> 
+			작성일 :&nbsp;<input type="text" id="rdate" name="rdate" value=<%=r.getRdate()%> style="width: 100px;" readonly /> <br /> 
+			별점 :&nbsp;<input type="text" id="rank" name="rank" value=" <%=r.getRrank()%>" style="width: 25px;" readonly />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
 		</div>
-			<br />
+		
 	<br />
 	<br />
 		<% } %>
 
 
 	
-	<button id="paging"><<<</button>&nbsp;<button id="paging">1</button> &nbsp;<button id="paging">2</button> &nbsp;<button id="paging">>>></button>
-		<%-- <div class="pagingArea" align="center">
+	
+		 <div class="pagingArea" align="center">
 			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button id="paging" disabled><</button>
@@ -180,7 +186,7 @@ body {
 			<%  } %>
 			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
 			
-		</div> --%>
+		</div> 
 	
 	<br />
 	<br />

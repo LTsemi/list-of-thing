@@ -31,13 +31,46 @@ public class SelectWishServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
 		String userid = request.getParameter("userid");
 		System.out.println("userid" + userid);
 		WishlistService ws = new WishlistService();
 		
 		ArrayList<Product> plist = ws.selectWish(userid);
 		
+		/*// 페이징 처리
+		int startPage;
+		int endPage;
+		int maxPage;
+		int currentPage;
+		int limit;
 		
+		currentPage = 1;
+		limit = 10;
+
+		if(request.getParameter("currentPage") !=null){
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			System.out.println("현재 page : " + currentPage);
+		}
+
+		
+				int listCount = ws.getListCount();
+				
+				System.out.println("전체 공지글 수 : "+listCount);
+				
+				maxPage = (int)((double)listCount/limit +0.9);
+				startPage = ((int)((double)currentPage/limit +0.9)-1)*limit+1;
+				endPage = startPage + limit-1;
+				
+				System.out.println("endpage : " + endPage);
+				System.out.println("startPage : " + startPage);
+				
+				if(endPage > maxPage){
+					endPage = maxPage;
+				}
+				
+				plist = ws.selectList(currentPage,limit);
+		*/
 		String page = "";
 		
 		if(plist != null){

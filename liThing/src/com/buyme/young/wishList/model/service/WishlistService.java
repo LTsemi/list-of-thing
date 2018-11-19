@@ -1,14 +1,12 @@
 package com.buyme.young.wishList.model.service;
 
-import static com.buyme.common.JDBCTemplate.close;
-import static com.buyme.common.JDBCTemplate.commit;
-import static com.buyme.common.JDBCTemplate.getConnection;
-import static com.buyme.common.JDBCTemplate.rollback;
+import static com.buyme.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.won.notice.model.vo.Notice;
 import com.buyme.young.wishList.model.dao.WishlistDao;
 import com.buyme.young.wishList.model.vo.Wishlist;
 
@@ -40,6 +38,19 @@ public class WishlistService {
 		
 		return list;
 	}
+
+/*	public int getListCount() {
+		
+		Connection con = getConnection();
+		
+		int listCount = wDao.getListCount(con);
+		
+		close(con);
+		
+		return listCount;
+	}
+*/
+	
 	
 	
 	

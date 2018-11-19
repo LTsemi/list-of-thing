@@ -102,6 +102,37 @@ public class WishlistDao {
 		return list;
 	}
 
+	/*public int getListCount(Connection con) {
+		
+		Statement stmt = null;
+		int listCount = 0;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("WlistCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()){
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(stmt);
+		}
+		return listCount;
+		
+	}
+
+	public ArrayList<Product> selectList(Connection con, int currentPage, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+
 
 
 }

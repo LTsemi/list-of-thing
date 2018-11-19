@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, java.util.*"%>
+	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, java.util.*, com.buyme.won.notice.model.vo.*"%>
 <%
 	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+    PageInfo pi = (PageInfo)request.getAttribute("pi");
+    int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -9,13 +16,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
  <title>List of Thing</title>
-<!-- 
 
-Highway Template
-
-http://www.templatemo.com/tm-520-highway
-
--->
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -141,9 +142,8 @@ body {
 						</ul>
 					</td>
 					<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>
-					<td><button onclick="deleteWish();">삭제하기</button></td>
 				</tr>
-				
+
 
 			</table>
 
@@ -158,27 +158,13 @@ body {
 	<br />
 	<br />
 	
-	<script>
-		function deleteWish(){
-			var val = confirm("정말로 위시리스트에서 삭제하시겠습니까? ");
-			if(val == true){
-				var thisid = $(this).attr('id');
-				console.log(thisid);
-				console.log($('#userid'+thisid).val());
 
-				location.href='<%= request.getContextPath() %>/mdeleteWish.mp';
-			}
-		}
-		
-	</script>
-	
-	<button id="paging"><<<</button>&nbsp;<button id="paging">1</button> &nbsp;<button id="paging">2</button> &nbsp;<button id="paging">>>></button>
-		<%-- <div class="pagingArea" align="center">
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
+		 <div class="pagingArea" align="center">
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button id="paging" disabled><</button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -186,18 +172,18 @@ body {
 			%>
 				<button id="paging" disabled><%= p %></button>
 			<%      }else{ %>
-				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
+				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%= p %>'"><%= p %></button>
 			<%  } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
 			<button id="paging" disabled>></button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%= maxPage %>'">>></button>
 			
-		</div> --%>
+		</div>  
 	
 	<br />
 	<br />
