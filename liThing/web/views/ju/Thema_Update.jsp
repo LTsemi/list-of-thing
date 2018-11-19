@@ -26,7 +26,7 @@
                   font-family: 'NanumSquareRoundR' ;
                   src: url("<%=request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf");
                 }
-                body { box-sizing: border-box;
+                body, input, textarea { box-sizing: border-box;
                     font-family: NanumSquareRoundR !important; 
                 }
         </style>

@@ -23,7 +23,7 @@
                   font-family: 'NanumSquareRoundR' ;
                   src: url("<%=request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf");
                 }
-                body, h2, p { box-sizing: border-box;
+                body, h2, input, textarea { box-sizing: border-box;
                     font-family: NanumSquareRoundR !important; 
                 }
         </style>
