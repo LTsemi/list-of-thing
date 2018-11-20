@@ -73,10 +73,21 @@ public class SelectMyReviewServlet extends HttpServlet {
 		}
 
 		ArrayList<Review> rlist  = rs.MyreviewList(userid, currentPage, limit);
-
 		
 		
 		String page = "";
+		if(listCount < 1){
+			PrintWriter out = response.getWriter();
+			 
+			out.println("<script> alert('등록된 리뷰가 없습니다. 리뷰를 먼저 작성해 주세요!'); location.href='index.jsp';</script>");
+			 
+			out.flush();
+			out.close();
+			page = "login.jsp";
+		}
+		
+		
+		
 		if (rlist != null) {
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage,
 					startPage, endPage);
@@ -89,9 +100,10 @@ public class SelectMyReviewServlet extends HttpServlet {
 
 		} else {
 			System.out.println("서블릿오류");
+			
 			PrintWriter out = response.getWriter();
 			 
-			out.println("<script> alert('등록된 리뷰가 없습니다. 리뷰를 먼저 작성해 주세요!'); location.href='index.jsp';</script>");
+			out.println("<script> alert('리뷰 조회 오류!'); location.href='index.jsp';</script>");
 			 
 			out.flush();
 			out.close();

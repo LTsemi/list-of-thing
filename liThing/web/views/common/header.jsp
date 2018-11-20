@@ -191,7 +191,7 @@ nav {
 /* .one{float:left;} *//* 전체 메뉴를 float 시킴 */
 .one > li{float:left;}   /*1단 메뉴를 일렬로 늘어놓기 */
 .one ul{display:none;}  /*2단, 3단 메뉴를 숨기기 */
-.one li:hover > ul {display:block; background : gray;}  /*주 메뉴에 마우스 오버했을 때 부 메뉴 드러내가 */
+.one li:hover > ul {display:block; }  /*주 메뉴에 마우스 오버했을 때 부 메뉴 드러내가 */
 .two{position:absolute;left:120px; top: 20px; margin-top:120px;}  /*2단 메뉴 절대 위치*/
 .three{position:absolute;left:120px; top:0px;}  /*3단 메뉴 절대 위치*/ 
  
@@ -203,7 +203,7 @@ nav {
 #sero { 
 
     width:10px;
-    background-color:#fff;
+    background-color:#24221F;
     position:absolute;
     top:0;
     bottom:0;
@@ -241,18 +241,22 @@ nav {
           			<ul class="one" id="rankul" style="color : #FFA41F !important;">
 								<li><a href="#">랭킹</a>
 									<ul class="two">
+									<br /><br /><br />
 										<li><a href="#">간편식</a>
 											<ul class="three">
-												<li><a href="/semi/selectList.po?pnn=RF">냉장식품</a></li>
+											<br />
 												<li><a href="/semi/selectList.po?pnn=FF">냉동식품</a></li>
+												<li><a href="/semi/selectList.po?pnn=RF">냉장식품</a></li>
 											</ul></li>
 										<li><a href="#">라면</a>
 											<ul class="three">
+											<br /><br /><br /><br />											
 												<li><a href="/semi/selectList.po?pnn=OM">봉지라면</a></li>
 												<li><a href="/semi/selectList.po?pnn=CM">컵라면</a></li>
 											</ul></li>
 										<li><a href="#">스낵</a>
 											<ul class="three">
+											<br /><br /><br /><br /><br /><br /><br /><br />			
 												<li><a href="/semi/selectList.po?pnn=SN">과자</a></li>
 												<li><a href="/semi/selectList.po?pnn=CD">사탕</a></li>
 												<li><a href="/semi/selectList.po?pnn=JL">젤리</a></li>
