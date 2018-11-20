@@ -1,6 +1,6 @@
 package com.buyme.ju.themaDetail.controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -10,13 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.buyme.ju.customerService.model.sevice.CSService;
-import com.buyme.ju.customerService.model.vo.CustomerService;
 import com.buyme.ju.thema.model.service.ThemaService;
 import com.buyme.ju.thema.model.vo.Thema;
 import com.buyme.ju.themaDetail.model.service.ThemaDetailService;
 import com.buyme.ju.themaDetail.model.vo.ThemaProduct;
-import com.buyme.sic.ranking.model.service.ProductService;
 import com.buyme.sic.ranking.model.vo.Product;
 
 /**
@@ -38,7 +35,8 @@ public class ThemaDetailInsertViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Product> plist = new ProductService().selectList();
+		
+		ArrayList<Product> plist = new ThemaDetailService().selectProduct();
 		ArrayList<Thema> tlist = new ThemaService().selectList();
 		
 		String page = "";

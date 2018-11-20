@@ -35,10 +35,10 @@ public class ThemaDetailService {
 		return tp;
 	}
 
-	public int insertThemaProduct(int tno, String pno) {
+	public int insertThemaProduct(int tno, String pnn) {
 		
 		Connection con = getConnection();
-		int result = tdDao.insertThemaProduct(con, tno, pno);
+		int result = tdDao.insertThemaProduct(con, tno, pnn);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
@@ -48,14 +48,25 @@ public class ThemaDetailService {
 		return result;
 	}
 
-	public int deleteThemaProduct(String pno, int tno) {
+	public int deleteThemaProduct(String pnn, int tno) {
 		Connection con = getConnection();
 		
-		int result = tdDao.deleteThemaProduct(con, pno, tno);
+		int result = tdDao.deleteThemaProduct(con, pnn, tno);
 		
 		close(con);
 		
 		return result;
+	}
+
+	public ArrayList<Product> selectProduct() {
+		
+		Connection con = getConnection();
+		
+		ArrayList<Product> list = tdDao.selectProduct(con);
+		
+		close(con);
+		
+		return list;
 	}
 
 }

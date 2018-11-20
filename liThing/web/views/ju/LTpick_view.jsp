@@ -58,14 +58,14 @@
                             <img src="<%= request.getContextPath() %>/resources/productImg/<%= list.get(i).getCname() %>" id="thema_view_pic">
                         </div>
                         <p>[<%= list.get(i).getBrand() %>] <%= list.get(i).getPname() %></p>
-                        <input type="hidden" name="pno" id="pno" value="<%= list.get(i).getPno() %>"/>
+                        <input type="hidden" name="pnn" id="pnn" value="<%= list.get(i).getPnn() %>"/>
                         <input type="hidden" name="tno" id="tno" value="<%= t.getTno() %>"/>
                     </a><%= list.get(i).getRank() %>
                     <% for(int j = 0; j < list.get(i).getRank() ; j++){ %>
                     <span id="rank" style="color:#FFA41F;">★</span>
                     <%} %> 
                     <% if( mh != null && mh.getUserId().equals("admin")) { %>
-                    <button onclick="location.href='tdDelete.td?pno=<%= list.get(i).getPno() %>&tno=<%=t.getTno() %>'">삭제</button>
+                    <button onclick="location.href='tdDelete.td?pnn=<%= list.get(i).getPnn() %>&tno=<%=t.getTno() %>'">삭제</button>
                     <%} %>
                 </article>
                 <%} %>

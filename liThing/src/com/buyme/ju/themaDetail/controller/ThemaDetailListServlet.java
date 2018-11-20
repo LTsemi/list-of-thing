@@ -60,7 +60,7 @@ public class ThemaDetailListServlet extends HttpServlet {
 					
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script> alert('해당 테마에 상품이 없습니다.'); location.href='selectList.tm';</script>");
+			out.println("<script> alert('해당 테마에 상품이 없습니다.'); location.href='selectList.td?tno="+tno+"\'</script>");
 			
 			out.flush();
 			out.close();

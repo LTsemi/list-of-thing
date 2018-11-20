@@ -159,4 +159,38 @@ public class ThemaDao {
 		return result;
 	}
 
+	public int deleteThema(Connection con, int tno) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String delTProd = prop.getProperty("delTProd"); 
+		String delThema = prop.getProperty("delThema");
+		
+		try {
+			
+			pstmt = con.prepareStatement(delTProd);
+			pstmt.setInt(1, tno);
+			
+			result = pstmt.executeUpdate();
+			System.out.println("themaProduct del : " + result);
+			
+			if(result > 0) {
+				pstmt = con.prepareStatement(delThema);
+				
+				pstmt.setInt(1, tno);
+				
+				result = pstmt.executeUpdate();
+				System.out.println("thema del : " + result);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

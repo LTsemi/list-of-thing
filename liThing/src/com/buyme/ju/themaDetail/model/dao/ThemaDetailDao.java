@@ -56,6 +56,7 @@ public class ThemaDetailDao {
 				ThemaProduct tp = new ThemaProduct();
 					
 				tp.setPno(rset.getString("p_no"));
+				tp.setPnn(rset.getString("p_nn"));
 				tp.setProd_no(rset.getString("p_no"));
 				tp.setThema_no(rset.getInt("tno"));
 				tp.setPname(rset.getString("p_name"));
@@ -98,6 +99,7 @@ public class ThemaDetailDao {
 				tp.setThema_no(tno);
 				tp.setProd_no(rset.getString("p_no"));
 				tp.setPno(rset.getString("p_no"));
+				tp.setPnn(rset.getString("p_nn"));
 				tp.setBrand(rset.getString("brand"));
 				tp.setPname(rset.getString("p_name"));
 				tp.setRank(rset.getInt("rank"));
@@ -124,7 +126,7 @@ public class ThemaDetailDao {
 		return tp;
 	}
 
-	public int insertThemaProduct(Connection con, int tno, String pno) {
+	public int insertThemaProduct(Connection con, int tno, String pnn) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -135,7 +137,7 @@ public class ThemaDetailDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, tno);
-			pstmt.setString(2, pno);
+			pstmt.setString(2, pnn);
 					
 			result = pstmt.executeUpdate();
 		
@@ -149,7 +151,7 @@ public class ThemaDetailDao {
 		return result;
 	}
 
-	public int deleteThemaProduct(Connection con, String pno, int tno) {
+	public int deleteThemaProduct(Connection con, String pnn, int tno) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -160,7 +162,7 @@ public class ThemaDetailDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, tno);
-			pstmt.setString(2, pno);
+			pstmt.setString(2, pnn);
 			
 			result = pstmt.executeUpdate();
 			
@@ -171,6 +173,45 @@ public class ThemaDetailDao {
 		}
 
 		return result;
+	}
+
+	public ArrayList<Product> selectProduct(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Product> list = new ArrayList<Product>();
+		
+		String sql = prop.getProperty("selectProduct");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()){
+				
+				Product p = new Product();
+					
+				p.setPno(rset.getString("p_no"));
+				p.setPnn(rset.getString("p_nn"));
+				p.setPname(rset.getString("p_name"));
+				p.setRank(rset.getInt("rank"));
+				p.setBrand(rset.getString("brand"));
+				p.setCname(rset.getString("c_name"));
+				
+				list.add(p);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
 	}
 
 }

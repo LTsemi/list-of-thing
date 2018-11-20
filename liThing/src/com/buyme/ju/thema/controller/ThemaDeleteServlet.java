@@ -1,4 +1,4 @@
-package com.buyme.ju.themaDetail.controller;
+package com.buyme.ju.thema.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,22 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
-import com.buyme.ju.themaDetail.model.service.ThemaDetailService;
-import com.oreilly.servlet.MultipartRequest;
+import com.buyme.ju.thema.model.service.ThemaService;
 
 /**
- * Servlet implementation class ThemaDetailDeleteServlet
+ * Servlet implementation class ThemaDeleteServlet
  */
-@WebServlet("/tdDelete.td")
-public class ThemaDetailDeleteServlet extends HttpServlet {
+@WebServlet("/tDelete.tm")
+public class ThemaDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemaDetailDeleteServlet() {
+    public ThemaDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,16 +30,15 @@ public class ThemaDetailDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pnn = request.getParameter("pnn");
 		int tno = Integer.parseInt(request.getParameter("tno"));
 		
-		int result = new ThemaDetailService().deleteThemaProduct(pnn, tno);	
+		int result = new ThemaService().deleteThema(tno);	
 		
 		if (result > 0) {
 			
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script> alert('삭제되었습니다.'); location.href='selectList.td?tno="+tno+"\'"+"</script>");
+			out.println("<script> alert('삭제되었습니다.'); location.href='selectList.tm' </script>");
 			
 			out.flush();
 			out.close();
@@ -53,7 +49,7 @@ public class ThemaDetailDeleteServlet extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script> alert('삭제 실패'); location.href='selectList.td?tno="+tno+"\'"+"</script>");
+			out.println("<script> alert('삭제 실패'); location.href='selectList.tm'</script>");
 			
 			out.flush();
 			out.close();

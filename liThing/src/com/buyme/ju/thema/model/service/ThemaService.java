@@ -69,4 +69,14 @@ public class ThemaService {
 		return result;
 	}
 
+	public int deleteThema(int tno) {
+
+		Connection con = getConnection();
+		int result = tDao.deleteThema(con, tno);
+		
+		close(con);
+		
+		return result;
+	}
+
 }

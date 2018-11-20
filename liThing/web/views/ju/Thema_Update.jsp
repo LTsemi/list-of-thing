@@ -85,10 +85,15 @@
 				<br>
 				<div align="center">
 					<button onclick="complete();">수정완료</button>
+					<button onclick="delThema();">삭제하기</button>
 				</div>
 				<script>
 					function complete(){
 						$("#updateForm").attr("action","<%= request.getContextPath()%>/tUpdate.tm?tno=<%=t.getTno() %>");
+					}
+					
+					function delThema() {
+						$("#updateForm").attr("action", "<%= request.getContextPath() %>/tDelete.tm?tno=<%= t.getTno() %>");
 					}
 				
 				</script>
