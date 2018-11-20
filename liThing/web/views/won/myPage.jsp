@@ -143,7 +143,7 @@ body {
 						</ul>
 					</td>
 					<td style="width: 250px; height: 150px;"><%= pr.getRank() %></td>
-					<td><button onclick="deleteWish();">삭제하기</button></td>
+					<td><button onclick="deleteWish(this);" id="<%= pr.getPno() %>">삭제하기</button></td>
 				</tr>
 
 
@@ -156,14 +156,15 @@ body {
 <br />
 <br />
 	<script>
-		function deleteWish(){
+		function deleteWish(obj){
 			var val = confirm("정말로 위시리스트에서 삭제하시겠습니까? ");
 			if(val == true){
-				var thisid = $(this).attr('id');
-				console.log(thisid);
-				console.log($('#userid'+thisid).val());
+				var thisid = $(obj).attr('id');
+				
+/* 				console.log(thisid);
+				console.log($('#userid'+thisid).val()); */
 
-				location.href='<%= request.getContextPath() %>/mdeleteWish.mp';
+				location.href='<%= request.getContextPath() %>/mdeleteWish.mp?userid=<%= mh.getUserId() %>&pno='+ thisid; 
 			}
 		}
 		

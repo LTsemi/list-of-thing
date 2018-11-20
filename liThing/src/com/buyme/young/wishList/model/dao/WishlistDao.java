@@ -137,4 +137,69 @@ public class WishlistDao {
 	}
 
 
+	public int deleteWish(Connection con, String userid, String pno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("DeleteWish");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pno);
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}	
+		
+		return result;
+	}
+
+	public ArrayList<Product> selectOneList(Connection con, String userid) {
+		ArrayList<Product> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, userid);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Product>();
+			
+			while(rset.next()) {
+				Product p = new Product();
+				
+				p.setPno(rset.getString("P_NO"));
+				p.setPname(rset.getString("P_NAME"));
+				p.setPprice(rset.getInt("P_PRICE"));
+				p.setBrand(rset.getString("BRAND"));
+				p.setRank(rset.getDouble("RANK"));
+				p.setCname(rset.getString("C_NAME"));
+				
+				list.add(p);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
 }

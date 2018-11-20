@@ -53,4 +53,27 @@ public class WishlistService {
 	
 	
 	}
+
+	public int deleteWish(String userid, String pno) {
+		Connection con = getConnection();
+		
+		int result = wDao.deleteWish(con, userid, pno);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public ArrayList<Product> selectOneWish(String userid) {
+		ArrayList<Product> list = null;
+		
+		Connection con = getConnection();
+		
+		list = wDao.selectOneList(con, userid);
+		
+		close(con);
+		
+		return list;
+		
+	}
 }
