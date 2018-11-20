@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.buyme.sic.ranking.model.dao.ProductDao;
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.sic.review.model.vo.Review;
 
 public class ProductService {
 	private ProductDao pDao = new ProductDao();
@@ -30,7 +31,7 @@ public class ProductService {
 		return result;
 	}
 
-	public ArrayList<Product> selectList() {
+/*	public ArrayList<Product> selectList() {
 		System.out.println("select Service 들어옴");
 		ArrayList<Product> list = null;
 		
@@ -41,7 +42,7 @@ public class ProductService {
 		close(con);
 		
 		return list;
-	}
+	}*/
 
 	public Product selectOneList(String pno) {
 		Connection con = getConnection();
@@ -145,6 +146,16 @@ public class ProductService {
 		System.out.println("service:" + result);
 		
 		return result;
+	}
+
+	public ArrayList<Product> selectList(String pnn) {
+		Connection con = getConnection();
+
+		ArrayList<Product> list = pDao.selectList(con, pnn);
+
+		close(con);
+
+		return list;
 	}
 
 

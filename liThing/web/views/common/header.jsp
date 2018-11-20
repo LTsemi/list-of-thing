@@ -238,26 +238,25 @@ nav {
       <div class="container">
         <div class="row" style="padding-right : 100px;">
           <div class="main-menu" style="float:left; width:50%;">
-          
           			<ul class="one" id="rankul" style="color : #FFA41F !important;">
-								<li><a href="/semi/selectList.po">랭킹</a>
+								<li><a href="#">랭킹</a>
 									<ul class="two">
 										<li><a href="#">간편식</a>
 											<ul class="three">
-												<li><a href="#">냉장식품</a></li>
-												<li><a href="#">냉동식품</a></li>
+												<li><a href="/semi/selectList.po?pnn=RF">냉장식품</a></li>
+												<li><a href="/semi/selectList.po?pnn=FF">냉동식품</a></li>
 											</ul></li>
 										<li><a href="#">라면</a>
 											<ul class="three">
-												<li><a href="#">봉지라면</a></li>
-												<li><a href="#">컵라면</a></li>
+												<li><a href="/semi/selectList.po?pnn=OM">봉지라면</a></li>
+												<li><a href="/semi/selectList.po?pnn=CM">컵라면</a></li>
 											</ul></li>
 										<li><a href="#">스낵</a>
 											<ul class="three">
-												<li><a href="#">과자</a></li>
-												<li><a href="#">사탕</a></li>
-												<li><a href="#">젤리</a></li>
-												<li><a href="#">초콜릿</a></li>
+												<li><a href="/semi/selectList.po?pnn=SN">과자</a></li>
+												<li><a href="/semi/selectList.po?pnn=CD">사탕</a></li>
+												<li><a href="/semi/selectList.po?pnn=JL">젤리</a></li>
+												<li><a href="/semi/selectList.po?pnn=CO">초콜릿</a></li>
 											</ul></li>
 									</ul></li>
 					</ul>

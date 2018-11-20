@@ -62,7 +62,7 @@ public class MemberService {
 	}
 
 
-	public int deleteMember(String userId) throws MemberException {
+	public int deleteMember(String userId) {
 		Connection con = getConnection();
 		
 		int result = mDao.deleteMember(con, userId);

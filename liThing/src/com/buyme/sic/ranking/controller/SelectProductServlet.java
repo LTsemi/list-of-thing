@@ -32,9 +32,11 @@ public class SelectProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("select servlet 들어옴");
+		
+		String pnn = request.getParameter("pnn");
 		ArrayList<Product> list = new ArrayList<Product>();
 		ProductService ps = new ProductService();
-		list = ps.selectList();
+		list = ps.selectList(pnn);
 		
 		String page = "";
 		

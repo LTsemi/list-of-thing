@@ -10,9 +10,15 @@
 td{
 	padding: 3px 3px;
 	text-align: center;
-	
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
 }
 
+table{
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	border-collapse: collapse;
+}
 </style>
 <body>
 <%@ include file="../common/header.jsp"%>
@@ -23,7 +29,7 @@ td{
 			<input type="button" id="delbtn" value="삭제" disabled="disabled" onclick="deleteItem()">
 			<input type="button" value="제품 추가" onclick="insertItem()"/>
 		</div>
-		<table border="1" style="margin: 0 auto; width: 1200px; font-size: 11px;" id="mtable" >
+		<table style="margin: 0 auto; width: 1200px; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
 				<tr>
 					<td width="50px" style="text-align: center">
@@ -93,7 +99,7 @@ $(function(){
 				}
 			});
 			$('#mtable tbody').children().mouseenter(function () {
-				$(this).children().not(':first').css({'background':'pink', 'cursor':'pointer'});
+				$(this).children().not(':first').css({'background':'#F7D58B', 'cursor':'pointer'});
 				$(this).children().not(':first').click(function () {
 					var pno = $(this).parent().children().eq(1).text()
 					updateItem(pno);

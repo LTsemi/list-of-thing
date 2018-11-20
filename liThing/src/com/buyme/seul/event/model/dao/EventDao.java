@@ -65,6 +65,7 @@ public class EventDao {
 				e.setWinner_cnt(rset.getInt("WINNER_CNT"));
 				e.setDday(rset.getInt("DDAY"));
 				e.setUserCnt(rset.getInt("USERCNT"));
+				e.setEvtEno(rset.getInt("EVTENO"));
 				
 				list.add(e);
 				

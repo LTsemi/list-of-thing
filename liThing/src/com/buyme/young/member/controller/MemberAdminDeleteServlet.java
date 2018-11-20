@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.young.member.exception.MemberException;
 import com.buyme.young.member.model.service.MemberService;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MemberAdminDeleteServlet
@@ -30,20 +31,29 @@ public class MemberAdminDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userid = request.getParameter("userid");
+		System.out.println("서블릿 접속성공");
+		String userid = request.getParameter("userId");
+		System.out.println("삭제할 아이디 : "+userid);
 		
 		MemberService ms = new MemberService();
+		
+		int result = ms.deleteMember(userid);
+		
+			/*if(result >0){
+			
 
-			try {
-				if(ms.deleteMember(userid) >0){
 					System.out.println("관리자 회원 삭제 완료");
 					response.sendRedirect("/mList.me");
-				}				
-				
-			} catch (MemberException e) {
+
+			} else {
 				// TODO Auto-generated catch block
 				System.out.println("관리자 회원 삭제 실패");
 			}
+		*/
+		   response.setContentType("application/json; charset=UTF-8");
+			
+			new Gson().toJson(result, response.getWriter());
+       
 		
 	}
 
