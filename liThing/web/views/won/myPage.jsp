@@ -83,6 +83,34 @@ body {
 	border: 0.5px solid #BDBDBD;
 	height: 24px;
 }
+
+table {
+	
+	table-layout: fixed;
+	width: 659px;
+	height: 150px; 
+	text-align: center; 
+	border-radius: 4px
+}
+
+.delBtn {
+
+-webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #ffffff;
+  
+ 
+  background: #ffbe3b;
+  text-decoration: none;
+
+}
+
+.delBtn:hover {
+  background: #fcb63c;
+  text-decoration: none;
+}
 </style>
 
 </head>
@@ -125,15 +153,12 @@ body {
 	<% for(Product pr : list) {%>
 		<div id="dbox" class="box"
 			style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border: 1px solid #D0D0D0; border-radius: 4px">
-			<table id="rList"
-				style="width: 659px; height: 150px; text-align: center; border-radius: 4px">
-
-
+			<table id="rList">
 				<tr>
 
 					<td style="width: 100px; height: 150px;"><img
-						src="/semi/resources/productImg/<%= pr.getCname() %>" width="200px" height="150px"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important" />
+						src="/semi/resources/productImg/<%= pr.getCname() %>" width="140px" height="150px"
+						style="max-height: 97%;  background-color: transparent; !important" />
 					</td>
 					<td style="text-align: left">
 						<ul style="text-align: left; list-style: none;">
@@ -143,7 +168,7 @@ body {
 						</ul>
 					</td>
 					<td style="width: 250px; height: 150px;"><%= pr.getRank() %></td>
-					<td><button onclick="deleteWish(this);" id="<%= pr.getPno() %>">삭제하기</button></td>
+					<td><button class="delBtn" onclick="deleteWish(this);" id="<%= pr.getPno() %>">삭제하기</button></td>
 				</tr>
 
 

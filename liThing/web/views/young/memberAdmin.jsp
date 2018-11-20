@@ -22,13 +22,14 @@
 		border:1px solid black;
 		text-align:center;
 		background : #ffff;
-		width:900px;
-		margin-left:50px;
+		width:1200px;
+		margin-left:100px;
+		white-space: nowrap;
 		
 	}
 	
 	#out {
-		width:1000px;
+		width:1400px;
 		height:auto;
 
 		margin-left:auto;

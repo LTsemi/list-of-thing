@@ -75,17 +75,17 @@ body {
 
 .bubble {
     position: relative;
-    background: #ffda91;
-    color: #000000;
+    background: linear-gradient(137deg, #ffffff 100%, #d6eb3b 100%);
+    color: #ffa200;
     font-family: Arial;
-    font-size: 19px;
-    line-height: 58px;
-    box-shadow: 5px 5px 8px -1px #a3a3a3;
+    font-size: 17px;
+    line-height: 30px; 
+    filter: drop-shadow(5px 5px 5px #a3a3a3);
     text-align: center;
     width: 700px;
     height: 260px;
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 21px;
+    padding: 30px;
 }
 .bubble:after {
     content: '';
@@ -94,13 +94,32 @@ body {
     width: 0;
     z-index: 1;
     border-style: solid;
-    border-color: transparent #ffda91;
-    border-width: 24px 0 24px 62px;
-    top: 33%;
-    right: -60px;
-    margin-top: -24px;
+    border-color: transparent #ffffff;
+    border-width: 23px 0 23px 46px;
+    top: 30%;
+    right: -46px;
+    margin-top: -23px;
 }
 
+
+.delBtn {
+
+-webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #ffffff;
+  
+ 
+  background: #ffbe3b;
+  text-decoration: none;
+
+}
+
+.delBtn:hover {
+  background: #fcb63c;
+  text-decoration: none;
+}
 
 </style>
 
@@ -141,24 +160,22 @@ body {
 			for (Review r : rlist) {
 		%>
 		
-
 <br />
 		
 		<div class="row">
 			<div class="col-sm-9">
 				<div class="bubble">
 
-					<input type="text" id="review" name="review"
-						style="border: none; background: transparent;"
-						value="<%=r.getRcontent()%>" readonly />
+					<%=r.getRcontent()%>
 
 				</div>
 			</div>
 			<img src="/semi/resources/productImg/<%=r.getC_name()%>"
 				width="170px" height="170px"> <br /> <br /> 
-			작성자 :&nbsp;<input type="text" id="id" name="id" value="<%=mh.getUserId()%>" style="width: 100px;" readonly /> <br /> 
-			작성일 :&nbsp;<input type="text" id="rdate" name="rdate" value=<%=r.getRdate()%> style="width: 100px;" readonly /> <br /> 
-			별점 :&nbsp;<input type="text" id="rank" name="rank" value=" <%=r.getRrank()%>" style="width: 25px;" readonly />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			작성자 :&nbsp;<input type="text" id="id" name="id" value="<%=mh.getUserId()%>" style="width: 108px;" readonly /> <br /> 
+			작성일 :&nbsp;<input type="text" id="rdate" name="rdate" value= <%=r.getRdate()%> style="width: 108px;" readonly /> <br /> 
+			&nbsp;&nbsp;별점 :&nbsp;<input type="text" id="rank" name="rank" value=" <%=r.getRrank()%>" style="width: 30px;" readonly />
+			<button class="delBtn" onclick="deleteRview(this);" id="<%= r.getRno() %>">삭제하기</button>
 
 
 		</div>
@@ -166,8 +183,23 @@ body {
 	<br />
 	<br />
 		<% } %>
+		
+		<script>
+		
+		function deleteRview(obj){
+			var val = confirm("정말로 내가 작성한 리뷰를 삭제하시겠습니까?");
+			if(val == true){
+				var thisid = $(obj).attr('id');
+				 
+				console.log(thisid);
+				console.log($('#userid'+thisid).val());
+				
+				location.href='<%= request.getContextPath() %>/deleteMyRview.mp?userid=<%= mh.getUserId() %>&rno='+ thisid;
+			}
+		}
+		
+		</script>
 
-	
 	
 		 <div class="pagingArea" align="center">
 			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=1'"><<</button>

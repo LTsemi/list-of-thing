@@ -217,4 +217,29 @@ public class ReviewDao {
 		
 	}
 
+	public int deleteMyReview(Connection con, String userid, int rno) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("deleteMyReview");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, rno);
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

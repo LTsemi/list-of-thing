@@ -89,4 +89,23 @@ public class ReviewService {
 		
 		return listCount;                                                                                                                                                                            
 	}
+
+	public int deleteMyReview(String userid, int rno) {
+		
+        Connection con = getConnection();
+		
+		int result = rDao.deleteMyReview(con,userid, rno);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
+		
+	}
+	
+
 }
