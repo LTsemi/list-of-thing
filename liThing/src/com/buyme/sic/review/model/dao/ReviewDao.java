@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -144,7 +145,7 @@ public class ReviewDao {
 		return result;
 	}
 
-	public ArrayList<Review> MyreviewList(Connection con, String userid) {
+	public ArrayList<Review> MyreviewList(Connection con, String userid, int currentPage, int limit) {
 		ArrayList<Review> rlist = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -153,6 +154,13 @@ public class ReviewDao {
 		
 		try {
 			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage -1)*limit +1;
+			int endRow = startRow +limit -1;
+
+			pstmt.setString(1, userid);
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, startRow);
 			
 			pstmt.setString(1, userid);
 			rset = pstmt.executeQuery();
@@ -168,7 +176,7 @@ public class ReviewDao {
 				r.setRcontent(rset.getString("R_CONTENT"));
 				r.setRdate(rset.getDate("R_DATE"));
 				r.setRrank(rset.getInt("R_RANK"));
-				r.setC_name(rset.getString("P_C_NAME"));
+				r.setC_name(rset.getString("C_NAME"));
 				
 				rlist.add(r);
 			
@@ -181,6 +189,32 @@ public class ReviewDao {
 			close(pstmt);
 		}
 		return rlist;
+	}
+
+	public int getListCount(Connection con) {
+		
+		Statement stmt = null;
+		int listCount = 0;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("MyReviewCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()){
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(stmt);
+		}
+		return listCount;
+		
 	}
 
 }

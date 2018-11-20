@@ -69,13 +69,24 @@ public class ReviewService {
 		return result;
 	}
 
-	public ArrayList<Review> MyreviewList(String userid) {
+	public ArrayList<Review> MyreviewList(String userid, int currentPage, int limit) {
 		Connection con = getConnection();
 
-		ArrayList<Review> rlist = rDao.MyreviewList(con, userid);
+		ArrayList<Review> rlist = rDao.MyreviewList(con, userid, currentPage, limit);
 
 		close(con);
 
 		return rlist;
+	}
+
+	public int getListCount() {
+		
+		Connection con = getConnection();
+		
+		int listCount = rDao.getListCount(con);
+		
+		close(con);
+		
+		return listCount;                                                                                                                                                                            
 	}
 }

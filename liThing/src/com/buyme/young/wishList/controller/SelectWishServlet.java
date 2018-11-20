@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.won.notice.model.vo.PageInfo;
 import com.buyme.young.wishList.model.service.WishlistService;
 
 /**
@@ -36,9 +37,9 @@ public class SelectWishServlet extends HttpServlet {
 		System.out.println("userid" + userid);
 		WishlistService ws = new WishlistService();
 		
-		ArrayList<Product> plist = ws.selectWish(userid);
+		ArrayList<Product> plist =  null; //ws.selectWish(userid);
 		
-		/*// 페이징 처리
+		// 페이징 처리
 		int startPage;
 		int endPage;
 		int maxPage;
@@ -46,35 +47,38 @@ public class SelectWishServlet extends HttpServlet {
 		int limit;
 		
 		currentPage = 1;
-		limit = 10;
+		limit = 3;
 
-		if(request.getParameter("currentPage") !=null){
+		if (request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 			System.out.println("현재 page : " + currentPage);
 		}
 
-		
-				int listCount = ws.getListCount();
-				
-				System.out.println("전체 공지글 수 : "+listCount);
-				
-				maxPage = (int)((double)listCount/limit +0.9);
-				startPage = ((int)((double)currentPage/limit +0.9)-1)*limit+1;
-				endPage = startPage + limit-1;
-				
-				System.out.println("endpage : " + endPage);
-				System.out.println("startPage : " + startPage);
-				
-				if(endPage > maxPage){
-					endPage = maxPage;
-				}
-				
-				plist = ws.selectList(currentPage,limit);
-		*/
+		int listCount = ws.getListCount();
+
+		System.out.println("전체 위시리스트 수 : " + listCount);
+
+		maxPage = (int) ((double) listCount / limit + 0.9);
+		startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
+		endPage = startPage + limit-1;
+
+		System.out.println("endpage : " + endPage);
+		System.out.println("startPage : " + startPage);
+
+		if (endPage > maxPage) {
+			endPage = maxPage;
+		}
+
+		plist = ws.selectWish(userid, currentPage, limit);
+
+		System.out.println("plist :" + plist );
 		String page = "";
-		
+
 		if(plist != null){
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage,
+					startPage, endPage);
 			
+			request.setAttribute("pi", pi);
 			page = "views/won/myPage.jsp";
 			request.setAttribute("list", plist);
 			

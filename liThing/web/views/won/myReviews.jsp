@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, com.buyme.sic.review.model.vo.*, java.util.*"%>
+	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, com.buyme.sic.review.model.vo.*, java.util.* , com.buyme.won.notice.model.vo.*"%>
 <%
 	Product p = (Product) request.getAttribute("dRank");
 	ArrayList<Review> rlist = (ArrayList<Review>) request.getAttribute("rlist");
+	
+    PageInfo pi = (PageInfo)request.getAttribute("pi");
+    int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -120,7 +128,7 @@ body {
 		<ul class="nav nav-tabs">
 			<li ><a href="/semi/sWish.mp?userid=<%=mh.getUserId()%>">&nbsp;
 					위시리스트 &nbsp;</a></li>
-			<li><a href="/semi/orderList.mp">주문내역</a></li>
+			<li><a href="/semi/sOrder.mp?userid=<%= mh.getUserId() %>">주문내역</a></li>
 			<li class="active"><a href=" ">내가 작성한 리뷰</a></li>
 		</ul>
 
@@ -159,35 +167,34 @@ body {
 	<br />
 		<% } %>
 
-
 	
 	
 		 <div class="pagingArea" align="center">
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=1'"><<</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button id="paging" disabled><</button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%=currentPage - 1 %>'"><</button>
 			<%  } %>
 			
-			<% for(int p = startPage; p <= endPage; p++){
-					if(p == currentPage){	
+			<% for(int pg = startPage; pg <= endPage; pg++){
+					if(pg == currentPage){	
 			%>
-				<button id="paging" disabled><%= p %></button>
+				<button id="paging" disabled><%= pg %></button>
 			<%      }else{ %>
-				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= p %>'"><%= p %></button>
+				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%= pg %>&userid=<%= mh.getUserId()%>'"><%= pg %></button>
 			<%  } %>
 			<% } %>
 				
 			<%  if(currentPage >= maxPage){  %>
 			<button id="paging" disabled>></button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%=currentPage + 1 %>'">></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%=currentPage + 1 %>'">></button>
 			<%  } %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/selectList.no?currentPage=<%= maxPage %>'">>></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%= maxPage %>'">>></button>
 			
 		</div> 
-	
+
 	<br />
 	<br />
 	<br />

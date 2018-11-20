@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" import="com.buyme.sic.ranking.model.vo.*, java.util.*, com.buyme.won.notice.model.vo.*"%>
 <%
 	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+
     PageInfo pi = (PageInfo)request.getAttribute("pi");
     int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
@@ -121,7 +122,7 @@ body {
 <br />
 <br />
 <br />
-	<% for(Product p : list) {%>
+	<% for(Product pr : list) {%>
 		<div id="dbox" class="box"
 			style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border: 1px solid #D0D0D0; border-radius: 4px">
 			<table id="rList"
@@ -131,35 +132,47 @@ body {
 				<tr>
 
 					<td style="width: 100px; height: 150px;"><img
-						src="/semi/resources/productImg/<%= p.getCname() %>" width="200px" height="150px"
+						src="/semi/resources/productImg/<%= pr.getCname() %>" width="200px" height="150px"
 						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important" />
 					</td>
 					<td style="text-align: left">
 						<ul style="text-align: left; list-style: none;">
-							<li><h5 style="color: red"><%=p.getBrand() %></h5></li>
-							<li><h4><%= p.getPname() %></h4></li>
-							<li><h5><%= p.getPprice() %></h5></li>
+							<li><h5 style="color: red"><%=pr.getBrand() %></h5></li>
+							<li><h4><%= pr.getPname() %></h4></li>
+							<li><h5><%= pr.getPprice() %></h5></li>
 						</ul>
 					</td>
-					<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>
+					<td style="width: 250px; height: 150px;"><%= pr.getRank() %></td>
+					<td><button onclick="deleteWish();">삭제하기</button></td>
 				</tr>
 
 
 			</table>
-
+			
 		</div>
+		
 		<% } %>
 <br />
 <br />
 <br />
+	<script>
+		function deleteWish(){
+			var val = confirm("정말로 위시리스트에서 삭제하시겠습니까? ");
+			if(val == true){
+				var thisid = $(this).attr('id');
+				console.log(thisid);
+				console.log($('#userid'+thisid).val());
 
+				location.href='<%= request.getContextPath() %>/mdeleteWish.mp';
+			}
+		}
+		
+	</script>
 
 	<br />
 	<br />
 	<br />
-	
-
-		 <div class="pagingArea" align="center">
+		<div class="pagingArea" align="center">
 			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=1'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button id="paging" disabled><</button>
@@ -172,7 +185,7 @@ body {
 			%>
 				<button id="paging" disabled><%= p %></button>
 			<%      }else{ %>
-				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%= p %>'"><%= p %></button>
+				<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%= p %>&userid=<%= mh.getUserId()%>'"><%= p %></button>
 			<%  } %>
 			<% } %>
 				
@@ -185,6 +198,7 @@ body {
 			
 		</div>  
 	
+
 	<br />
 	<br />
 	<br />

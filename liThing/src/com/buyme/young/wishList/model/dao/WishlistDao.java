@@ -62,7 +62,7 @@ public class WishlistDao {
 
 	}
 
-	public ArrayList<Product> selectList(Connection con, String userid) {
+	public ArrayList<Product> selectList(Connection con, String userid, int currentPage, int limit) {
 		ArrayList<Product> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -71,14 +71,20 @@ public class WishlistDao {
 		
 		try {
 			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage -1)*limit +1;
+			int endRow = startRow +limit -1;
 
 			pstmt.setString(1, userid);
-			
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, startRow);
+
 			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<Product>();
 			
 			while(rset.next()) {
+				
 				Product p = new Product();
 				
 				p.setPno(rset.getString("P_NO"));
@@ -87,6 +93,8 @@ public class WishlistDao {
 				p.setBrand(rset.getString("BRAND"));
 				p.setRank(rset.getDouble("RANK"));
 				p.setCname(rset.getString("C_NAME"));
+				
+				System.out.println("p : " + p);
 				
 				list.add(p);
 				
@@ -98,11 +106,11 @@ public class WishlistDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+		System.out.println();
 		return list;
 	}
 
-	/*public int getListCount(Connection con) {
+	public int getListCount(Connection con) {
 		
 		Statement stmt = null;
 		int listCount = 0;
@@ -127,12 +135,6 @@ public class WishlistDao {
 		return listCount;
 		
 	}
-
-	public ArrayList<Product> selectList(Connection con, int currentPage, int limit) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-
 
 
 }

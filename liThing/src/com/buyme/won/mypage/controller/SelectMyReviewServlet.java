@@ -14,6 +14,8 @@ import com.buyme.sic.ranking.model.service.ProductService;
 import com.buyme.sic.ranking.model.vo.Product;
 import com.buyme.sic.review.model.service.ReviewService;
 import com.buyme.sic.review.model.vo.Review;
+import com.buyme.won.notice.model.vo.PageInfo;
+import com.buyme.young.wishList.model.service.WishlistService;
 
 /**
  * Servlet implementation class SelectMyReviewServlet
@@ -36,14 +38,51 @@ public class SelectMyReviewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String userid = request.getParameter("userid");
-		ArrayList<Review> rlist  = new ReviewService().MyreviewList(userid);
+		ReviewService rs = new ReviewService();
+	
 		
+		
+		// 페이징 처리
+		int startPage;
+		int endPage;
+		int maxPage;
+		int currentPage;
+		int limit;
+		
+		currentPage = 1;
+		limit = 3;
 
+		if (request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			System.out.println("현재 page : " + currentPage);
+		}
+
+		int listCount = rs.getListCount();
+
+		System.out.println("전체 내 리뷰 수 : " + listCount);
+
+		maxPage = (int) ((double) listCount / limit + 0.9);
+		startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
+		endPage = startPage + limit-1;
+
+		System.out.println("endpage : " + endPage);
+		System.out.println("startPage : " + startPage);
+
+		if (endPage > maxPage) {
+			endPage = maxPage;
+		}
+
+		ArrayList<Review> rlist  = rs.MyreviewList(userid, currentPage, limit);
+
+		
 		
 		String page = "";
 		if (rlist != null) {
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage,
+					startPage, endPage);
 			
-			
+			request.setAttribute("pi", pi);
+	
 
 			page = "views/won/myReviews.jsp";
 			request.setAttribute("rlist", rlist);

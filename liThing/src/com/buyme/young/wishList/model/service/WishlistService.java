@@ -27,19 +27,19 @@ public class WishlistService {
 		return result;
 	}
 
-	public ArrayList<Product> selectWish(String userid) {
+	public ArrayList<Product> selectWish(String userid, int currentPage, int limit) {
 		ArrayList<Product> list = null;
 		
 		Connection con = getConnection();
 		
-		list = wDao.selectList(con, userid);
+		list = wDao.selectList(con, userid, currentPage, limit);
 		
 		close(con);
 		
 		return list;
 	}
 
-/*	public int getListCount() {
+	public int getListCount() {
 		
 		Connection con = getConnection();
 		
@@ -47,11 +47,10 @@ public class WishlistService {
 		
 		close(con);
 		
-		return listCount;
+		return listCount;                                                                                                                                                                            
+
+	
+	
+	
 	}
-*/
-	
-	
-	
-	
 }
