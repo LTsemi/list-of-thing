@@ -138,7 +138,7 @@ public class EventInsertServlet extends HttpServlet {
 	
 			if(result > 0) {
 				System.out.println("성공하였습니다!");
-				response.sendRedirect("selectList.ev");
+				response.sendRedirect("eventManager.ev");
 				
 			} else {
 				/*request.setAttribute("msg", "파일 전송 실패!");*/

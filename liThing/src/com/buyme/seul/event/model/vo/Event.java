@@ -25,6 +25,7 @@ public class Event implements Serializable {
 	private int dday;
 	private int userCnt;
 	private int evtEno;
+	private int evteno_cnt;
 
 	public Event() {
 		super();
@@ -286,6 +287,20 @@ public class Event implements Serializable {
 
 	public void setEvtEno(int evtEno) {
 		this.evtEno = evtEno;
+	}
+
+
+
+
+	public int getEvteno_cnt() {
+		return evteno_cnt;
+	}
+
+
+
+
+	public void setEvteno_cnt(int evteno_cnt) {
+		this.evteno_cnt = evteno_cnt;
 	}
 
 

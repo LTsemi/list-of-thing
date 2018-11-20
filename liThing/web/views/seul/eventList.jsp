@@ -67,9 +67,9 @@ body {
 	text-shadow: 1px 1px 2px #666;
 	color: white;
 	position:absolute;
-	margin: 140px auto;
+	margin: 80px auto;
 	text-align: center;
-	font-size: 18px;
+	font-size: 20px;
 	line-height: 24px;
 }
 .image-cover{

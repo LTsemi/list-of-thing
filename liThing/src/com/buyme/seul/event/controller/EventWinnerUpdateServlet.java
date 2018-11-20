@@ -75,7 +75,7 @@ public class EventWinnerUpdateServlet extends HttpServlet {
 		
 		if(result > 0) {
 			
-			response.sendRedirect("eSelectWin.ev?eno="+eno);
+			response.sendRedirect("eventManager.ev");
 			System.out.println("당첨자 수정 성공!");
 			
 		} else {

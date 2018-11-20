@@ -66,6 +66,7 @@ public class EventDao {
 				e.setDday(rset.getInt("DDAY"));
 				e.setUserCnt(rset.getInt("USERCNT"));
 				e.setEvtEno(rset.getInt("EVTENO"));
+				e.setEvteno_cnt(rset.getInt("EVTENO_CNT"));
 				
 				list.add(e);
 				
@@ -80,6 +81,48 @@ public class EventDao {
 		}
 		
 		return list;
+	}
+	
+	public ArrayList<Event> selectWinnerList(Connection con) {
+		Statement stmt = null;
+		ArrayList<Event> ewlist = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("winnerList");
+		
+		try {
+			
+			stmt= con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			ewlist = new ArrayList<Event>();
+			
+			while(rset.next()){
+				Event e = new Event();
+				e.setEventallno(rset.getInt("EVENTALLNO"));
+				e.setEtype(rset.getInt("ETYPE"));
+				e.setEno(rset.getInt("ENO"));
+				e.setUserid(rset.getString("USERID"));
+				e.setEvtdate(rset.getDate("EVTDATE"));
+				e.setEvtcontent(rset.getString("EVTCONTENT"));
+				e.setEvttitle(rset.getString("EVTTITLE"));
+				e.setDelflag(rset.getString("DELFLAG"));
+				e.setEvtEno(rset.getInt("EVTENO"));
+				
+				ewlist.add(e);
+				
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(stmt);
+		}
+		
+		return ewlist;
 	}
 	
 	public ArrayList<Event> selectWinList(Connection con, int currentPage, int limit) {
@@ -437,6 +480,8 @@ public class EventDao {
 		
 		return listCount;
 	}
+
+
 
 	
 }

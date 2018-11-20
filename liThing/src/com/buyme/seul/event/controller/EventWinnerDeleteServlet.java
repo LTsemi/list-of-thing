@@ -33,7 +33,7 @@ public class EventWinnerDeleteServlet extends HttpServlet {
 		String page = "";
 		if(result > 0) {
 			
-			response.sendRedirect("selectWinList.ev");
+			response.sendRedirect("eventManager.ev");
 			
 		} else {
 			System.out.println("글 삭제 실패!");

@@ -124,7 +124,7 @@ public class EventUpdateServlet extends HttpServlet {
 			
 			if(result > 0) {
 				
-				response.sendRedirect("selectOne.ev?eno="+eno);
+				response.sendRedirect("eventManager.ev");
 				System.out.println("이벤트 수정 성공!");
 				
 			} else {

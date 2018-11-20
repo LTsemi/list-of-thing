@@ -37,6 +37,7 @@ public class EventManagerServlet extends HttpServlet {
 		ArrayList<Event> list = null;
 		
 		list = new EventService().selectEventList();
+		ArrayList<Event> ewlist = new EventService().selectWinnerList();
 		
 		ArrayList<EventComment> clist
 		   = new EventCommentService().allSelectList();
@@ -53,6 +54,7 @@ public class EventManagerServlet extends HttpServlet {
 			page = "views/seul/eventManager.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("clist", clist);
+			request.setAttribute("ewlist", ewlist);
 			
 		} else {
 			/*

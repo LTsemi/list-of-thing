@@ -85,7 +85,7 @@ public class EventWinnerInsertServlet extends HttpServlet {
 			
 			if(result > 0){
 				System.out.println("성공하였습니다!");
-				response.sendRedirect("selectWinList.ev");
+				response.sendRedirect("eventManager.ev");
 				
 			} else {
 				

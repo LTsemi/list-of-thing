@@ -4,6 +4,7 @@
     
 <%
 	Event e = (Event)request.getAttribute("event");
+	ArrayList<EventWinner> ewlist = (ArrayList<EventWinner>) request.getAttribute("ewlist");
 %>
  
 <!DOCTYPE html>
@@ -140,7 +141,51 @@
         <div id="titleText">
             <textarea name="content" rows="15" cols="120" style="resize:none;"><%= e.getEvtcontent() %></textarea>
         </div>
-        <br><br>
+        <br>
+
+ 		<div class="winTab">
+		 <br>
+			<table border="1" width="500"  align="center" cellspacing="0" cellpadding="3" >
+			    
+			    <tr>
+			    <td width="140px"> 이벤트 명 </td>
+			    <td style="padding: 2px 10px" ><%= e.getEvttitle() %>	
+					
+				</td>
+			    <td width="140px"> 당첨자 수 </td>
+			    <td style="padding: 2px 10px">
+					<%= e.getWinner_cnt() %></td>
+			    </tr>
+			    <tr>
+			    	<td colspan="4" style="padding: 5px 10px;"> 당첨자 내역 </td>
+			    </tr>
+			    <tr>
+			    	<td colspan="4">
+			    		<table width="80%" style="margin: 0 auto">
+						  <tr>
+						    <th style="text-align: center;"> 당첨자 ID </th>
+						    <th style="text-align: center;"> 당첨자 이름 </th>
+						  </tr>
+						 <%
+							for (EventWinner ew : ewlist) {
+								
+						  %>
+						  <tr>
+						    <td><%= ew.getCwriter() %></td>
+						    <td><%= ew.getUserName() %></td>
+						  </tr>
+						  <% 		
+								}
+						   %>
+						</table>
+
+			    	</td>
+			    	
+			    </tr>
+			</table>
+			
+ 		</div>
+        <br>
  
         <br />
       <hr>

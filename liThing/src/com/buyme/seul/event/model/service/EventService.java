@@ -24,8 +24,16 @@ public class EventService {
 		
 		return list;
 	}
+	public ArrayList<Event> selectWinnerList() {
+		Connection con = getConnection();
+		
+		ArrayList<Event> ewlist = eDao.selectWinnerList(con);
+		
+		close(con);
+		
+		return ewlist;
+	}
 
-	
 
 	public ArrayList<Event> selectEventWinnerList(int currentPage, int limit) {
 		Connection con = getConnection();

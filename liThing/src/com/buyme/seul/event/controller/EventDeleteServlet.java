@@ -34,7 +34,7 @@ public class EventDeleteServlet extends HttpServlet {
 		String page = "";
 		if(result > 0) {
 			
-			response.sendRedirect("selectList.ev");
+			response.sendRedirect("eventManager.ev");
 			
 		} else {
 			System.out.println("글 삭제 실패!");

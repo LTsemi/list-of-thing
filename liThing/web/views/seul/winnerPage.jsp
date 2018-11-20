@@ -178,7 +178,7 @@
       <br>
       <a href="/semi/selectWinList.ev" class="listbtn">목록으로</a>
       <% if(mh != null && mh.getUserId().equals("admin")){ %>	
-      <button class="listbtn" onclick="location.href='eWinUpdateView.ev?eno=<%=e.getEno()%>'">수정하기</button>	
+      <button class="listbtn" onclick="location.href='eWinUpdateView.ev?eno=<%=e.getEno()%>&evtEno=<%= e.getEvtEno()%>'">수정하기</button>	
       <button class="listbtn" onclick="location.href='eWinDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>	  
 	  <% } %>
     </div>

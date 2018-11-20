@@ -6,8 +6,10 @@
 	Event e = (Event)request.getAttribute("event");
 	EventWinner ew = (EventWinner)request.getAttribute("EventWinner");
 	ArrayList<Event> list = (ArrayList<Event>) request.getAttribute("list");
+	ArrayList<Event> ewlist = (ArrayList<Event>) request.getAttribute("ewlist");
 	//댓글 리스트
 	ArrayList<EventComment> clist = (ArrayList<EventComment>) request.getAttribute("clist");
+	int i =0;
 %>
 <!DOCTYPE html>
 <html>
@@ -66,6 +68,9 @@ button:disabled {
 color: lightgray;
 
 }
+th{
+cursor: default;
+}
 </style>
 
 </head>
@@ -119,23 +124,23 @@ color: lightgray;
 									if (evt.getDelflag().equals("Y") && evt.getEtype() == 1) {
 							%>
 							<tr>
-								<td><input type="checkbox" value="" name="checkRow" onclick="doOpenCheck(this);CheckBtn(this.form);"></td>
+								<td><input type="checkbox" name="checkRow" /></td>
 								<td><input type="hidden" value="<%=evt.getEno()%>"/><%=evt.getEno()%></td>
 								<td><%=evt.getEvttitle()%></td>
 								<td><%=evt.getWinner_cnt()%></td>
 								<td><%=evt.getUserCnt()%></td>
 								<% if (evt.getDday() > 0) { %>
-								<td><%=evt.getDday()%></td>
+								<td id="dDay"><span><%=evt.getDday()%></span></td>
 								<% } else if (evt.getDday() == 0) { %>
-								<td>D-day</td>
+								<td id="dDay"><span>D-day</span></td>
 								<% } else { %>
-								<td>종료</td>
+								<td id="dDay"><span>종료</span></td>
 								<% } %>
-								<%-- <% if(evt.getEvtEno() == ew.getEno()){ %> --%>
-								<td class="checkWinner">O</td>
-								<%-- <% }else{ %>
-								<td class="checkWinner"><p style="color: red">X</p></td>
-								<% } %> --%>
+								<% if(evt.getEvteno_cnt() == 2){ %>
+								<td class="checkWinner"><b>O</b></td>
+								<% }else{ %>
+								<td class="checkWinner"><b>X</b></td>
+								<% } %>
 							</tr>
 							<% 		}
 								}
@@ -143,20 +148,62 @@ color: lightgray;
 
 						</table>
 
-						<p>당첨자 추첨 (종료된 이벤트만 클릭 가능 / 한번만 수행 가능하게)<br>
-							이벤트 수정하기 (체크박스 체크 없을 시 비활성화)<br>
-							이벤트 삭제하기 (체크박스 없을 시 비활성화)</p>
+						<p style="color: red; text-align: center;">※ 당첨자 추첨 : 기한 종료된 이벤트만 클릭 가능<br>
+						※ 당첨자 페이지 : 당첨자가 추첨된 글만 작성 가능</p>
 						<div class="box" style="width: 95%; margin: 0 auto; text-align: center;">							
 							<button onclick="location.href='views/seul/eventPageInsertForm.jsp'">이벤트페이지 작성</button> &nbsp;
-							<button name="chkWinBtn" onclick="chkWin();">당첨자 추첨</button> &nbsp;
-							<button name="winIstBtn" onclick="chkWinIst();" >당첨자페이지 작성</button> &nbsp;
-							<button name="udtBtn" onclick="chkUpdate();" >수정하기</button> &nbsp;
-							<button name="delBtn" onclick="chkDelete();" >삭제하기</button>
+							<button id="chkWinBtn" onclick="chkWin();" disabled>당첨자 추첨</button> &nbsp;
+							<button id="winIstBtn" onclick="chkWinIst();" >당첨자페이지 작성</button> &nbsp;
+							<button id="udtBtn" onclick="chkUpdate();" disabled>수정하기</button> &nbsp;
+							<button id="delBtn" onclick="chkDelete();" disabled>삭제하기</button>
 							
 
 						</div>
 					</div>
+					<br />
 					
+					<div class="thumbnail"
+						style="width: 90%; max-width:950px; margin: 0 auto; padding: 20px;">
+
+						<table class="winMgtBox" border="1"
+							style="width: 95%; text-align: center; margin: 20px auto;">
+							<caption
+								style="text-align: center; font-size: 18px; font-weight: 600">
+								당첨자 페이지 관리</caption>
+							<tr>
+								<th style="text-align: center;">
+								<!-- <input type="checkbox" name="checkAll" id="th_checkAll" onclick="checkAll();" /> -->
+								</th>
+								<th style="text-align: center;">No</th>
+								<th style="text-align: center;">이벤트 명</th>
+								<th style="text-align: center;">작성일</th>
+								<th style="text-align: center;">이벤트No</th>
+							</tr>
+							<%
+								for (Event evtw : ewlist) {
+									if (evtw.getDelflag().equals("Y") && evtw.getEtype() == 0) {
+							%>
+							<tr>
+								<td><input type="checkbox" value="" name="checkRow2" /></td>
+								<td><input type="hidden" value="<%=evtw.getEno()%>"/><%=evtw.getEno()%></td>
+								<td><%=evtw.getEvttitle()%></td>
+								<td><%=evtw.getEvtdate()%></td>
+								<td><%=evtw.getEvtEno() %></td>
+							</tr>
+							<% 		}
+								}
+							%>
+
+						</table>
+
+						
+						<div class="box" style="width: 95%; margin: 0 auto; text-align: center;">							
+							<button id="udtWinBtn" onclick="chkWinUpdate();" disabled>수정하기</button> &nbsp;
+							<button id="delWinBtn" onclick="chkWinDelete();" disabled>삭제하기</button>
+							
+
+						</div>
+					</div>
 					
 					<br> <br> <br> <br>
 				</div>
@@ -164,57 +211,124 @@ color: lightgray;
 		</div>
 	</div>
 	<script>
+	/* 이벤트 목록 클릭시 상세페이지로 이동 */
+	$('.evtMgtBox tr').eq(0).siblings().mouseenter(function () {
+		$(this).children().not(':first').css({'background':'#F7D58B', 'cursor':'pointer'});
+		$(this).children().not(':first').click(function () {
+			var eno = $(this).parent().children().eq(1).text()
+			viewSelectOne(eno);
+		});
+			
+	}).mouseleave(function () {
+		$(this).children().not(':first').css({'background':'white'});
+	});
 	
-	/* 체크박스 하나만 선택가능 */
-	function doOpenCheck(chk){
-	    var obj = document.getElementsByName("checkRow");
-	    for(var i=0; i<obj.length; i++){
-	        if(obj[i] != chk){
-	            obj[i].checked = false;
-	        }
-	    }
-	} 
+	function viewSelectOne(eno) {
+		var veno = eno;
+		console.log(veno);
+		location.href="<%=request.getContextPath()%>/selectOne.ev?eno=" + veno;
+	}
+	
+	/* 당첨자 목록 클릭시 상세페이지로 이동 */
+	$('.winMgtBox tr').eq(0).siblings().mouseenter(function () {
+		$(this).children().not(':first').css({'background':'#F7D58B', 'cursor':'pointer'});
+		$(this).children().not(':first').click(function () {
+			
+			var eno = $(this).parent().children().eq(1).text()
+			viewSelectWinOne(eno, evtEno);
+			var evtEno = $(this).parent().children().eq(4).text()
+			viewSelectWinOne(eno, evtEno);
+		});
+			
+	}).mouseleave(function () {
+		$(this).children().not(':first').css({'background':'white'});
+	});
+	
+	function viewSelectWinOne(eno, evtEno) {
+		var veno = eno;
+		var vevtEno = evtEno;
+		console.log(veno);
+		console.log(vevtEno);
+		location.href="<%=request.getContextPath()%>/eSelectWin.ev?eno=" + veno+"&evtEno="+vevtEno;
+	}
+	
 	
 	/* 체크박스 선택 시 버튼 활성화 */
-	/* function CheckBtn(frm)
-	{
-	   if (frm.delBtn.disabled==true){
-	    frm.delBtn.disabled=false		   
-	   }else{
-	    frm.delBtn.disabled=true		   
-	   }
-	    
-	   if (frm.udtBtn.disabled==true){
-	    frm.udtBtn.disabled=false		   
-	   }else{
-		frm.udtBtn.disabled=true		   
-	   }
-		
-		var checkbox = $("input[name=checkRow]:checked");
-	   checkbox.each(function(i) {
-		var tr = checkbox.parent().parent().eq(i);
-		var td = tr.children();	
-		var dday = td.eq(5).text();
-	   console.log(dday);
-		if(dday=="종료"){
-	    frm.chkWinBtn.disabled=false
-	    frm.delBtn.disabled=true
-	    frm.udtBtn.disabled=true
-		}else{
-		frm.chkWinBtn.disabled=true	
-		} 
-	   });
-	}*/
+	$('checkRow').ready(function() {
 
-	
-	/* 체크박스 전체선택, 전체해제 */
-	/* function checkAll(){
-	      if( $("#th_checkAll").is(':checked') ){
-	        $("input[name=checkRow]").prop("checked", true);
-	      }else{
-	        $("input[name=checkRow]").prop("checked", false);
-	      }
-	} */
+		//라디오 요소처럼 동작시킬 체크박스 그룹 셀렉터
+	    $('input[type="checkbox"][name="checkRow"]').click(function(){
+	        //클릭 이벤트 발생한 요소가 체크 상태인 경우
+
+	        if ($(this).prop('checked')) {
+
+	            //체크박스 그룹의 요소 전체를 체크 해제후 클릭한 요소 체크 상태지정
+	            $('input[type="checkbox"][name="checkRow"]').prop('checked', false);
+	            $(this).prop('checked', true);
+	            $('#udtBtn').attr('disabled',false);
+	            $('#delBtn').attr('disabled',false);
+	            
+	            var dDay = $("input[name=checkRow]:checked").parents('td').siblings().find('span').text();
+	            var end = "종료";
+	            //console.log(dDay);            
+	            var chkWin = $("input[name=checkRow]:checked").parents('td').siblings().find('b').text();
+	            var chkO = "O";
+	            //console.log(chkWin);
+	            
+	            if(dDay==end && chkWin==chkO){
+		            $('#chkWinBtn').attr('disabled',true);	            	
+	            }else{
+	            	$('#chkWinBtn').attr('disabled',true);	
+	            }
+	            
+	            if(dDay==end && !(chkWin==chkO)){
+		            $('#chkWinBtn').attr('disabled',false);	            	
+	            }else{
+	            	$('#chkWinBtn').attr('disabled',true);	
+	            }
+
+	            
+	            
+	            if(chkWin==chkO){
+		            $('#winIstBtn').attr('disabled',false);	            	
+	            }else{
+	            	$('#winIstBtn').attr('disabled',true);	
+	            }
+	            
+	        }else{
+	            $('#udtBtn').attr('disabled',true);
+	        	$('#delBtn').attr('disabled',true);
+	            $('#chkWinBtn').attr('disabled',true);	
+	            $('#winIstBtn').attr('disabled',true);
+			}
+	    });
+		
+	});
+
+	/* 당첨자 체크박스 선택 시 버튼 활성화 */
+	$('checkRow2').ready(function() {
+
+		//라디오 요소처럼 동작시킬 체크박스 그룹 셀렉터
+	    $('input[type="checkbox"][name="checkRow2"]').click(function(){
+	        //클릭 이벤트 발생한 요소가 체크 상태인 경우
+
+	        if ($(this).prop('checked')) {
+
+	            //체크박스 그룹의 요소 전체를 체크 해제후 클릭한 요소 체크 상태지정
+	            $('input[type="checkbox"][name="checkRow2"]').prop('checked', false);
+	            $(this).prop('checked', true);
+	            $('#udtWinBtn').attr('disabled',false);
+	            $('#delWinBtn').attr('disabled',false);
+	            
+	            
+	        }else{
+	        	$('#udtWinBtn').attr('disabled',true);
+	            $('#delWinBtn').attr('disabled',true);
+			}
+	    });
+		
+	});
+
 	
 	function chkWin(checkRow) {
 	var checkbox = $("input[name=checkRow]:checked");
@@ -265,7 +379,7 @@ color: lightgray;
 			var winner_cut = td.eq(3).text();
 			console.log(eno);	
 			console.log(winner_cut);	
-			if(confirm("당첨자 페이지 작성창으로 이동합니다!")){
+			if(confirm("당첨자 페이지 작성창으로 이동하시겠습니까?")){
 			location.href="/semi/eWinInsertView.ev?eno="+eno+"&winner_cut="+winner_cut;				
 			}else{
 				return;
@@ -317,13 +431,65 @@ color: lightgray;
 			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
 			var eno = td.eq(1).text();
 			console.log(eno);	
-			if(confirm("삭제하시겠습니까?")){
+			if(confirm("정말 삭제하시겠습니까?")){
 			location.href="/semi/eDelete.ev?eno="+eno;				
 			}else{
 				return;
 			}
 		});
-			 
+	}
+	
+		/* 당첨자 페이지용 버튼 */
+		function chkWinUpdate(checkRow) {
+		var checkbox = $("input[name=checkRow2]:checked");
+
+		
+		// 게시글 번호 가져오기
+		checkbox.each(function(i) {
+		 
+		    
+			// checkbox.parent() : checkbox의 부모는 <td>이다.
+			// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+			var tr = checkbox.parent().parent().eq(i);
+			var td = tr.children();	
+			
+			
+			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+			var eno = td.eq(1).text();
+			var evtEno = td.eq(4).text();
+			console.log("eno"+eno);	
+			if(confirm("수정하시겠습니까?")){
+			location.href="/semi/eWinUpdateView.ev?eno="+eno+"&evtEno="+evtEno;				
+			}else{
+				return;
+			}
+		});
+
+
+	}
+	
+	
+	function chkWinDelete(checkRow) {
+		var checkbox = $("input[name=checkRow2]:checked");
+		// 게시글 번호 가져오기
+		
+		checkbox.each(function(i) {
+
+			// checkbox.parent() : checkbox의 부모는 <td>이다.
+			// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+			var tr = checkbox.parent().parent().eq(i);
+			var td = tr.children();	
+			
+			
+			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+			var eno = td.eq(1).text();
+			console.log(eno);	
+			if(confirm("정말 삭제하시겠습니까?")){
+			location.href="/semi/eWinDelete.ev?eno="+eno;				
+			}else{
+				return;
+			}
+		});
 	}
 
 	</script>
