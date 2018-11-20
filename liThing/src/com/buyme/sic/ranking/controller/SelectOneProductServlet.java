@@ -33,11 +33,11 @@ public class SelectOneProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("selectOneServlet 들어옴");
 		String pno = request.getParameter("pno"); 
 		Product p = new Product();
 		ProductService ps = new ProductService();
-		
+		System.out.println("selectOneServlet Pno : " + pno);
 		p = ps.selectOneList(pno);
 		
 		ArrayList<Review> rlist = new ArrayList<Review>();
@@ -46,10 +46,13 @@ public class SelectOneProductServlet extends HttpServlet {
 		String page = "";
 		
 		if(p != null){
-			
+			System.out.println("성공");
 			page = "views/sic/rankDetail.jsp";
 			request.setAttribute("dRank", p);
 			request.setAttribute("rlist", rlist);
+			
+			System.out.println("drank : " + p);
+			System.out.println("rlist : " + rlist);
 			
 		} else {
 			System.out.println("서블릿오류");

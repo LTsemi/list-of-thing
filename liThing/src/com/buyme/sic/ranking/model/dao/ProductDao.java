@@ -69,6 +69,8 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Product p = null;
+		
+		System.out.println("selectOneDao들어옴");
 
 		String sql = prop.getProperty("selectOneList");
 		
@@ -119,7 +121,7 @@ public class ProductDao {
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectProduct");
+		String sql = prop.getProperty("selectList");
 		
 		try {
 			stmt = con.createStatement();
@@ -307,6 +309,8 @@ public class ProductDao {
 				Product p = new Product();
 				
 				p.setPno(rset.getString("P_NO"));
+				p.setPnn(rset.getString("P_NN"));
+				p.setKno(rset.getString("K_NO"));
 				p.setPname(rset.getString("P_NAME"));
 				p.setPprice(rset.getInt("P_PRICE"));
 				p.setBrand(rset.getString("BRAND"));
@@ -323,6 +327,79 @@ public class ProductDao {
 			close(rset);
 			close(pstmt);
 		}
+		return list;
+	}
+
+	public ArrayList<Product> sortList(Connection con, String so, String pnn) {
+		System.out.println("sortDAO들어옴");
+		ArrayList<Product> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = null;
+		
+		switch (so) {
+		case "GradeH":
+			sql = prop.getProperty("sortGradeHProduct");
+			System.out.println("GradeH");
+			break;
+		case "GradeR":
+			sql = prop.getProperty("sortGradeRProduct");
+			System.out.println("GradeR");
+			break;
+		case "ReviewM":
+			sql = prop.getProperty("sortReviewMProduct");
+			System.out.println("ReviewM");
+			break;
+		case "ReviewL":
+			sql = prop.getProperty("sortReviewLProduct");
+			System.out.println("ReviewL");
+			break;
+		case "PriceH":
+			sql = prop.getProperty("sortPriceHProduct");
+			System.out.println("PriceH");
+			break;
+		case "PriceL":
+			sql = prop.getProperty("sortPriceLProduct");
+			System.out.println("PriceL");
+			break;
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pnn);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Product>();
+			
+			while(rset.next()) {
+				Product p = new Product();
+				
+				p.setPno(rset.getString("P_NO"));
+				p.setPnn(rset.getString("P_NN"));
+				p.setKno(rset.getString("K_NO"));
+				p.setPname(rset.getString("P_NAME"));
+				p.setPprice(rset.getInt("P_PRICE"));
+				p.setBrand(rset.getString("BRAND"));
+				p.setRank(rset.getDouble("RANK"));
+				p.setCname(rset.getString("C_NAME"));
+				
+				
+				System.out.println("P : " + p);
+				list.add(p);
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
 		return list;
 	}
 }

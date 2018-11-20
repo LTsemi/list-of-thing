@@ -48,7 +48,7 @@ public class ProductService {
 		Connection con = getConnection();
 		
 		int result = 0;
-		
+		System.out.println("selectOneService들어옴");
 		System.out.println(pno);
 		Product p = pDao.selectOne(con, pno);
 		
@@ -60,6 +60,7 @@ public class ProductService {
 		
 		close(con);
 		
+		System.out.println("selectOne 반환값:" + p);
 		return p;
 	}
 
@@ -155,6 +156,15 @@ public class ProductService {
 
 		close(con);
 
+		return list;
+	}
+
+	public ArrayList<Product> sortList(String so, String pnn) {
+		Connection con = getConnection();
+		ArrayList<Product> list = null;
+		
+		list = pDao.sortList(con, so, pnn);
+	
 		return list;
 	}
 

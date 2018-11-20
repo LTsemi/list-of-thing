@@ -239,22 +239,22 @@ nav {
         <div class="row" style="padding-right : 100px;">
           <div class="main-menu" style="float:left; width:50%;">
           			<ul class="one" id="rankul" style="color : #FFA41F !important;">
-								<li><a href="#">랭킹</a>
+								<li><a>랭킹</a>
 									<ul class="two">
 									<br /><br /><br />
-										<li><a href="#">간편식</a>
+										<li><a>간편식</a>
 											<ul class="three">
 											<br />
 												<li><a href="/semi/selectList.po?pnn=FF">냉동식품</a></li>
 												<li><a href="/semi/selectList.po?pnn=RF">냉장식품</a></li>
 											</ul></li>
-										<li><a href="#">라면</a>
+										<li><a>라면</a>
 											<ul class="three">
 											<br /><br /><br /><br />											
 												<li><a href="/semi/selectList.po?pnn=OM">봉지라면</a></li>
 												<li><a href="/semi/selectList.po?pnn=CM">컵라면</a></li>
 											</ul></li>
-										<li><a href="#">스낵</a>
+										<li><a>스낵</a>
 											<ul class="three">
 											<br /><br /><br /><br /><br /><br /><br /><br />			
 												<li><a href="/semi/selectList.po?pnn=SN">과자</a></li>

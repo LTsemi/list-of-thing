@@ -7,6 +7,16 @@
 <title>관리자 페이지</title>
 </head>
 <style>
+@font-face {
+	font-family: 'NanumSquareRoundR';
+	src: url('/semi/resources/css/fonts/NanumSquareRoundR.ttf');
+}
+
+* {
+	box-sizing: border-box;
+	font-family: NanumSquareRoundR !important;
+}
+
 td{
 	padding: 3px 3px;
 	text-align: center;

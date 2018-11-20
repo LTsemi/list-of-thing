@@ -2,7 +2,7 @@ package com.buyme.sic.ranking.model.vo;
 
 import java.io.Serializable;
 
-public class Product implements Serializable{
+public class Product implements Serializable {
 	private String pno;
 	private String pnn;
 	private String kno;
@@ -17,16 +17,11 @@ public class Product implements Serializable{
 	private String oname;
 	private String cname;
 	private String pexp;
-	
+
+
 	public Product() {
 		super();
 	}
-
-	
-
-	
-
-
 
 	public Product(String pno, String pnn, String kno, String pname, int pprice, String pindg, String brand,
 			String pcap, double rank, int count, String pimg, String oname, String cname, String pexp) {
@@ -47,12 +42,6 @@ public class Product implements Serializable{
 		this.pexp = pexp;
 	}
 
-
-
-
-
-
-
 	public Product(String pnn, String kno, String pname, int pprice, String pindg, String brand, String pcap,
 			String pimg, String oname, String cname, String pexp) {
 		super();
@@ -68,7 +57,7 @@ public class Product implements Serializable{
 		this.cname = cname;
 		this.pexp = pexp;
 	}
-
+	
 	
 	public String getPno() {
 		return pno;
@@ -134,18 +123,13 @@ public class Product implements Serializable{
 		this.pcap = pcap;
 	}
 
-	
 	public double getRank() {
 		return rank;
 	}
 
-
-
 	public void setRank(double rank) {
 		this.rank = rank;
 	}
-
-
 
 	public int getCount() {
 		return count;
@@ -179,19 +163,13 @@ public class Product implements Serializable{
 		this.cname = cname;
 	}
 
-
-
 	public String getPexp() {
 		return pexp;
 	}
 
-
-
 	public void setPexp(String pexp) {
 		this.pexp = pexp;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -200,9 +178,4 @@ public class Product implements Serializable{
 				+ ", pimg=" + pimg + ", oname=" + oname + ", cname=" + cname + ", pexp=" + pexp + "]";
 	}
 
-	
-
-	
-	
-	
 }

@@ -3,61 +3,24 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+	String so = (String)request.getAttribute("sortsts");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리띵 :: 랭킹</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Highway Blog - Free CSS Template</title>
-<!-- 
-
-Highway Template
-
-http://www.templatemo.com/tm-520-highway
-
--->
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
-
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="../resources/css/fontAwesome.css">
-<link rel="stylesheet" href="../resources/css/light-box.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">   
 
 
-<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link
-	href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Gugi|Jua|Noto+Sans+KR:300"
-	rel="stylesheet">
 
-
-
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<
 <style>
 @font-face {
     font-family: 'NanumSquareRoundR';
@@ -75,12 +38,15 @@ http://www.templatemo.com/tm-520-highway
 
 .listcss {
 	border: 0.5px solid gray;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	padding: 5px;
 	/* font-family: "Nanum Gothic", sans-serif; */
 }
+
+o
 .button {
 	background: url('<%= request.getContextPath() %>resources/img/reload.png') no-repeat;
 	background-size: auto 100%;
@@ -179,13 +145,14 @@ http://www.templatemo.com/tm-520-highway
 				<div
 					style="border: 1px solid #D0D0D0; padding-left: 20px; font-size: 25px; padding-top: 20px; background: white; border-radius: 4px">
 					<span><img src="<%= request.getContextPath() %>/resources/img/list.png"/></span><b>&nbsp;&nbsp;정렬</b><br>
-					<br> <select class="listcss" name="" id=""
-						style="color: black; font-size: 15px; margin-bottom: 20px; width: 200px; outline: none;">
-						<option value="랭킹순">랭킹순</option>
-						<option value="평점높은순">평점높은순</option>
-						<option value="평점낮은순">평점낮은순</option>
-						<option value="리뷰많은순">리뷰많은순</option>
-						<option value="리뷰적은순">리뷰적은순</option>
+					<br> <select class="listcss" name="sortList" id="sortList"
+						style="color: black; font-size: 15px; margin-bottom: 20px; width: 200px; outline: none;" onchange="selectsort()">>
+						<option value="GradeH" selected="selected">평점높은순</option>
+						<option value="GradeR">평점낮은순</option>
+						<option value="ReviewM">리뷰많은순</option>
+						<option value="ReviewL">리뷰적은순</option>
+						<option value="PriceH">가격높은순</option>
+						<option value="PriceL">가격낮은순</option>
 					</select>
 
 				</div>
@@ -266,16 +233,17 @@ http://www.templatemo.com/tm-520-highway
 						</label>
 					</div>
 				</div>
-				<button id="upPduct">작성</button>
+				
 			</div>
 			<div id="dbox" class="box"
 				style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border:1px solid #D0D0D0; border-radius: 4px">
-				<table id="rList" style=" width: 659px; height: 150px; text-align: center; border-radius: 4px">
-					
+				<table id="rList" style=" width: 659px; height: 150px; text-align: center; border-radius: 4px" border="0"  cellpadding="0" cellspacing="0">
+					<% int cnt = 0; %>
 					<% for(Product p : list){ %>
+					<% cnt ++; %>
 					<tr>
 						<td style="display: none"><b><%= p.getPno() %></b></td>
-						<td style="width: 100px; height: 150px;"><b>번호</b></td>
+						<td style="width: 100px; height: 150px;"><b><%= cnt %></b></td>
 						<td style="width: 100px; height: 150px;">
 							<img src="/semi/resources/productImg/<%=p.getCname() %>"  style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; background-color: transparent; !important"/>
 						</td>
@@ -287,6 +255,7 @@ http://www.templatemo.com/tm-520-highway
 							</ul> 
 						</td>
 						<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>
+						<td id="pnn" style="display: none"><%= p.getPnn() %></td>
 					</tr>
 					<% } %>
 				</table> 
@@ -300,68 +269,19 @@ http://www.templatemo.com/tm-520-highway
 	<%@ include file="../common/footer.jsp"%>
 
 
-	<!-- Modal button -->
-	<div class="popup-icon">
-		<button id="modBtn" class="modal-btn">
-			<img src="img/contact-icon.png" alt="">
-		</button>
-	</div>
-
-	<!-- Modal -->
-	<div id="modal" class="modal">
-		<!-- Modal Content -->
-		<div class="modal-content">
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<h3 class="header-title">
-					Say hello to <em>Highway</em>
-				</h3>
-				<div class="close-btn">
-					<img src="img/close_contact.png" alt="">
-				</div>
-			</div>
-			<!-- Modal Body -->
-			<div class="modal-body">
-				<div class="col-md-6 col-md-offset-3">
-					<form id="contact" action="" method="post">
-						<div class="row">
-							<div class="col-md-12">
-								<fieldset>
-									<input name="name" type="text" class="form-control" id="name"
-										placeholder="Your name..." required="">
-								</fieldset>
-							</div>
-							<div class="col-md-12">
-								<fieldset>
-									<input name="email" type="email" class="form-control"
-										id="email" placeholder="Your email..." required="">
-								</fieldset>
-							</div>
-							<div class="col-md-12">
-								<fieldset>
-									<textarea name="message" rows="6" class="form-control"
-										id="message" placeholder="Your message..." required=""></textarea>
-								</fieldset>
-							</div>
-							<div class="col-md-12">
-								<fieldset>
-									<button type="submit" id="form-submit" class="btn">Send
-										Message Now</button>
-								</fieldset>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
 </body>
 <script>
 	$(function() {
+		
+		if('<%= so %>' == 'null') {
+			$('#sortList').val('GradeH').prop('selected', true);
+		}else{
+			$('#sortList').val('<%= so %>').prop('selected',true);
+		}
 		$('button[id=resetFrm]').click(function() {
 			$('input:checkbox').prop('checked', false);
 		});
+		
 	});
 	
 	$(function() {
@@ -375,11 +295,17 @@ http://www.templatemo.com/tm-520-highway
 		});
 	});
 	
-	$(function() {
-		$('#upPduct').click(function() {
-			location.href="views/sic/UploadProduct.jsp";
-		});
-	});
+	
+	
+	function selectsort() {
+		var so = $('#sortList option:selected').val();
+		var pnn = $('#pnn').text();
+		
+		location.href = "<%= request.getContextPath() %>/sProduct.so?pnn="+pnn+"&so="+so;
+		
+	}
+	
+	
 
 </script>
 </html>

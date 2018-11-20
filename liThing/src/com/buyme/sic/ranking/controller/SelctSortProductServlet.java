@@ -13,16 +13,16 @@ import com.buyme.sic.ranking.model.service.ProductService;
 import com.buyme.sic.ranking.model.vo.Product;
 
 /**
- * Servlet implementation class SelectProductServlet
+ * Servlet implementation class SeelctSortProductServlet
  */
-@WebServlet("/selectList.po")
-public class SelectProductServlet extends HttpServlet {
+@WebServlet("/sProduct.so")
+public class SelctSortProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectProductServlet() {
+    public SelctSortProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +31,35 @@ public class SelectProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("select servlet 들어옴");
-		
+		String so = request.getParameter("so");
 		String pnn = request.getParameter("pnn");
 		
 		ArrayList<Product> list = new ArrayList<Product>();
+		
+		System.out.println(so);
+		System.out.println(pnn);
+		
 		ProductService ps = new ProductService();
-		list = ps.selectList(pnn);
+		
+		list = ps.sortList(so, pnn);
 		
 		String page = "";
 		
-		if (list != null) {
+		if (list != null) {	
 			System.out.println("연결성공");
 			System.out.println(list);
 			page = "views/sic/Ranking.jsp";
 			request.setAttribute("list", list);
+			request.setAttribute("sortsts", so);
 			
 		} else {
 			
 			System.out.println("에러발생");
-			/*page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 검색 실패!");*/
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);
+		
+		
 		
 	}
 
