@@ -1,5 +1,7 @@
 package com.buyme.sic.ranking.model.dao;
 
+import static com.buyme.common.JDBCTemplate.close;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,8 +15,6 @@ import java.util.Properties;
 
 import com.buyme.sic.ranking.model.vo.Product;
 import com.buyme.sic.review.model.vo.Review;
-
-import static com.buyme.common.JDBCTemplate.*;
 
 public class ProductDao {
 	private Properties prop = new Properties();
@@ -63,51 +63,6 @@ public class ProductDao {
 		}
 		
 		return result;
-	}
-
-/*	P_NO
-	P_NAME
-	P_PRICE
-	BRAND
-	RANK
-	C_NAME
-	*/
-	public ArrayList<Product> selectList(Connection con) {
-		System.out.println("select DAO 들어옴");
-		ArrayList<Product> list = null;
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectList");
-		
-		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(sql);
-			
-			list = new ArrayList<Product>();
-			
-			while(rset.next()) {
-				Product p = new Product();
-				
-				p.setPno(rset.getString("P_NO"));
-				p.setPname(rset.getString("P_NAME"));
-				p.setPprice(rset.getInt("P_PRICE"));
-				p.setBrand(rset.getString("BRAND"));
-				p.setRank(rset.getDouble("RANK"));
-				p.setCname(rset.getString("C_NAME"));
-				
-				list.add(p);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(stmt);
-		}
-		
-		return list;
 	}
 
 	public Product selectOne(Connection con, String pno) {
@@ -328,7 +283,48 @@ public class ProductDao {
 		System.out.println("dao :" +result);
 		return result;
 	}
-	
+
+	public ArrayList<Product> selectList(Connection con, String pnn) {
+		System.out.println("DAO들어옴");
+		ArrayList<Product> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectProduct");
+		System.out.println(pnn);
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pnn);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Product>();
+			
+			while(rset.next()) {
+				
+				Product p = new Product();
+				
+				p.setPno(rset.getString("P_NO"));
+				p.setPname(rset.getString("P_NAME"));
+				p.setPprice(rset.getInt("P_PRICE"));
+				p.setBrand(rset.getString("BRAND"));
+				p.setRank(rset.getDouble("RANK"));
+				p.setCname(rset.getString("C_NAME"));
+				
+				list.add(p);
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }
 
 
