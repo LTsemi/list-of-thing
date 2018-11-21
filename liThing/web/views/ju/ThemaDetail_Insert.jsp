@@ -66,7 +66,7 @@
 							<td colspan="3">
 								<select name="pname" id="pname">
 								<% for(int i = 0; i < plist.size(); i++){ %>
-									<option value="<%= plist.get(i).getPnn() %>">[<%= plist.get(i).getBrand() %>] <%= plist.get(i).getPname() %></option>
+									<option value="<%= plist.get(i).getPno() %>">[<%= plist.get(i).getBrand() %>] <%= plist.get(i).getPname() %></option>
 								<%} %>
 								</select>
 							</td>

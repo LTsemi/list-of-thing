@@ -39,18 +39,18 @@ public class ThemaDetailInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int tno = Integer.parseInt(request.getParameter("ttitle"));
-		String pnn = request.getParameter("pname");
+		String pno = request.getParameter("pname");
 		
 		ThemaProduct tp = new ThemaProduct();
 		ArrayList<ThemaProduct> tplist = new ThemaDetailService().selectList(tno);
 		ArrayList<Thema> tlist = new ThemaService().selectList();
 		
 		tp.setThema_no(tno);
-		tp.setProd_no(pnn);
+		tp.setProd_no(pno);
 		
 		ThemaDetailService tds = new ThemaDetailService();
 		
-		int result = tds.insertThemaProduct(tno, pnn);
+		int result = tds.insertThemaProduct(tno, pno);
 		
 		if(result > 0){
 			

@@ -33,10 +33,10 @@ public class ThemaDetailDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pnn = request.getParameter("pnn");
+		String pno = request.getParameter("pno");
 		int tno = Integer.parseInt(request.getParameter("tno"));
 		
-		int result = new ThemaDetailService().deleteThemaProduct(pnn, tno);	
+		int result = new ThemaDetailService().deleteThemaProduct(pno, tno);	
 		
 		if (result > 0) {
 			

@@ -60,7 +60,7 @@ public class ThemaDetailDao {
 				tp.setProd_no(rset.getString("p_no"));
 				tp.setThema_no(rset.getInt("tno"));
 				tp.setPname(rset.getString("p_name"));
-				tp.setRank(rset.getInt("rank"));
+				tp.setRank(rset.getDouble("rank"));
 				tp.setBrand(rset.getString("brand"));
 				tp.setCname(rset.getString("c_name"));
 				
@@ -102,7 +102,7 @@ public class ThemaDetailDao {
 				tp.setPnn(rset.getString("p_nn"));
 				tp.setBrand(rset.getString("brand"));
 				tp.setPname(rset.getString("p_name"));
-				tp.setRank(rset.getInt("rank"));
+				tp.setRank(rset.getDouble("rank"));
 				tp.setCount(rset.getInt("count"));
 				tp.setKno(rset.getString("k_no"));
 				tp.setPcap(rset.getString("p_cap"));
@@ -126,7 +126,7 @@ public class ThemaDetailDao {
 		return tp;
 	}
 
-	public int insertThemaProduct(Connection con, int tno, String pnn) {
+	public int insertThemaProduct(Connection con, int tno, String pno) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -137,7 +137,7 @@ public class ThemaDetailDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, tno);
-			pstmt.setString(2, pnn);
+			pstmt.setString(2, pno);
 					
 			result = pstmt.executeUpdate();
 		
@@ -151,7 +151,7 @@ public class ThemaDetailDao {
 		return result;
 	}
 
-	public int deleteThemaProduct(Connection con, String pnn, int tno) {
+	public int deleteThemaProduct(Connection con, String pno, int tno) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -162,7 +162,7 @@ public class ThemaDetailDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, tno);
-			pstmt.setString(2, pnn);
+			pstmt.setString(2, pno);
 			
 			result = pstmt.executeUpdate();
 			
@@ -196,7 +196,7 @@ public class ThemaDetailDao {
 				p.setPno(rset.getString("p_no"));
 				p.setPnn(rset.getString("p_nn"));
 				p.setPname(rset.getString("p_name"));
-				p.setRank(rset.getInt("rank"));
+				p.setRank(rset.getDouble("rank"));
 				p.setBrand(rset.getString("brand"));
 				p.setCname(rset.getString("c_name"));
 				
