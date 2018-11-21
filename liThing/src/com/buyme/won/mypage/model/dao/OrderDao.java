@@ -41,6 +41,14 @@ public class OrderDao {
 		String sql = prop.getProperty("insertOrder");
 		String[] tr = {"6521300236", "363047068382", "6486504570", "6463410833", "346231128470" };
 		int i  = (int)((Math.random()*5));
+		int endday = 0;
+		if(o.getPrice() == 12000){
+			endday = 1;
+		}else if( o.getPrice() == 36000){
+			endday = 3;
+		}else{
+			endday = 6;
+		}
 		
 		
 		try {
@@ -51,6 +59,7 @@ public class OrderDao {
 			pstmt.setInt(2, o.getPrice());
 			pstmt.setString(3, o.getUseraddress());
 			pstmt.setString(4, tr[i]);
+			pstmt.setInt(5, endday);
 			
 			result = pstmt.executeUpdate();
 		
@@ -90,6 +99,7 @@ public class OrderDao {
 				o.setPrice(rset.getInt("price"));
 				o.setUseraddress(rset.getString("useraddress"));
 				o.setTracking_num(rset.getString("TRACKING_NUM"));
+				o.setEnd_order(rset.getDate("end_order"));
 				
 			}
 			
@@ -103,6 +113,34 @@ public class OrderDao {
 		
 		
 		return o;
+	}
+
+	public int updateDelf(Connection con, String userid) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("updateDelf");
+		
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, "N");
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+			System.out.println("result");
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

@@ -12,8 +12,8 @@ public class OrderLT {
 	private String useraddress;
 	private String priceck;
 	private String tracking_num;
-	
-	
+	private Date end_order;
+	private String delf;
 	
 	public OrderLT() {
 		super();
@@ -115,6 +115,28 @@ public class OrderLT {
 
 	public void setTracking_num(String tracking_num) {
 		this.tracking_num = tracking_num;
+	}
+	
+
+	public Date getEnd_order() {
+		return end_order;
+	}
+
+
+
+	public void setEnd_order(Date end_order) {
+		this.end_order = end_order;
+	}
+	
+
+	public String getDelf() {
+		return delf;
+	}
+
+
+
+	public void setDelf(String delf) {
+		this.delf = delf;
 	}
 
 

@@ -38,4 +38,17 @@ public class OrderService {
 		return o;
 	}
 
+	public int updateDelf(String userid) {
+		Connection con = getConnection();
+		
+		int result = oDao.updateDelf(con, userid);
+		
+		if(result > 0) commit(con);
+		else  rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
 }

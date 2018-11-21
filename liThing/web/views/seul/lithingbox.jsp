@@ -92,10 +92,17 @@ http://www.templatemo.com/tm-520-highway
                      <input type="button" value="구매하기" class="btn pull-right buybtn" id="six" onclick="ordersubmit(this);">
                </div>
         </div>
-        <form id = "goOrder" method = "post" action ="<%= request.getContextPath() %>/views/seul/orderBox.jsp" >
-            <input type="hidden" name="price" id="price" />                 
-            <input type="hidden" name="buyMonth" id="buyMonth" />                 
+ <% if( mh != null){ %>
+        <form id = "goOrder" method = "post" action ="<%= request.getContextPath() %>/sOrderbox.or?userid=<%=mh.getUserId() %>" >
+            <input type="hidden" name="price" id="price" />      
+             <input type="hidden" name="buyMonth" id="buyMonth" />              
 		</form>
+		<%} else {%>
+		<form id = "goOrder" method = "post" action ="<%= request.getContextPath() %>/sOrderbox.or?" >
+            <input type="hidden" name="price" id="price" />          
+             <input type="hidden" name="buyMonth" id="buyMonth" />          
+		</form>
+		<% } %>
     </div>
 <script>
 	

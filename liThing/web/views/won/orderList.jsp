@@ -179,8 +179,8 @@
 								<td width="200px"><%= o.getOrderdate() %></td>
 							</tr>
 							<tr>
-								<td width="100px">리띵박스 구매 종료일</td>
-								<td width="200px"><input type="text" id="userName" ></td>
+								<td width="100px">리띵박스 구매 종료일<br />(다음 리띵박스 구매 가능일)</td>
+								<td width="200px"><%= o.getEnd_order() %></td>
 							</tr>
 
 						</table>

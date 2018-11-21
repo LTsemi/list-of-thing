@@ -39,9 +39,14 @@ public class MainListThema extends HttpServlet {
 				
 		list = ts.selectList();
 		
-		response.setContentType("application/json; charset=UTF-8");
-		
-		new Gson().toJson(list , response.getWriter());
+		if(list != null){
+			response.setContentType("application/json; charset=UTF-8");
+			
+			new Gson().toJson(list , response.getWriter());
+		}else{
+			System.out.println("테마 조회 안됨");
+		}
+
 	}
 
 	/**

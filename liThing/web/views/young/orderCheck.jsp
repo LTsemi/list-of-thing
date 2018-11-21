@@ -287,21 +287,8 @@ http://www.templatemo.com/tm-520-highway
 				</div>
 			</div>
 
-			<div class="col-sm-12">
-				<div class="panel payList">
-					<div class="paypic">
-						<b>결제 수단</b> <br> <input type="radio" name="pay" id="1"
-							checked="checked"> 계좌 이체 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-							type="radio" name="pay" id="2"> 휴대폰 결제
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="pay"
-							id="3"> 카카오페이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-							type="radio" name="pay" id="4"> 페이코 간편결제
-					</div>
-				</div>
-			</div>
 			<div class="btnbar">
-				<input type="button" value="이전 페이지" class="btn backbtn" onclick="location.href='lithingbox.jsp'"> 
-				<input type="text" id="order" value="구매하기" class="btn buybtn" onclick="orderClick(12000);">
+				<input type="button" value="이전 페이지" class="btn backbtn" onclick="location.href='/semi/views/ywon/myPage.jsp'"> 
 			</div>
 	</div>
 	<br>

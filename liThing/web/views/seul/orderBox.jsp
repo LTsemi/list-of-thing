@@ -234,7 +234,7 @@ http://www.templatemo.com/tm-520-highway
 						<th>구매수량/월</th>
 					</tr>
 					<tr>
-						<td><img src="../../resources/img/buybox.png" width="50px"
+						<td><img src="<%=request.getContextPath() %>/resources/img/buybox.png" width="50px"
 							height="50px"> &nbsp;리띵박스</td>
 						<td><%= price%>,000</td> <input type="hidden" name="price" value="<%= price %>" />
 						<td><%= buyMonth %></td>
