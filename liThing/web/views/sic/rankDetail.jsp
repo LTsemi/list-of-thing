@@ -168,7 +168,7 @@
 					<h2><%=p.getPname()%></h2>
 					<%if(mh != null) {%>
 					<h4>
-						<button onclick="myWish();">찜 하기</button>
+						<button onclick="location.href= '/semi/mWishlist.mp?pno=<%= p.getPno()%>&userid=<%= mh.getUserId() %>'">찜 하기</button>
 					</h4>
 					<% } %>
 					<div style="padding: 20px; text-align: left">
