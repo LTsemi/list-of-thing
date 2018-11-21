@@ -115,6 +115,31 @@ public class MemberService {
 		
 	}
 	
+	public int selectChkMember(String userid, String code) {
+		// TODO Auto-generated method stub
+		Connection con = getConnection();
+		
+		int result = mDao.selectChkMember(con, userid, code);
+		
+		close(con);
+		
+		
+		return result;
+		
+	}
+
+
+	public Member selectPwMember(Member m) {
+		Connection con = getConnection();
+		
+		Member result = mDao.selectPwMember(con, m);
+		
+		close(con);
+		
+		
+		return result;
+	}
+	
 }
 
 

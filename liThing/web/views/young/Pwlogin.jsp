@@ -37,9 +37,8 @@
 		<div class="member-inner">
 			<div class="contents">
 				<h1 class="logo"><a href="/semi/index.jsp"><span class="blind">리띵</span></a></h1>
-				<%if ( m == null ) { %>
-				<h2 class="title">LOGIN</h2>
-				<form id="loginForm" action="/semi/login.me" method="post">
+				<h2 class="title">1회 한정 비밀번호 변경 </h2>
+				<form id="oneForm" action="/semi/mPwUp.mp" method="post">
 				<div class="login">
 					
 					<div class="forms">
@@ -47,7 +46,7 @@
 							<input type="text" placeholder="아이디" id="userId" name="userId">
 						</div>
 						<div class="input">
-							<input type="password" placeholder="비밀번호" id="userPwd" name="userPwd">
+							<input type="password" placeholder="비밀번호" id="pwd" name="pwd">
 						</div>
 					</div>
 					<div class="btns tooltip-wrap">
@@ -65,23 +64,6 @@
 						
 				</div>
 			</div>
-			<% } else { %>
-			<br /><br /><br /><br /><br /><br /><br />
-			<div id="userInfo" style="width : 500px;">
-			<h3 class="title"><%= m.getUserName() %>님의 <br /> 방문을 환영합니다.</h3>
-			<div class="btns" align="right">
-			<%  if(m.getUserId().equals("admin")) { %>
-				<div id="gotoAdmin" onclick="gotoAdmin();" class="btn btn-warning" >회원 관리 페이지</div>
-			<%} %>
-			<input type="hidden" id="userid" value="<%= mh.getUserId()%>" />
-			    <div id="gotoMypage" onclick="gotoMypage();" class="btn btn-warning" >마이페이지</div>
-				<div id="changeInfo" onclick="changeInfo();" class="btn btn-warning" >정보수정</div>
-				<div id="logoutBtn" onclick='logout();' class="btn btn-warning" >로그아웃</div> 
-
-			</div>
-			
-		</div>
-	<% } %>
 
 		</div>
 	</div>
@@ -90,7 +72,7 @@
 	
 	<script>
 		function login(){
-			$('#loginForm').submit();
+			$('#oneForm').submit();
 		}
 		
 		function logout(){

@@ -47,7 +47,12 @@ public class WishlistInsertServlet extends HttpServlet {
 
 		if(result > 0 ){
 			System.out.println("위시리스트 등록 성공");
-			response.sendRedirect("selectOne.po?pno="+pno);
+			PrintWriter out = response.getWriter();
+			out.println("<script> alert('위시리스트에 등록되었습니다.');  location.href='/semi/selectOne.po?pno="+ pno +"'</script>");
+			 
+			out.flush();
+			out.close();
+
 		}else{
 			PrintWriter out = response.getWriter();
 			out.println("<script> alert('이미 위시리스트에 등록되어 있는 상품 입니다.');  location.href='/semi/selectOne.po?pno="+ pno +"';</script>");

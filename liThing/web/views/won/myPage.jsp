@@ -199,11 +199,11 @@ table {
 	<br />
 	<br />
 		<div class="pagingArea" align="center">
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=1'"><<</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=1&userid=<%= mh.getUserId()%>'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button id="paging" disabled><</button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%=currentPage - 1 %>&userid=<%= mh.getUserId()%>'"><</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -218,9 +218,9 @@ table {
 			<%  if(currentPage >= maxPage){  %>
 			<button id="paging" disabled>></button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%=currentPage + 1 %>'">></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%=currentPage + 1 %>&userid=<%= mh.getUserId()%>'">></button>
 			<%  } %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%= maxPage %>'">>></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sWish.mp?currentPage=<%= maxPage %>&userid=<%= mh.getUserId()%>'">>></button>
 			
 		</div>  
 	

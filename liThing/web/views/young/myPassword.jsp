@@ -3,11 +3,16 @@
 <%
 	Member m = (Member)session.getAttribute("member");
 %>
+<%! public int getRandom(){
+	int random = 0;
+	random = (int)Math.floor((Math.random()*(99999-10000+1)))+10000;
+	return random;
+} %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리띵 로그인</title>
+<title>리띵 아이디 찾기</title>
 
         <link rel="stylesheet" href="../../resources/css/coocha-member.min.css">
         <link rel="stylesheet" href="../../resources/css/sub.css">
@@ -37,85 +42,60 @@
 		<div class="member-inner">
 			<div class="contents">
 				<h1 class="logo"><a href="/semi/index.jsp"><span class="blind">리띵</span></a></h1>
-				<%if ( m == null ) { %>
-				<h2 class="title">LOGIN</h2>
-				<form id="loginForm" action="/semi/login.me" method="post">
+				<%if ( m == null) { %>
+				<h2 class="title">PW 찾기</h2>
+				<form id="PWForm" action="<%= request.getContextPath() %>/eSend.mp" method="post">
 				<div class="login">
 					
 					<div class="forms">
 						<div class="input">
-							<input type="text" placeholder="아이디" id="userId" name="userId">
+							<input type="text" name="id" id="id" placeholder="아이디를 입력해 주세요."/>
 						</div>
 						<div class="input">
-							<input type="password" placeholder="비밀번호" id="userPwd" name="userPwd">
+							<input type="text" name="email" id="email" placeholder="가입시 사용했던 이메일을 입력해주세요"/>
+							<input type="hidden" name="code_check" id="code_check" value="<%= getRandom()%>"/>
 						</div>
 					</div>
 					<div class="btns tooltip-wrap">
-						<button type="button" class="btn-confirm" id="loginBtn" onclick='login();'>로그인</button>
+						<button type="button" class="btn-confirm" id="loginBtn" onclick='myPW();'>인증번호 발송 </button>
 						<div class="tooltip blind" id="idpwInvalidTooltip"></div>
-					</div>
-
-					<div class="bottom">
-						<a href="/semi/views/young/myId.jsp" >아이디 찾기</a>
-						<a href="/semi/views/young/myPassword.jsp">비밀번호 찾기</a>
-						<a href="/semi/views/young/join.jsp" id="memberJoinBtn" onclick="memberJoin();">회원가입</a>
 					</div>
 					</div>
 					</form>
 						
 				</div>
 			</div>
-			<% } else { %>
-			<br /><br /><br /><br /><br /><br /><br />
-			<div id="userInfo" style="width : 500px;">
-			<h3 class="title"><%= m.getUserName() %>님의 <br /> 방문을 환영합니다.</h3>
-			<div class="btns" align="right">
-			<%  if(m.getUserId().equals("admin")) { %>
-				<div id="gotoAdmin" onclick="gotoAdmin();" class="btn btn-warning" >회원 관리 페이지</div>
-			<%} %>
-			<input type="hidden" id="userid" value="<%= mh.getUserId()%>" />
-			    <div id="gotoMypage" onclick="gotoMypage();" class="btn btn-warning" >마이페이지</div>
-				<div id="changeInfo" onclick="changeInfo();" class="btn btn-warning" >정보수정</div>
-				<div id="logoutBtn" onclick='logout();' class="btn btn-warning" >로그아웃</div> 
-
-			</div>
+			<% } %>
 			
-		</div>
-	<% } %>
 
 		</div>
 	</div>
 
 	<%@ include file="../common/footer.jsp" %>
 	
-	<script>
-		function login(){
-			$('#loginForm').submit();
-		}
+ 	<script>
+		function myPW(){
+
+				var val = confirm("인증코드를 발송하면 기존의 비밀번호는 사용하실 수 없습니다. 인증번호를 보내겠습니까? ");
+				if(val == true){
+					$('#PWForm').submit();
+					alert("1회 로그인 가능한 페이지로 이동합니다. 다음 페이지에서 로그인 하지 않을시 새로 인증코드를 받아야합니다. 페이지 로딩까지 기다려주세요. 발송된 인증번호로 로그인 후 비밀번호를 꼭 변경해주세요.");
+				}
+			}
+
+		
 		
 		function logout(){
 			location.href="/semi/logout.me";
-		}
-		
-		function memberJoin(){
-			location.href="/semi/views/young/Join.jsp";
 		}
 		
 		function changeInfo(){
 			location.href="/semi/views/young/update.jsp";
 		}
 		
-		function gotoMypage(){
-			var userid = $('#userid').val();
-			location.href="/semi/sWish.mp?userid="+userid;
-		}
-		function gotoAdmin(){
-			location.href="/semi/mList.me";
-		}
-		
 		$("#userId").keyup(function(e){if(e.keyCode == 13)  login(); })
 		$("#userPwd").keyup(function(e){if(e.keyCode == 13)  login(); })
 
-	</script>
+	</script> 
 </body>
 </html>
