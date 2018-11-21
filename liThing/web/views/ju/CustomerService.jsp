@@ -57,7 +57,7 @@
     <% } %>
     <% for(int i = 0; i < list.size(); i++) { %>       
         <div class="question"><span>Q</span>
-        <%= list.get(i).getCtitle() %>
+        <%= list.get(i).getCtitle().replace("\"", "&#34;") %>
         
         <% if( m != null && m.getUserId().equals("admin")) { %>
     	<button class="updateBtn" onclick="location.href='csUpView.cs?cno=<%= list.get(i).getCno() %>'">수정</button>
@@ -65,7 +65,7 @@
     	
         </div>
         <p class="content" ><span>A</span>
-        	<%= list.get(i).getCcontent() %>
+        	<%= (list.get(i).getCcontent()).replace("\r\n", "<br>") %>
         </p>
 	<%} %>   
         

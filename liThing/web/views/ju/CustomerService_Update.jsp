@@ -70,7 +70,8 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<textarea name="content" cols="60" rows="15" style="resize:none;" wrap="soft"><%= c.getCcontent() %></textarea>
+							<textarea name="content" id="ccontent" cols="60" 
+							rows="15" style="resize:none;" wrap="soft"><%= (c.getCcontent().replace("\r\n", "<br>")).replace("<br>", "\r\n") %></textarea>
 						</td>
 					</tr>
 				</table>
@@ -91,6 +92,23 @@
 						$("#updateForm").attr("action", "<%=request.getContextPath() %>/csDelete.cs?cno=<%= c.getCno() %>");
 						$("#updateForm").submit();
 					}
+					
+					$(function(){
+						
+						var str = $('#ccontent').val();
+					
+						str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+					
+						$('#ccontent').val(str);
+						
+						
+						var str = $('#ccontent').val();
+					
+						str = str.split('<br/>').join("\r\n");
+					
+						$('#ccontent').val(str); 
+						
+					});	 	
 				
 				</script>
 			<% } else {

@@ -78,7 +78,7 @@
 					<tr>
 						<td>내용 </td>
 						<td colspan="3">
-							<textarea name="content" cols="67" rows="15" style="resize:none;"><%=t.getTcontent() %></textarea>
+							<textarea name="content" cols="67" rows="15" style="resize:none;"><%=(t.getTcontent().replace("\r\n", "<br>")).replace("<br>", "\r\n") %></textarea>
 						</td>
 					</tr>
 				</table>

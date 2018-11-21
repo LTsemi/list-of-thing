@@ -63,14 +63,14 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<textarea name="ccontent" cols="60" rows="15" style="resize:none;"></textarea>
+							<textarea name="ccontent" id="ccontent" cols="60" rows="15" style="resize:none;"></textarea>
 						</td>
 					</tr>
 				</table>
 				<br>
 				<div align="center">
-					<button type="submit">등록하기</button>
-					<button type="reset">취소하기</button>
+					<button type="submit" onclick="test()">등록하기</button>
+					<button onclick="location.href='selectList.cs'">취소하기</button>
                 </div>		
             </form>
         </div>
@@ -79,6 +79,32 @@
 			request.setAttribute("msg", "관계자 외에 접근이 불가능한 페이지입니다.");
 			request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
 		 } %>
+		 
+		 <script>
+			$(function(){
+				
+				var str = $('#ccontent').val();
+			
+				str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			
+				$('#ccontent').val(str);
+				
+				
+				var str = $('#ccontent').val();
+			
+				str = str.split('<br/>').join("\r\n");
+			
+				$('#ccontent').val(str); 
+				
+			});	 	
+			
+			
+			function test(){
+				alert($('#ccontent').val());
+			}
+			
+		</script>
+		 
         <%@ include file="../common/footer.jsp" %>
     </body>
 </html>
