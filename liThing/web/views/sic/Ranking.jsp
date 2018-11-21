@@ -178,7 +178,7 @@ o
          </div>
       </div>
    </div>
-	<div style="width: 1200px; margin: 200px auto">
+	<div style="width: 1300px; margin: 200px auto">
 		<div style="width: 1100px; margin: 0 auto">
 			<div class="box" style="width: 380px">
 				<div

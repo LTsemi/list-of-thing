@@ -152,10 +152,10 @@ function deleteItem() {
 			},
 			success : function (result) {
 				
-				console.log(result);
+				alert("제품이 삭제되었습니다.");
 				
 			}, error : function (result) {
-				console.log("제품삭제 실패!");
+				alert("제품삭제 실패!");
 			}
 		}); 
 		

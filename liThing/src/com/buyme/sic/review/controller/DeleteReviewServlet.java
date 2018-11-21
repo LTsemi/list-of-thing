@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.sic.review.model.service.ReviewService;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class DeleteReviewServlet
@@ -37,11 +38,14 @@ public class DeleteReviewServlet extends HttpServlet {
 		ReviewService rs = new ReviewService();
 		int result = rs.deleteReview(rno);
 		
-		if(result > 0) {
+		/*if(result > 0) {
 			response.sendRedirect("selectOne.po?pno="+pno);
 		}else {
 			System.out.println("댓글삭제실패!");
-		}
+		}*/
+		response.setContentType("application/json; charset=UTF-8");
+		
+		new Gson().toJson(result, response.getWriter());
 		
 	}
 

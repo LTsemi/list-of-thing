@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.buyme.sic.review.model.service.ReviewService;
 import com.buyme.sic.review.model.vo.Review;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class UpdateReviewServlet
@@ -46,12 +47,16 @@ public class UpdateReviewServlet extends HttpServlet {
 		
 		int result = rs.updateReview(r);
 		
-		if(result > 0) {
+		/*if(result > 0) {
 			response.sendRedirect("selectOne.po?pno="+pno);
 			
 		} else {
 			System.out.println("실패");
-		}
+		}*/
+
+		response.setContentType("application/json; charset=UTF-8");
+		
+		new Gson().toJson(result, response.getWriter());
 	}
 
 	/**

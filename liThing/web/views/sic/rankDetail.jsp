@@ -136,7 +136,7 @@
         background: #FF7385; 
         text-align: center; 
         color: #333; 
-        height: 3em; 
+        height: 2.2em; 
         line-height: 3em;            
     }
     
@@ -185,7 +185,7 @@
 				<div
 					style="border: 1px solid #D0D0D0; font-size: 25px; height: 400px; background: white; border-radius: 4px;">
 					<div style="margin-top:10px;">
-					<span style="font-size: 60px" id="avgRank"><Strong><%= p.getRank()%></Strong></span>
+					<span style="font-size: 60px" id="avgRank"><p style="font-size: 20px; margin-bottom: 2px">평점</p><Strong><%= p.getRank()%></Strong></span>
 					</div>
 					
 					<div class="RstarRev box" style="margin: auto; padding-top: 10px;">
@@ -259,19 +259,18 @@
 					</div>
 				</div>
 				
-				<form action="<%=request.getContextPath()%>/review.rv"
-					method="post">
+				<form action="<%=request.getContextPath()%>/review.rv" method="post">
 					<div style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
 					<% if(mh != null ) { %>
-					<input type="hidden" name="userid" id="userid" value="<%= mh.getUserId() %>" />
-					<input type="hidden" name="pno" value=<%= p.getPno()%> />
-					<input type="hidden" name="rank" id="rank" value="1" />
+						<input type="hidden" name="userid" id="userid" value="<%= mh.getUserId() %>" />
+						<input type="hidden" name="pno" value=<%= p.getPno()%> />
+						<input type="hidden" name="rank" id="rank" value="1" />
 						<div class="box" style="padding-top: 10px">
 							<textarea name="content" id="content" cols="50" rows="4"
 								style="display: inline-block; resize: none;"></textarea>
 						</div>
 						<div class="box" style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
-							<input class="button" type="submit" value="작성하기"  style="vertical-align: top; width: 100%; height: 100%;">
+							<input class="button" type="submit" value="등록" style="vertical-align: top; width: 100%; height: 70px;">
 						</div>
 						<div>
 							<div class="starRev">
@@ -287,7 +286,8 @@
 						<div>
 						<% if(rlist != null) { %>
 							<% for(Review r : rlist) { %>
-							<table style="width: 100%; border-top: 1px solid lightgray ">
+							<table id="rtable" style="width: 100%; border-top: 1px solid lightgray ">
+								<tbody>
 								<tr>
 									<td colspan="3" style="text-align: right; padding: 10px"><%=r.getRdate()%></td>
 
@@ -340,10 +340,11 @@
 								</tr>
 								<tr>
 									<td colspan="3">
-										<p id="conP" style="padding-left: 50px; text-align: left; border: 1px soild black; font-size: 20px"><%= r.getRcontent() %></p>
-										<textarea cols="50" rows="4" style="resize:none; display: none"></textarea>
-										<button type="button" class="button" onclick="uptConfirm(this)" style="vertical-align: top; width: 100px; height: 85px; display:none">수정</button><br />
-										<div class="ustarRev" style="display: none">
+										<p id="conP" style="padding-left: 50px; text-align: left; border: 1px soild black; font-size: 20px;"><%= r.getRcontent() %></p>
+										
+										<textarea id="uptxtArea" cols="50" rows="4" style="resize:none; display: none"></textarea>
+										<button id="upload" type="button" class="button" onclick="uptConfirm(this)" style="vertical-align: top; width: 100px; height: 70px; display:none">수정</button><br />
+										<div id="upRnk" class="ustarRev" style="display: none">
 											<span class="ustarR on">별1</span> 
 											<span class="ustarR">별2</span> 
 											<span class="ustarR">별3</span> 
@@ -358,11 +359,12 @@
 								<tr>
 									<td colspan="3">
 										<input type="hidden" name="rno" value="<%= r.getRno() %>"/>
-										<button type="button" onclick="udtReview(this)">수정하기</button>
-										<button type="button" onclick="delReview(this)">삭제하기</button>						
+										<button id="upbtn" type="button" onclick="udtReview(this)">수정하기</button>
+										<button id="delbtn" type="button" onclick="delReview(this)">삭제하기</button>						
 									</td>
 								</tr>
 								<% } %>
+								</tbody>
 							</table>
 							
 							<br>
@@ -379,6 +381,7 @@
 	<%@ include file="../common/footer.jsp"%>
 </body>
 <script>
+/* "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content+"&rank="+rank */
 	$(function() {
 		
 
@@ -469,6 +472,7 @@
 		
 	});
 	
+	
 	function udtReview(obj) {
 		$(obj).parent().parent().prev().find('#conP').css('display','none');
 		$(obj).parent().parent().prev().find('textarea').css('display','inline');
@@ -483,9 +487,22 @@
 		var result = confirm("리뷰를 삭제하시겠습니까?")
 		var rno = $(obj).prev().prev().val();
 		if(result){
-			var pno = '<%= p.getPno()%>'
+			var pno = '<%= p.getPno()%>';
 
-			location.href="/semi/delReview.dr?rno="+rno+"&pno="+pno;
+			/* location.href="/semi/delReview.dr?rno="+rno+"&pno="+pno; */
+			$.ajax({
+				url : '/semi/delReview.dr',
+				type : 'post',
+				data : {
+					rno : rno,
+					pno : pno
+				},
+				success : function (data) {
+					$(obj).parent().parent().parent().parent().remove();
+				}, error : function (data) {
+					alert("리뷰 삭제에 실패하였습니다.");
+				}
+			});
 			
 		}else{
 			alert("리뷰삭제를 취소하였습니다.");
@@ -499,9 +516,70 @@
 		
 		var rank = $(obj).siblings('input[name=urank]').val();
 
-		var pno = '<%= p.getPno()%>'
+		var pno = '<%= p.getPno()%>';
 		
-		location.href= "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content+"&rank="+rank;
+
+		console.log(content);
+		/* location.href= "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content+"&rank="+rank; */
+		if(content != ""){
+			 $.ajax({
+					url : '/semi/upReview.ur',
+					type : 'post',
+					data : {
+						rno : rno,
+						pno : pno,
+						content : content,
+						rank : rank
+					},
+					success : function(data) {
+						
+						
+						
+					
+						$(obj).prev().prev().css('display','block');
+						$(obj).prev().prev().text(content);
+						if(rank == 5){
+							$(obj).parent().parent().prev().find('.mtarRev span').addClass('on');
+						}else if(rank == 4){
+							$(obj).parent().parent().prev().find('.mtarRev span').prevAll('span').addClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(4).removeClass('on');
+						}else if(rank == 3){
+							$(obj).parent().parent().prev().find('.mtarRev span').prevAll('span').addClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(4).removeClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(3).removeClass('on');
+						}else if(rank == 2){
+							$(obj).parent().parent().prev().find('.mtarRev span').prevAll('span').addClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(4).removeClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(3).removeClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(2).removeClass('on');
+						}else if(rank == 1){
+							$(obj).parent().parent().prev().find('.mtarRev span').prevAll('span').addClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(4).removeClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(3).removeClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(2).removeClass('on');
+							$(obj).parent().parent().prev().find('.mtarRev').children('span').eq(1).removeClass('on');
+						}
+						
+						$(obj).parent().parent().children().children().eq(1).css('display', 'none');	
+						$(obj).parent().parent().children().children().eq(2).css('display', 'none');
+						$(obj).next().next().css('display', 'none');
+						$(obj).parent().parent().next().find('#upbtn').css('display','inline-block');
+						$(obj).parent().parent().next().find('#delbtn').css('display','inline-block');
+						
+						
+						
+					}, error : function(data) {
+						alert("리뷰수정실패!");
+						
+					}
+						
+					
+					
+				}); 
+		}else{
+			alert("리뷰내용을 입력해주세요.");
+		}
+			
 	}
 	
 
