@@ -4,7 +4,6 @@
     		com.buyme.seul.eventComment.model.vo.*"%>
 <%
 	Event e = (Event)request.getAttribute("event");
-	EventWinner ew = (EventWinner)request.getAttribute("EventWinner");
 	ArrayList<Event> list = (ArrayList<Event>) request.getAttribute("list");
 	ArrayList<Event> ewlist = (ArrayList<Event>) request.getAttribute("ewlist");
 	//댓글 리스트
@@ -95,10 +94,12 @@ cursor: default;
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
+			<% if(mh != null && mh.getUserId().equals("admin")){ %> 
 				<!--   이벤트 창    -->
 				<div id="lithingevt">
 					<br> <br>
 
+					
 					
 					<div class="thumbnail"
 						style="width: 90%; max-width:950px; margin: 0 auto; padding: 20px;">
@@ -118,6 +119,7 @@ cursor: default;
 								<th style="text-align: center;">응모자 수</th>
 								<th style="text-align: center;">기한</th>
 								<th style="text-align: center;">당첨자 추첨</th>
+								<th style="text-align: center;">당첨글 유무</th>
 							</tr>
 							<%
 								for (Event evt : list) {
@@ -136,11 +138,18 @@ cursor: default;
 								<% } else { %>
 								<td id="dDay"><span>종료</span></td>
 								<% } %>
-								<% if(evt.getEvteno_cnt() == 2){ %>
-								<td class="checkWinner"><b>O</b></td>
-								<% }else{ %>
-								<td class="checkWinner"><b>X</b></td>
+								
+								<% if (evt.getWinResult().equals("YES")){ %>
+								<td><b id="checkWinner">O</b></td>
+								<% } else { %>
+								<td><b id="checkWinner">X</b></td>
 								<% } %>
+								
+								<% if (evt.getEvteno_cnt() == 1) { %>
+								<td><strong>X</strong></td>
+								<% }else{ %>
+								<td><strong>O</strong></td>
+								<% }  %>
 							</tr>
 							<% 		}
 								}
@@ -153,7 +162,7 @@ cursor: default;
 						<div class="box" style="width: 95%; margin: 0 auto; text-align: center;">							
 							<button onclick="location.href='views/seul/eventPageInsertForm.jsp'">이벤트페이지 작성</button> &nbsp;
 							<button id="chkWinBtn" onclick="chkWin();" disabled>당첨자 추첨</button> &nbsp;
-							<button id="winIstBtn" onclick="chkWinIst();" >당첨자페이지 작성</button> &nbsp;
+							<button id="winIstBtn" onclick="chkWinIst();" disabled>당첨자페이지 작성</button> &nbsp;
 							<button id="udtBtn" onclick="chkUpdate();" disabled>수정하기</button> &nbsp;
 							<button id="delBtn" onclick="chkDelete();" disabled>삭제하기</button>
 							
@@ -174,10 +183,10 @@ cursor: default;
 								<th style="text-align: center;">
 								<!-- <input type="checkbox" name="checkAll" id="th_checkAll" onclick="checkAll();" /> -->
 								</th>
+								<th style="text-align: center;">이벤트No</th>
 								<th style="text-align: center;">No</th>
 								<th style="text-align: center;">이벤트 명</th>
 								<th style="text-align: center;">작성일</th>
-								<th style="text-align: center;">이벤트No</th>
 							</tr>
 							<%
 								for (Event evtw : ewlist) {
@@ -185,10 +194,10 @@ cursor: default;
 							%>
 							<tr>
 								<td><input type="checkbox" value="" name="checkRow2" /></td>
+								<td><%=evtw.getEvtEno() %></td>
 								<td><input type="hidden" value="<%=evtw.getEno()%>"/><%=evtw.getEno()%></td>
 								<td><%=evtw.getEvttitle()%></td>
 								<td><%=evtw.getEvtdate()%></td>
-								<td><%=evtw.getEvtEno() %></td>
 							</tr>
 							<% 		}
 								}
@@ -207,10 +216,19 @@ cursor: default;
 					
 					<br> <br> <br> <br>
 				</div>
+				<% }else {%>
+				
+				<p style="text-align: center; margin: 100px 0">
+				관리자 전용 페이지 입니다. <br />
+				접근하실 수 없습니다 ! <br /><br />
+				</p>
+				<% } %>
 			</div>
 		</div>
 	</div>
 	<script>
+	
+	
 	/* 이벤트 목록 클릭시 상세페이지로 이동 */
 	$('.evtMgtBox tr').eq(0).siblings().mouseenter(function () {
 		$(this).children().not(':first').css({'background':'#F7D58B', 'cursor':'pointer'});
@@ -234,9 +252,9 @@ cursor: default;
 		$(this).children().not(':first').css({'background':'#F7D58B', 'cursor':'pointer'});
 		$(this).children().not(':first').click(function () {
 			
-			var eno = $(this).parent().children().eq(1).text()
+			var eno = $(this).parent().children().eq(2).text()
 			viewSelectWinOne(eno, evtEno);
-			var evtEno = $(this).parent().children().eq(4).text()
+			var evtEno = $(this).parent().children().eq(1).text()
 			viewSelectWinOne(eno, evtEno);
 		});
 			
@@ -255,7 +273,7 @@ cursor: default;
 	
 	/* 체크박스 선택 시 버튼 활성화 */
 	$('checkRow').ready(function() {
-
+	
 		//라디오 요소처럼 동작시킬 체크박스 그룹 셀렉터
 	    $('input[type="checkbox"][name="checkRow"]').click(function(){
 	        //클릭 이벤트 발생한 요소가 체크 상태인 경우
@@ -274,8 +292,19 @@ cursor: default;
 	            var chkWin = $("input[name=checkRow]:checked").parents('td').siblings().find('b').text();
 	            var chkO = "O";
 	            //console.log(chkWin);
+	            var evtCount = $("input[name=checkRow]:checked").parents('td').siblings().find('strong').text();
+	            var cntO = "O";
+	            //console.log(evtCount);
 	            
-	            if(dDay==end && chkWin==chkO){
+	            if(evtCount ==cntO){
+		            $('#chkWinBtn').attr('disabled',true);
+		            $('#winIstBtn').attr('disabled',true);
+	            }else{
+	            	$('#chkWinBtn').attr('disabled',true);
+	            	$('#winIstBtn').attr('disabled',true);
+	            }
+	            
+	            if(dDay==end && chkWin==chkO && evtCount !=cntO){
 		            $('#chkWinBtn').attr('disabled',true);	            	
 	            }else{
 	            	$('#chkWinBtn').attr('disabled',true);	
@@ -287,13 +316,12 @@ cursor: default;
 	            	$('#chkWinBtn').attr('disabled',true);	
 	            }
 
-	            
-	            
-	            if(chkWin==chkO){
+	                 
+	            if(chkWin==chkO && evtCount !=cntO){
 		            $('#winIstBtn').attr('disabled',false);	            	
 	            }else{
 	            	$('#winIstBtn').attr('disabled',true);	
-	            }
+	            } 
 	            
 	        }else{
 	            $('#udtBtn').attr('disabled',true);
@@ -347,8 +375,9 @@ cursor: default;
 			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
 			var eno = td.eq(1).text();
 			var winner_cut = td.eq(3).text();
-			console.log(eno);	
+			console.log(eno);				
 			console.log(winner_cut);	
+
 			
 			if(confirm("당첨자 추첨 하시겠습니까?")){
 			location.href="/semi/winnerDraw.ev?eno="+eno+"&winner_cut="+winner_cut;	
@@ -482,7 +511,7 @@ cursor: default;
 			
 			
 			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-			var eno = td.eq(1).text();
+			var eno = td.eq(2).text();
 			console.log(eno);	
 			if(confirm("정말 삭제하시겠습니까?")){
 			location.href="/semi/eWinDelete.ev?eno="+eno;				

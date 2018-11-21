@@ -36,7 +36,7 @@ http://www.templatemo.com/tm-520-highway
 		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/evtPage.css">
 		<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">	
 		
-	<style>
+<style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
 	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
@@ -119,7 +119,9 @@ body {
       <br />
     </div>
       <!-- <h4>Leave a Comment:</h4> -->     
+      <% if(mh != null){ %>
       <div class="replyArea comment">
+ 
 		<div class="replyWriteArea">
 			<form action="/semi/insertComment.co" method="post">
 				<input type="hidden" name="writer" value="<%=mh.getUserId()%>"/>
@@ -134,6 +136,7 @@ body {
 					 <button type="submit" class="btn pull-right" id="addReply">응모하기</button>				
 			</form>
 		</div>
+
 		<br /><br /><br />
 		<div id="replySelectArea" class="row cmtbar">
 		<br>
@@ -159,8 +162,8 @@ body {
 						onclick="updateReply(this);">수정하기</button> &nbsp;	
 						
 					<button type="button" class="deleteBtn rebtn"
-						onclick="deleteReply(this);">삭제하기</button>
-				<% } %>
+						onclick="deleteReply(this);">삭제하기</button>						
+				<%} %>
 				</div>  				 		
 				<div class="replyUpdateBox" style="display: none;">
 					 <input type="hidden" name="cno" value="<%=eco.getCno()%>"/>	
@@ -177,8 +180,13 @@ body {
 	  		<% } } %> 
 		</div>
 	</div>
-	
-      
+	<%}else{ %>
+      <div style="text-align: center; font-size: 17px; ">
+	  로그인 이후에 이벤트 응모가 가능합니다. <br />
+	  지금 바로 로그인하고 리띵 이벤트에 응모하세요! ^_^	
+	  <br /><br />				  
+	</div>	
+	<%} %>
         <br><br>
     </div>
     <div class="listGo">

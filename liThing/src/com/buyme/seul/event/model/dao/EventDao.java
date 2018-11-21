@@ -51,9 +51,9 @@ public class EventDao {
 			
 			while(rset.next()){
 				Event e = new Event();
+				e.setEno(rset.getInt("ENO"));
 				e.setEventallno(rset.getInt("EVENTALLNO"));
 				e.setEtype(rset.getInt("ETYPE"));
-				e.setEno(rset.getInt("ENO"));
 				e.setUserid(rset.getString("USERID"));
 				e.setEvtdate(rset.getDate("EVTDATE"));
 				e.setEvtdateend(rset.getDate("EVTDATEEND"));
@@ -67,6 +67,7 @@ public class EventDao {
 				e.setUserCnt(rset.getInt("USERCNT"));
 				e.setEvtEno(rset.getInt("EVTENO"));
 				e.setEvteno_cnt(rset.getInt("EVTENO_CNT"));
+				e.setWinResult(rset.getString("RESULT"));
 				
 				list.add(e);
 				
@@ -480,7 +481,6 @@ public class EventDao {
 		
 		return listCount;
 	}
-
 
 
 	

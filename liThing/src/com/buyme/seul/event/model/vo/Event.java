@@ -26,6 +26,7 @@ public class Event implements Serializable {
 	private int userCnt;
 	private int evtEno;
 	private int evteno_cnt;
+	private String winResult;
 
 	public Event() {
 		super();
@@ -301,6 +302,20 @@ public class Event implements Serializable {
 
 	public void setEvteno_cnt(int evteno_cnt) {
 		this.evteno_cnt = evteno_cnt;
+	}
+
+
+
+
+	public String getWinResult() {
+		return winResult;
+	}
+
+
+
+
+	public void setWinResult(String winResult) {
+		this.winResult = winResult;
 	}
 
 

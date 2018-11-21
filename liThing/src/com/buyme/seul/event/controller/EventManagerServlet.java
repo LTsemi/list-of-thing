@@ -33,15 +33,21 @@ public class EventManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// 이벤트 글 여러 개를 받기 위한 리스트
 		ArrayList<Event> list = null;
 		
 		list = new EventService().selectEventList();
-		ArrayList<Event> ewlist = new EventService().selectWinnerList();
+		
+		ArrayList<Event> ewlist 
+		= new EventService().selectWinnerList();
+	
+		// Event ewin = new EventService().drawWinnerList(eno);
+
 		
 		ArrayList<EventComment> clist
 		   = new EventCommentService().allSelectList();
-
+		
 		
 		
 		
@@ -54,6 +60,7 @@ public class EventManagerServlet extends HttpServlet {
 			page = "views/seul/eventManager.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("clist", clist);
+			// request.setAttribute("ewin", ewin);
 			request.setAttribute("ewlist", ewlist);
 			
 		} else {
