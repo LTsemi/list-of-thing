@@ -53,7 +53,7 @@
             <% for(int i = 0; i < list.size(); i++){ %>
             <section id="product">
                 <article id="thema_prd">     
-                    <a href="#">
+                    <a href="selectOne.po?pno=<%= list.get(i).getPno() %>">
                         <div>
                             <img src="<%= request.getContextPath() %>/resources/productImg/<%= list.get(i).getCname() %>" id="thema_view_pic">
                         </div>
