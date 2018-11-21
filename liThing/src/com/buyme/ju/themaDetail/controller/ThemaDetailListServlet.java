@@ -1,6 +1,6 @@
 package com.buyme.ju.themaDetail.controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -16,6 +16,7 @@ import com.buyme.ju.themaDetail.model.service.ThemaDetailService;
 import com.buyme.ju.themaDetail.model.vo.ThemaProduct;
 import com.buyme.sic.ranking.model.service.ProductService;
 import com.buyme.sic.ranking.model.vo.Product;
+import com.buyme.young.member.model.vo.Member;
 
 
 /**
@@ -60,7 +61,7 @@ public class ThemaDetailListServlet extends HttpServlet {
 					
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script> alert('해당 테마에 상품이 없습니다.'); location.href='selectList.td?tno="+tno+"\'</script>");
+			out.println("<script> location.href='selectList.td?tno="+tno+"\'; </script>");
 			
 			out.flush();
 			out.close();

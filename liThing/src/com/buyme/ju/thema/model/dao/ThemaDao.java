@@ -175,7 +175,7 @@ public class ThemaDao {
 			result = pstmt.executeUpdate();
 			System.out.println("themaProduct del : " + result);
 			
-			if(result > 0) {
+			if(result >= 0) {
 				pstmt = con.prepareStatement(delThema);
 				
 				pstmt.setInt(1, tno);
