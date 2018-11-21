@@ -184,19 +184,18 @@
 				style="width: 600px; vertical-align: top; text-align: center">
 				<div
 					style="border: 1px solid #D0D0D0; font-size: 25px; height: 400px; background: white; border-radius: 4px;">
-					<div class="RstarRev box" style="margin: auto; padding-top: 30px;">
-					<span style="font-size: 80px; display: inline-block; " id="avgRank"><Strong><%= p.getRank()%></Strong></span>
-						<div >
-							<span class="RstarR on">별1</span> 
-							<span class="RstarR on">별2</span>
-							<span class="RstarR on">별3</span> 
-							<span class="RstarR on">별4</span>
-							<span class="RstarR">별5</span> 
-							</div>
-							
-						
-						
+					<div style="margin-top:10px;">
+					<span style="font-size: 60px" id="avgRank"><Strong><%= p.getRank()%></Strong></span>
 					</div>
+					
+					<div class="RstarRev box" style="margin: auto; padding-top: 10px;">
+		                  <span class="RstarR on">별1</span> 
+		                  <span class="RstarR on">별2</span>
+		                  <span class="RstarR on">별3</span> 
+		                  <span class="RstarR on">별4</span>
+		                  <span class="RstarR">별5</span> 
+		                  <span></span>
+               		</div>
 					<hr style="width: 300px; background-color: #D0D0D0">
 					<div style=" height: 250px; padding: 30px;">
 						<div>
@@ -266,9 +265,7 @@
 					<% if(mh != null ) { %>
 					<input type="hidden" name="userid" id="userid" value="<%= mh.getUserId() %>" />
 					<input type="hidden" name="pno" value=<%= p.getPno()%> />
-					<input type="hidden" name="rank" value="1" />
-					
-					
+					<input type="hidden" name="rank" id="rank" value="1" />
 						<div class="box" style="padding-top: 10px">
 							<textarea name="content" id="content" cols="50" rows="4"
 								style="display: inline-block; resize: none;"></textarea>
@@ -409,7 +406,7 @@
 		$('.starRev span').click(function() {
 			$(this).parent().children('span').removeClass('on');
 			$(this).addClass('on').prevAll('span').addClass('on');
-			$(this).parent().parent().parent().prev().val($('.starR.on').length);
+			$('#rank').val($('.starR.on').length);
 			
 			return false;
 		});
@@ -507,10 +504,10 @@
 		location.href= "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content+"&rank="+rank;
 	}
 	
-	 <%-- function myWish(){
+	<%--   function myWish(){
 
 			location.href="/semi/mWishlist.mp?pno=<%= p.getPno()%>&userid=<%= mh.getUserId() %>"; 	
 
-	}  --%>
+	}   --%>
 </script>
 </html>
