@@ -215,7 +215,7 @@
 				<input type="button" value="마이페이지로 돌아가기" class="btn backbtn" onclick="location.href='/semi/views/won/myPage.jsp'"> 
 				
 				<!-- if로 구매종료일이 넘었으면 가능 아니면 불가 알림창 뜨기 -->
-				<input type="text" id="order" value="구매하러 가기" class="btn buybtn" onclick="location.href='/semi/views/seul/lithingbox.jsp'">
+				
 			</div>
 	</div>
 	<br>
