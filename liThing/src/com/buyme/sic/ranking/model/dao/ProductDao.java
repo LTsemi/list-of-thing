@@ -313,6 +313,7 @@ public class ProductDao {
 				p.setKno(rset.getString("K_NO"));
 				p.setPname(rset.getString("P_NAME"));
 				p.setPprice(rset.getInt("P_PRICE"));
+				p.setPindg(rset.getString("P_INGD"));
 				p.setBrand(rset.getString("BRAND"));
 				p.setRank(rset.getDouble("RANK"));
 				p.setCname(rset.getString("C_NAME"));
@@ -381,6 +382,7 @@ public class ProductDao {
 				p.setKno(rset.getString("K_NO"));
 				p.setPname(rset.getString("P_NAME"));
 				p.setPprice(rset.getInt("P_PRICE"));
+				p.setPindg(rset.getString("P_INGD"));
 				p.setBrand(rset.getString("BRAND"));
 				p.setRank(rset.getDouble("RANK"));
 				p.setCname(rset.getString("C_NAME"));

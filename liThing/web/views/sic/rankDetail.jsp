@@ -504,10 +504,6 @@
 		location.href= "/semi/upReview.ur?rno="+rno+"&pno="+pno+"&content="+content+"&rank="+rank;
 	}
 	
-	<%--   function myWish(){
 
-			location.href="/semi/mWishlist.mp?pno=<%= p.getPno()%>&userid=<%= mh.getUserId() %>"; 	
-
-	}   --%>
 </script>
 </html>
