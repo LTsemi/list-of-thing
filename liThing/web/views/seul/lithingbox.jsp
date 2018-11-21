@@ -63,7 +63,7 @@ http://www.templatemo.com/tm-520-highway
             <p>매월 새로운 <span class="lithing">리띵</span>박스가 배달됩니다!</p>
             <br><br><br><br>
             <br><br><br><br>
-            <div id="banner" onclick="location.href='lithingbox.jsp'">
+            <div id="banner" title="이달의 리띵's Pick 보러가기" onclick="location.href='/semi/selectList.tm'">
             
                 <p>[10월] 이달의 리띵's Pick! <br />
                    	<em>"손이가요 손이가는 젤리 Best10"</em></p>
@@ -94,6 +94,7 @@ http://www.templatemo.com/tm-520-highway
         </div>
         <form id = "goOrder" method = "post" action ="<%= request.getContextPath() %>/views/seul/orderBox.jsp" >
             <input type="hidden" name="price" id="price" />                 
+            <input type="hidden" name="buyMonth" id="buyMonth" />                 
 		</form>
     </div>
 <script>
@@ -106,13 +107,16 @@ http://www.templatemo.com/tm-520-highway
 		
 		if(nowid == "one"){
 			$('#price').val("12");
+			$('#buyMonth').val("1개월");			
 			console.log($('#price').val());
 			$("#goOrder").submit();
 		} else if(nowid == "three"){
 			$('#price').val("36");
+			$('#buyMonth').val("3개월");
 			$("#goOrder").submit();
 		} else if(nowid == "six"){
 			$('#price').val("72");
+			$('#buyMonth').val("6개월");
 			$("#goOrder").submit();
 		}
 	};

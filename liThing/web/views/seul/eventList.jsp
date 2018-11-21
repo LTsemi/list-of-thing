@@ -117,10 +117,10 @@ body {
 					<br>
 					<br>
 					
-					<% if(mh != null && mh.getUserId().equals("admin")){ %> 
+					<%-- <% if(mh != null && mh.getUserId().equals("admin")){ %> 
 					<!-- <a href="views/seul/eventPageInsertForm.jsp" class="listbtn">이벤트 추가</a> -->
 					<a href="/semi/eventManager.ev" class="listbtn">이벤트 관리</a>
-					<% } %>
+					<% } %> --%>
 
 					<br>
 					<br>

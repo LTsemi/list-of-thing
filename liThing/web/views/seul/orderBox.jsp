@@ -6,6 +6,8 @@
 	String num3 = null; 
 	String[] address = null;
 	int price = Integer.parseInt(request.getParameter("price"));
+	String buyMonth = request.getParameter("buyMonth");
+	
 %>
 
     
@@ -235,7 +237,7 @@ http://www.templatemo.com/tm-520-highway
 						<td><img src="../../resources/img/buybox.png" width="50px"
 							height="50px"> &nbsp;리띵박스</td>
 						<td><%= price%>,000</td> <input type="hidden" name="price" value="<%= price %>" />
-						<td>1</td>
+						<td><%= buyMonth %></td>
 					</tr>
 				</table>
 				<div class="totalpay">
@@ -301,9 +303,10 @@ http://www.templatemo.com/tm-520-highway
 						협의되지 않은 지정일 배송 등의 요청사항은 반영되지 않을 수 있습니다.</div>
 						<input type="hidden" id="email" value="<%= mh.getEmail() %>" /> 
 				</div>
+				<br />
 			</div>
-
-			<div class="col-sm-12">
+			
+			<!-- <div class="col-sm-12">
 				<div class="panel payList">
 					<div class="paypic">
 						<b>결제 수단</b> <br> <input type="radio" name="pay" id="1"
@@ -314,13 +317,16 @@ http://www.templatemo.com/tm-520-highway
 							type="radio" name="pay" id="4"> 페이코 간편결제
 					</div>
 				</div>
-			</div>
+			</div> -->
+			
 			<div class="btnbar">
+			
 				<input type="button" value="이전 페이지" class="btn backbtn" onclick="location.href='lithingbox.jsp'"> 
-				<input type="text" id="order" value="구매하기" class="btn buybtn" onclick="orderClick();">
+				<input type="text" id="order"  value="구매하기" class="btn buybtn" onclick="orderClick();">
 			</div>
+			<br /><br />
 	</div>
-	<br>
+	<br><br />
 	</form>
 	<% } else { %>
 			<script>
