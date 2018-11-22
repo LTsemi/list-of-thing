@@ -364,7 +364,7 @@ body {
 		</select> 
 		<input type="search" id="keyword" placeholder="키워드를 입력하세요:)">
 		<button type="button" id="searchBtn" onclick="search();">검색하기</button>
-		<% if(mh != null){ %>
+		<% if(mh != null  && mh.getUserId().equals("admin")){ %>
 		<button id="insertBtn" onclick="location.href='views/won/noticeInsertForm.jsp'">작성하기</button>
 		<% } %>
 

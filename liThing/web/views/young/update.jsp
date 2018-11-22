@@ -161,57 +161,9 @@
 				});
 				
 				function updateMember() {
-								    
 					$("#updateForm").submit();
 				}
 				
-				$("#joinForm").submit(function(event){
-					var pw  = $('#userPwd').val();
-					
-				    if (isValidPasswd(pw) != true) {
-				       	alert("비밀번호는 8~16자 영문 대 소문자, 숫자를 사용하세요.");
-				        return false;
-				    }
-				    
-				    function checkSpace(str) {
-				        if (str.search(/\s/) != -1) {
-				            return true;
-				        } else {
-				            return false;
-				        }
-				    }
-
-				    function isValidPasswd(str) {
-				        var cnt = 0;
-				        if (str == "") {
-				            return false;
-				        }
-
-				        /* check whether input value is included space or not */
-				        var retVal = checkSpace(str);
-				        if (retVal) {
-				            return false;
-				        }
-				        if (str.length < 8) {
-				            return false;
-				        }
-				        for (var i = 0; i < str.length; ++i) {
-				            if (str.charAt(0) == str.substring(i, i + 1))
-				                ++cnt;
-				        }
-				        if (cnt == str.length) {
-				            return false;
-				        }
-
-				        var isPW = /^[A-Za-z0-9_-]{8,18}$/;
-				        if (!isPW.test(str)) {
-				            return false;
-				        }
-
-				        return true;
-				    }
-					
-				}
 				function deleteMember() {
 					location.href = "/semi/mDelete.me?mid=<%=mh.getUserId()%>";
 				}
