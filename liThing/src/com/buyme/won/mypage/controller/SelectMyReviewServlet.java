@@ -76,7 +76,7 @@ public class SelectMyReviewServlet extends HttpServlet {
 		
 		
 		String page = "";
-		if(listCount < 1){
+/*		if(listCount < 1){
 			PrintWriter out = response.getWriter();
 			 
 			out.println("<script> alert('등록된 리뷰가 없습니다. 리뷰를 먼저 작성해 주세요!'); location.href='index.jsp';</script>");
@@ -84,8 +84,7 @@ public class SelectMyReviewServlet extends HttpServlet {
 			out.flush();
 			out.close();
 			page = "login.jsp";
-		}
-		
+		}*/
 		
 		
 		if (rlist != null) {
@@ -103,7 +102,7 @@ public class SelectMyReviewServlet extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			 
-			out.println("<script> alert('리뷰 조회 오류!'); location.href='index.jsp';</script>");
+			out.println("<script> alert('등록된 리뷰가 없습니다. 리뷰를 먼저 작성해 주세요!'); location.href='index.jsp';</script>");
 			 
 			out.flush();
 			out.close();
