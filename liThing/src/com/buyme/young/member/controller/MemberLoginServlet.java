@@ -32,6 +32,7 @@ public class MemberLoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String userId = request.getParameter("userId");
@@ -52,6 +53,7 @@ public class MemberLoginServlet extends HttpServlet {
 			
 			session.setAttribute("member", m);
 			
+		
 			response.sendRedirect("index.jsp");
 			
 		} catch (MemberException e) {
