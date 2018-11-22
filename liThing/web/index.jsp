@@ -547,7 +547,7 @@ input[type=submit] {
  	 		$("#search").keyup(function(e){
  	 			var pName = $('#search').val();
  	 			
- 	 			console.log(pName);
+
  	 			if(e.keyCode == 13)  {
  	 				location.href="/semi/sMain.po?pname=" + pName;
  	 			}
