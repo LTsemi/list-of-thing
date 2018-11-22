@@ -168,5 +168,13 @@ public class ProductService {
 		return list;
 	}
 
+	public ArrayList<Product> selectMainList(String pname) {
+		Connection con = getConnection();
+		
+		ArrayList<Product> plist = pDao.selectMainList(con, pname); 
+		
+		return plist;
+	}
+
 
 }

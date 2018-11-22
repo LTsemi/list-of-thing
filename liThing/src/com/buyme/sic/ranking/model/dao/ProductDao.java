@@ -403,6 +403,50 @@ public class ProductDao {
 
 		return list;
 	}
+
+	public ArrayList<Product> selectMainList(Connection con, String pname) {
+		ArrayList<Product> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectProductMain");
+
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pname);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Product>();
+			
+			while(rset.next()) {
+				
+				Product p = new Product();
+				
+				p.setPno(rset.getString("P_NO"));
+				p.setPnn(rset.getString("P_NN"));
+				p.setKno(rset.getString("K_NO"));
+				p.setPname(rset.getString("P_NAME"));
+				p.setPprice(rset.getInt("P_PRICE"));
+				p.setPindg(rset.getString("P_INGD"));
+				p.setBrand(rset.getString("BRAND"));
+				p.setRank(rset.getDouble("RANK"));
+				p.setCname(rset.getString("C_NAME"));
+				
+				list.add(p);
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }
 
 

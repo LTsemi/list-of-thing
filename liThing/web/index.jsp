@@ -549,7 +549,7 @@ input[type=submit] {
  	 			
 
  	 			if(e.keyCode == 13)  {
- 	 				location.href="/semi/sMain.po?pname=" + pName;
+ 	 				location.href="/semi/mSelPro.ma?pname=" + pName;
  	 			}
  	 			
  	 		});  
@@ -558,7 +558,7 @@ input[type=submit] {
  		function searchProduct(){
  			var pName = $('#search').val();
  			
- 			location.href="<%=request.getContextPath()%>/sMain.po?pname=" + pName;
+ 			location.href="<%=request.getContextPath()%>/mSelPro.ma?pname=" + pName;
  		}
  				
 	</script>

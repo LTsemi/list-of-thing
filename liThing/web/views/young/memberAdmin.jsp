@@ -111,7 +111,7 @@ body {
 			회원목록</caption>
 				<tr>
 					<td width="50px" style="text-align: center">
-						<input type="button" id="delbtn" value="삭제" disabled="disabled" onclick="Mconfirm();">
+						<input type="button" id="delbtn" value="삭제" onclick="Mconfirm();">
 					</td>
 					<td>아이디</td>
 					<td>이름</td>
