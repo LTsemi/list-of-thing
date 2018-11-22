@@ -53,7 +53,7 @@
 						<td>제목 </td>
 						<td colspan="3">
 							<input type="text" size="66" name="title" value="<%=t.getTtitle() %>">
-							<input type="hidden" name="bno" value="<%=t.getTno()%>">
+							<input type="hidden" name="tno" value="<%=t.getTno()%>">
 						</td>
 					</tr>
 					<tr>

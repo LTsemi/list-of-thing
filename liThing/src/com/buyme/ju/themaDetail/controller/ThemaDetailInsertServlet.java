@@ -38,7 +38,7 @@ public class ThemaDetailInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int tno = Integer.parseInt(request.getParameter("ttitle"));
+		int tno = Integer.parseInt(request.getParameter("tno"));
 		String pno = request.getParameter("pname");
 		
 		ThemaProduct tp = new ThemaProduct();

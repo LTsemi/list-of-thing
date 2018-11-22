@@ -36,8 +36,11 @@ public class ThemaDetailInsertViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int tno = Integer.parseInt(request.getParameter("tno"));
+		
 		ArrayList<Product> plist = new ThemaDetailService().selectProduct();
 		ArrayList<Thema> tlist = new ThemaService().selectList();
+		Thema t = new ThemaService().selectOne(tno);
 		
 		String page = "";
 			
@@ -46,6 +49,7 @@ public class ThemaDetailInsertViewServlet extends HttpServlet {
 			page = "views/ju/ThemaDetail_Insert.jsp";
 			request.setAttribute("plist", plist);
 			request.setAttribute("tlist", tlist);
+			request.setAttribute("t", t);
 			
 		} else {
 			

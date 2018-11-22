@@ -46,18 +46,18 @@
       <div id="thema_detail">
       <% if( mh != null && mh.getUserId().equals("admin")) { %>
         <div align="left" style="margin-left:15px;">
-        	<button onclick="location.href='tdInView.td'">추가하기</button>
+        	<button onclick="location.href='tdInView.td?tno=<%=t.getTno() %>'">추가하기</button>
         </div>
         <%} %>
             <h1 style="text-align : left; margin-left: 15px;"><%= t.getTtitle() %></h1>
             <% for(int i = 0; i < list.size(); i++){ %>
             <section id="product">
-                <article id="thema_prd">     
+                <article id="thema_prd" style="height:350px;">     
                     <a href="selectOne.po?pno=<%= list.get(i).getPno() %>">
                         <div>
                             <img src="<%= request.getContextPath() %>/resources/productImg/<%= list.get(i).getCname() %>" id="thema_view_pic">
                         </div>
-                        <p>[<%= list.get(i).getBrand() %>] <%= list.get(i).getPname() %></p>
+                        <p id="pName">[<%= list.get(i).getBrand() %>] <%= list.get(i).getPname() %></p>
                         <input type="hidden" name="pno" id="pno" value="<%= list.get(i).getPno() %>"/>
                         <input type="hidden" name="tno" id="tno" value="<%= t.getTno() %>"/>
                     </a><%= list.get(i).getRank() %>

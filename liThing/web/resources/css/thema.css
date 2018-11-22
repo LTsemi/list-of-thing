@@ -30,7 +30,7 @@
 } 
 
 /* 테마 설명 설정 */
-p {
+#content {
     text-align: left;
     color: black;
     font-weight: bold;
@@ -47,14 +47,14 @@ article > a {
 }
 
 /* 아티클 글자영역 안쪽 여백 */
-h2, p {
+h2, #content {
     padding-top: 15px;
 }
 
 /* 테마 상세보기 div 크기 여백 */
 #thema_detail {
     width: 1325px;
-    height: 800px;
+    height: 1000px;
     margin: 0 auto;
     padding-top : 15px;
 }
@@ -62,8 +62,9 @@ h2, p {
 /* 테마 상품 배치 */
 #thema_prd {
     width: 230px;
+    height:350px;
     float: left;
-    margin: 15px;
+    padding: 15px;
 }
 
 /* 버튼 */
@@ -88,8 +89,3 @@ button:hover {
     width: 500px;
     height: 500px;
 }
-
-/* #updatePrdForm {
-    width: 500px;
-    height: 500px;
-} */

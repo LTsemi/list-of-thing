@@ -6,6 +6,7 @@
 <%
 	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
 	ArrayList<Thema> tlist = (ArrayList<Thema>)request.getAttribute("tlist");
+	Thema t = (Thema)request.getAttribute("t");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -54,11 +55,8 @@
 						<tr>
 							<td>테마명 </td>
 							<td colspan="3">
-								<select name="ttitle" id="ttitle">
-									<% for(int i = 0; i < tlist.size(); i++){ %>
-										<option value="<%= tlist.get(i).getTno() %>"><%= tlist.get(i).getTtitle() %></option>
-									<%} %>
-								</select>
+								<input type="text" id="ttitle" name="ttitle" value="<%= t.getTtitle() %>" readonly>
+								<input type="hidden" id="tno" name="tno" value="<%= t.getTno() %>" />
 							</td>
 						</tr>
 						<tr>
