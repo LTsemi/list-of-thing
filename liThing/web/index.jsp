@@ -285,7 +285,7 @@ input[type=submit] {
         <div class="container" >
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-					<a href="/semi/selectList.tm">
+
                     <div class="thumb" id="Themadiv0">
                         <div class="hover-effect">
                             <div class="hover-content">
@@ -294,13 +294,13 @@ input[type=submit] {
                         </div>
 
                     </div>
-                     </a>
+                 
                 </div>
             </div>
             
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-					<a href="/semi/selectList.tm">
+
                     <div class="thumb" id="Themadiv1">
                         <div class="hover-effect">
                             <div class="hover-content">
@@ -309,12 +309,12 @@ input[type=submit] {
                         </div>
 
                     </div>
-                     </a>
+                    
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-					<a href="/semi/selectList.tm">
+
                     <div class="thumb" id="Themadiv2">
                         <div class="hover-effect">
                             <div class="hover-content">
@@ -323,12 +323,12 @@ input[type=submit] {
                         </div>
 
                     </div>
-                     </a>
+                   
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-					<a href="/semi/selectList.tm">
+
                     <div class="thumb" id="Themadiv3">
                         <div class="hover-effect">
                             <div class="hover-content">
@@ -337,12 +337,12 @@ input[type=submit] {
                         </div>
 
                     </div>
-                     </a>
+                    
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-					<a href="/semi/selectList.tm">
+
                     <div class="thumb" id="Themadiv4">
                         <div class="hover-effect">
                             <div class="hover-content">
@@ -351,13 +351,13 @@ input[type=submit] {
                         </div>
 
                     </div>
-                     </a>
+                  
                 </div>
             </div>
             <br />
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-					<a href="/semi/selectList.tm">
+
                     <div class="thumb" id="Themadiv5">
                         <div class="hover-effect">
                             <div class="hover-content">
@@ -366,7 +366,7 @@ input[type=submit] {
                         </div>
 
                     </div>
-                     </a>
+                     
                 </div>
             </div>
 		
@@ -392,14 +392,15 @@ input[type=submit] {
 				$thema = $("#Themadiv"+i);
 				
 				// 테마 서블릿가서 gson 추가하기 boardTop5servlet 확인하기
-				
+					var $themahref = $('<a>').attr("href", "/semi/selectList.td?tno="+ data[i].tno).attr('id', 'themahref'+i);
 					var $title = $('<h1>').text(data[i].ttitle);
 					var $content = $('<p>').text(data[i].tcontent);
 					var $themaimg = $('<img>').attr("src" , "<%= request.getContextPath()+"/resources/themaUploadFiles/"%>" + data[i].timage).css({ 'width':'350','height':'200'})
 	
-					$('#Themadiv'+i).append($title);
-					$('#Themadiv'+i).append($content);
-					$('#Themadiv'+i).append($themaimg);
+					$('#Themadiv'+i).before($themahref);
+					$('#themahref'+i).append($title);
+					$('#themahref'+i).append($content);
+					$('#themahref'+i).append($themaimg);
 					
 				}
 				
