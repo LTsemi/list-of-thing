@@ -119,7 +119,7 @@ body {
 					<br>
 					
 					<button class="listbtn" onclick="complete();">수정하기</button>	  
-      				<button class="listbtn" onClick="history.go(-1); return false ;">목록으로</button>
+      				<button class="listbtn" onClick="history.go(-1); return false ;">돌아가기</button>
 					</form>
 				</div>
 			</div>

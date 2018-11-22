@@ -113,7 +113,7 @@ body {
 					<hr>
 					<br>
 					<button type="button" class="listbtn"
-						onclick="location.href='/semi/selectList.ev'">취소하기</button>
+						onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">취소하기</button>
 					<%-- <% if(m != null && m.getUserName().equals(t.getBwriter())){ %> --%>
 					<button type="submit" class="listbtn">작성 완료</button>
 					<%-- <% } %>	 --%>
