@@ -275,9 +275,6 @@ nav {
 						<li><a href="/semi/views/seul/lithingbox.jsp">리띵 박스</a></li>
 						<li><a href="/semi/selectList.ev">이벤트</a></li>
 						<li><a href="/semi/selectList.cs">고객센터</a></li>
-					<% if (mh != null && mh.getUserId().equals("admin")) { %>
-						<li><a href="/semi/views/sic/ManagerPage.jsp">관리자페이지</a></li>
-						<% } %>
 					</ul>
 					<p></p>
 				</div>
