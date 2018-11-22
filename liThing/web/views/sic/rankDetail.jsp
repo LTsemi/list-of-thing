@@ -262,7 +262,7 @@
 					</div>
 				</div>
 				
-				<form action="<%=request.getContextPath()%>/review.rv" method="post">
+				<form action="<%=request.getContextPath()%>/review.rv" method="post" onsubmit="return check()" >
 					<div style="border: 1px solid #D0D0D0; margin-top: 10px; background: white; border-radius: 4px;">
 					<% if(mh != null ) { %>
 						<input type="hidden" name="userid" id="userid" value="<%= mh.getUserId() %>" />
@@ -274,6 +274,7 @@
 						</div>
 						<div class="box" style="vertical-align: top; width: 150px; height: 94px; padding-top: 10px">
 							<input class="button" type="submit" value="등록" style="vertical-align: top; width: 100%; height: 70px;">
+
 						</div>
 						<div>
 							<div class="starRev">
@@ -585,6 +586,18 @@
 			
 	}
 	
+	function check() {
 
+		<% for(Review r : rlist) {%>
+			if('<%=mh.getUserId()%>' == '<%= r.getUserid() %>'){
+				alert("리뷰는 한번만 작성가능합니다.");
+				return false;
+			}else{
+				return true;
+			}
+		<% } %>
+		
+	
+	}
 </script>
 </html>
