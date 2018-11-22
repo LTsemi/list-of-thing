@@ -79,10 +79,11 @@ table{
 		<div style=" margin: 10px 10px; width: 100%;">
 			
 		</div>
+		<p style="text-align: center; font-size: 20px; font-weight: 600;">
+			관리자 페이지</p> 
 		<table style="margin: 10px auto; width: 95%; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
-			<caption style="text-align: center; font-size: 20px; font-weight: 600;">
-			관리자 페이지</caption>
+			
 				<tr>
 					<td width="50px" height="25px" style="text-align: center">
 						

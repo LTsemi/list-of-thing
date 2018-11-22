@@ -32,6 +32,7 @@ public class ManagerSelectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("매니저 select 들어옴");
 		ProductService ps = new ProductService();
 		ArrayList<Product> list = new ArrayList<Product>();
 		
