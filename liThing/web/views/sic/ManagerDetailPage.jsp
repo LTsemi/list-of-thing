@@ -12,6 +12,7 @@
 	#imageArea:hover{
 		cursor: pointer;
 	}
+	
 </style>
 </head>
 <body>

@@ -1,9 +1,10 @@
-<%@page import="java.util.ArrayList, com.buyme.sic.ranking.model.vo.*"%>
+<%@page import="java.util.ArrayList, com.buyme.sic.ranking.model.vo.*, java.text.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
 	String so = (String)request.getAttribute("sortsts");
+	DecimalFormat dc = new DecimalFormat("###,###,###,###");
 %>
 <!DOCTYPE html>
 <html>
@@ -169,6 +170,19 @@ body{
 td{
 	border-bottom: 1px solid #D0D0D0;
 }
+
+.RstarR {
+	background: url('/semi/resources/img/ico.png') no-repeat right 0;
+	background-size: auto 100%;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	text-indent: -9999px;
+}
+
+.RstarR.on {
+	background-position: 0 0;
+}
 </style>
 
 </head>
@@ -289,6 +303,7 @@ td{
 				</table> 
 			
 			</div>
+			<h4></h4>
 		</div>
 		
 	</div>
@@ -300,11 +315,16 @@ td{
 </body>
 <script>
 	$(function() {
-		var contents = '';
 		
+		
+		var contents = '';
+	
 		<% int cnt = 0; %>
 		<% for(Product p : list){ %>
 		<% cnt ++; %>
+		<% int price = p.getPprice(); %>
+		<% String result = dc.format(price); %>
+		
 		contents += '<tr>';
 		contents +=	'<td style="display: none"><b><%= p.getPno() %></b></td>';
 		contents +='<td style="width: 100px; height: 150px;"><b><%= cnt %></b></td>';
@@ -315,17 +335,79 @@ td{
 		contents +='<ul style="text-align: left; list-style: none; " >';
 		contents +='<li><h5 style="color: red"><%= p.getBrand() %></h5></li>';
 		contents +='<li><h4><%= p.getPname() %></h4></li>';
-		contents +='<li><h5 style="color: gray"><%= p.getPprice() %>원</h5></li>';
+		contents +='<li><h5 style="color: gray"><%= result %>원</h5></li>';
 		contents +='</ul>';
 		contents +='</td>';
-		contents +='<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>';
+	
+		<% if(p.getRank() == 5) {%>
+			contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+	        contents +=    '<span class="RstarR on">별1</span>'
+	        contents +=     '<span class="RstarR on">별2</span>'
+	        contents +=     '<span class="RstarR on">별3</span>' 
+	        contents +=   '<span class="RstarR on">별4</span>'
+	        contents +=  '<span class="RstarR on">별5</span> '
+	        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+	        contents += '</div></td>';
+		<% } else if(p.getRank() >= 3.99) {%>
+			contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+	        contents +=    '<span class="RstarR on">별1</span>'
+	        contents +=     '<span class="RstarR on">별2</span>'
+	        contents +=     '<span class="RstarR on">별3</span>' 
+	        contents +=   '<span class="RstarR on">별4</span>'
+	        contents +=  '<span class="RstarR">별5</span> '
+	        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+	        contents += '</div></td>';
+		<% } else if(p.getRank() >= 2.99) {%>
+			contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+	        contents +=    '<span class="RstarR on">별1</span>'
+	        contents +=     '<span class="RstarR on">별2</span>'
+	        contents +=     '<span class="RstarR on">별3</span>' 
+	        contents +=   '<span class="RstarR">별4</span>'
+	        contents +=  '<span class="RstarR">별5</span> '
+	        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+	        contents += '</div></td>';
+		<% } else if(p.getRank() >= 1.99) {%>
+			contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+	        contents +=    '<span class="RstarR on">별1</span>'
+	        contents +=     '<span class="RstarR on">별2</span>'
+	        contents +=     '<span class="RstarR">별3</span>' 
+	        contents +=   '<span class="RstarR">별4</span>'
+	        contents +=  '<span class="RstarR">별5</span> '
+	        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+	        contents += '</div></td>';
+		<% } else if(p.getRank() >= 0.99){%>
+			contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+	        contents +=    '<span class="RstarR on">별1</span>'
+	        contents +=     '<span class="RstarR">별2</span>'
+	        contents +=     '<span class="RstarR">별3</span>' 
+	        contents +=   '<span class="RstarR">별4</span>'
+	        contents +=  '<span class="RstarR">별5</span> '
+	        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+	        contents += '</div></td>';
+		<% } else { %>
+			contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+	        contents +=    '<span class="RstarR">별1</span>'
+	        contents +=     '<span class="RstarR">별2</span>'
+	        contents +=     '<span class="RstarR">별3</span>' 
+	        contents +=   '<span class="RstarR">별4</span>'
+	        contents +=  '<span class="RstarR">별5</span> '
+	        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+	        contents += '</div></td>';
+		<% } %>
+		
 		contents +='<td id="pnn" style="display: none"><%= p.getPnn() %></td>';
 		contents +='</tr>';
 		
+		
 		<% } %>
+		
 		
 		$('#rList').append(contents);
 		
+		/* var price = $('h5[name^=pr]').html();
+		var str = String(price);
+		var result = str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		$('h5[name^=pr]').html(result); */
 		
 		if('<%= so %>' == 'null') {
 			$('#sortList').val('GradeH').prop('selected', true);
@@ -336,9 +418,10 @@ td{
 			$('input:checkbox').prop('checked', false);
 		});
 		
+		
 	});
 	
-
+	
 	
 	function selectsort() {
 		var so = $('#sortList option:selected').val();
