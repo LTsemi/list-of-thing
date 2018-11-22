@@ -204,7 +204,6 @@ public class ProductDao {
 				list.add(rset.getString(1));
 			}
 
-			System.out.println(list.get(0));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
