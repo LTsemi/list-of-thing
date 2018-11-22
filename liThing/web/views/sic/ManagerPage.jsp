@@ -69,7 +69,7 @@ table{
 	<br />
 	<p style="font-weight: 600; font-size: 16px; color:#333; margin:5px; ">관리자 페이지</p>
 	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/mList.me'">회원 관리</button> &nbsp;
-	<button class="leftbtn" onclick="location.href='views/sic/ManagerPage.jsp'">제품 관리</button> &nbsp;
+	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/views/sic/ManagerPage.jsp'">제품 관리</button> &nbsp;
 	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">이벤트 관리</button><br />
 	<br />
 	</div>
