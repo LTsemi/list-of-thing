@@ -2,7 +2,14 @@
     pageEncoding="UTF-8" import="com.buyme.young.member.model.vo.Member"%>
 <%
 	Member m = (Member)session.getAttribute("member");
+/* 	String referer = request.getHeader("referer");
+	if(referer==null)referer = "/"; */
 %>
+
+<%-- <script language="javascript">
+      location.href="<%=referer%>";
+</script> --%>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -2,6 +2,8 @@ package com.buyme.won.mypage.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +40,24 @@ public class SelectOrderServlet extends HttpServlet {
 		OrderLT o = new OrderLT();
 		
 		OrderService os = new OrderService();
+		
+		o = os.selectOneList(userid);
+		
+		if(o != null){
+			GregorianCalendar today = new GregorianCalendar();
+
+			Calendar endday = new GregorianCalendar();
+
+			endday.setTimeInMillis(o.getEnd_order().getTime());
+					
+			int compare = (endday.getTimeInMillis() - today.getTimeInMillis() > 0) ? 1 : 0;
+							// 1이면 아직 기간 남은거
+			if(compare == 0){
+				os.updateDelf(userid);
+				System.out.println("delf 변경");
+			}
+			
+		}
 		
 		o = os.selectOneList(userid);
 		

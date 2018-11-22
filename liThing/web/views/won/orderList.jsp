@@ -39,7 +39,7 @@
  	<style>
 	 @font-face {
           font-family: 'NanumSquareRoundR' ;
-          src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+          src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
         }
         body { box-sizing: border-box;
             font-family: NanumSquareRoundR !important; 
@@ -212,7 +212,7 @@
 				</div>
 			</div>
 			<div class="btnbar">
-				<input type="button" value="마이페이지로 돌아가기" class="btn backbtn" onclick="location.href='/semi/views/won/myPage.jsp'"> 
+				<input type="button" value="마이페이지로 돌아가기" class="btn backbtn" onclick="location.href='/semi/sWish.mp?userid=<%= mh.getUserId() %>'"> 
 				
 				<!-- if로 구매종료일이 넘었으면 가능 아니면 불가 알림창 뜨기 -->
 				

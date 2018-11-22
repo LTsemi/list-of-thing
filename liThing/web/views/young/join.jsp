@@ -149,8 +149,21 @@ $(function (){
 function insertMember() {
 	$("#joinForm").submit();
 }
+var idchek = 0;
+var iddata = null;
 
 $("#joinForm").submit(function(event){
+	
+	if(idchek == 0){
+		alert("아이디 중복 체크를 먼저 해주세요.");
+		event.preventDefault();
+	}else{
+		if(iddata === 'no'){
+			alert("아이디 중복 체크를 먼저 해주세요.");
+			event.preventDefault();
+		}
+	}
+
 	if($("#userPwd").val() == "" || $("#userId").val() == ""){
 		alert("아이디나 비밀번호는 필수 값입니다.");
 		event.preventDefault();
@@ -161,6 +174,52 @@ $("#joinForm").submit(function(event){
 		return;
 	}
 	
+	
+	var pw  = $('#userPwd').val();
+	
+    if (isValidPasswd(pw) != true) {
+       	alert("비밀번호는 8~16자 영문 대 소문자, 숫자를 사용하세요.");
+        return false;
+    }
+    
+    function checkSpace(str) {
+        if (str.search(/\s/) != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isValidPasswd(str) {
+        var cnt = 0;
+        if (str == "") {
+            return false;
+        }
+
+        /* check whether input value is included space or not */
+        var retVal = checkSpace(str);
+        if (retVal) {
+            return false;
+        }
+        if (str.length < 8) {
+            return false;
+        }
+        for (var i = 0; i < str.length; ++i) {
+            if (str.charAt(0) == str.substring(i, i + 1))
+                ++cnt;
+        }
+        if (cnt == str.length) {
+            return false;
+        }
+
+        var isPW = /^[A-Za-z0-9_-]{8,18}$/;
+        if (!isPW.test(str)) {
+            return false;
+        }
+
+        return true;
+    }
+    
 	
 	var email = $("#email").val();
 
@@ -202,6 +261,13 @@ $("#joinForm").submit(function(event){
 	if(tel1 === "" || tel2 ==="" ){
 		$(".tooltip").addClass("blind");
 		$("#telTooltip").text("연락처를 입력해주세요.").removeClass("blind");
+		$("#tel2").focus();
+		event.preventDefault();
+		return;
+	}
+	if(!(tel2.length == 8 || tel2.length == 7)){
+		$(".tooltip").addClass("blind");
+		$("#telTooltip").text("뒷자리를 확인해주세요. 7자리 또는 8자리 가능합니다.").removeClass("blind");
 		$("#tel2").focus();
 		event.preventDefault();
 		return;
@@ -283,6 +349,7 @@ $("#joinForm").submit(function(event){
 
 	$('#idCheck').click(
 			function() {
+				idchek = 1;
 				$.ajax({
 					url : "/semi/idDup.me",
 					type : "post",
@@ -290,16 +357,18 @@ $("#joinForm").submit(function(event){
 						userId : $('#userId').val()
 					},
 					success : function(data) {
-
+						iddata = data;
 						if (data == 'no') {
 							$('#userId').select();
 							$(".tooltip").addClass("blind");
 							$("#idTooltip").text("이미 사용중인 아이디 입니다.")
 									.removeClass("blind");
 							$("#userId").focus();
+							iddata = data;
 						} else {
 							$("#idTooltip").text("사용가능한 아이디 입니다.").removeClass(
 									"blind");
+							iddata = data;
 						}
 
 					},
