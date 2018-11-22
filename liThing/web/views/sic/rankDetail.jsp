@@ -6,6 +6,9 @@
 	//AvgReview ar = (AvgReview) request.getAttribute("aReview");
 	ArrayList<Review> rlist = (ArrayList<Review>) request.getAttribute("rlist");
 %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -340,7 +343,7 @@
 								</tr>
 								<tr>
 									<td colspan="3">
-										<p id="conP" style="padding-left: 50px; text-align: left; border: 1px soild black; font-size: 20px;"><%= r.getRcontent() %></p>
+										<p id="conP" style="padding-left: 50px; padding-right: 50px; text-align: left; border: 1px soild black; font-size: 18px;"><%= r.getRcontent() %></p>
 										
 										<textarea id="uptxtArea" cols="50" rows="4" style="resize:none; display: none"></textarea>
 										<button id="upload" type="button" class="button" onclick="uptConfirm(this)" style="vertical-align: top; width: 100px; height: 70px; display:none">수정</button><br />

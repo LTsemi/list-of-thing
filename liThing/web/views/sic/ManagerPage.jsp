@@ -42,8 +42,8 @@ table{
 		<table style="margin: 0 auto; width: 1200px; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
 				<tr>
-					<td width="50px" style="text-align: center">
-						<input type="checkbox" name="allChk" id="allChk"  />
+					<td width="50px" height="25px" style="text-align: center">
+						
 					</td>
 					<td>제품 번호</td>
 					<td>제품 코드</td>
@@ -152,17 +152,18 @@ function deleteItem() {
 			},
 			success : function (result) {
 				
-				alert("제품이 삭제되었습니다.");
+
 				
 			}, error : function (result) {
 				alert("제품삭제 실패!");
 			}
 		}); 
-		
+	
 		$(this).parent().parent().remove();
 		
 	});
-	
+	alert("제품이 삭제되었습니다.");
+	buttonOff();
 	
 }
 

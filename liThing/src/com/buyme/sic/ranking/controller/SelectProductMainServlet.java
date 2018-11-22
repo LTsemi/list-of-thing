@@ -1,6 +1,7 @@
 package com.buyme.sic.ranking.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -59,8 +60,12 @@ public class SelectProductMainServlet extends HttpServlet {
 			
 		} else {
 			System.out.println("서블릿오류");
-			/*page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 상세보기 실패!");*/
+			PrintWriter out = response.getWriter();
+	          
+	        out.println("<script> alert('제품 조회에 실패하였습니다.'); location.href='views/sic/rankDetail.jsp';</script>");
+	          
+	        out.flush();
+	        out.close();
 			
 		}
 		

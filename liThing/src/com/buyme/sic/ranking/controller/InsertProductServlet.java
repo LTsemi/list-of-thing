@@ -2,6 +2,7 @@ package com.buyme.sic.ranking.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -87,12 +88,25 @@ public class InsertProductServlet extends HttpServlet {
 			
 			int result = ps.insertProduct(p);
 			
+			String page = "";
+			
 			if(result > 0) {
-				request.getRequestDispatcher("views/sic/ManagerPage.jsp").forward(request, response);
+				System.out.println("제품등록완료");
+				
+				response.sendRedirect("views/sic/ManagerPage.jsp");
+				
+				// page = "/views/sic/ManagerPage.jsp"
+				
 			}else {
 				System.out.println("실패하였습니다..");
 				File file1 = new File(savePath+saveFile);
 				System.out.println("파일삭제 : " + file1.delete());
+		        PrintWriter out = response.getWriter();
+		          
+		        out.println("<script> alert('제품등록에 실패하였습니다.'); location.href='views/sic/ManagerPage.jsp';</script>");
+		          
+		        out.flush();
+		        out.close();
 			}
 			
 		}

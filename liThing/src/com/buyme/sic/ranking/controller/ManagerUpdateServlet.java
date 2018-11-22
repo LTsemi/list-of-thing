@@ -2,6 +2,7 @@ package com.buyme.sic.ranking.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -58,6 +59,9 @@ public class ManagerUpdateServlet extends HttpServlet {
 			
 			Product p = new Product();
 			
+			p = ps.selectOneList(pno);
+			String dbOname = p.getOname();
+			String dbCname = p.getCname();
 			
 			p.setPno(mrequest.getParameter("pno"));
 			p.setPname(mrequest.getParameter("pname"));
@@ -67,7 +71,7 @@ public class ManagerUpdateServlet extends HttpServlet {
 			p.setPcap(mrequest.getParameter("pcap"));
 			p.setCount(Integer.parseInt(mrequest.getParameter("count")));
 			p.setPexp(mrequest.getParameter("pexp"));
-			
+			System.out.println("pprice" + mrequest.getParameter("pprice"));
 
 			String saveFile;
 			String originFile;
@@ -81,35 +85,36 @@ public class ManagerUpdateServlet extends HttpServlet {
 			saveFile = mrequest.getFilesystemName(name);
 			originFile = mrequest.getOriginalFileName(name);
 			
-			System.out.println("savepath" + savePath);
-			System.out.println("saveFile " + saveFile);
-			System.out.println("originFile " + originFile);
-			
-			p = ps.selectOneList(pno);
-			
-			System.out.println(p);
 			
 			if(originFile != null) {
 				new File(savePath + p.getCname()).delete();
 				p.setPimg(savePath);
 				p.setOname(originFile);
 				p.setCname(saveFile);
-				
-				System.out.println("p1 :" + p);
+
+			}else {
+				p.setPimg(savePath);
+				p.setOname(dbOname);
+				p.setCname(dbCname);
 			}
-			
-			
 			
 			int result = ps.updateProduct(p);
 			
+			
+			
 			if(result > 0) {
-				System.out.println("성공");
+	;
 				response.sendRedirect("mselectOne.mo?pno="+pno);
 		
 			}else {
-				System.out.println("실패하였습니다..");
 				File file1 = new File(savePath+saveFile);
 				System.out.println("파일삭제 : " + file1.delete());
+				 PrintWriter out = response.getWriter();
+		          
+			        out.println("<script> alert('제품수정에 실패하였습니다.'); location.href='views/sic/ManagerPage.jsp';</script>");
+			          
+			        out.flush();
+			        out.close();
 			}
 			
 		}

@@ -20,8 +20,10 @@
 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
 
 
-<
 <style>
+body{
+	margin: 0px !important;
+}
 @font-face {
     font-family: 'NanumSquareRoundR';
     src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
@@ -46,7 +48,7 @@
 	/* font-family: "Nanum Gothic", sans-serif; */
 }
 
-o
+
 .button {
 	background: url('<%= request.getContextPath() %>resources/img/reload.png') no-repeat;
 	background-size: auto 100%;
@@ -105,7 +107,7 @@ o
 
 #ap-button {
 
-	background-color: #EFEFEF;
+	background-color: red;
 	
 	border: 1px solid #D0D0D0;
 	display: inline-block;
@@ -114,6 +116,7 @@ o
 }
 
 #ap-button label {
+	color: white;
 	float: left;
 	width: 20em;
 	height: 1.6em;
@@ -161,6 +164,10 @@ o
 } 
 .resetBtn:hover{
 	background: #CCF2FF;
+}
+
+td{
+	border-bottom: 1px solid #D0D0D0;
 }
 </style>
 
@@ -267,10 +274,7 @@ o
 						<label> <input type="checkbox" name="ck" id="ck" value="전복"><span>전복</span>
 						</label>
 					</div>
-					<div id="ck-button">
-						<label> <input type="checkbox" name="ck" id="ck" value="홍합"><span>홍합</span>
-						</label>
-					</div>
+					
 					<br /><br />
 					<div id='ap-button' style="margin-left: 5px;">
 						<label><input type="button" onclick="filterProduct()" value="적용"/><span>제외</span>
@@ -280,10 +284,10 @@ o
 				
 			</div>
 			<div id="dbox" class="box"
-				style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border:1px solid #D0D0D0; border-radius: 4px">
-				<table id="rList" style=" width: 659px; height: 150px; text-align: center; border-radius: 4px" border="0"  cellpadding="0" cellspacing="0">
+				style="margin-left: 20px; width: 660px; background: white; vertical-align: top; border-left:1px solid #D0D0D0; border-right:1px solid #D0D0D0; border-top:1px solid #D0D0D0;">
+				<table id="rList" style=" width: 658px; height: 150px; text-align: center; border-radius: 4px;  " border="0"  cellpadding="0" cellspacing="0">
 				</table> 
-				
+			
 			</div>
 		</div>
 		
@@ -317,6 +321,7 @@ o
 		contents +='<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>';
 		contents +='<td id="pnn" style="display: none"><%= p.getPnn() %></td>';
 		contents +='</tr>';
+		
 		<% } %>
 		
 		$('#rList').append(contents);
@@ -334,7 +339,6 @@ o
 	});
 	
 
-	
 	
 	function selectsort() {
 		var so = $('#sortList option:selected').val();

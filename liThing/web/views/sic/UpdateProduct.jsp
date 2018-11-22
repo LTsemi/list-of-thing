@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp"%>
-<form action="<%= request.getContextPath() %>/pInsert.pn" method="post" enctype="multipart/form-data">
+<form action="<%= request.getContextPath() %>/mUpdate.mu" method="post" enctype="multipart/form-data">
 		<div style="margin: 100px auto; border: 1px solid black; width: 600px;">
 			<table style="margin: 0 auto;">
 				<tr>
@@ -77,8 +77,8 @@
 						<label for="oyster">굴</label>
 						<input type="checkbox" id="abalone" name="pindg" value="전복"/>
 						<label for="abalone">전복</label>
-						<input type="checkbox" id="mussel" name="pindg" value="홍합"/>
-						<label for="mussel">홍합</label>
+						<input type="checkbox" id="no" name="pindg" value="없음"/>
+						<label for="no">없음</label>
 						
 					</td>
 				</tr>

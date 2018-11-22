@@ -82,8 +82,8 @@
 						<label for="oyster">굴</label>
 						<input type="checkbox" id="abalone" name="pindg" value="전복"/>
 						<label for="abalone">전복</label>
-						<input type="checkbox" id="mussel" name="pindg" value="홍합"/>
-						<label for="mussel">홍합</label>
+						<input type="checkbox" id="no" name="pindg" value="없음"/>
+						<label for="no">없음</label>
 				</td>
 			</tr>
 			<tr>
@@ -209,8 +209,8 @@ function LoadImg(value) {
 				$('#oyster').prop("checked", true);
 			}else if($('#abalone').val()==arr[i]){
 				$('#abalone').prop("checked", true);
-			}else if($('#mussel').val()==arr[i]){
-				$('#mussel').prop("checked", true);
+			}else if($('#no').val()==arr[i]){
+				$('#no').prop("checked", true);
 			}
 		} 
 		

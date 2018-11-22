@@ -1,6 +1,7 @@
 package com.buyme.sic.ranking.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -50,8 +51,12 @@ public class SelectProductServlet extends HttpServlet {
 		} else {
 			
 			System.out.println("에러발생");
-			/*page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 검색 실패!");*/
+			PrintWriter out = response.getWriter();
+	          
+	        out.println("<script> alert('제품을 불러오지 못하였습니다.'); location.href='views/sic/Ranking.jsp';</script>");
+	          
+	        out.flush();
+	        out.close();
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);

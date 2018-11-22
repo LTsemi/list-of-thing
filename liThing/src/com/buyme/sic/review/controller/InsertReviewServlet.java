@@ -1,6 +1,7 @@
 package com.buyme.sic.review.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,7 +50,12 @@ public class InsertReviewServlet extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect("selectOne.po?pno="+pno);
 		}else {
-			System.out.println("댓글작성실패");
+			PrintWriter out = response.getWriter();
+	          
+	        out.println("<script> alert('리뷰를 등록하지 못하였습니다.');</script>");
+	          
+	        out.flush();
+	        out.close();
 		}
 	}
 

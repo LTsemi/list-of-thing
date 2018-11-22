@@ -47,12 +47,6 @@ public class UpdateReviewServlet extends HttpServlet {
 		
 		int result = rs.updateReview(r);
 		
-		/*if(result > 0) {
-			response.sendRedirect("selectOne.po?pno="+pno);
-			
-		} else {
-			System.out.println("실패");
-		}*/
 
 		response.setContentType("application/json; charset=UTF-8");
 		
