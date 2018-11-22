@@ -131,8 +131,8 @@
 			<input type="file" id="thumbnailImg" multiple="multiple" name="thumbnailImg" onchange="LoadImg(this)"/>
 		</div>
 		<div style="text-align: center">
-		<input type="button" onclick="startUp()" style="margin: 0 auto;" value="수정하기"/>
-		<button type="submit">수정완료</button>
+		<input type="button" onclick="startUp(this)" style="margin: 0 auto;" value="수정하기"/>
+		<button id="commitupt" type="submit">수정완료</button>
 		</div>
 	</div>
 
@@ -141,6 +141,7 @@
 </body>
 <script>
 $(function () {
+	$('#commitupt').hide();
 	$('table tr').children('#pname').hide();
 	$('table tr').children('#pprice').hide();
 	$('table tr').children('#pindg').hide();
@@ -167,10 +168,12 @@ function LoadImg(value) {
 		reader.readAsDataURL(value.files[0]);
 	}
 }
-	function startUp() {
+	function startUp(obj) {
 		var str = '<%= p.getPindg() %>';
 		var arr = str.split(", ");
 		
+		$(obj).hide();
+		$('#commitupt').show();
 		$('table tr').children().eq(1).hide();
 		$('table tr').children('#pname').show();
 		$('table tr').children().eq(10).hide();
