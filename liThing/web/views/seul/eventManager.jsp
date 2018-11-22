@@ -69,6 +69,14 @@ color: lightgray;
 }
 th{
 cursor: default;
+font-size: 13px;
+}
+th, td{
+padding: 3px 3px;
+}
+
+.evtMgtBox, .winMgtBox, tr, th, td{
+border:1px solid lightgray;
 }
 
 .leftbtn {
@@ -80,6 +88,7 @@ cursor: default;
 	transition: .2s;
 	margin: 5px auto;
 }
+
 
 .leftbtn:hover, .btn:focus {
 	border: 1px solid rgb(255, 208, 56);
@@ -130,8 +139,8 @@ cursor: default;
 					<div class="thumbnail"
 						style="width: 90%; max-width:950px; margin: 0 auto; padding: 20px;">
 
-						<table class="evtMgtBox" border="1"
-							style="width: 95%; text-align: center; margin: 20px auto;">
+						<table class="evtMgtBox"
+							style="width: 95%; text-align: center; margin: 20px auto; font-size: 11px;">
 							<caption
 								style="text-align: center; font-size: 18px; font-weight: 600">이벤트
 								페이지 관리</caption>
@@ -200,8 +209,7 @@ cursor: default;
 					<div class="thumbnail"
 						style="width: 90%; max-width:950px; margin: 0 auto; padding: 20px;">
 
-						<table class="winMgtBox" border="1"
-							style="width: 95%; text-align: center; margin: 20px auto;">
+						<table class="winMgtBox" style="width: 95%; text-align: center; margin: 20px auto;font-size: 11px;">
 							<caption
 								style="text-align: center; font-size: 18px; font-weight: 600">
 								당첨자 페이지 관리</caption>
