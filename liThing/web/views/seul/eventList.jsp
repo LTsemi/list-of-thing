@@ -50,7 +50,7 @@ http://www.templatemo.com/tm-520-highway
 <style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
-	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+	src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
 }
 
 body {
@@ -133,7 +133,7 @@ body {
 							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
 								<p class="evtImg">
 									<img
-										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
+										src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%=evt.getE_cname()%>"
 										width="770px">
 								</p> <span class="dday">D-<%=evt.getDday()%></span>
 								<div class="evtText">
@@ -150,7 +150,7 @@ body {
 							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
 								<p class="evtImg">
 									<img
-										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
+										src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%=evt.getE_cname()%>"
 										width="770px">
 								</p> <span class="dday">D-day</span>
 								<div class="evtText">
@@ -168,7 +168,7 @@ body {
 							<input type="hidden" name="eno" value="<%= evt.getEno() %>"/>
 								<p class="evtImg">
 									<img style="opacity:0.5;"
-										src="/semi/resources/eventUploadFiles/<%=evt.getE_cname()%>"
+										src="<%= request.getContextPath() %>/resources/eventUploadFiles/<%=evt.getE_cname()%>"
 										width="770px">
 								<div class="evtText">
 									<h3><%=evt.getEvttitle()%></h3>
@@ -188,6 +188,7 @@ body {
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<script>
 	$(function(){

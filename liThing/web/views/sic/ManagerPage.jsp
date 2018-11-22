@@ -5,8 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">
 </head>
 <style>
+body{
+margin: 0 auto !important;
+}
 @font-face {
 	font-family: 'NanumSquareRoundR';
 	src: url('/semi/resources/css/fonts/NanumSquareRoundR.ttf');
@@ -29,18 +37,52 @@ table{
 	border-radius: 4px;
 	border-collapse: collapse;
 }
+.leftbtn {
+	padding: 8px 18px;
+	background-color: white;
+	border: 1px solid lightgray;
+	color: gray;
+	border-radius: 0;
+	transition: .2s;
+	margin: 5px auto;
+}
+
+.leftbtn:hover, .btn:focus {
+	border: 1px solid rgb(255, 208, 56);
+	background-color: rgb(255, 208, 56);
+	color: rgb(255, 255, 255);
+}
 </style>
 <body>
 <%@ include file="../common/header.jsp"%>
-	<h1 style="text-align: center; margin:100px">관리자 페이지</h1>
-	
-	<div style="margin: 100px auto;  width: 1200px;">
-		<div style=" margin: 0 auto; width: 1200px;">
-			<input type="button" id="delbtn" value="삭제" disabled="disabled" onclick="deleteItem()">
-			<input type="button" value="제품 추가" onclick="insertItem()"/>
+<div class="page-heading">
+		<div class="container">
+			<div class="heading-content">
+				<h1>
+					list of<em>thing ;)</em>
+				</h1>
+			</div>
 		</div>
-		<table style="margin: 0 auto; width: 1200px; font-size: 11px;" id="mtable" >
+	</div>
+	<!--  왼쪽 네비    -->
+	<div id="left-nav" style="width: 100%; margin:0 auto; text-align:center; border-bottom:1px solid #FFBF00; background-color: #FAF9F0;">
+	<br />
+	<p style="font-weight: 600; font-size: 16px; color:#333; margin:5px; ">관리자 페이지</p>
+	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/mList.me'">회원 관리</button> &nbsp;
+	<button class="leftbtn" onclick="location.href='views/sic/ManagerPage.jsp'">제품 관리</button> &nbsp;
+	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">이벤트 관리</button><br />
+	<br />
+	</div>
+	
+	
+	<div class="thumbnail" style="margin: 50px 50px;  width: 90%;">
+		<div style=" margin: 10px 10px; width: 100%;">
+			
+		</div>
+		<table style="margin: 10px auto; width: 95%; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
+			<caption style="text-align: center; font-size: 20px; font-weight: 600;">
+			관리자 페이지</caption>
 				<tr>
 					<td width="50px" height="25px" style="text-align: center">
 						
@@ -61,6 +103,8 @@ table{
 			<tbody >
 			</tbody>
 		</table>
+		<input type="button" id="delbtn" value="삭제" style="margin-left: 25px; margin-bottom: 5px;" disabled="disabled" onclick="deleteItem()">
+		<input type="button" value="제품 추가"  onclick="insertItem()"/>
 	</div>
 </body>
 <script>

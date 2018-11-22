@@ -39,7 +39,7 @@ http://www.templatemo.com/tm-520-highway
 <style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
-	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+	src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
 }
 
 body {
@@ -113,7 +113,7 @@ body {
       <h2><%= e.getEvttitle() %></h2>
       <h5><span class="glyphicon glyphicon-time"></span> &nbsp; <%= e.getEvtdate() %></h5>
       <br><br>
-      <img src="/semi/resources/eventUploadFiles/<%=e.getE_dtl_cname()%>" width="700px">
+      <img src="/semi/resources/eventUploadFiles/<%=e.getE_dtl_cname()%>">
       <br><br>
       <hr>
       <br />
@@ -190,10 +190,13 @@ body {
         <br><br>
     </div>
     <div class="listGo">
-        <a href="/semi/selectList.ev" class="listbtn">목록으로</a> 
+        <button class="listbtn" onclick="location.href='selectList.ev'">목록으로</button>
         <% if(mh != null && mh.getUserId().equals("admin")){ %>
-         <button class="listbtn" onclick="location.href='eUpdateView.ev?eno=<%=e.getEno()%>'">수정하기</button>	
-         <button class="listbtn" onclick="location.href='eDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>		  
+        <%--  
+        <button class="listbtn" onclick="location.href='eUpdateView.ev?eno=<%=e.getEno()%>'">수정하기</button>	
+        <button class="listbtn" onclick="location.href='eDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>		  
+         --%> 
+         <button class="listbtn" onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">관리자페이지로 이동</button>		  
 		<% } %>
     </div>
         

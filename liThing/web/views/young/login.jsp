@@ -78,8 +78,7 @@
 			<h3 class="title"><%= m.getUserName() %>님의 <br /> 방문을 환영합니다.</h3>
 			<div class="btns" align="right">
 			<%  if(m.getUserId().equals("admin")) { %>
-				<div id="gotoAdmin" onclick="gotoAdmin();" class="btn btn-warning" >회원 관리</div>
-				<div id="gotoEvent" onclick="gotoEvent();" class="btn btn-warning" >이벤트 관리</div>
+				<div id="gotoAdmin" onclick="gotoAdmin();" class="btn btn-warning" >관리자페이지</div>
 			<%} %>
 			<input type="hidden" id="userid" value="<%= mh.getUserId()%>" />
 			    <div id="gotoMypage" onclick="gotoMypage();" class="btn btn-warning" >마이페이지</div>
@@ -119,9 +118,6 @@
 		}
 		function gotoAdmin(){
 			location.href="/semi/mList.me";
-		}
-		function gotoEvent(){
-			location.href="/semi/eventManager.ev";
 		}
 		
 		$("#userId").keyup(function(e){if(e.keyCode == 13)  login(); })

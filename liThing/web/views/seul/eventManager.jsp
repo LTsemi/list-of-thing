@@ -56,7 +56,7 @@ http://www.templatemo.com/tm-520-highway
 <style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
-	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+	src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
 }
 
 body {
@@ -69,6 +69,22 @@ color: lightgray;
 }
 th{
 cursor: default;
+}
+
+.leftbtn {
+	padding: 5px 18px;
+	background-color: white;
+	border: 1px solid lightgray;
+	color: gray;
+	border-radius: 0;
+	transition: .2s;
+	margin: 5px auto;
+}
+
+.leftbtn:hover, .btn:focus {
+	border: 1px solid rgb(255, 208, 56);
+	background-color: rgb(255, 208, 56);
+	color: rgb(255, 255, 255);
 }
 </style>
 
@@ -95,8 +111,18 @@ cursor: default;
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 			<% if(mh != null && mh.getUserId().equals("admin")){ %> 
+				<!--  왼쪽 네비    -->
+				<div id="left-nav" style="width: 100%; margin:0 auto; text-align:center; border-bottom:1px solid #FFBF00; background-color: #FAF9F0;">
+				<br />
+				<p style="font-weight: 600; font-size: 16px; color:#333; margin:5px; ">관리자 페이지</p>
+				<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/mList.me'">회원 관리</button> &nbsp;
+				<button class="leftbtn" onclick="location.href='views/sic/ManagerPage.jsp'">제품 관리</button> &nbsp;
+				<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">이벤트 관리</button><br />
+				<br />
+				</div>
+				
 				<!--   이벤트 창    -->
-				<div id="lithingevt">
+				<div id="lithingevt" style="width: 85%; margin-left: 100px;">
 					<br> <br>
 
 					
@@ -216,6 +242,7 @@ cursor: default;
 					
 					<br> <br> <br> <br>
 				</div>
+				
 				<% }else {%>
 				
 				<p style="text-align: center; margin: 100px 0">

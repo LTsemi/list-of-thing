@@ -10,7 +10,10 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/templatemo-style.css">
 
 <link href="https://fonts.googleapis.com/css?family=Gugi|Itim"
@@ -38,12 +41,9 @@ table{
 
 	
 	#out {
-		width:1400px;
+		width:95%;
 		height:auto;
-
-		margin-left:auto;
-		margin-right:auto;
-		margin-top:50px;
+		margin:0 auto;
 		
 	}
 	
@@ -55,9 +55,24 @@ table{
 body {
 	box-sizing: border-box;
 	font-family: NanumSquareRoundR !important;
+	margin: 0 auto !imortant;
 }
 
+.leftbtn {
+	padding: 8px 18px;
+	background-color: white;
+	border: 1px solid lightgray;
+	color: gray;
+	border-radius: 0;
+	transition: .2s;
+	margin: 5px auto;
+}
 
+.leftbtn:hover, .btn:focus {
+	border: 1px solid rgb(255, 208, 56);
+	background-color: rgb(255, 208, 56);
+	color: rgb(255, 255, 255);
+}
 	
 </style>
 
@@ -73,18 +88,27 @@ body {
 			</div>
 		</div>
 	</div>
+	<!--  왼쪽 네비    -->
+	<div id="left-nav" style="width: 100%; margin:0 auto; text-align:center; border-bottom:1px solid #FFBF00; background-color: #FAF9F0;">
 	<br />
+	<p style="font-weight: 600; font-size: 16px; color:#333; margin:5px; ">관리자 페이지</p>
+	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/mList.me'">회원 관리</button> &nbsp;
+	<button class="leftbtn" onclick="location.href='views/sic/ManagerPage.jsp'">제품 관리</button> &nbsp;
+	<button class="leftbtn" onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">이벤트 관리</button><br />
 	<br />
-	<h1 id="ttitle" style="font-family: Gugi;" align="center">회원목록</h1>
+	</div>
 	
-	<div id="out">
 	<br />
 	<br />
-		<div style="margin: 100px auto;  width: 1200px;">
-		<div style=" margin: 0 auto; width: 1200px;">
+	<!-- <h1 id="ttitle" style="font-family: Gugi;" align="center">회원목록</h1>	 -->
+	<div id="out" class="thumbnail">
+		<div style="margin: 20px auto;  width: 100%;">
+		<div style=" margin: 0 auto; width: 100%;">
 		</div>
-		<table style="margin: 0 auto; width: 1200px; font-size: 11px;" id="mtable" >
+		<table style="margin: 0 auto; width: 95%; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
+			<caption style="text-align: center; font-size: 20px; font-weight: 600">
+			회원목록</caption>
 				<tr>
 					<td width="50px" style="text-align: center">
 						<input type="button" id="delbtn" value="삭제" disabled="disabled" onclick="Mconfirm();">

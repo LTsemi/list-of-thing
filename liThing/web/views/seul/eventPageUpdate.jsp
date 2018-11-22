@@ -36,7 +36,7 @@
 <style>
 @font-face {
 	font-family: 'NanumSquareRoundR';
-	src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+	src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
 }
 
 body {

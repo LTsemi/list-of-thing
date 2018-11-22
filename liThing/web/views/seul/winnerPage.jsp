@@ -34,7 +34,7 @@
   <style>
     @font-face {
         font-family: 'NanumSquareRoundR';
-        src: url('../../resources/css/fonts/NanumSquareRoundR.ttf');
+        src: url('<%= request.getContextPath() %>/resources/css/fonts/NanumSquareRoundR.ttf');
     }
     * { box-sizing: border-box;
         font-family: NanumSquareRoundR; 
@@ -176,10 +176,13 @@
       <br /><br />
       <hr>
       <br>
-      <a href="/semi/selectWinList.ev" class="listbtn">목록으로</a>
+      <button class="listbtn" onclick="location.href='selectWinList.ev'">목록으로</button>	
       <% if(mh != null && mh.getUserId().equals("admin")){ %>	
+      <%-- 
       <button class="listbtn" onclick="location.href='eWinUpdateView.ev?eno=<%=e.getEno()%>&evtEno=<%= e.getEvtEno()%>'">수정하기</button>	
       <button class="listbtn" onclick="location.href='eWinDelete.ev?eno=<%=e.getEno()%>'">삭제하기</button>	  
+       --%>
+	  <button class="listbtn" onclick="location.href='<%= request.getContextPath() %>/eventManager.ev'">관리자페이지로 이동</button>		  
 	  <% } %>
     </div>
     </div>
