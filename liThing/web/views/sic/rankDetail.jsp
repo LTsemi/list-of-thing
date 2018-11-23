@@ -14,7 +14,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Highway Blog - Free CSS Template</title>
+<title>list of Thing </title>
 
 <style>
 @font-face {
@@ -616,7 +616,7 @@
 	}
 	
 	function check() {
-
+		<% if( mh != null){ %>
 		<% for(Review r : rlist) {%>
 			if('<%=mh.getUserId()%>' == '<%= r.getUserid() %>'){
 				alert("리뷰는 한번만 작성가능합니다.");
@@ -624,7 +624,7 @@
 			}else{
 				return true;
 			}
-		<% } %>
+		<% } }%>
 		
 	
 	}
