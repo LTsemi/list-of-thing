@@ -73,7 +73,9 @@ body {
 	background-color: rgb(255, 208, 56);
 	color: rgb(255, 255, 255);
 }
-	
+#delbtn:disabled {
+color: lightgray !important;
+}	
 </style>
 
 </head>
@@ -107,11 +109,10 @@ body {
 		</div>
 		<table style="margin: 0 auto; width: 95%; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
-			<caption style="text-align: center; font-size: 20px; font-weight: 600">
-			회원목록</caption>
+			
 				<tr>
 					<td width="50px" style="text-align: center">
-						<input type="button" id="delbtn" value="삭제" onclick="Mconfirm();">
+						<input type="button" id="delbtn" value="삭제" onclick="Mconfirm();" disabled="disabled">
 					</td>
 					<td>아이디</td>
 					<td>이름</td>
@@ -193,6 +194,20 @@ body {
 
 </div>
 	<script>
+	$('input[name^=chk]').click(function() {
+		if($('input[name^=chk]').is(':checked')==true){
+			buttonOn();
+		}else{
+			buttonOff();
+		}
+	});
+	
+	function buttonOn() {
+		$('#delbtn').attr("disabled", false);
+	}
+	function buttonOff() {
+		$('#delbtn').attr("disabled", true);
+	}
 	
 	$('#mtable tbody').children().mouseenter(function () {
 		$(this).children().not(':first').css({'background':'#F7D58B', 'cursor':'pointer'});
