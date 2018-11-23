@@ -54,7 +54,7 @@ public class SelectWishServlet extends HttpServlet {
 			System.out.println("현재 page : " + currentPage);
 		}
 
-		int listCount = ws.getListCount();
+		int listCount = ws.getListCount(userid);
 
 		System.out.println("전체 위시리스트 수 : " + listCount);
 

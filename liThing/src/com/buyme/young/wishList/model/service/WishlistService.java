@@ -39,11 +39,11 @@ public class WishlistService {
 		return list;
 	}
 
-	public int getListCount() {
+	public int getListCount(String userid) {
 		
 		Connection con = getConnection();
 		
-		int listCount = wDao.getListCount(con);
+		int listCount = wDao.getListCount(con, userid);
 		
 		close(con);
 		

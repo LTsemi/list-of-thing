@@ -110,17 +110,20 @@ public class WishlistDao {
 		return list;
 	}
 
-	public int getListCount(Connection con) {
+	public int getListCount(Connection con, String userid) {
 		
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		int listCount = 0;
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("WlistCount");
 		
 		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, userid);
+			
+			rset = pstmt.executeQuery();
 			
 			if(rset.next()){
 				listCount = rset.getInt(1);
@@ -130,7 +133,7 @@ public class WishlistDao {
 			e.printStackTrace();
 		}finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		return listCount;
 		
