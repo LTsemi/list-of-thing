@@ -35,7 +35,7 @@ table{
 	border: 1px solid lightgray;
 	border-radius: 4px;
 	border-collapse: collapse;
-	
+	}
 	
 </style>
 </head>
@@ -45,32 +45,32 @@ table{
 	<h1 style="margin-top:100px; text-align: center">제품 정보</h1>
 	<div style="margin: 0px auto; width: 1000px;">
 	<input type="text" name="pno" value="<%=p.getPno() %>" style="display: none"/>
-		<table style="margin: 0 auto; ">
+		<table style="margin: 0 auto; width: 800px">
 			<tr>
-				<td><Strong>제품명</Strong></td>
-				<td><%= p.getPname() %></td>
-				<td id='pname'><input type="text" name="pname" value="<%= p.getPname() %>"/></td>
+				<td width="120px" style="text-align: center"><Strong>제품명</Strong></td>
+				<td ><%= p.getPname() %></td>
+				<td id='pname' width="500px"><input type="text" name="pname" value="<%= p.getPname() %>" style="width: 80px"/></td>
 			</tr>
 			<tr>
-				<td><Strong>제품번호</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품번호</Strong></td>
 				<td><%=p.getPno() %></td>
 			</tr>
 			<tr>
-				<td><Strong>제품코드</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품코드</Strong></td>
 				<td><%= p.getPnn() %></td>
 			</tr>
 			<tr>
-				<td><Strong>제품분류</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품분류</Strong></td>
 				<td><%= p.getKno() %></td>
-			</tr>
+			</tr>	
 			<tr>
-				<td><Strong>제품가격</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품가격</Strong></td>
 				<td><%= p.getPprice() %></td>
-				<td id='pprice'><input type="number" name="pprice" value="<%= p.getPprice() %>"/></td>
+				<td id='pprice'><input type="number" name="pprice" value="<%= p.getPprice() %>" style="width: 80px"/>원</td>
 			</tr>
 			<tr>
-				<td><Strong>알레르기성분</Strong></td>
-				<td style="width:500px"><%= p.getPindg() %></td>
+				<td width="120px" style="text-align: center"><Strong>알레르기성분</Strong></td>
+				<td><%= p.getPindg() %></td>
 				<td id='pindg'>
 				<input type="checkbox" id="buckweat" name="pindg" value="메밀"/>
 						<label for="buckwheat">메밀</label>
@@ -80,7 +80,7 @@ table{
 						<label for="bean">콩</label>
 						<input type="checkbox" id="nuts" name="pindg" value="견과류"/>
 						<label for="nuts">견과류</label>
-						<br />
+						
 						<input type="checkbox" id="clam" name="pindg" value="조개류"/>
 						<label for="clam">조개류</label>
 						<input type="checkbox" id="peach" name="pindg" value="복숭아"/>
@@ -102,7 +102,7 @@ table{
 						<label for="Mackerel">고등어</label>
 						<input type="checkbox" id="squid" name="pindg" value="오징어"/>
 						<label for="squid">오징어</label>
-						<br />
+						
 						<input type="checkbox" id="oyster" name="pindg" value="굴"/>
 						<label for="oyster">굴</label>
 						<input type="checkbox" id="abalone" name="pindg" value="전복"/>
@@ -112,41 +112,41 @@ table{
 				</td>
 			</tr>
 			<tr>
-				<td><Strong>제품브랜드</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품브랜드</Strong></td>
 				<td><%= p.getBrand() %></td>
-				<td id='brand'><input type="text" name="brand" value="<%= p.getBrand() %>"/></td>
+				<td id='brand'><input type="text" name="brand" value="<%= p.getBrand() %> " style="width: 80px"/></td>
 			</tr>
 			<tr>
-				<td><Strong>제품용량</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품용량</Strong></td>
 				<td><%= p.getPcap() %></td>
-				<td id='pcap'><input type="text" name="pcap" value="<%= p.getPcap() %>"/></td>
+				<td id='pcap'><input type="text" name="pcap" value="<%= p.getPcap() %>" style="width: 80px"/></td>
 			</tr>
 			<tr>
-				<td><Strong>제품평점</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품평점</Strong></td>
 				<td><%= p.getRank() %></td>
 			</tr>
 			<tr>
-				<td><Strong>제품수량</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품수량</Strong></td>
 				<td><%= p.getCount() %></td>
-				<td id='count'><input type="number" name="count" value="<%= p.getCount() %>"/></td>
+				<td id='count'><input type="number" name="count" value="<%= p.getCount() %>" style="width: 80px"/>개</td>
 			</tr>
 			<tr>
-				<td><Strong>제품설명</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품설명</Strong></td>
 				<td><%= p.getPexp() %></td>
 				<td id='pexp'>
-					<textarea name="pexp" id="" cols="30" rows="10" style="resize: none"><%= p.getPexp() %></textarea>
+					<textarea name="pexp" id="" cols="80" rows="3" style="resize: none"><%= p.getPexp() %></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td><Strong>제품이미지</Strong></td>
+				<td width="120px" style="text-align: center"><Strong>제품이미지</Strong></td>
 				<td>
 				<div id="imageArea">
 				<img id="contentImg" src="/semi/resources/productImg/<%=p.getCname()%>" width="250px" height="300px"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; margin-left: 50px">
+						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; margin-left: 80px">
 				</div>
 				<div id="originArea">
 				<img id="oriImg" src="/semi/resources/productImg/<%=p.getCname()%>" width="250px" height="300px"
-						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; margin-left: 50px">
+						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; margin-left: 80px">
 				</div>
 				</td>
 			</tr>

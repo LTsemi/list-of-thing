@@ -34,16 +34,20 @@ table{
 	border-radius: 4px;
 	border-collapse: collapse;
 	}
+	
+input[type=text]{
+	width: 80px;
+}
 </style>
 </head>
 <body>
 <%@ include file="../common/header.jsp"%>
 	<form action="<%= request.getContextPath() %>/pInsert.pn" method="post" enctype="multipart/form-data">
-	<h1 style="margin: 100px; text-align: center;">제품등록</h1>
+	<h1 style="margin-top: 100px; text-align: center;">제품등록</h1>
 		<div style="margin: 0 auto;width: 1000px;">
 			<table style="margin: 0 auto;">
 				<tr>
-					<td><Strong>종류코드</Strong></td>
+					<td width="200px"><Strong>종류코드</Strong></td>
 					<td>
 						<select name="kno" id="sel" onchange="ChangeItem()">
 							<option value="간편식" selected="selected">간편식</option>
@@ -68,7 +72,7 @@ table{
 				</tr>
 				<tr>
 					<td><Strong>상품가격</Strong></td>
-					<td><input type="number" name="pprice" style="width: 100px">원</td>
+					<td><input type="number" name="pprice" style="width: 80px">원</td>
 				</tr>
 				<tr>
 					<td><Strong>상품성분</Strong></td>
@@ -125,7 +129,7 @@ table{
 				</tr>
 				<tr>
 					<td><Strong>수량</Strong></td>
-					<td><input type="text" name="pcount"></td>
+					<td><input type="text" name="pcount">개</td>
 				</tr>
 				<tr>
 					<td><input type="file" id="productImg" name="productImg" onchange="LoadImg(this)"></td>

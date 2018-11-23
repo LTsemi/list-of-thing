@@ -47,6 +47,10 @@ table{
 	margin: 5px auto;
 }
 
+#delbtn:disabled{
+	color:lightgray;
+}
+
 .leftbtn:hover, .btn:focus {
 	border: 1px solid rgb(255, 208, 56);
 	background-color: rgb(255, 208, 56);
