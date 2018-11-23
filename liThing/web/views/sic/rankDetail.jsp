@@ -105,11 +105,40 @@
 
 
 .button {
-	background-color: #F7603E;
+	background-color: white;
 	border-radius: 4px;
 	border: 1px solid #D0D0D0;
-	color: white;
+	color: black;
+	font-size: 15px;
+	font-weight: 600;
 	outline: none;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.button:hover{
+	background: gray;
+	color: white;
+}
+
+.button2 {
+	background-color: white;
+	border-radius: 100px;
+	/* width: 50px;
+	height: 20px; */
+	padding: 10px 15px;
+	border: 1.5px solid red;
+	color: red;
+	outline: none;
+	cursor: pointer;
+	transition: .2s;
+	font-weight: 600;
+}
+
+.button2:hover{
+	background-color: red;
+	
+	color: white;
 }
 
 .graph { 
@@ -167,19 +196,19 @@
 						style="max-height: 100%; max-width: 100%; max-height: 100%; max-width: 100%; margin-left: 50px">
 				</div>
 				<div
-					style="border: 1px solid #D0D0D0; width:430px; padding: 20px; font-size: 25px; background: white; border-radius: 4px; text-align: center; margin-top: 10px">
+					style="border: 1px solid #D0D0D0; width:430px; padding: 20px; font-size: 40px; background: white; border-radius: 4px; text-align: center; margin-top: 10px">
 					<h2><%=p.getPname()%></h2>
 					<%if(mh != null) {%>
 					<h4>
-						<button onclick="location.href= '/semi/mWishlist.mp?pno=<%= p.getPno()%>&userid=<%= mh.getUserId() %>'">찜 하기</button>
+						<button class='button2' onclick="location.href= '/semi/mWishlist.mp?pno=<%= p.getPno()%>&userid=<%= mh.getUserId() %>'">찜 하기</button>
 					</h4>
 					<% } %>
 					<div style="padding: 20px; text-align: left">
-						<h4>제품 설명</h4>
+						<h5>제품 설명</h5>
 						<p class="text"><%=p.getPexp()%></p>
 					</div>
 					<div
-						style="border: 1px solid #D0D0D0; padding: 20px; background: white; border-radius: 4px; text-align: left; width: 400px">
+						style="border: 1px solid #D0D0D0; padding: 20px; background: white; font-size: 15px;border-radius: 4px; text-align: left; width: 400px">
 						<%=p.getPindg()%></div>
 				</div>
 			</div>

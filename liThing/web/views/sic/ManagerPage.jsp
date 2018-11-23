@@ -81,6 +81,8 @@ table{
 		</div>
 		<p style="text-align: center; font-size: 20px; font-weight: 600;">
 			관리자 페이지</p> 
+			<input type="button" id="delbtn" value=" 삭제" style="margin-left: 25px; margin-bottom: 5px;" disabled="disabled" onclick="deleteItem()">
+		<input type="button" value="제품 추가"  onclick="insertItem()"/>
 		<table style="margin: 10px auto; width: 95%; font-size: 11px;" id="mtable" >
 			<thead style="font-weight: 600">
 			
@@ -104,8 +106,7 @@ table{
 			<tbody >
 			</tbody>
 		</table>
-		<input type="button" id="delbtn" value="삭제" style="margin-left: 25px; margin-bottom: 5px;" disabled="disabled" onclick="deleteItem()">
-		<input type="button" value="제품 추가"  onclick="insertItem()"/>
+		
 	</div>
 </body>
 <script>

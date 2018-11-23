@@ -9,44 +9,68 @@
 <meta charset="UTF-8">
 <title>제품 상세 정보</title>
 <style>
+@font-face {
+	font-family: 'NanumSquareRoundR';
+	src: url('/semi/resources/css/fonts/NanumSquareRoundR.ttf');
+}
+
+* {
+	box-sizing: border-box;
+	font-family: NanumSquareRoundR !important;
+}	
 	#imageArea:hover{
 		cursor: pointer;
 	}
+	
+	td{
+	padding: 3px 3px;
+	text-align: left;
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	
+}
+
+
+table{
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	border-collapse: collapse;
+	
 	
 </style>
 </head>
 <body>
 <%@ include file="../common/header.jsp"%>
 <form action="<%= request.getContextPath() %>/mUpdate.mu" method="post" enctype="multipart/form-data">
-
-	<div style="margin: 100px auto; width: 900px;">
+	<h1 style="margin-top:100px; text-align: center">제품 정보</h1>
+	<div style="margin: 0px auto; width: 1000px;">
 	<input type="text" name="pno" value="<%=p.getPno() %>" style="display: none"/>
-		<table style="margin: 0 auto; width: 800px; border: 1px solid black">
+		<table style="margin: 0 auto; ">
 			<tr>
-				<td>제품명:</td>
+				<td><Strong>제품명</Strong></td>
 				<td><%= p.getPname() %></td>
 				<td id='pname'><input type="text" name="pname" value="<%= p.getPname() %>"/></td>
 			</tr>
 			<tr>
-				<td>제품번호:</td>
+				<td><Strong>제품번호</Strong></td>
 				<td><%=p.getPno() %></td>
 			</tr>
 			<tr>
-				<td>제품코드:</td>
+				<td><Strong>제품코드</Strong></td>
 				<td><%= p.getPnn() %></td>
 			</tr>
 			<tr>
-				<td>제품분류:</td>
+				<td><Strong>제품분류</Strong></td>
 				<td><%= p.getKno() %></td>
 			</tr>
 			<tr>
-				<td>제품가격:</td>
+				<td><Strong>제품가격</Strong></td>
 				<td><%= p.getPprice() %></td>
 				<td id='pprice'><input type="number" name="pprice" value="<%= p.getPprice() %>"/></td>
 			</tr>
 			<tr>
-				<td>알레르기성분:</td>
-				<td><%= p.getPindg() %></td>
+				<td><Strong>알레르기성분</Strong></td>
+				<td style="width:500px"><%= p.getPindg() %></td>
 				<td id='pindg'>
 				<input type="checkbox" id="buckweat" name="pindg" value="메밀"/>
 						<label for="buckwheat">메밀</label>
@@ -88,33 +112,33 @@
 				</td>
 			</tr>
 			<tr>
-				<td>제품브랜드:</td>
+				<td><Strong>제품브랜드</Strong></td>
 				<td><%= p.getBrand() %></td>
 				<td id='brand'><input type="text" name="brand" value="<%= p.getBrand() %>"/></td>
 			</tr>
 			<tr>
-				<td>제품용량:</td>
+				<td><Strong>제품용량</Strong></td>
 				<td><%= p.getPcap() %></td>
 				<td id='pcap'><input type="text" name="pcap" value="<%= p.getPcap() %>"/></td>
 			</tr>
 			<tr>
-				<td>제품평점</td>
+				<td><Strong>제품평점</Strong></td>
 				<td><%= p.getRank() %></td>
 			</tr>
 			<tr>
-				<td>제품수량:</td>
+				<td><Strong>제품수량</Strong></td>
 				<td><%= p.getCount() %></td>
 				<td id='count'><input type="number" name="count" value="<%= p.getCount() %>"/></td>
 			</tr>
 			<tr>
-				<td>제품설명:</td>
+				<td><Strong>제품설명</Strong></td>
 				<td><%= p.getPexp() %></td>
 				<td id='pexp'>
 					<textarea name="pexp" id="" cols="30" rows="10" style="resize: none"><%= p.getPexp() %></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td>제품이미지:</td>
+				<td><Strong>제품이미지</Strong></td>
 				<td>
 				<div id="imageArea">
 				<img id="contentImg" src="/semi/resources/productImg/<%=p.getCname()%>" width="250px" height="300px"

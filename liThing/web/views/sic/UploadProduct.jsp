@@ -6,14 +6,44 @@
 <meta charset="UTF-8">
 <title>제품입력</title>
 <script src="/semi/resources/js/vendor/jquery-3.3.1.min.js"></script>
+<style>
+@font-face {
+	font-family: 'NanumSquareRoundR';
+	src: url('/semi/resources/css/fonts/NanumSquareRoundR.ttf');
+}
 
+* {
+	box-sizing: border-box;
+	font-family: NanumSquareRoundR !important;
+}	
+	#imageArea:hover{
+		cursor: pointer;
+	}
+	
+	td{
+	padding: 3px 3px;
+	text-align: left;
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	
+}
+
+
+table{
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	border-collapse: collapse;
+	}
+</style>
 </head>
 <body>
+<%@ include file="../common/header.jsp"%>
 	<form action="<%= request.getContextPath() %>/pInsert.pn" method="post" enctype="multipart/form-data">
-		<div style="margin: 0 auto; border: 1px solid black; width: 600px;">
+	<h1 style="margin: 100px; text-align: center;">제품등록</h1>
+		<div style="margin: 0 auto;width: 1000px;">
 			<table style="margin: 0 auto;">
 				<tr>
-					<td>종류코드 :</td>
+					<td><Strong>종류코드</Strong></td>
 					<td>
 						<select name="kno" id="sel" onchange="ChangeItem()">
 							<option value="간편식" selected="selected">간편식</option>
@@ -24,7 +54,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>상품코드 :</td>
+					<td><Strong>상품코드</Strong></td>
 					<td>
 						<select name="pnn" id="sel2">
 							<option value="FF">냉동식품</option>
@@ -33,15 +63,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td>상품명 :</td>
+					<td><Strong>상품명</Strong></td>
 					<td><input type="text" name="pname"></td>
 				</tr>
 				<tr>
-					<td>상품가격 :</td>
-					<td><input type="number" name="pprice"></td>
+					<td><Strong>상품가격</Strong></td>
+					<td><input type="number" name="pprice" style="width: 100px">원</td>
 				</tr>
 				<tr>
-					<td>상품성분 :</td>
+					<td><Strong>상품성분</Strong></td>
 					<td>
 						<input type="checkbox" id="buckweat" name="pindg" value="메밀"/>
 						<label for="buckwheat">메밀</label>
@@ -86,15 +116,15 @@
 
 				
 				<tr>
-					<td>브랜드 :</td>
+					<td><Strong>브랜드</Strong></td>
 					<td><input type="text" name="brand"></td>
 				</tr>
 				<tr>
-					<td>용량 :</td>
+					<td><Strong>용량 </Strong></td>
 					<td><input type="text" name="pcap"></td>
 				</tr>
 				<tr>
-					<td>수량 :</td>
+					<td><Strong>수량</Strong></td>
 					<td><input type="text" name="pcount"></td>
 				</tr>
 				<tr>
@@ -104,9 +134,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td>설명 : </td>
+					<td><Strong>설명</Strong></td>
 					<td>
-						<textarea name="pexp" id="pexp" cols="30" rows="10"></textarea>
+						<textarea name="pexp" id="pexp" cols="50" rows="10" style="resize: none"></textarea>
 					</td>
 					
 				</tr>
