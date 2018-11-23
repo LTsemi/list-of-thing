@@ -69,7 +69,7 @@
 				</table>
 				<br>
 				<div align="center">
-					<button type="submit" onclick="test()">등록하기</button>
+					<button type="submit">등록하기</button>
 					<button onclick="location.href='selectList.cs'">취소하기</button>
                 </div>		
             </form>
@@ -97,11 +97,7 @@
 				$('#ccontent').val(str); 
 				
 			});	 	
-			
-			
-			function test(){
-				alert($('#ccontent').val());
-			}
+
 			
 		</script>
 		 
