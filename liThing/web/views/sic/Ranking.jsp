@@ -469,7 +469,61 @@ td{
 				contents +='<li><h5 style="color: gray"><%= p.getPprice() %>원</h5></li>';
 				contents +='</ul>';
 				contents +='</td>';
-				contents +='<td style="width: 250px; height: 150px;"><%= p.getRank() %></td>';
+				<% if(p.getRank() == 5) {%>
+				contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+		        contents +=    '<span class="RstarR on">별1</span>'
+		        contents +=     '<span class="RstarR on">별2</span>'
+		        contents +=     '<span class="RstarR on">별3</span>' 
+		        contents +=   '<span class="RstarR on">별4</span>'
+		        contents +=  '<span class="RstarR on">별5</span> '
+		        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+		        contents += '</div></td>';
+			<% } else if(p.getRank() >= 3.99) {%>
+				contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+		        contents +=    '<span class="RstarR on">별1</span>'
+		        contents +=     '<span class="RstarR on">별2</span>'
+		        contents +=     '<span class="RstarR on">별3</span>' 
+		        contents +=   '<span class="RstarR on">별4</span>'
+		        contents +=  '<span class="RstarR">별5</span> '
+		        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+		        contents += '</div></td>';
+			<% } else if(p.getRank() >= 2.99) {%>
+				contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+		        contents +=    '<span class="RstarR on">별1</span>'
+		        contents +=     '<span class="RstarR on">별2</span>'
+		        contents +=     '<span class="RstarR on">별3</span>' 
+		        contents +=   '<span class="RstarR">별4</span>'
+		        contents +=  '<span class="RstarR">별5</span> '
+		        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+		        contents += '</div></td>';
+			<% } else if(p.getRank() >= 1.99) {%>
+				contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+		        contents +=    '<span class="RstarR on">별1</span>'
+		        contents +=     '<span class="RstarR on">별2</span>'
+		        contents +=     '<span class="RstarR">별3</span>' 
+		        contents +=   '<span class="RstarR">별4</span>'
+		        contents +=  '<span class="RstarR">별5</span> '
+		        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+		        contents += '</div></td>';
+			<% } else if(p.getRank() >= 0.99){%>
+				contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+		        contents +=    '<span class="RstarR on">별1</span>'
+		        contents +=     '<span class="RstarR">별2</span>'
+		        contents +=     '<span class="RstarR">별3</span>' 
+		        contents +=   '<span class="RstarR">별4</span>'
+		        contents +=  '<span class="RstarR">별5</span> '
+		        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+		        contents += '</div></td>';
+			<% } else { %>
+				contents +='<td style="width: 250px; height: 150px;"><div class="RstarRev box" style="margin: auto; padding-top: 10px;">'
+		        contents +=    '<span class="RstarR">별1</span>'
+		        contents +=     '<span class="RstarR">별2</span>'
+		        contents +=     '<span class="RstarR">별3</span>' 
+		        contents +=   '<span class="RstarR">별4</span>'
+		        contents +=  '<span class="RstarR">별5</span> '
+		        contents +=   '<span><Strong><%= p.getRank() %></Strong></span>'
+		        contents += '</div></td>';
+			<% } %>
 				contents +='<td id="pnn" style="display: none"><%= p.getPnn() %></td>';
 				contents +='</tr>';
 				
