@@ -388,7 +388,7 @@
 									</td>
 								</tr>
 								
-								<% if(mh != null && mh.getUserId().equals(r.getUserid()) || mh.getUserId().equals("admin")) { %>
+								<% if(mh != null && (mh.getUserId().equals(r.getUserid()) || mh.getUserId().equals("admin"))) { %>
 								<tr>
 									<td colspan="3">
 										<input type="hidden" name="rno" value="<%= r.getRno() %>"/>
@@ -624,7 +624,7 @@
 			}else{
 				return true;
 			}
-		<% } }%>
+		<% } } %>
 		
 	
 	}
