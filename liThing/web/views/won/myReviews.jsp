@@ -202,11 +202,11 @@ body {
 
 	
 		 <div class="pagingArea" align="center">
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=1'"><<</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=1&userid=<%= mh.getUserId()%>'"><<</button>
 			<%  if(currentPage <= 1){  %>
 			<button id="paging" disabled><</button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%=currentPage - 1 %>&userid=<%= mh.getUserId()%>'"><</button>
 			<%  } %>
 			
 			<% for(int pg = startPage; pg <= endPage; pg++){
@@ -221,9 +221,9 @@ body {
 			<%  if(currentPage >= maxPage){  %>
 			<button id="paging" disabled>></button>
 			<%  }else{ %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%=currentPage + 1 %>'">></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%=currentPage + 1 %>&userid=<%= mh.getUserId()%>'">></button>
 			<%  } %>
-			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%= maxPage %>'">>></button>
+			<button id="paging" onclick="location.href='<%= request.getContextPath() %>/sMyreview.mp?currentPage=<%= maxPage %>&userid=<%= mh.getUserId()%>'">>></button>
 			
 		</div> 
 

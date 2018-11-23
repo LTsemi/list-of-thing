@@ -79,11 +79,11 @@ public class ReviewService {
 		return rlist;
 	}
 
-	public int getListCount() {
+	public int getListCount(String userid) {
 		
 		Connection con = getConnection();
 		
-		int listCount = rDao.getListCount(con);
+		int listCount = rDao.getListCount(con, userid);
 		
 		close(con);
 		

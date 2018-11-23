@@ -57,7 +57,7 @@ public class SelectMyReviewServlet extends HttpServlet {
 			System.out.println("현재 page : " + currentPage);
 		}
 
-		int listCount = rs.getListCount();
+		int listCount = rs.getListCount(userid);
 
 		System.out.println("전체 내 리뷰 수 : " + listCount);
 
